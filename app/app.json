@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Medical App",
-    "slug": "medical-app",
+    "name": "Medkit",
+    "slug": "medkit",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
