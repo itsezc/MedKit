@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "npx babel-node ./server/index.js"
+		"start": "npx babel-node ./index.js"
 	},
 	"keywords": [],
 	"author": "",
