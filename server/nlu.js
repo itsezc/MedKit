@@ -1,6 +1,6 @@
 import { RESTDataSource } from 'apollo-datasource-rest'
 
-class NLU extends RESTDataSource {
+export default class NLU extends RESTDataSource {
 
 	constructor() {
 		super()
@@ -12,7 +12,7 @@ class NLU extends RESTDataSource {
 		return this.get(
 			`message?q=${query}`
 		)
-		
+
 	}
 
 }
