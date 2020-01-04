@@ -1,3 +1,7 @@
+type Message {
+	text: String
+}
+
 Query {
-	
+	message(query: String): Message
 }
