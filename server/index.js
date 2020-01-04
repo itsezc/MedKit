@@ -1,5 +1,7 @@
 import { ApolloServer } from 'apollo-server'
 
+import NLU from './nlu'
+
 import typeDefs from 'schema.graphql'
 import { resolvers } from './resolvers'
 
