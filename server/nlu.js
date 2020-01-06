@@ -12,7 +12,7 @@ export default class NLU extends RESTDataSource {
 	}
 
 	async message(query) {
-
+		
 		return this.get(
 			`message?q=${query}`
 		)
