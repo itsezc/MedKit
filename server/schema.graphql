@@ -28,6 +28,18 @@ type MessageUser {
 	avatar: String
 }
 
+type MessageQuickReply {
+	type: String
+	keepIt: Boolean
+	values: [MessageQuickReplyValue]
+	user: MessageUser
+}
+
+type MessageQuickReplyValue {
+	title: String
+	value: String
+}
+
 type Query {
 	message(query: String): Message
 	handleMessage(message: String): MessageHandler
