@@ -22,6 +22,12 @@ type MessageHandler {
 	system: Boolean
 }
 
+type MessageUser {
+	_id: Int
+	name: String
+	avatar: String
+}
+
 type Query {
 	message(query: String): Message
 	handleMessage(message: String): MessageHandler
