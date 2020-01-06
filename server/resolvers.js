@@ -2,9 +2,7 @@ export const resolvers = {
 	Query: {
 		message: async (parent, { query }, { dataSources }, info) => {
 
-			const data = await dataSources.NLU.message(query)
-
-			const { _text, msg_id, entities } = data 
+			const { _text, msg_id, entities } = await dataSources.NLU.message(query)
 
 			const newEntities = []
 
