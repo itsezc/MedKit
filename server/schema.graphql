@@ -1,0 +1,28 @@
+scalar Date
+
+type Message {
+	id: String
+	text: String
+	entities: [MessageEntity]
+}
+
+type MessageEntity {
+	type: String
+	confidence: Float
+	value: String
+}
+
+type MessageHandler {
+	_id: Int
+	text: String
+	createdAt: Date,
+	user: MessageUser
+	image: String
+	video: String
+	system: Boolean
+}
+
+type Query {
+	message(query: String): Message
+	handleMessage(message: String): MessageHandler
+}
