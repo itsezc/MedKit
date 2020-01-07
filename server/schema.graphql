@@ -42,5 +42,5 @@ type MessageQuickReplyValue {
 
 type Query {
 	message(query: String): Message
-	handleMessage(message: String): MessageHandler
+	handleMessage(index: Int, message: String): MessageHandler
 }
