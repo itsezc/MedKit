@@ -12,6 +12,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@apollo/client": "^3.0.0-beta.19",
     "@apollo/react-hooks": "^3.1.3",
     "@expo/samples": "~36.0.0",
     "@expo/vector-icons": "~10.0.0",
