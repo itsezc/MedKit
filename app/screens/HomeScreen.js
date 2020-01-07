@@ -6,10 +6,16 @@ import { GiftedChat } from 'react-native-gifted-chat'
 
 import { useLazyQuery, gql } from '@apollo/client'
 
-const getChatResponseGQL = gql`
+const GET_CHAT_RESPONSE = gql`
 	query chatResponse($index: Int, $message: String) {
 		handleMessage(index: $index, message: $message) {
-			
+			_id
+			text
+			createdAt
+			user
+			image
+			video
+			system
 		}
 	}
 `
@@ -30,13 +36,15 @@ export default function HomeScreen() {
 
 	const [messages, setMessages] = useState([])
 
-	const [getChatResponse, { loading, data }] = useLazyQuery()
+	const [getChatResponse, { loading, data }] = useLazyQuery(GET_CHAT_RESPONSE)
 	
 	const addToMessageBoard = (newMessages = []) => setMessages(prevMessages => GiftedChat.append(prevMessages, newMessages))
 
 	const sendMessage = (newMessages = []) => {
 		
 		addToMessageBoard(newMessages)
+
+		
 
 		// fetch(
 		// 	'https://api.wit.ai/message?q=' + newMessages[0].text, {
