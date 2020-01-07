@@ -4,7 +4,15 @@ import React, { useState, useEffect, useRef } from 'react'
 
 import { GiftedChat } from 'react-native-gifted-chat'
 
-import fetch from 'isomorphic-fetch'
+import { useLazyQuery, gql } from '@apollo/client'
+
+const getChatResponseGQL = gql`
+	query chatResponse($index: Int, $message: String) {
+		handleMessage(index: $index, message: $message) {
+			
+		}
+	}
+`
 
 import {
 	Image,
@@ -21,6 +29,8 @@ import { MonoText } from '../components/StyledText';
 export default function HomeScreen() {
 
 	const [messages, setMessages] = useState([])
+
+	const [getChatResponse, { loading, data }] = useLazyQuery()
 	
 	const addToMessageBoard = (newMessages = []) => setMessages(prevMessages => GiftedChat.append(prevMessages, newMessages))
 
