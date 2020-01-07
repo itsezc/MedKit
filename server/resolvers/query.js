@@ -1,3 +1,5 @@
+import { chatHandler } from '../core/chatHandler'
+
 export const queryResolver = {
 
 	message: async (parent, { query }, { dataSources }, info) => {
@@ -19,6 +21,10 @@ export const queryResolver = {
 			text: _text,
 			entities: newEntities
 		}
+	},
+
+	handleMessage: async (parent, { index, message }, { dataSources }, info) => {
+		return chatHandler(index, message)
 	}
 
 }
