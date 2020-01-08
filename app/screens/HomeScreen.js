@@ -64,35 +64,6 @@ export default function HomeScreen() {
 		})
 
 		await addToMessageBoard(newMessages)
-
-		
-
-		// fetch(
-		// 	'https://api.wit.ai/message?q=' + newMessages[0].text, {
-		// 		method: 'GET',
-		// 		headers: {
-		// 			Authorization: `Bearer TY6OJIZDF47F6FFRMWLD6N7YAI6QFVGK`
-		// 		}
-		// 	}
-		// )
-		// .then(response => response.json())
-		// .then(json => console.log(json.entities))
-		// .then(json => {
-			// setMessages(
-			// 	GiftedChat.append(messages, {
-			// 		_id: messages.length + 1,
-			// 		text: 'You have a disease!',
-			// 		createdAt: new Date(),
-			// 		user: {
-			// 			_id: 2,
-			// 			name: 'Medical Bot',
-			// 			avatar: 'https://media.istockphoto.com/vectors/cute-white-doctor-robot-modern-health-care-flat-editable-vector-clip-vector-id949119664?k=6&m=949119664&s=612x612&w=0&h=7r0K6meHAFRuVU0h3PA7cq56IrvS2JzkLhCcLpkayf8='
-			// 		}
-			// 	})
-			// )
-
-			// console.log('#2', messages)
-		// })
 		
 		// BotMessage(messages)
 	}
