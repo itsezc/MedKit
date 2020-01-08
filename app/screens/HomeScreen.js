@@ -39,67 +39,39 @@ import { MonoText } from '../components/StyledText';
 export default function HomeScreen() {
 
 	const [messages, setMessages] = useState([])
+	const [queue, messageQueue] = useState([])
 
-	const [getChatResponse, { loading, data }] = useLazyQuery(GET_CHAT_RESPONSE)
+	const [getChatResponse, { loading, data }] = useLazyQuery(GET_CHAT_RESPONSE, {
+		onCompleted: (data) => {
+			if (data.handleMessage) {
+				console.log([data.handleMessage])
+				addToMessageBoard([ data.handleMessage ])
+			}
+		}
+	})
 
 	const addToMessageBoard = (newMessages = []) => setMessages(prevMessages => GiftedChat.append(prevMessages, newMessages))
 
-	if (data && data.handleMessage) {
+	// if (data && data.handleMessage) {
 
-		console.log([data.handleMessage])
-		addToMessageBoard([data.handleMessage])
+	// 	console.log([data.handleMessage])
+	// 	addToMessageBoard([data.handleMessage])
 
-	}
+	// }
 
 	const sendMessage = async (newMessages = []) => {
 
-		const index = messages.length
+		await addToMessageBoard(newMessages)
+
+		const index = messages.length ? messages.length : 0
 		const message = newMessages[0].text
 
-		getChatResponse({ 
+		await getChatResponse({ 
 			variables: {
 				index,
 				message
 			}
 		})
-
-		await addToMessageBoard(newMessages)
-		
-		// BotMessage(messages)
-	}
-
-	const BotMessage = (messages) => {
-		
-		let _id = messages.length ? messages.length : 0
-
-		addToMessageBoard([{
-			_id,
-			text: 'You have a disease!',
-			createdAt: new Date(),
-			// quickReplies: {
-			// 	type: 'radio', // or 'checkbox',
-			// 	keepIt: true,
-			// 	values: [
-			// 	  {
-			// 	    title: '😋 Yes',
-			// 	    value: 'yes',
-			// 	  },
-			// 	  {
-			// 	    title: '📷 Yes, let me show you with a picture!',
-			// 	    value: 'yes_picture',
-			// 	  },
-			// 	  {
-			// 	    title: '😞 Nope. What?',
-			// 	    value: 'no',
-			// 	  },
-			// 	],
-			// },
-			user: {
-				_id: 2,
-				name: 'Medical Bot',
-				avatar: 'https://media.istockphoto.com/vectors/cute-white-doctor-robot-modern-health-care-flat-editable-vector-clip-vector-id949119664?k=6&m=949119664&s=612x612&w=0&h=7r0K6meHAFRuVU0h3PA7cq56IrvS2JzkLhCcLpkayf8='
-			}
-		}])
 	}
 
 	return (
