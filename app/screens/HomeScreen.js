@@ -39,25 +39,12 @@ import { MonoText } from '../components/StyledText';
 export default function HomeScreen() {
 
 	const [messages, setMessages] = useState([])
-	const [queue, messageQueue] = useState([])
 
 	const [getChatResponse, { loading, data }] = useLazyQuery(GET_CHAT_RESPONSE, {
-		onCompleted: (data) => {
-			if (data.handleMessage) {
-				console.log([data.handleMessage])
-				addToMessageBoard([ data.handleMessage ])
-			}
-		}
+		onCompleted: (data) => data.handleMessage ? addToMessageBoard([ data.handleMessage ]) : null	
 	})
 
 	const addToMessageBoard = (newMessages = []) => setMessages(prevMessages => GiftedChat.append(prevMessages, newMessages))
-
-	// if (data && data.handleMessage) {
-
-	// 	console.log([data.handleMessage])
-	// 	addToMessageBoard([data.handleMessage])
-
-	// }
 
 	const sendMessage = async (newMessages = []) => {
 
