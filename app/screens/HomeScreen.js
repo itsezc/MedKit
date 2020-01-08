@@ -44,7 +44,13 @@ export default function HomeScreen() {
 		
 		addToMessageBoard(newMessages)
 
-		
+		const index = messages.length
+		const message = newMessages[0].text
+
+		getChatResponse({ variables: {
+			index,
+			message
+		}})
 
 		// fetch(
 		// 	'https://api.wit.ai/message?q=' + newMessages[0].text, {
