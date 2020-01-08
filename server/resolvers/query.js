@@ -1,4 +1,4 @@
-import { chatHandler } from '../core/chatHandler'
+import { handleMessage } from '../core/chatHandler'
 
 export const queryResolver = {
 
@@ -24,7 +24,7 @@ export const queryResolver = {
 	},
 
 	handleMessage: async (parent, { index, message }, { dataSources }, info) => {
-		return chatHandler(index, message)
+		return handleMessage(index, message)
 	}
 
 }
