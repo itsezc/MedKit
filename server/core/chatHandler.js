@@ -1,6 +1,6 @@
-export const handleMessage = ({ index, message }) => {
+export const handleMessage = (index, message) => {
 	return({
-		_id: index++,
+		_id: index + 1,
 		text: 'This is an example text',
 		createdAt: new Date(),
 		user: {
