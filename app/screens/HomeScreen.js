@@ -12,7 +12,11 @@ const GET_CHAT_RESPONSE = gql`
 			_id
 			text
 			createdAt
-			user
+			user {
+				_id
+				name
+				avatar
+			}
 			image
 			video
 			system
