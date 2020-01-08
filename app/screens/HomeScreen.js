@@ -41,20 +41,31 @@ export default function HomeScreen() {
 	const [messages, setMessages] = useState([])
 
 	const [getChatResponse, { loading, data }] = useLazyQuery(GET_CHAT_RESPONSE)
-	
+
 	const addToMessageBoard = (newMessages = []) => setMessages(prevMessages => GiftedChat.append(prevMessages, newMessages))
 
-	const sendMessage = (newMessages = []) => {
-		
-		addToMessageBoard(newMessages)
+	if (data && data.handleMessage) {
+
+		console.log([data.handleMessage])
+		addToMessageBoard([data.handleMessage])
+
+	}
+
+	const sendMessage = async (newMessages = []) => {
 
 		const index = messages.length
 		const message = newMessages[0].text
 
-		getChatResponse({ variables: {
-			index,
-			message
-		}})
+		getChatResponse({ 
+			variables: {
+				index,
+				message
+			}
+		})
+
+		await addToMessageBoard(newMessages)
+
+		
 
 		// fetch(
 		// 	'https://api.wit.ai/message?q=' + newMessages[0].text, {
@@ -83,7 +94,7 @@ export default function HomeScreen() {
 			// console.log('#2', messages)
 		// })
 		
-		BotMessage(messages)
+		// BotMessage(messages)
 	}
 
 	const BotMessage = (messages) => {
