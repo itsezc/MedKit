@@ -2,7 +2,7 @@ import * as WebBrowser from 'expo-web-browser'
 
 import React, { useState, useEffect, useRef } from 'react'
 
-import { GiftedChat } from 'react-native-gifted-chat'
+import { GiftedChat as Chat } from 'react-native-gifted-chat'
 
 import { useLazyQuery, gql } from '@apollo/client'
 
@@ -24,8 +24,6 @@ const GET_CHAT_RESPONSE = gql`
 	}
 `
 
-import { MonoText } from '../components/StyledText';
-
 export default function HomeScreen() {
 
 	const [messages, setMessages] = useState([])
@@ -34,7 +32,7 @@ export default function HomeScreen() {
 		onCompleted: (data) => data.handleMessage ? addToMessageBoard([ data.handleMessage ]) : null	
 	})
 
-	const addToMessageBoard = newMessages => setMessages(prevMessages => GiftedChat.append(prevMessages, newMessages))
+	const addToMessageBoard = newMessages => setMessages(prevMessages => Chat.append(prevMessages, newMessages))
 
 	const sendMessage = async (newMessages = []) => {
 
@@ -52,7 +50,7 @@ export default function HomeScreen() {
 	}
 
 	return (
-		<GiftedChat
+		<Chat
 			isTyping={true}
 			messages={messages}
 			onSend={newMessages => sendMessage(newMessages)}
