@@ -1,0 +1,46 @@
+scalar Date
+
+type Message {
+	id: String
+	text: String
+	entities: [MessageEntity]
+}
+
+type MessageEntity {
+	type: String
+	confidence: Float
+	value: String
+}
+
+type MessageHandler {
+	_id: Int
+	text: String
+	createdAt: Date,
+	user: MessageUser
+	image: String
+	video: String
+	system: Boolean
+}
+
+type MessageUser {
+	_id: Int
+	name: String
+	avatar: String
+}
+
+type MessageQuickReply {
+	type: String
+	keepIt: Boolean
+	values: [MessageQuickReplyValue]
+	user: MessageUser
+}
+
+type MessageQuickReplyValue {
+	title: String
+	value: String
+}
+
+type Query {
+	message(query: String): Message
+	handleMessage(index: Int, message: String): MessageHandler
+}
