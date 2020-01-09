@@ -1,4 +1,3 @@
-import { ApolloServer } from '@apollo/server'
 import { ArangoDBAdapter, Project as ProjectConstructor } from 'cruddl'
 
 import coreSchema from '../schema2.graphql'
