@@ -15,8 +15,10 @@ const Project = ({
 				permissionProfiles: {
 					default: {
 						permissions: [
-							roles: ['users'],
-							access: 'readWrite'
+							{
+								roles: ['users'],
+								access: 'readWrite'
+							}
 						]
 					}
 				}
