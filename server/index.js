@@ -2,12 +2,10 @@ import { ApolloServer } from 'apollo-server'
 
 import NLU from './nlu'
 
-import typeDefs from 'schema2.graphql'
-import { resolvers } from './resolvers'
+import { schema } from './database/generateSchema'
 
 const server = new ApolloServer({
-	typeDefs,
-	resolvers,
+	schema,
 	context: ({ req }) => req,
 	dataSources: () => {
 		return {
