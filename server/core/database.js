@@ -1,4 +1,5 @@
-import { ArangoDBAdapter, Project } from 'cruddl'
+import { ArangoDBAdapter, Project as ProjectConstructor } from 'cruddl'
+import schema from '../schema2.graphql'
 
 export const DB = new ArangoDBAdapter({
 	databaseName: 'medkit',
@@ -7,3 +8,11 @@ export const DB = new ArangoDBAdapter({
 	password: 'root01'
 })
 
+export const ProjectConstructor({
+	sources: [
+		{
+			name: 'scehma.graphql',
+			body: schema
+		}
+	]
+})
