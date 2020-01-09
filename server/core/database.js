@@ -11,7 +11,7 @@ export const DB = new ArangoDBAdapter({
 const ProjectConstructor = ({
 	sources: [
 		{
-			name: 'scehma.graphql',
+			name: 'schema.graphql',
 			body: coreSchema
 		},
 		{
@@ -32,3 +32,4 @@ const ProjectConstructor = ({
 	getOperationIdentifer: ({ context }) => context as object
 })
 
+export const schema = ProjectConstructor.createSchema(DB)
