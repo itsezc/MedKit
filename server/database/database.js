@@ -37,8 +37,3 @@ const ProjectConstructor = ({
 const schema = ProjectConstructor.createSchema(DB)
 
 DB.updateSchema(ProjectConstructor.getModel())
-
-export const CruddlServer = new ApolloServer({
-	schema,
-	context: ({ req }) => req
-})
