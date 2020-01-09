@@ -8,6 +8,7 @@ import { resolvers } from './resolvers'
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
+	context: ({ req }) => req,
 	dataSources: () => {
 		return {
 			NLU: new NLU()
