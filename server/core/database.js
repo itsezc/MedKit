@@ -1,3 +1,4 @@
+import { ApolloServer } from '@apollo/server'
 import { ArangoDBAdapter, Project as ProjectConstructor } from 'cruddl'
 import coreSchema from '../schema2.graphql'
 
@@ -32,4 +33,11 @@ const ProjectConstructor = ({
 	getOperationIdentifer: ({ context }) => context as object
 })
 
-export const schema = ProjectConstructor.createSchema(DB)
+const schema = ProjectConstructor.createSchema(DB)
+
+DB.updateSchema(ProjectConstructor.getModel())
+
+export const CruddlServer = new ApolloServer({
+	schema,
+	context: ({ req }) => req
+})
