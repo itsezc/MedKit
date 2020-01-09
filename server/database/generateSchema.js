@@ -9,7 +9,7 @@ import { queryResolver as Query } from '../resolvers/query'
 
 const appSchema = makeExecutableSchema({ typeDefs: appTypeDefs, resolvers: {} })
 
-export const schema = mergeSchemas({
+const schema = mergeSchemas({
 	schemas: [
 		dbSchema,
 		appSchema
@@ -19,3 +19,7 @@ export const schema = mergeSchemas({
 		Date
 	}
 })
+
+export {
+	schema
+}
