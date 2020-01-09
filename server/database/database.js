@@ -3,7 +3,7 @@ import { Project as ProjectConstructor } from 'cruddl'
 
 import coreSchema from './schemas/database.graphql'
 
-const ProjectConstructor = ({
+const Project = ({
 	sources: [
 		{
 			name: 'schema.graphql',
@@ -23,13 +23,12 @@ const ProjectConstructor = ({
 			})
 		}
 	],
-	getExecutionOptions: ({ context }) => ({ authRoles: ['users'] }),
-	getOperationIdentifer: ({ context }) => context as object
+	getExecutionOptions: ({ context }) => ({ authRoles: ['users'] })
 })
 
-const schema = ProjectConstructor.createSchema(DB)
+const schema = Project.createSchema(DB)
 
-DB.updateSchema(ProjectConstructor.getModel())
+DB.updateSchema(Project.getModel())
 
 export {
 	schema
