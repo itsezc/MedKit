@@ -3,7 +3,7 @@ import { Project as ProjectConstructor } from 'cruddl'
 
 import coreSchema from './schemas/database.graphql'
 
-const Project = ({
+const Project = new ProjectConstructor({
 	sources: [
 		{
 			name: 'schema.graphql',
