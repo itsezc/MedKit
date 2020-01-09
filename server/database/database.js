@@ -2,7 +2,7 @@ import { ArangoDBAdapter, Project as ProjectConstructor } from 'cruddl'
 
 import coreSchema from '../schema2.graphql'
 
-export const DB = new ArangoDBAdapter({
+const DB = new ArangoDBAdapter({
 	databaseName: 'medkit',
 	url: 'http://root@localhost:8529',
 	user: 'root',
@@ -33,6 +33,6 @@ const ProjectConstructor = ({
 	getOperationIdentifer: ({ context }) => context as object
 })
 
-const schema = ProjectConstructor.createSchema(DB)
+export const schema = ProjectConstructor.createSchema(DB)
 
 DB.updateSchema(ProjectConstructor.getModel())
