@@ -1,7 +1,7 @@
 import { DB } from './connection'
 import { Project as ProjectConstructor } from 'cruddl'
 
-import coreSchema from '../schema.graphql'
+import coreSchema from './schemas/database.graphql'
 
 const ProjectConstructor = ({
 	sources: [

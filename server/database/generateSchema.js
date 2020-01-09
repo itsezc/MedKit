@@ -1,6 +1,6 @@
 // @flow
 
-import appTypeDefs from '../schema.graphql'
+import appTypeDefs from './schemas/app.graphql'
 import { schema as dbSchema } from './database'
 import { mergeSchemas, makeExecutableSchema } from 'apollo-server'
 
