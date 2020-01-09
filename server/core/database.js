@@ -1,5 +1,5 @@
 import { ArangoDBAdapter, Project as ProjectConstructor } from 'cruddl'
-import schema from '../schema2.graphql'
+import coreSchema from '../schema2.graphql'
 
 export const DB = new ArangoDBAdapter({
 	databaseName: 'medkit',
@@ -8,11 +8,27 @@ export const DB = new ArangoDBAdapter({
 	password: 'root01'
 })
 
-export const ProjectConstructor({
+const ProjectConstructor = ({
 	sources: [
 		{
 			name: 'scehma.graphql',
-			body: schema
+			body: coreSchema
+		},
+		{
+			name: 'permission-profiles.json',
+			body: JSON.stringify({
+				permissionProfiles: {
+					default: {
+						permissions: [
+							roles: ['users'],
+							access: 'readWrite'
+						]
+					}
+				}
+			})
 		}
-	]
+	],
+	getExecutionOptions: ({ context }) => ({ authRoles: ['users'] }),
+	getOperationIdentifer: ({ context }) => context as object
 })
+
