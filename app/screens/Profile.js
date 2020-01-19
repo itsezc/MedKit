@@ -5,7 +5,7 @@ import { Container } from '../components/styles/Container'
 import { Card } from '../components/styles/Card'
 import { CardTitle } from '../components/styles/CardTitle'
 
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import Styled from 'styled-components/native'
 
 const Back = Styled.View`
@@ -35,9 +35,37 @@ export default Profile = () => {
 				
 			<Container>
 					
-				<Card >
-					<CardTitle >Card number 1</CardTitle>
+				<Card
+					style={{ 
+						padding: '15px',
+						shadowColor: '#3BCCBB',
+						shadowOffset: { width: 0, height: -10 },
+						shadowOpacity: 1,
+						shadowRadius: 2,
+					}}
+				>
+					<View
+						style={{ flexDirection: 'row', alignContent: 'center'  }}
+					>
+						<Image
+							style={{ width: 50, height: 50, borderRadius: 25 }}
+							source='https://www.biography.com/.image/t_share/MTY2MzU3Nzk2OTM2MjMwNTkx/elon_musk_royal_society.jpg'
+						/>
+						<Text
+							style={{ fontSize: '16px', fontWeight: 'bold', marginLeft: '20px', marginTop: '15px' }}
+						>
+							Elon Musk
+						</Text>
+						<Icon
+							style={{ position: 'absolute', right: '0', top: '4' }}
+							name='ArrowRightSLine'
+							color='#2276DF'
+							size='42'
+						/>
+					</View>
 				</Card>
+				
+
 				<Card >
 					<CardTitle >Card number 2</CardTitle>
 				</Card>
