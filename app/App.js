@@ -12,6 +12,8 @@ import { client } from './Apollo'
 
 import AppNavigator from './navigation/AppNavigator';
 
+import Profile from './screens/Profile'
+
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 
@@ -28,7 +30,8 @@ export default function App(props) {
 		<ApolloProvider client={client}>
 			<View style={styles.container}>
 				{Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-				<AppNavigator />
+				{/* <AppNavigator /> */}
+				<Profile />
 			</View>
 		</ApolloProvider>
     	);
