@@ -34,14 +34,25 @@ export default Profile = () => {
 			</Back>
 				
 			<Container>
-					
+				
+
+				<View 
+					style={{
+						display: 'flex',
+						backgroundColor: '#3BCCBB',
+						height: '30px',
+						width: '70%',
+						position: 'absolute',
+						top: 85,
+						borderRadius: 10,
+						opacity: 0.5
+					}}
+				/>
 				<Card
 					style={{ 
 						padding: '15px',
-						shadowColor: '#3BCCBB',
-						shadowOffset: { width: 0, height: -10 },
-						shadowOpacity: 1,
-						shadowRadius: 2,
+						zIndex: 2,
+						marginTop: 55
 					}}
 				>
 					<View
@@ -54,7 +65,7 @@ export default Profile = () => {
 						<Text
 							style={{ fontSize: '16px', fontWeight: 'bold', marginLeft: '20px', marginTop: '15px' }}
 						>
-							Elon Musk
+							Chiru Boggavarapu
 						</Text>
 						<Icon
 							style={{ position: 'absolute', right: '0', top: '4' }}
@@ -64,7 +75,7 @@ export default Profile = () => {
 						/>
 					</View>
 				</Card>
-				
+
 
 				<Card >
 					<CardTitle >Card number 2</CardTitle>
