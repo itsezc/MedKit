@@ -8,6 +8,8 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
+import { Icon } from '../components/Icon'
+
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
@@ -20,16 +22,23 @@ const HomeStack = createStackNavigator(
   config
 );
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'GP',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
+
+/**
+	Past Icon:
+
+	name={
         Platform.OS === 'ios'
           ? `ios-information-circle${focused ? '' : '-outline'}`
           : 'md-information-circle'
       }
+ */
+
+HomeStack.navigationOptions = {
+  tabBarLabel: 'GP',
+  tabBarIcon: ({ focused }) => (
+    <Icon
+      focused={focused}
+      name='Heart2Line'
     />
   ),
 };
