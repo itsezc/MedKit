@@ -21,6 +21,7 @@ export const Icon = (props) => {
 			height={props.size ? props.size : '26'}
 			viewBox='0 0 24 24'
 			svgs={svgs}
+			style={props.style}
 		/>
 	)
 }
