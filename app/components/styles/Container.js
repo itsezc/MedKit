@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import Style from 'styled-components'
+import Style from 'styled-components/native'
 
 export const Container = Style.View`
 	flex: 1;
