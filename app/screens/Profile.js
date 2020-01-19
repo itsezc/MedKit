@@ -17,14 +17,27 @@ import { Icon } from '../components/Icon'
 
 const List = (props) => (
 	<View
-		style={{}}
+		style={{
+			flexDirection: 'row',
+			margin: '10px'
+		}}
 	>
 		<Icon 
 			name={props.icon}
-			color='#222'
+			style={{
+				backgroundColor: '#2276DF',
+				padding: 4,
+				borderRadius: 4
+			}}
+			color='#FFFFFF'
 			size='20'
 		/>
-		<Text>
+		<Text
+			style={{
+				marginLeft: 20,
+				marginTop: 3
+			}}
+		>
 			{props.text}
 		</Text>
 	</View>
@@ -98,8 +111,8 @@ export default Profile = () => {
 					}}
 				>
 					<List icon='Translate' text='Languages' />
-					<Text>Location</Text>
-					<Text>Notifications</Text>
+					<List icon='MapPinLine' text='Location' />
+					<List icon='NotificationLine' text='Notifications' />
 				</Card>
 				{/* <Card >
 					<CardTitle >Card number 3</CardTitle>
