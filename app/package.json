@@ -6,8 +6,7 @@
 		"ios": "expo start --ios",
 		"web": "expo start --web",
 		"eject": "expo eject",
-		"test": "jest --watchAll",
-		"generate:icons": "./node_modules/.bin/generate-icon ./node_modules/remixicon/fonts/remixicon.css --componentName=RemixIcon --fontFamily=remixicon > components/RemixIcon.js"
+		"test": "jest --watchAll"
 	},
 	"jest": {
 		"preset": "jest-expo"
