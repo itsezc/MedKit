@@ -15,6 +15,21 @@ const Back = Styled.View`
 
 import { Icon } from '../components/Icon'
 
+const List = (props) => (
+	<View
+		style={{}}
+	>
+		<Icon 
+			name={props.icon}
+			color='#222'
+			size='20'
+		/>
+		<Text>
+			{props.text}
+		</Text>
+	</View>
+)
+
 
 export default Profile = () => {
 	return(
@@ -77,12 +92,18 @@ export default Profile = () => {
 				</Card>
 
 
-				<Card >
-					<CardTitle >Card number 2</CardTitle>
+				<Card 
+					style={{
+						marginTop: 20
+					}}
+				>
+					<List icon='Translate' text='Languages' />
+					<Text>Location</Text>
+					<Text>Notifications</Text>
 				</Card>
-				<Card >
+				{/* <Card >
 					<CardTitle >Card number 3</CardTitle>
-				</Card>
+				</Card> */}
 			</Container>
 		</Screen>
 	)
