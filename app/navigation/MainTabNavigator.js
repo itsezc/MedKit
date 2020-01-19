@@ -22,17 +22,6 @@ const HomeStack = createStackNavigator(
   config
 );
 
-
-/**
-	Past Icon:
-
-	name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
- */
-
 HomeStack.navigationOptions = {
   tabBarLabel: 'GP',
   tabBarIcon: ({ focused }) => (
