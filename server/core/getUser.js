@@ -39,18 +39,29 @@ export const getUser = async (authorization) => {
 
 			})
 
-			const queryGQL = `
-				query getAccount($id: Int!) {
-					Account(id: $id) {
-						email
-					}
-				}
-			`
+			if (ok) {
 
-			fetch.post('', JSON.stringify({
-				query,
-				variables: { id: 1 }
-			}))
+				const queryGQL = `
+					query getAccount($id: Int!) {
+						Account(id: $id) {
+							email
+						}
+					}
+				`
+
+				fetch.post('', JSON.stringify({
+					query,
+					variables: { id: 1 }
+				}))
+
+			} else {
+
+				console.error(result)
+				return null
+
+			}
+
+			return null
 
 		)
 
