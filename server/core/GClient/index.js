@@ -10,3 +10,8 @@ export const fetch = Request.create({
 	},
 	responseType: 'json'
 })
+
+export const query = (query, variables) => {
+	const { data } = await fetch.post('', JSON.stringify({ query, variables }))
+	return data.data
+}
