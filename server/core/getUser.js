@@ -41,7 +41,7 @@ export const getUser = async (authorization) => {
 
 			if (ok) {
 
-				const queryGQL = `
+				const query = `
 					query getAccount($id: Int!) {
 						Account(id: $id) {
 							email
@@ -49,14 +49,15 @@ export const getUser = async (authorization) => {
 					}
 				`
 
-				const user = await fetch.post('', JSON.stringify({
-					query,
-					variables: { id: result.id }
-				}))
+				const user = await fetch.post('', 
+					JSON.stringify({
+						query,
+						variables: { id: result.id }
+					})
+				)
 					.then(response => response.json())
 
-				return user
-				
+				return user	
 
 			} else {
 
