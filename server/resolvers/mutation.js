@@ -1,4 +1,4 @@
-import { fetch } from '../core/GClient'
+import { query } from '../core/GClient'
 import { AUTH_TOKEN } from '../authToken'
 import BCrypt from 'bcryptjs'
 import JWT from 'jsonwebtoken'
@@ -6,7 +6,7 @@ import JWT from 'jsonwebtoken'
 export const mutationResolver = {
 	login: async (parent, { email, password }, context, info) => {
 
-		const query = `
+		const ACCOUNT_LOGIN_QUERY = `
 			query accountLogin($email: String!, $password: String!) {
 				allAccounts(filter: { email: $email, password: $password }) {
 					id
@@ -15,17 +15,10 @@ export const mutationResolver = {
 				}
 			}
 		`
+		
+		const { allAccounts } = await query(ACCOUNT_LOGIN_QUERY, { email, password })
 
-		const { data } = await fetch.post('', 
-			JSON.stringify({
-				query,
-				variables: {
-					email,
-					password
-				}
-			}))
-
-		const user = data.data.allAccounts[0]
+		const user = allAccounts[0]
 
 		!user ? throw new Error('No account found') : null
 
