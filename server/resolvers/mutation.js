@@ -32,4 +32,20 @@ export const mutationResolver = {
 		}
 
 	},
+
+
+
+	register: async (parent, { email, password }, context, info) => {
+
+		const ACCOUNT_CHECK_QUERY = `
+			query checkAccount($email: String!) {
+				AllAccounts(filter: { email: $email }) {
+					email
+				}
+			}	
+		`
+
+		const { allAccounts } = await query(ACCOUNT_CHECK_QUERY, { email })
+		
+	}
 }
