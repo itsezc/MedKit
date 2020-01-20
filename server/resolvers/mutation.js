@@ -6,17 +6,17 @@ import JWT from 'jsonwebtoken'
 export const mutationResolver = {
 	login: async (parent, { email, password }, context, info) => {
 
-		const ACCOUNT_LOGIN_QUERY = `
-			query accountLogin($email: String!, $password: String!) {
-				allAccounts(filter: { email: $email, password: $password }) {
+		const ACCOUNT_CHECK_QUERY = `
+			query checkAccount($email: String!) {
+				allAccounts(filter: { email: $email }) {
 					id
 					email
 					password
 				}
 			}
 		`
-		
-		const { allAccounts } = await query(ACCOUNT_LOGIN_QUERY, { email, password })
+
+		const { allAccounts } = await query(ACCOUNT_CHECK_QUERY, { email })
 
 		const user = allAccounts[0]
 
@@ -31,5 +31,5 @@ export const mutationResolver = {
 			user
 		}
 
-	}
+	},
 }
