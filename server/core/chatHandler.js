@@ -1,7 +1,10 @@
 export const handleMessage = (index, message) => {
+
+	
+
 	return({
 		_id: index + 1,
-		text: 'This is an example text',
+		text: 'New example message',
 		createdAt: new Date(),
 		user: {
 			_id: 2,

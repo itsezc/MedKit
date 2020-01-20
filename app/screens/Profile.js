@@ -36,7 +36,8 @@ const List = (props) => (
 		<Text
 			style={{
 				marginLeft: 20,
-				marginTop: 3
+				marginTop: 3,
+				color: props.textColor || '#000'
 			}}
 		>
 			{props.text}
@@ -92,10 +93,10 @@ export default Profile = () => {
 				<View style={{ flexDirection: 'row' }}>
 					<Icon
 						name='ArrowLeftSLine'
-						size='36'
+						size='32'
 						color='#FFFFFF'
 					/>
-					<Text style={{ fontSize: '1.5em', color: '#FFFFFF', marginTop: '3px' }}>
+					<Text style={{ fontSize: '1.3em', color: '#FFFFFF', marginTop: '3px' }}>
 						Back
 					</Text>
 				</View>
@@ -154,9 +155,18 @@ export default Profile = () => {
 					<List icon='MapPinLine' text='Location' switch />
 					<List icon='NotificationLine' text='Notifications' switch />
 				</Card>
-				{/* <Card >
-					<CardTitle >Card number 3</CardTitle>
-				</Card> */}
+
+				<Card 
+					style={{
+						marginTop: 20
+					}}
+				>
+					<List icon='LifeBuoy' text='Help' textColor='red' />
+					<List icon='Logout' text='Sign Out' textColor='red' />
+				</Card>
+
+				<Text style={{ marginTop: 15, color: '#eee' }}>Made by I.W.A</Text>
+				<Text style={{ color: '#eee' }}>Version 1.0.0</Text>
 			</Container>
 		</Screen>
 	)
