@@ -53,6 +53,7 @@ type LoginPayload {
 
 type Mutation {
 	login(email: String!, password: String!): LoginPayload
+	register(email: String!, password: String!): LoginPayload
 }
 
 type Query {
