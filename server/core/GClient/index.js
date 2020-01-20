@@ -2,7 +2,7 @@ import Request from 'axios'
 
 export const fetch = Request.create({
 	method: 'post',
-	baseURL: 'http://localhost:8086',
+	baseURL: 'http://localhost:8085',
 	timeout: 1000,
 	headers: {
 		'Accept': 'application/json',
