@@ -40,18 +40,19 @@ type MessageQuickReplyValue {
 	value: String
 }
 
-type AccountLogin {
+type Account {
 	id: ID
 	email: String
+	password: String
 }
 
 type LoginPayload {
 	token: String
-	user: AccountLogin
+	user: Account
 }
 
 type Mutation {
-	login(email: String, password: String): LoginPayload
+	login(email: String!, password: String!): LoginPayload
 }
 
 type Query {
