@@ -2,11 +2,21 @@ import { ApolloServer } from 'apollo-server'
 
 import NLU from './nlu'
 
-import { schema } from './database/generateSchema'
+import { cruddlSchema, appTypeDefs, appResolvers } from './database/generateSchema'
 import { getUser } from './core/getUser'
 
+const cruddlServer = new ApolloServer({
+	schema: cruddlSchema,
+	context: ({ req }) => req
+})
+
+cruddlServer
+	.listen({ port: 8085 })
+	.then(( info ) => console.log(`ArangoDB (Cruddl) server started on port - ${info.port}`))
+
 const server = new ApolloServer({
-	schema,
+	typeDefs: appTypeDefs,
+	resolvers: appResolvers,
 	context: ({ req }) => {
 		
 		const authorization = req.headers.authorization
@@ -27,4 +37,4 @@ const server = new ApolloServer({
 
 server
 	.listen({ port: 8086 })
-	.then((info) => console.log(`Server started on https://localhost:${info.port}`))
+	.then(( info ) => console.log(`Apollo server started on port - ${info.port}`))
