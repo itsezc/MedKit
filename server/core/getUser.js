@@ -21,7 +21,7 @@ export const getUser = async (authorization) => {
 	if (authorization && authorization.length > bearerLength) {
 
 		const token = authorization.slice(bearerLength)
-		const { ok, result } = await new Promise(resolve => 
+		const { ok, result } = await new Promise(async (resolve) => {
 
 			JWT.verify(token, AUTH_TOKEN, (error, result) => {
 
@@ -68,7 +68,7 @@ export const getUser = async (authorization) => {
 
 			return null
 
-		)
+		})
 
 	}
 
