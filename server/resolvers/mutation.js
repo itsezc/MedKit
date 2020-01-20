@@ -11,28 +11,32 @@ export const mutationResolver = {
 				allAccounts(filter: { email: $email, password: $password }) {
 					id
 					email
+					password
 				}
 			}
 		`
 
 		const user = await fetch.post('', 
-			JSON.stringify(
+			JSON.stringify({
 				query,
 				variables: {
 					email,
 					password
 				}
-			))
+			}))
 				.then(response => response.json())
 
-		!user ? throw new Error('No account found')
+		console.log('USER FETCH: ', user)
+
+		!user ? throw new Error('No account found') : null
 
 		const validPassword = await BCrypt.compare(password, user.password)
 
 		!validPassword ? throw new Error('Invalid Password') : null
 
 		return {
-			token: JWT.sign({ id: user.id }, AUTH_TOKEN)
+			token: JWT.sign({ id: user.id }, AUTH_TOKEN),
+			user
 		}
 
 	}
