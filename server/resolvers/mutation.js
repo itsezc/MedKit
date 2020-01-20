@@ -1,3 +1,5 @@
+import { fetch } from '../core/GClient'
+
 export const mutationResolver = {
 	login: async (parent, { email, password }, context, info) => {
 
@@ -8,6 +10,16 @@ export const mutationResolver = {
 				}
 			}
 		`
+
+		const fetchUser = await fetch.post('', 
+			JSON.stringify(
+				query,
+				variables: {
+					email,
+					password
+				}
+			))
+				.then(response => response.json())
 
 	}
 }
