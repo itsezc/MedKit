@@ -40,6 +40,14 @@ type MessageQuickReplyValue {
 	value: String
 }
 
+type LoginPayload {
+	id: ID
+}
+
+type Mutation {
+	login($email, $password): LoginPayload
+}
+
 type Query {
 	message(query: String): Message
 	handleMessage(index: Int, message: String): MessageHandler
