@@ -41,7 +41,9 @@ const List = (props) => (
 		>
 			{props.text}
 		</Text>
-		<View>
+		<View
+			style={{ position: 'absolute', right: '0', top: '4' }}
+		>		
 			<Switch
 				defaultValue={false}
 				activeText={''}
