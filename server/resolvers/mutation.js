@@ -45,7 +45,11 @@ export const mutationResolver = {
 			}	
 		`
 
-		const { allAccounts } = await query(ACCOUNT_CHECK_QUERY, { email })
+		let { allAccounts } = await query(ACCOUNT_CHECK_QUERY, { email })
+
+		allAccounts.length > 0 ? throw new Error('An account with this email exists already') : null
+
+		const hashedPassword = await BCrypt.hash(password, 14)
 		
 	}
 }
