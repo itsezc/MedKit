@@ -1,18 +1,7 @@
 import { AUTH_TOKEN } from '../authToken'
 import JWT from 'jsonwebtoken'
 
-import Request from 'axios'
-
-const fetch = Request.create({
-	method: 'post',
-	baseURL: 'https://localhost:8086',
-	timeout: 1000,
-	headers: {
-		'Accept': 'application/json',
-		'Content-Type': 'application/json'
-	}
-})
-
+import { fetch } from './GClient'
 
 export const getUser = async (authorization) => {
 	
