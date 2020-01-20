@@ -51,7 +51,7 @@ export const getUser = async (authorization) => {
 
 				fetch.post('', JSON.stringify({
 					query,
-					variables: { id: 1 }
+					variables: { id: result.id }
 				}))
 
 			} else {
