@@ -25,7 +25,7 @@ export const mutationResolver = {
 			))
 				.then(response => response.json())
 
-		// .. Error Handling
+		!user ? throw new Error('No account found')
 
 		const validPassword = await BCrypt.compare(password, user.password)
 
