@@ -49,10 +49,14 @@ export const getUser = async (authorization) => {
 					}
 				`
 
-				fetch.post('', JSON.stringify({
+				const user = await fetch.post('', JSON.stringify({
 					query,
 					variables: { id: result.id }
 				}))
+					.then(response => response.json())
+
+				return user
+				
 
 			} else {
 
