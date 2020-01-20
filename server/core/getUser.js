@@ -1,6 +1,19 @@
 import { AUTH_TOKEN } from '../authToken'
 import JWT from 'jsonwebtoken'
 
+import Request from 'axios'
+
+const fetch = Request.create({
+	method: 'post',
+	baseURL: 'https://localhost:8086',
+	timeout: 1000,
+	headers: {
+		'Accept': 'application/json',
+		'Content-Type': 'application/json'
+	}
+})
+
+
 export const getUser = async (authorization) => {
 	
 	const bearerLength = 'Bearer '.length
@@ -23,8 +36,13 @@ export const getUser = async (authorization) => {
 						result
 					})
 				}
-				
+
 			})
+
+			fetch.post('', JSON.stringify({
+				query,
+				variables: {}
+			}))
 
 		)
 
