@@ -43,31 +43,42 @@ const List = (props) => (
 		</Text>
 		<View
 			style={{ position: 'absolute', right: '0', top: '4' }}
-		>		
-			<Switch
-				defaultValue={false}
-				activeText={''}
-				inactiveText={''}
-				activeBackgroundColor={'rgba(50, 163, 50, 1)'}
-				inactiveBackgroundColor={'rgba(137, 137, 137, 1)'}
-				activeButtonBackgroundColor={'rgba(255, 255, 255, 1)'}
-				inactiveButtonBackgroundColor={'rgba(255, 255, 255, 1)'}
-				switchWidth={50}
-				switchHeight={25}
-				switchBorderRadius={20}
-				switchBorderColor={'rgba(0, 0, 0, 1)'}
-				switchBorderWidth={0}
-				buttonWidth={20}
-				buttonHeight={20}
-				buttonBorderRadius={20}
-				buttonBorderColor={'rgba(0, 0, 0, 1)'}
-				buttonBorderWidth={0}
-				animationTime={150}
-				padding={true}
-				onChangeValue={(value) => {
-					console.log(value);
-				}}
-			/>
+		>
+		{
+			props.switch ?
+				<Switch
+					value={true}
+					activeText={''}
+					inactiveText={''}
+					activeBackgroundColor={'rgba(50, 163, 50, 1)'}
+					inactiveBackgroundColor={'rgba(137, 137, 137, 1)'}
+					activeButtonBackgroundColor={'rgba(255, 255, 255, 1)'}
+					inactiveButtonBackgroundColor={'rgba(255, 255, 255, 1)'}
+					switchWidth={50}
+					switchHeight={25}
+					switchBorderRadius={20}
+					switchBorderColor={'rgba(0, 0, 0, 1)'}
+					switchBorderWidth={0}
+					buttonWidth={20}
+					buttonHeight={20}
+					buttonBorderRadius={20}
+					buttonBorderColor={'rgba(0, 0, 0, 1)'}
+					buttonBorderWidth={0}
+					animationTime={150}
+					padding={true}
+					onChangeValue={(value) => {
+						console.log(value);
+					}}
+				/>
+			:
+				<Icon
+					style={{ position: 'absolute', right: '0', top: '4' }}
+					name='ArrowRightSLine'
+					color='#2276DF'
+					size='20'
+				/>
+		}
+			
 		</View>
 	</View>
 )
@@ -140,8 +151,8 @@ export default Profile = () => {
 					}}
 				>
 					<List icon='Translate' text='Languages' />
-					<List icon='MapPinLine' text='Location' />
-					<List icon='NotificationLine' text='Notifications' />
+					<List icon='MapPinLine' text='Location' switch />
+					<List icon='NotificationLine' text='Notifications' switch />
 				</Card>
 				{/* <Card >
 					<CardTitle >Card number 3</CardTitle>
