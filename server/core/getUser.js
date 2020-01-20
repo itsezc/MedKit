@@ -44,7 +44,6 @@ export const getUser = async (authorization) => {
 						variables: { id: result.id }
 					})
 				)
-					.then(response => response.json())
 
 				return user	
 
