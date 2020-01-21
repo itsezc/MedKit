@@ -22,9 +22,9 @@ export const mutationResolver = {
 
 		!user ? throw new Error('No account found') : null
 
-		// const validPassword = await BCrypt.compare(password, user.password)
+		const validPassword = await BCrypt.compare(password, user.password)
 
-		// !validPassword ? throw new Error('Invalid Password') : null
+		!validPassword ? throw new Error('Invalid Password') : null
 
 		return {
 			token: JWT.sign({ id: user.id }, AUTH_TOKEN),
@@ -61,11 +61,9 @@ export const mutationResolver = {
 
 		const { createAccount } = await query(ACCOUNT_CREATE_QUERY, { email, password: hashedPassword })
 
-		const user = createAccount
-
 		return {
-			token: JWT.sign({ id: user.id }, AUTH_TOKEN),
-			user
+			token: JWT.sign({ id: createAccount.id }, AUTH_TOKEN),
+			user: createAccount
 		}
 		
 	}
