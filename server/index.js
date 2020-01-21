@@ -24,6 +24,7 @@ const server = new ApolloServer({
 		const user = getUser(authorization)
 
 		return {
+			...req, 
 			user
 		}
 
@@ -32,6 +33,9 @@ const server = new ApolloServer({
 		return {
 			NLU: new NLU()
 		}
+	},
+	cacheControl: {
+		defaultMaxAge: 1
 	}
 })
 
