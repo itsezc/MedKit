@@ -33,23 +33,42 @@ export const mutationResolver = {
 
 	},
 
-
-
 	register: async (parent, { email, password }, context, info) => {
 
 		const ACCOUNT_CHECK_QUERY = `
 			query checkAccount($email: String!) {
-				AllAccounts(filter: { email: $email }) {
+				allAccounts(filter: { email: $email }) {
 					email
 				}
 			}	
 		`
 
-		let { allAccounts } = await query(ACCOUNT_CHECK_QUERY, { email })
+		let checkAccount = await query(ACCOUNT_CHECK_QUERY, { email })
 
-		allAccounts.length > 0 ? throw new Error('An account with this email exists already') : null
+		console.log(checkAccount)
+		
+		checkAccount.allAccounts.length > 0 ? throw new Error('An account with this email exists already') : null
 
 		const hashedPassword = await BCrypt.hash(password, 14)
+
+		const ACCOUNT_CREATE_QUERY = `
+			mutation register($email: String!, $password: String!) {
+				createAccount(input: { email: $email, password: $password }) {
+					id
+					email
+					password
+				}
+			}
+		`
+
+		const { allAccounts } = await query(ACCOUNT_CREATE_QUERY, { email, password: hashedPassword })
+
+		const user = allAccounts[0]
+
+		return {
+			token: JWT.sign({ id: user.id }, AUTH_TOKEN),
+			user
+		}
 		
 	}
 }
