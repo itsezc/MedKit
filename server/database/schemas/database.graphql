@@ -1,4 +1,4 @@
 type Account @rootEntity {
-    email: String
+    email: String @unique
     password: String
 }
