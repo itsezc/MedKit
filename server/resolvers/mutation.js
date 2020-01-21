@@ -45,8 +45,6 @@ export const mutationResolver = {
 
 		let checkAccount = await query(ACCOUNT_CHECK_QUERY, { email })
 
-		console.log(checkAccount)
-		
 		checkAccount.allAccounts.length > 0 ? throw new Error('An account with this email exists already') : null
 
 		const hashedPassword = await BCrypt.hash(password, 14)
@@ -61,9 +59,9 @@ export const mutationResolver = {
 			}
 		`
 
-		const { allAccounts } = await query(ACCOUNT_CREATE_QUERY, { email, password: hashedPassword })
+		const { createAccount } = await query(ACCOUNT_CREATE_QUERY, { email, password: hashedPassword })
 
-		const user = allAccounts[0]
+		const user = createAccount
 
 		return {
 			token: JWT.sign({ id: user.id }, AUTH_TOKEN),
