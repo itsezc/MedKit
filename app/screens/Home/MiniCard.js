@@ -1,6 +1,8 @@
 import React from 'react'
-import { TouchableWithoutFeedback, View, Text, Image} from 'react-native'
+import { TouchableWithoutFeedback, ScrollView, View, Text, Image} from 'react-native'
 import Styled from 'styled-components/native'
+
+import quickActions from '../../assets/data/quickActions.json'
 
 const MiniCardContainer = Styled.View`
 	margin: 10px 20px 0px 20px;
@@ -51,4 +53,33 @@ export const MiniCard = (props) => (
 
 		</View>
 	</TouchableWithoutFeedback>
+)
+
+export const MiniCards = (props) => (
+	<View
+		style={{
+			width: '100%',
+			marginTop: 130,
+			zIndex: 3
+		}}	
+	>
+		<ScrollView
+			style={{
+				minWidth: '100%',
+				minHeight: '110%'
+			}}
+			horizontal
+		>
+			{
+				quickActions.actions.map((action, index) => 
+					<MiniCard
+						key={index}
+						name={action.name}
+						image={action.image}
+						navigation={props.navigation}
+					/>
+				)
+			}
+		</ScrollView>
+	</View>
 )
