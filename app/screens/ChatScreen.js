@@ -1,5 +1,3 @@
-import * as WebBrowser from 'expo-web-browser'
-
 import React, { useState, useEffect, useRef } from 'react'
 
 import { GiftedChat as Chat } from 'react-native-gifted-chat'
