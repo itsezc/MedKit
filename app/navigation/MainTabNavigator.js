@@ -9,7 +9,9 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import TabBarIcon from '../components/TabBarIcon';
 
 import Profile from '../screens/Profile'
-import HomeScreen from '../screens/Home';
+import Home from '../screens/Home'
+import Chat from '../screens/Chat'
+
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -27,10 +29,13 @@ const HomeStack = createStackNavigator(
 			path: 'profile'
 		},
 		Home: {
-			screen: HomeScreen,
+			screen: Home,
 			path: 'home'
 		},
-		
+		Chat: {
+			screen: Chat,
+			path: 'chat'
+		}
 	}, {
 		transitionConfig: () => fromLeft(600),
 		initialRouteName: 'Home',
