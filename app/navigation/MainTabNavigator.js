@@ -1,10 +1,15 @@
 import React from 'react';
-import { Platform } from 'react-native';
-import { createStackNavigator } from 'react-navigation-stack';
+import { Platform } from 'react-native'
+
+import { createStackNavigator } from 'react-navigation-stack'
+import { fromRight } from 'react-navigation-transitions'
+
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+
+import Profile from '../screens/Profile'
+import HomeScreen from '../screens/Home';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -13,11 +18,16 @@ import { Icon } from '../components/Icon'
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
+  transitionConfig: () => fromRight(),
+  initialRouteName: 'Profile'
 });
 
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
+    Profile: {
+	    screen: Profile
+    }
   },
   config
 );
