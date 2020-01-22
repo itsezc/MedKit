@@ -1,7 +1,5 @@
 import { ApolloServer } from 'apollo-server'
 
-import NLU from './nlu'
-
 import { cruddlSchema, appTypeDefs, appResolvers } from './database/generateSchema'
 import { getUser } from './core/getUser'
 
