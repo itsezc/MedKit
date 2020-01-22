@@ -12,6 +12,7 @@ import { client } from './Apollo'
 
 import AppNavigator from './navigation/AppNavigator';
 
+import Home from './screens/Home'
 import Profile from './screens/Profile'
 
 export default function App(props) {
@@ -30,8 +31,8 @@ export default function App(props) {
 		<ApolloProvider client={client}>
 			<View style={styles.container}>
 				{Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-				{/* <AppNavigator /> */}
-				<Profile />
+				<AppNavigator />
+				{/* <Profile /> */}
 			</View>
 		</ApolloProvider>
     	);
