@@ -2,7 +2,8 @@
 	"actions": [
 		{
 			"name": "Check Up",
-			"image": "http://clipart-library.com/img/1922613.png"
+			"image": "http://clipart-library.com/img/1922613.png",
+			"link": "Chat"
 		},
 		{
 			"name": "Order Drugs",
