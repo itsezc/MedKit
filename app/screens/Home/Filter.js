@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ScrollView, Text } from 'react-native'
+import { TouchableWithoutFeedback, ScrollView, View, Text } from 'react-native'
 
 import Styled from 'styled-components/native'
 
@@ -49,11 +49,19 @@ export const Filter = (props) => {
 		>
 			{
 				props.filters.map((filter, index) => (
-					<FilterItem
+					<TouchableWithoutFeedback
 						key={index}
-						name={filter.name}
-						selected={index === selected ? true : false}
-					/>
+						onPress={() => setSelected(index)}
+					>
+						<View onStartShouldSetResponder={() => true}>
+
+							<FilterItem
+								name={filter.name}
+								selected={index === selected ? true : false}
+							/>
+
+						</View>
+					</TouchableWithoutFeedback>
 				))
 			}
 		</ScrollView>
