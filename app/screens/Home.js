@@ -46,7 +46,7 @@ export const MinCardContainer = (props) => (
 		/>
 		<MiniCard>
 			<Image
-				style={{ width: 55, height: 55, zIndex: 4 }}
+				style={{ marginTop: 8, width: 55, height: 55, zIndex: 4 }}
 				source={props.image}
 			/>
 			<Text
