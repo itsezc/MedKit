@@ -16,24 +16,26 @@ import SettingsScreen from '../screens/SettingsScreen';
 import { Icon } from '../components/Icon'
 
 const config = Platform.select({
-  web: { headerMode: 'screen' },
-  default: {},
-  transitionConfig: () => fromRight(),
-  initialRouteName: 'Profile'
+	web: { headerMode: 'none' },
+	default: {},
 });
 
 const HomeStack = createStackNavigator(
 	{
+		Profile: {
+			screen: Profile,
+			path: 'profile'
+		},
 		Home: {
 			screen: HomeScreen,
 			path: 'home'
 		},
-		Profile: {
-			screen: Profile,
-			path: 'profile'
-		}
-	},
-  	config
+		
+	}, {
+		transitionConfig: () => fromRight(),
+		initialRouteName: 'Home',
+		...config
+	}
 );
 
 // HomeStack.navigationOptions = {
