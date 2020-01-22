@@ -140,24 +140,39 @@ export default (props) => {
 					zIndex: 2,
 					paddingTop: 50,
 					top: -50,
-					minHeight: '110%'
 				}}
 
 				wrapper
 			>
 				<Filter />
+
+				
 			</View>
 
 			<View
 				style={{
 					backgroundColor: '#E4EBFA',
 					zIndex: 2,
-					paddingTop: 50,
 					top: -50,
-					minHeight: '100%'
-
 				}}
 			>
+				<View 
+					style={{
+						zIndex: 1,
+						padding: 0,
+						marginLeft: 20,
+						marginTop: 15,
+						borderStyle: 'dashed',
+						borderLeftWidth: 2,
+						borderTopWidth: 2,
+						borderColor: '#C7DAF7',
+						height: Dimensions.get('window').height - 410
+					}}
+				>
+					<Text>
+					xD
+					</Text>
+				</View>
 			</View>
 		</Screen>
 	)
