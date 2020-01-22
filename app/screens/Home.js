@@ -42,11 +42,11 @@ export const MinCardContainer = (props) => (
 		/>
 		<MiniCard>
 			<Image
-				style={{ width: 60, height: 60, zIndex: 4 }}
+				style={{ width: 55, height: 55, zIndex: 4 }}
 				source={props.image}
 			/>
 			<Text
-				style={{ marginTop: 10, marginLeft: 2, fontSize: 22 }}
+				style={{ marginTop: 15, marginLeft: 2, fontSize: 20 }}
 			>
 				{props.name}
 			</Text>
@@ -128,6 +128,18 @@ export default (props) => {
 						)
 					}
 				</ScrollView>
+			</View>
+
+			<View
+				style={{
+					backgroundColor: '#E4EBFA',
+					zIndex: 2,
+					paddingTop: 50,
+					top: -50,
+					minHeight: '100%'
+
+				}}
+			>
 			</View>
 
 			<View
