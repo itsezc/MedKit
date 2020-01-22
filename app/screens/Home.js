@@ -1,7 +1,10 @@
 import React from 'react'
 
 import { Screen } from '../components/styles/Screen'
+
 import { TouchableWithoutFeedback, ScrollView, Dimensions, View, Text, Button, Image } from 'react-native'
+
+import { Filter } from './Home/Filter'
 
 import quickActions from '../assets/data/quickActions.json'
 
@@ -21,28 +24,6 @@ export const MiniCard = Styled.View`
 	shadow-color: #000;
 `
 
-export const FilterContainer = Styled.View`
-	border-radius: 5px;
-	margin: 0 10px 0 0px;
-	padding: 10px 20px;
-`
-
-export const FilterItem = (props) => (
-	<FilterContainer
-		style={{
-			backgroundColor: props.selected ? '#2276DF' : '#FFFFFF'
-		}}	
-	>
-		<Text
-			style={{
-				color: props.selected ? '#FFFFFF' : '#000000',
-				fontWeight: props.selected ? 'bold' : 'normal'
-			}}
-		>
-			{props.item}
-		</Text>
-	</FilterContainer>
-)
 
 
 export const MinCardContainer = (props) => (
@@ -169,34 +150,7 @@ export default (props) => {
 						marginTop: 35
 					}}
 				>
-					<ScrollView
-						style={{
-							minWidth: '100%',
-							minHeight: '110%',
-							paddingLeft: 20,
-							paddingRight: 30
-						}}
-						horizontal
-					>
-						<FilterItem
-							item='All'
-							selected
-						/>
-
-						<FilterItem
-							item='Appointments'
-						/>
-
-						<FilterItem
-							item='Medication'
-						/>
-
-						<FilterItem
-							item='Exercises'
-						/>
-
-					</ScrollView>
-
+					<Filter />
 				</View>
 			</View>
 
