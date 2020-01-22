@@ -2,7 +2,7 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { AppRegistry } from 'react-native'
@@ -11,6 +11,9 @@ import { ApolloProvider } from '@apollo/client'
 import { client } from './Apollo'
 
 import AppNavigator from './navigation/AppNavigator';
+
+import { Screen } from './components/styles/Screen'
+import RainBG from './assets/images/RainBG.svg'
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -26,11 +29,11 @@ export default function App(props) {
   } else {
     return (
 		<ApolloProvider client={client}>
-			<View style={styles.container}>
+			<Screen>
 				{Platform.OS === 'ios' && <StatusBar barStyle="default" />}
 				<AppNavigator />
 				{/* <Profile /> */}
-			</View>
+			</Screen>
 		</ApolloProvider>
     	);
   }
@@ -61,13 +64,5 @@ function handleLoadingError(error) {
 function handleFinishLoading(setLoadingComplete) {
   setLoadingComplete(true);
 }
-
-const styles = StyleSheet.create({
-  container: {
-   	 flex: 1,
-    	backgroundColor: '#2276df'
-  },
-});
-
 
 AppRegistry.registerComponent('MedicalApp', () => App)
