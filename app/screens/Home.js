@@ -1,16 +1,58 @@
 import React from 'react'
 
 import { Screen } from '../components/styles/Screen'
-import { TouchableWithoutFeedback, Dimensions, View, Text, Button, Image } from 'react-native'
+import { TouchableWithoutFeedback, ScrollView, Dimensions, View, Text, Button, Image } from 'react-native'
 
 import Styled from 'styled-components/native'
+
+export const MiniCard = Styled.View`
+	margin: 10px 20px 0px 20px;
+	border-radius: 10px;
+	background-color: #FFFFFF;
+	width: 80%;
+	padding: 10px;
+	width: 145px;
+	height: 130px;
+	shadow-opacity: 0.5;
+	shadow-offset: 0px -1px;
+	shadow-radius: 6px;
+	shadow-color: #000;
+`
+
+
+export const MinCardContainer = () => (
+	<View
+		style={{
+			display: 'flex'
+		}}
+	>
+		<View 
+			style={{
+				backgroundColor: '#3BCCBB',
+				height: '30px',
+				width: '65%',
+				position: 'absolute',
+				top: 0,
+				left: 32,
+				borderRadius: 10,
+				opacity: 0.5
+			}}
+		/>
+		<MiniCard>
+			<Text>
+				xD
+			</Text>
+		</MiniCard>
+
+	</View>
+)
 
 export default (props) => {
 	return(
 		<Screen
 			style={{
 				padding: 0,
-				maxHeight: 180
+				maxHeight: 270
 			}}
 		>
 
@@ -49,22 +91,42 @@ export default (props) => {
 					borderBottomWidth: 50,
 					borderLeftColor: 'transparent',
 					borderRightColor: 'transparent',
-					borderBottomColor: '#fff',
-					marginTop: 130,
+					borderBottomColor: '#E4EBFA',
+					marginTop: 220,
 				}}
 			/>
 
 			<View
 				style={{
 					width: '100%',
-					height: '100%',
-					backgroundColor: '#fff',
-					marginTop: 150,
+					marginTop: 130,
+					zIndex: 3
 				}}	
 			>
-				<Text>
-					Content
-				</Text>
+				<ScrollView
+					style={{
+						minWidth: '100%',
+						minHeight: '110%'
+					}}
+					horizontal
+				>
+					<MinCardContainer />
+					<MinCardContainer />
+					<MinCardContainer />
+					<MinCardContainer />
+				</ScrollView>
+			</View>
+
+			<View
+				style={{
+					backgroundColor: '#E4EBFA',
+					zIndex: 2,
+					paddingTop: 50,
+					top: -50,
+					minHeight: '100%'
+
+				}}
+			>
 			</View>
 		</Screen>
 	)
