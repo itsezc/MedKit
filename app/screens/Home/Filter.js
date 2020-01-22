@@ -60,29 +60,3 @@ export const Filter = (props) => {
 	)
 	
 }
-
-/**
-	<FilterItem
-				name='All'
-				selected
-			/>
-
-			<FilterItem
-				name='Appointments'
-			/>
-
-
-			<FilterItem
-				name='Medication'
-			/>
-
-
-			<FilterItem
-				name='Exercises'
-			/>
-
-
-			<FilterItem
-				name='Cooking'
-			/>
- */

@@ -144,7 +144,15 @@ export default (props) => {
 
 				wrapper
 			>
-				<Filter />
+				<Filter 
+					filters={[
+						{ name: 'All'},
+						{ name: 'Appointments' },
+						{ name: 'Medication' },
+						{ name: 'Exercise' },
+						{ name: 'Cooking' }
+					]}
+				/>
 
 				
 			</View>
