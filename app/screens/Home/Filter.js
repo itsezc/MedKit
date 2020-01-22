@@ -7,9 +7,9 @@ const FilterContainer = Styled.View`
 	border-radius: 5px;
 	margin: 0 10px 0 0px;
 	padding: 10px 20px;
-	shadow-opacity: 0.5;
-	shadow-offset: 0px 0px;
-	shadow-radius: 2px;
+	shadow-opacity: 0.15;
+	shadow-offset: 0px 1px;
+	shadow-radius: 5px;
 	shadow-color: #000;
 `
 

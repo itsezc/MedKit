@@ -18,9 +18,9 @@ export const MiniCard = Styled.View`
 	padding: 10px;
 	width: 145px;
 	height: 130px;
-	shadow-opacity: 0.5;
-	shadow-offset: 0px -1px;
-	shadow-radius: 6px;
+	shadow-opacity: 0.3;
+	shadow-offset: 0px 1px;
+	shadow-radius: 10px;
 	shadow-color: #000;
 `
 
