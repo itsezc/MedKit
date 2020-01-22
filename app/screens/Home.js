@@ -3,6 +3,8 @@ import React from 'react'
 import { Screen } from '../components/styles/Screen'
 import { TouchableWithoutFeedback, ScrollView, Dimensions, View, Text, Button, Image } from 'react-native'
 
+import quickActions from '../assets/data/quickActions.json'
+
 import Styled from 'styled-components/native'
 
 export const MiniCard = Styled.View`
@@ -20,7 +22,7 @@ export const MiniCard = Styled.View`
 `
 
 
-export const MinCardContainer = () => (
+export const MinCardContainer = (props) => (
 	<View
 		style={{
 			display: 'flex'
@@ -39,8 +41,14 @@ export const MinCardContainer = () => (
 			}}
 		/>
 		<MiniCard>
-			<Text>
-				xD
+			<Image
+				style={{ width: 60, height: 60, zIndex: 4 }}
+				source={props.image}
+			/>
+			<Text
+				style={{ marginTop: 10, marginLeft: 2, fontSize: 22 }}
+			>
+				{props.name}
 			</Text>
 		</MiniCard>
 
@@ -110,10 +118,15 @@ export default (props) => {
 					}}
 					horizontal
 				>
-					<MinCardContainer />
-					<MinCardContainer />
-					<MinCardContainer />
-					<MinCardContainer />
+					{
+						quickActions.actions.map((action, index) => 
+							<MinCardContainer
+								key={index}
+								name={action.name}
+								image={action.image}
+							/>
+						)
+					}
 				</ScrollView>
 			</View>
 
