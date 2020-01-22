@@ -8,8 +8,7 @@ export default (props) => {
 		<View>
 			<Button
 				title='Profile'
-				onPress={() => props.navigation.navigate('Profile')}
-
+				onPress={() => props.navigation.push('Profile')}
 			/>
 		</View>
 	)

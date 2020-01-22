@@ -5,7 +5,7 @@ import { Container } from '../components/styles/Container'
 import { Card, List } from '../components/styles/Card'
 import { CardTitle } from '../components/styles/CardTitle'
 
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, Button } from 'react-native'
 
 import Styled from 'styled-components/native'
 
@@ -16,18 +16,22 @@ const Back = Styled.View`
 
 import { Icon } from '../components/Icon'
 
-export default Profile = () => {
+export default Profile = (props) => {
 	return(
 		<Screen>
 		
-			<Back>
+			<Back
+				onPress={() => props.navigation.push('Home')}
+			>
 				<View style={{ flexDirection: 'row' }}>
 					<Icon
 						name='ArrowLeftSLine'
 						size='32'
 						color='#FFFFFF'
 					/>
-					<Text style={{ fontSize: '1.3em', color: '#FFFFFF', marginTop: '3px' }}>
+					<Text
+						style={{ fontSize: '1.3em', color: '#FFFFFF', marginTop: '3px' }}
+					>
 						Back
 					</Text>
 				</View>
