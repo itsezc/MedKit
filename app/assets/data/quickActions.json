@@ -1,0 +1,20 @@
+{
+	"actions": [
+		{
+			"name": "Got Sick?",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Map_Icon_-_Hospital.png/120px-Map_Icon_-_Hospital.png"
+		},
+		{
+			"name": "Order Medicine",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Map_Icon_-_Hospital.png/120px-Map_Icon_-_Hospital.png"
+		},
+		{
+			"name": "Got Sick?",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Map_Icon_-_Hospital.png/120px-Map_Icon_-_Hospital.png"
+		},
+		{
+			"name": "Order Medicine",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Map_Icon_-_Hospital.png/120px-Map_Icon_-_Hospital.png"
+		}
+	]
+}
