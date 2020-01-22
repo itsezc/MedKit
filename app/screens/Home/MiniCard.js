@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image} from 'react-native'
+import { TouchableWithoutFeedback, View, Text, Image} from 'react-native'
 import Styled from 'styled-components/native'
 
 const MiniCardContainer = Styled.View`
@@ -17,34 +17,38 @@ const MiniCardContainer = Styled.View`
 `
 
 export const MiniCard = (props) => (
-	<View
-		style={{
-			display: 'flex'
-		}}
+	<TouchableWithoutFeedback
+		onPress={() => props.navigation.push('Profile')}
 	>
-		<View 
+		<View
 			style={{
-				backgroundColor: '#3BCCBB',
-				height: '30px',
-				width: '65%',
-				position: 'absolute',
-				top: 0,
-				left: 32,
-				borderRadius: 10,
-				opacity: 0.5
+				display: 'flex'
 			}}
-		/>
-		<MiniCardContainer>
-			<Image
-				style={{ marginTop: 8, width: 55, height: 55, zIndex: 4 }}
-				source={props.image}
+		>
+			<View 
+				style={{
+					backgroundColor: '#3BCCBB',
+					height: '30px',
+					width: '65%',
+					position: 'absolute',
+					top: 0,
+					left: 32,
+					borderRadius: 10,
+					opacity: 0.5
+				}}
 			/>
-			<Text
-				style={{ marginTop: 15, marginLeft: 2, fontSize: 20 }}
-			>
-				{props.name}
-			</Text>
-		</MiniCardContainer>
+			<MiniCardContainer>
+				<Image
+					style={{ marginTop: 8, width: 55, height: 55, zIndex: 4 }}
+					source={props.image}
+				/>
+				<Text
+					style={{ marginTop: 15, marginLeft: 2, fontSize: 20 }}
+				>
+					{props.name}
+				</Text>
+			</MiniCardContainer>
 
-	</View>
+		</View>
+	</TouchableWithoutFeedback>
 )
