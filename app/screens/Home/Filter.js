@@ -7,31 +7,64 @@ const FilterContainer = Styled.View`
 	border-radius: 5px;
 	margin: 0 10px 0 0px;
 	padding: 10px 20px;
+	shadow-opacity: 0.5;
+	shadow-offset: 0px 0px;
+	shadow-radius: 2px;
+	shadow-color: #000;
 `
+
+const FilterItem = (props) => (
+	<FilterContainer
+		style={{
+			backgroundColor: props.selected ? '#2276DF' : '#FFFFFF'
+		}}	
+	>
+		<Text
+			style={{
+				color: props.selected ? '#FFFFFF' : '#000000',
+				fontWeight: props.selected ? 'bold' : 'normal'
+			}}
+		>
+			{props.name}
+		</Text>
+	</FilterContainer>
+)
 
 export const Filter = (props) => (
 	<ScrollView
 		style={{
 			minWidth: '100%',
-			minHeight: '110%',
+			maxHeight: 60,
+			paddingTop: 10,
+			paddingBottom: 10,
 			paddingLeft: 20,
-			paddingRight: 30
+			paddingRight: 30,
+			marginTop: 20
 		}}
 		horizontal
 	>
-		<FilterContainer
-			style={{
-				backgroundColor: props.selected ? '#2276DF' : '#FFFFFF'
-			}}	
-		>
-			<Text
-				style={{
-					color: props.selected ? '#FFFFFF' : '#000000',
-					fontWeight: props.selected ? 'bold' : 'normal'
-				}}
-			>
-				{props.item}
-			</Text>
-		</FilterContainer>
+		<FilterItem
+			name='All'
+			selected
+		/>
+
+		<FilterItem
+			name='Appointments'
+		/>
+
+
+		<FilterItem
+			name='Medication'
+		/>
+
+
+		<FilterItem
+			name='Exercises'
+		/>
+
+
+		<FilterItem
+			name='Food'
+		/>
 	</ScrollView>
 )
