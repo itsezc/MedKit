@@ -1,14 +1,16 @@
 import React from 'react'
 
 import { Screen } from '../components/styles/Screen'
-import { View, Text } from 'react-native'
+import { View, Text, Button } from 'react-native'
 
-export default () => {
+export default (props) => {
 	return(
 		<View>
-			<Text>
-				LOL
-			</Text>
+			<Button
+				title='Profile'
+				onPress={() => props.navigation.navigate('Profile')}
+
+			/>
 		</View>
 	)
 }
