@@ -32,7 +32,7 @@ const HomeStack = createStackNavigator(
 		},
 		
 	}, {
-		transitionConfig: () => fromLeft(),
+		transitionConfig: () => fromLeft(600),
 		initialRouteName: 'Home',
 		...config
 	}
