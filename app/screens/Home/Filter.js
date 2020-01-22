@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ScrollView, Text } from 'react-native'
 
 import Styled from 'styled-components/native'
@@ -30,41 +30,59 @@ const FilterItem = (props) => (
 	</FilterContainer>
 )
 
-export const Filter = (props) => (
-	<ScrollView
-		style={{
-			minWidth: '100%',
-			maxHeight: 60,
-			paddingTop: 10,
-			paddingBottom: 10,
-			paddingLeft: 20,
-			paddingRight: 30,
-			marginTop: 20
-		}}
-		horizontal
-	>
-		<FilterItem
-			name='All'
-			selected
-		/>
+export const Filter = (props) => {
+	
+	const [selected, setSelected] = useState(0)
 
-		<FilterItem
-			name='Appointments'
-		/>
+	return(
+		<ScrollView
+			style={{
+				minWidth: '100%',
+				maxHeight: 60,
+				paddingTop: 10,
+				paddingBottom: 10,
+				paddingLeft: 20,
+				paddingRight: 30,
+				marginTop: 20
+			}}
+			horizontal
+		>
+			{
+				props.filters.map((filter, index) => (
+					<FilterItem
+						key={index}
+						name={filter.name}
+						selected={index === selected ? true : false}
+					/>
+				))
+			}
+		</ScrollView>
+	)
+	
+}
+
+/**
+	<FilterItem
+				name='All'
+				selected
+			/>
+
+			<FilterItem
+				name='Appointments'
+			/>
 
 
-		<FilterItem
-			name='Medication'
-		/>
+			<FilterItem
+				name='Medication'
+			/>
 
 
-		<FilterItem
-			name='Exercises'
-		/>
+			<FilterItem
+				name='Exercises'
+			/>
 
 
-		<FilterItem
-			name='Food'
-		/>
-	</ScrollView>
-)
+			<FilterItem
+				name='Cooking'
+			/>
+ */
