@@ -5,11 +5,12 @@ import { Container } from '../components/styles/Container'
 import { Card, List } from '../components/styles/Card'
 import { CardTitle } from '../components/styles/CardTitle'
 
-import { View, Text, Image, Button } from 'react-native'
+import { View, TouchableWithoutFeedback, Text, Image, Button } from 'react-native'
 
 import Styled from 'styled-components/native'
 
 const Back = Styled.View`
+	width: 100px;
 	padding: 40px 0px 0px 20px;
 	justify-content: flex-start;
 `
@@ -20,21 +21,23 @@ export default Profile = (props) => {
 	return(
 		<Screen>
 		
-			<Back
-				onPress={() => props.navigation.push('Home')}
-			>
-				<View style={{ flexDirection: 'row' }}>
-					<Icon
-						name='ArrowLeftSLine'
-						size='32'
-						color='#FFFFFF'
-					/>
-					<Text
-						style={{ fontSize: '1.3em', color: '#FFFFFF', marginTop: '3px' }}
-					>
-						Back
-					</Text>
-				</View>
+			<Back>
+				<TouchableWithoutFeedback
+					onPress={() => props.navigation.push('Home')}
+				>
+					<View style={{ flexDirection: 'row' }}>
+						<Icon
+							name='ArrowLeftSLine'
+							size='32'
+							color='#FFFFFF'
+						/>
+						<Text
+							style={{ fontSize: '1.3em', color: '#FFFFFF', marginTop: '3px' }}
+						>
+							Back
+						</Text>
+					</View>
+				</TouchableWithoutFeedback>
 			</Back>
 				
 			<Container>
