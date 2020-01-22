@@ -5,59 +5,12 @@ import { Screen } from '../components/styles/Screen'
 import { TouchableWithoutFeedback, ScrollView, Dimensions, View, Text, Button, Image } from 'react-native'
 
 import { Filter } from './Home/Filter'
+import { MiniCard } from './Home/MiniCard'
 
 import quickActions from '../assets/data/quickActions.json'
 
 import Styled from 'styled-components/native'
 
-export const MiniCard = Styled.View`
-	margin: 10px 20px 0px 20px;
-	border-radius: 10px;
-	background-color: #FFFFFF;
-	width: 80%;
-	padding: 10px;
-	width: 145px;
-	height: 130px;
-	shadow-opacity: 0.3;
-	shadow-offset: 0px 1px;
-	shadow-radius: 10px;
-	shadow-color: #000;
-`
-
-
-
-export const MinCardContainer = (props) => (
-	<View
-		style={{
-			display: 'flex'
-		}}
-	>
-		<View 
-			style={{
-				backgroundColor: '#3BCCBB',
-				height: '30px',
-				width: '65%',
-				position: 'absolute',
-				top: 0,
-				left: 32,
-				borderRadius: 10,
-				opacity: 0.5
-			}}
-		/>
-		<MiniCard>
-			<Image
-				style={{ marginTop: 8, width: 55, height: 55, zIndex: 4 }}
-				source={props.image}
-			/>
-			<Text
-				style={{ marginTop: 15, marginLeft: 2, fontSize: 20 }}
-			>
-				{props.name}
-			</Text>
-		</MiniCard>
-
-	</View>
-)
 
 export default (props) => {
 	return(
@@ -124,7 +77,7 @@ export default (props) => {
 				>
 					{
 						quickActions.actions.map((action, index) => 
-							<MinCardContainer
+							<MiniCard
 								key={index}
 								name={action.name}
 								image={action.image}
@@ -177,8 +130,13 @@ export default (props) => {
 						height: Dimensions.get('window').height - 410
 					}}
 				>
-					<Text>
-					xD
+					<Text
+						style={{
+							marginLeft: 20,
+							marginTop: 10
+						}}
+					>
+						Calendar
 					</Text>
 				</View>
 			</View>
