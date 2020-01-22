@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform } from 'react-native'
 
 import { createStackNavigator } from 'react-navigation-stack'
-import { fromRight } from 'react-navigation-transitions'
+import { fromLeft } from 'react-navigation-transitions'
 
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
@@ -32,7 +32,7 @@ const HomeStack = createStackNavigator(
 		},
 		
 	}, {
-		transitionConfig: () => fromRight(),
+		transitionConfig: () => fromLeft(),
 		initialRouteName: 'Home',
 		...config
 	}
