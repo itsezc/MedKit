@@ -140,18 +140,12 @@ export default (props) => {
 					zIndex: 2,
 					paddingTop: 50,
 					top: -50,
-					minHeight: '100%'
+					minHeight: '110%'
 				}}
 
 				wrapper
 			>
-				<View
-					style={{
-						marginTop: 35
-					}}
-				>
-					<Filter />
-				</View>
+				<Filter />
 			</View>
 
 			<View
