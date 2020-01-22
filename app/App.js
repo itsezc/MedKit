@@ -12,9 +12,6 @@ import { client } from './Apollo'
 
 import AppNavigator from './navigation/AppNavigator';
 
-import Home from './screens/Home'
-import Profile from './screens/Profile'
-
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 
@@ -67,8 +64,8 @@ function handleFinishLoading(setLoadingComplete) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+   	 flex: 1,
+    	backgroundColor: '#2276df'
   },
 });
 
