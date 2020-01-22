@@ -5,9 +5,7 @@ import { Screen } from '../components/styles/Screen'
 import { TouchableWithoutFeedback, ScrollView, Dimensions, View, Text, Button, Image } from 'react-native'
 
 import { Filter } from './Home/Filter'
-import { MiniCard } from './Home/MiniCard'
-
-import quickActions from '../assets/data/quickActions.json'
+import { MiniCards } from './Home/MiniCard'
 
 import Styled from 'styled-components/native'
 
@@ -61,31 +59,8 @@ export default (props) => {
 				}}
 			/>
 
-			<View
-				style={{
-					width: '100%',
-					marginTop: 130,
-					zIndex: 3
-				}}	
-			>
-				<ScrollView
-					style={{
-						minWidth: '100%',
-						minHeight: '110%'
-					}}
-					horizontal
-				>
-					{
-						quickActions.actions.map((action, index) => 
-							<MiniCard
-								key={index}
-								name={action.name}
-								image={action.image}
-							/>
-						)
-					}
-				</ScrollView>
-			</View>
+			<MiniCards />
+			
 
 			<View
 				style={{
