@@ -2,3 +2,28 @@ type Account @rootEntity {
     email: String @unique
     password: String
 }
+
+type Disease @rootEntity {
+	name: String @unique
+	symptoms: [Symptom] @relation
+	treatments: [Treatment] @relation
+	medication: [Medication] @relation
+}
+
+type Symptom @rootEntity {
+	name: String @unique
+	description: String
+	diseases: [Disease] @relation(inverseOf: "symptoms")
+}
+
+type Treatment @rootEntity {
+	method: String
+	diseases: [Disease] @relation(inverseOf: "treatments")
+	minAge: number
+}
+
+type Medication @rootEntity {
+	name: String
+	minAge: number
+	diseases [Disease] @rootEntity(inverseOf: "medication")
+}
