@@ -59,7 +59,9 @@ export default (props) => {
 				}}
 			/>
 
-			<MiniCards />
+			<MiniCards 
+				navigation={props.navigation}
+			/>
 			
 
 			<View

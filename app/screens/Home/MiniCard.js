@@ -20,7 +20,7 @@ const MiniCardContainer = Styled.View`
 
 export const MiniCard = (props) => (
 	<TouchableWithoutFeedback
-		onPress={() => props.navigation.push('Profile')}
+		onPress={() => props.link ? props.navigation.push('Profile') : null}
 	>
 		<View
 			style={{
@@ -76,6 +76,7 @@ export const MiniCards = (props) => (
 						key={index}
 						name={action.name}
 						image={action.image}
+						link={action.link}
 						navigation={props.navigation}
 					/>
 				)
