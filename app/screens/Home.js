@@ -14,9 +14,18 @@ const CalendarTime = Styled.View`
 	border-radius: 12px;
 	width: 60px;
 	background-color: #DEEBFA;
-	text-align: center;
 	padding: 3px;
 	flex-direction: row;
+`
+
+const CalendarTag = Styled.Text`
+	padding: 3px;
+	border-radius: 12px;
+	background-color: #E0F7E2;
+	margin: 5px;
+	text-align: center;
+	max-width: 70%;
+	font-size: 10px;
 `
 
 const CalendarCard = Styled.View`
@@ -196,7 +205,6 @@ export default (props) => {
 							}}
 							horizontal
 						>
-							
 							<View>
 								<CalendarTime>
 									<Icon
@@ -211,13 +219,29 @@ export default (props) => {
 								</CalendarTime>
 								<CalendarCard>
 									<Image
-										style={{ width: 65, height: 65, opacity: 0.4 }}
+										style={{ width: 65, height: 65, opacity: 0.4, marginLeft: 5 }}
 										source='https://lh3.googleusercontent.com/mxYA2XnI-4eqO2FaqLDoGird7yERflxs4zmthWhIHVKfzbQJZr-ILx_Ea-Fu1vha5A'
 									/>
-									<Text style={{ fontSize: 16, fontWeight: '500', marginTop: 15 }}>Omega 3</Text>
+									<Text style={{ fontSize: 16, fontWeight: '500', marginTop: 10, marginLeft: 5 }}>Omega 3</Text>
+									<CalendarTag>Medication</CalendarTag>
 								</CalendarCard>
 							</View>
+
+							<View>
+								
+								<CalendarCard>
+									<Image
+										style={{ width: 65, height: 65, opacity: 0.4, marginLeft: 5 }}
+										source='https://lh3.googleusercontent.com/mxYA2XnI-4eqO2FaqLDoGird7yERflxs4zmthWhIHVKfzbQJZr-ILx_Ea-Fu1vha5A'
+									/>
+									<Text style={{ fontSize: 16, fontWeight: '500', marginTop: 10, marginLeft: 5 }}>Omega 3</Text>
+									<CalendarTag>Medication</CalendarTag>
+								</CalendarCard>
+							</View>
+
 						</ScrollView>
+
+						
 						
 					</ScrollView>
 					
