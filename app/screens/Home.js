@@ -10,6 +10,19 @@ import { MiniCards } from './Home/MiniCard'
 
 import Styled from 'styled-components/native'
 
+const CalendarCard = Styled.View`
+	margin: 0px 20px 0px 0px;
+	border-radius: 10px;
+	background-color: #FFFFFF;
+	width: 120px;
+	height: 150px;
+	padding: 10px;
+	shadow-opacity: 0.3;
+	shadow-offset: 0px 0px;
+	shadow-radius: 6px;
+	shadow-color: #000;
+`
+
 
 export default (props) => {
 	return(
@@ -136,7 +149,7 @@ export default (props) => {
 					</Text>
 
 					<Icon
-						style={{ position: 'absolute', left: -10, top: 165 }}
+						style={{ position: 'absolute', left: -10, top: 195 }}
 						name='CircleFill'
 						color='#628BDB'
 						size='18'
@@ -144,7 +157,7 @@ export default (props) => {
 					<Text
 						style={{
 							marginLeft: 20,
-							marginTop: 90,
+							marginTop: 120,
 							fontWeight: '500'
 						}}
 					>
@@ -165,24 +178,22 @@ export default (props) => {
 					<ScrollView
 						style={{
 							marginLeft: 120,
-							marginTop: -170
+							marginTop: -210,
 						}}
 					>
 						<ScrollView
+							style={{
+								padding: 10,
+							}}
 							horizontal
 						>
-							<Text>LOL</Text>
-							<Text>LOL</Text>
-							<Text>LOL</Text>
-							<Text>LOL</Text>
-							<Text>LOL</Text>
-							<Text>LOL</Text>
-							<Text>LOL</Text>
-							<Text>LOL</Text>
-							<Text>LOL</Text>
-							<Text>LOL</Text>
-							<Text>LOL</Text>
-							<Text>LOL</Text>
+							<CalendarCard>
+								<Image
+									style={{ width: 65, height: 65, opacity: 0.4 }}
+									source='https://lh3.googleusercontent.com/mxYA2XnI-4eqO2FaqLDoGird7yERflxs4zmthWhIHVKfzbQJZr-ILx_Ea-Fu1vha5A'
+								/>
+								<Text style={{ fontSize: 16, fontWeight: '500', marginTop: 15 }}>Omega 3</Text>
+							</CalendarCard>
 						</ScrollView>
 						
 					</ScrollView>
