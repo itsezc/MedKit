@@ -137,7 +137,7 @@ export default (props) => {
 					</Text>
 
 					<Icon
-						style={{ position: 'absolute', left: -10, top: 195 }}
+						style={{ position: 'absolute', left: -10, top: 230 }}
 						name='CircleFill'
 						color='#628BDB'
 						size='18'
@@ -145,7 +145,7 @@ export default (props) => {
 					<Text
 						style={{
 							marginLeft: 20,
-							marginTop: 120,
+							marginTop: 155,
 							fontWeight: '500'
 						}}
 					>
@@ -166,7 +166,7 @@ export default (props) => {
 					<ScrollView
 						style={{
 							marginLeft: 120,
-							marginTop: -230,
+							marginTop: -265,
 						}}
 					>
 						<ScrollView
