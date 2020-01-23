@@ -159,8 +159,33 @@ export default (props) => {
 							color: '#A7A9AE'
 						}}
 					>
-						3 Activites			
+						1 Activity		
 					</Text>
+
+					<ScrollView
+						style={{
+							marginLeft: 120,
+							marginTop: -170
+						}}
+					>
+						<ScrollView
+							horizontal
+						>
+							<Text>LOL</Text>
+							<Text>LOL</Text>
+							<Text>LOL</Text>
+							<Text>LOL</Text>
+							<Text>LOL</Text>
+							<Text>LOL</Text>
+							<Text>LOL</Text>
+							<Text>LOL</Text>
+							<Text>LOL</Text>
+							<Text>LOL</Text>
+							<Text>LOL</Text>
+							<Text>LOL</Text>
+						</ScrollView>
+						
+					</ScrollView>
 					
 				</View>
 			</View>
