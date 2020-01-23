@@ -177,15 +177,36 @@ export default (props) => {
 						>
 							<CalendarCard
 								time='8:45'
+								name='Ibuprofen'
 								tag='Medicine'
 							/>
 							<CalendarCard 
 								timeless
+								name='Push Ups'
 								tag='Exercise'
 							/>
 							<CalendarCard 
 								time='12:00'
+								name='Biryani'
 								tag='Cooking'							
+							/>
+						</ScrollView>
+
+						<ScrollView
+							style={{
+								padding: 10,
+							}}
+							horizontal
+						>
+							<CalendarCard
+								time='8:45'
+								name='Vaishali'
+								tag='Doctor'
+							/>
+							<CalendarCard
+								time='12:00'
+								name='Rasi'
+								tag='Doctor'
 							/>
 						</ScrollView>
 						

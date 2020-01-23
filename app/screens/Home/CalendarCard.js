@@ -16,9 +16,8 @@ const CalendarTag = Styled.Text`
 	padding: 3px;
 	border-radius: 12px;
 	background-color: #E0F7E2;
-	margin: 5px;
+	margin: 7px 5px 5px 5px;
 	text-align: center;
-	max-width: 70%;
 	font-size: 10px;
 `
 
@@ -38,22 +37,27 @@ const CalendarContainer = Styled.View`
 export const CalendarCard = ({ name, timeless, time, tag }) => {
 
 	let image = ''
+	let tagColor = ''
 
 	switch (tag) {
 		case 'Medicine':
 			image = 'https://lh3.googleusercontent.com/mxYA2XnI-4eqO2FaqLDoGird7yERflxs4zmthWhIHVKfzbQJZr-ILx_Ea-Fu1vha5A'
+			tagColor = '#F1ECFF'
 		break
 		
 		case 'Exercise':
 			image = 'https://cdn3.iconfinder.com/data/icons/round-icons-vol-1-2/120/weight-512.png'
+			tagColor = '#E0F7E2'
 		break
 
 		case 'Cooking':
 			image = 'https://cdn3.iconfinder.com/data/icons/colored-simple-circle-volume-08-fruit/128/plainicon.com_55256_vec_svg_f509-512.png'
+			tagColor = '#EFBEB6'
 		break
 
 		case 'Doctor':
 			image = 'http://getdrawings.com/free-icon/female-doctor-icon-58.png'
+			tagColor = '#51E1EA'
 		break
 
 		default:
@@ -84,7 +88,7 @@ export const CalendarCard = ({ name, timeless, time, tag }) => {
 						
 				/>
 				<Text style={{ fontSize: 15, fontWeight: '500', marginTop: 10, marginLeft: 5 }}>{name}</Text>
-				<CalendarTag>{tag}</CalendarTag>
+				<CalendarTag style={{ backgroundColor: tagColor }} >{tag}</CalendarTag>
 			</CalendarContainer>
 		</View>
 	)
