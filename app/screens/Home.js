@@ -3,6 +3,7 @@ import React from 'react'
 import { Screen } from '../components/styles/Screen'
 
 import { TouchableWithoutFeedback, ScrollView, Dimensions, View, Text, Button, Image } from 'react-native'
+import { Icon } from '../components/Icon'
 
 import { Filter } from './Home/Filter'
 import { MiniCards } from './Home/MiniCard'
@@ -107,14 +108,60 @@ export default (props) => {
 						height: Dimensions.get('window').height - 410
 					}}
 				>
+					<Icon
+						style={{ position: 'absolute', left: -13, top: 35 }}
+						name='CircleFill'
+						color='#2056D0'
+						size='24'
+					/>
 					<Text
 						style={{
 							marginLeft: 20,
-							marginTop: 10
+							marginTop: 37,
+							fontWeight: '500'
 						}}
 					>
-						Calendar
+						Today				
 					</Text>
+					<Text
+						style={{
+							marginLeft: 20,
+							marginTop: 5,
+							fontWeight: '500',
+							fontSize: 12,
+							color: '#A7A9AE'
+						}}
+					>
+						3 Activites			
+					</Text>
+
+					<Icon
+						style={{ position: 'absolute', left: -10, top: 165 }}
+						name='CircleFill'
+						color='#628BDB'
+						size='18'
+					/>
+					<Text
+						style={{
+							marginLeft: 20,
+							marginTop: 90,
+							fontWeight: '500'
+						}}
+					>
+						24 Jan				
+					</Text>
+					<Text
+						style={{
+							marginLeft: 20,
+							marginTop: 5,
+							fontWeight: '500',
+							fontSize: 12,
+							color: '#A7A9AE'
+						}}
+					>
+						3 Activites			
+					</Text>
+					
 				</View>
 			</View>
 		</Screen>
