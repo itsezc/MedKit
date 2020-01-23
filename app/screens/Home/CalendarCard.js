@@ -35,7 +35,31 @@ const CalendarContainer = Styled.View`
 	shadow-color: #000;
 `
 
-export const CalendarCard = ({ timeless, time, tag}) => {
+export const CalendarCard = ({ name, timeless, time, tag }) => {
+
+	let image = ''
+
+	switch (tag) {
+		case 'Medicine':
+			image = 'https://lh3.googleusercontent.com/mxYA2XnI-4eqO2FaqLDoGird7yERflxs4zmthWhIHVKfzbQJZr-ILx_Ea-Fu1vha5A'
+		break
+		
+		case 'Exercise':
+			image = 'https://cdn3.iconfinder.com/data/icons/round-icons-vol-1-2/120/weight-512.png'
+		break
+
+		case 'Cooking':
+			image = 'https://cdn3.iconfinder.com/data/icons/colored-simple-circle-volume-08-fruit/128/plainicon.com_55256_vec_svg_f509-512.png'
+		break
+
+		case 'Doctor':
+			image = 'http://getdrawings.com/free-icon/female-doctor-icon-58.png'
+		break
+
+		default:
+			break;
+	}
+
 	return(
 		<View>
 			{ timeless ? 
@@ -56,9 +80,10 @@ export const CalendarCard = ({ timeless, time, tag}) => {
 			<CalendarContainer timeless={timeless}>
 				<Image
 					style={{ width: 65, height: 65, opacity: 0.4, marginLeft: 5 }}
-					source='https://lh3.googleusercontent.com/mxYA2XnI-4eqO2FaqLDoGird7yERflxs4zmthWhIHVKfzbQJZr-ILx_Ea-Fu1vha5A'
+					source={image}
+						
 				/>
-				<Text style={{ fontSize: 16, fontWeight: '500', marginTop: 10, marginLeft: 5 }}>Omega 3</Text>
+				<Text style={{ fontSize: 15, fontWeight: '500', marginTop: 10, marginLeft: 5 }}>{name}</Text>
 				<CalendarTag>{tag}</CalendarTag>
 			</CalendarContainer>
 		</View>
