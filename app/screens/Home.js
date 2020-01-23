@@ -10,14 +10,23 @@ import { MiniCards } from './Home/MiniCard'
 
 import Styled from 'styled-components/native'
 
+const CalendarTime = Styled.View`
+	border-radius: 12px;
+	width: 60px;
+	background-color: #DEEBFA;
+	text-align: center;
+	padding: 3px;
+	flex-direction: row;
+`
+
 const CalendarCard = Styled.View`
-	margin: 0px 20px 0px 0px;
+	margin: 10px 20px 0px 0px;
 	border-radius: 10px;
 	background-color: #FFFFFF;
-	width: 120px;
-	height: 150px;
+	width: 125px;
+	height: 140px;
 	padding: 10px;
-	shadow-opacity: 0.3;
+	shadow-opacity: 0.1;
 	shadow-offset: 0px 0px;
 	shadow-radius: 6px;
 	shadow-color: #000;
@@ -68,7 +77,7 @@ export default (props) => {
 					borderBottomWidth: 50,
 					borderLeftColor: 'transparent',
 					borderRightColor: 'transparent',
-					borderBottomColor: '#E4EBFA',
+					borderBottomColor: '#F0F5FD',
 					marginTop: 220,
 				}}
 			/>
@@ -80,7 +89,7 @@ export default (props) => {
 
 			<View
 				style={{
-					backgroundColor: '#E4EBFA',
+					backgroundColor: '#F0F5FD',
 					zIndex: 2,
 					paddingTop: 50,
 					top: -50,
@@ -103,7 +112,7 @@ export default (props) => {
 
 			<View
 				style={{
-					backgroundColor: '#E4EBFA',
+					backgroundColor: '#F0F5FD',
 					zIndex: 2,
 					top: -50,
 				}}
@@ -117,7 +126,7 @@ export default (props) => {
 						borderStyle: 'dashed',
 						borderLeftWidth: 2,
 						borderTopWidth: 2,
-						borderColor: '#C7DAF7',
+						borderColor: '#D5E2F9',
 						height: Dimensions.get('window').height - 410
 					}}
 				>
@@ -178,7 +187,7 @@ export default (props) => {
 					<ScrollView
 						style={{
 							marginLeft: 120,
-							marginTop: -210,
+							marginTop: -230,
 						}}
 					>
 						<ScrollView
@@ -187,13 +196,27 @@ export default (props) => {
 							}}
 							horizontal
 						>
-							<CalendarCard>
-								<Image
-									style={{ width: 65, height: 65, opacity: 0.4 }}
-									source='https://lh3.googleusercontent.com/mxYA2XnI-4eqO2FaqLDoGird7yERflxs4zmthWhIHVKfzbQJZr-ILx_Ea-Fu1vha5A'
-								/>
-								<Text style={{ fontSize: 16, fontWeight: '500', marginTop: 15 }}>Omega 3</Text>
-							</CalendarCard>
+							
+							<View>
+								<CalendarTime>
+									<Icon
+										style={{ marginTop: 1, marginLeft: 5, marginRight: 5 }}
+										name='ClockLine'
+										color='#5B9DEA'
+										size='12'
+									/>
+									<Text style={{ fontSize: 11, color: '#686B7E' }}>
+										8:00
+									</Text>
+								</CalendarTime>
+								<CalendarCard>
+									<Image
+										style={{ width: 65, height: 65, opacity: 0.4 }}
+										source='https://lh3.googleusercontent.com/mxYA2XnI-4eqO2FaqLDoGird7yERflxs4zmthWhIHVKfzbQJZr-ILx_Ea-Fu1vha5A'
+									/>
+									<Text style={{ fontSize: 16, fontWeight: '500', marginTop: 15 }}>Omega 3</Text>
+								</CalendarCard>
+							</View>
 						</ScrollView>
 						
 					</ScrollView>
