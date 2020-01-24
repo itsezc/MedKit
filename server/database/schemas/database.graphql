@@ -5,6 +5,11 @@ type Account @rootEntity {
     weight: Float
 }
 
+type Doctor @rootEntity {
+	email: String @unique
+	password: String
+}
+
 type Disease @rootEntity {
 	name: String @unique
 	symptoms: [Symptom] @relation
