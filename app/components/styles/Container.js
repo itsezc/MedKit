@@ -5,8 +5,9 @@ import Style from 'styled-components/native'
 
 
 export const Container = Style.View`
-	padding: 50px 0;
+	display: flex;
+	padding: 100px 30px;
 	justify-content: center;
-	align-items: center;
+	align-items: stretch;
 `
 
