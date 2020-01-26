@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import { Storage } from '../storage'
+
 import { View, Text, TextInput, Button } from 'react-native'
 import Styled from 'styled-components/native'
 
@@ -37,7 +39,15 @@ export default () => {
 
 	const [processLogin, { loading, data }] = useMutation(LOGIN_MUTATION)
 
-	data ? console.log(data) : null
+	const confirm = async() => {
+		const { token } = data.login
+
+		try {
+			await Storage.set('token', token)
+		} catch (e) {
+			console.log('ERROR :', e)
+		}
+	}
 
 	return(
 		<Screen
@@ -84,6 +94,7 @@ export default () => {
 					<SubmitButton
 						onPress={() => {
 							processLogin({ variables: { email, password }})
+							confirm()
 						}}
 					>
 						Done
