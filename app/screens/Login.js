@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Storage } from '../storage'
+import { AsyncStorage as Storage } from 'react-native'
 
 import { View, Text, TextInput, Button } from 'react-native'
 import Styled from 'styled-components/native'
@@ -40,10 +40,11 @@ export default () => {
 	const [processLogin, { loading, data }] = useMutation(LOGIN_MUTATION)
 
 	const confirm = async() => {
+
 		const { token } = data.login
 
 		try {
-			await Storage.set('token', token)
+			await Storage.setItem('token', token)
 		} catch (e) {
 			console.log('ERROR :', e)
 		}
