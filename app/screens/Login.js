@@ -37,18 +37,26 @@ export default () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
-	const [processLogin, { loading, data }] = useMutation(LOGIN_MUTATION)
+	const [processLogin, { loading }] = useMutation(LOGIN_MUTATION, {
+		onCompleted: async(data) => {
 
-	const confirm = async() => {
+			const { login } = data
 
-		const { token } = data.login
+			if (login) {
+				const { token } = login
 
-		try {
-			await Storage.setItem('token', token)
-		} catch (e) {
-			console.log('ERROR :', e)
+				try {
+					await Storage.setItem('token', token)
+				} catch (e) {
+					console.log('ERROR', e)
+				}
+
+				console.log('Token: ', await Storage.getItem('token'))
+			}
+
+			
 		}
-	}
+	})
 
 	return(
 		<Screen
@@ -95,7 +103,6 @@ export default () => {
 					<SubmitButton
 						onPress={() => {
 							processLogin({ variables: { email, password }})
-							confirm()
 						}}
 					>
 						Done
