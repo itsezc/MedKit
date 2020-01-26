@@ -17,7 +17,7 @@ const SubmitButton = Styled.Text`
 	padding: 15px 0px;
 	border-radius: 50px;
 	font-weight: bold;
-	font-size: 16;
+	font-size: 16px;
 `
 
 const LOGIN_MUTATION = gql`
