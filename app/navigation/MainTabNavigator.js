@@ -12,6 +12,7 @@ import Profile from '../screens/Profile'
 import Home from '../screens/Home'
 import Chat from '../screens/Chat'
 import Login from '../screens/Login'
+import Logout from '../screens/Logout'
 
 import { Icon } from '../components/Icon'
 
@@ -25,6 +26,10 @@ const HomeStack = createStackNavigator(
 		Login: {
 			screen: Login,
 			path: 'login'
+		},
+		Logout: {
+			screen: Logout,
+			path: 'logout'
 		},
 		Profile: {
 			screen: Profile,
