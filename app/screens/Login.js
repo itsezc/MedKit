@@ -6,6 +6,8 @@ import Styled from 'styled-components/native'
 import { Screen } from '../components/styles/Screen'
 import { Container } from '../components/styles/Container'
 
+import { useMutation, gql } from '@apollo/client'
+
 const SubmitButton = Styled.Text`
 	background-color: #34C5B3;
 	color: #FFFFFF;
@@ -16,10 +18,26 @@ const SubmitButton = Styled.Text`
 	font-size: 16;
 `
 
+const LOGIN_MUTATION = gql`
+	mutation Login($email: String!, $password: String!) {
+		login(email: $email, password: $password) {
+			token
+			user {
+				id 
+				email
+			}
+		}
+	}
+`
+
 export default () => {
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+
+	const [processLogin, { loading, data }] = useMutation(LOGIN_MUTATION)
+
+	data ? console.log(data) : null
 
 	return(
 		<Screen
@@ -64,7 +82,9 @@ export default () => {
 					}}
 				>
 					<SubmitButton
-						onPress={() => console.log('LOL')}
+						onPress={() => {
+							processLogin({ variables: { email, password }})
+						}}
 					>
 						Done
 					</SubmitButton>

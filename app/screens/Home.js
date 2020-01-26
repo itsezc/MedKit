@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Screen } from '../components/styles/Screen'
 
-import { TouchableWithoutFeedback, ScrollView, Dimensions, View, Text, Button, Image } from 'react-native'
+import { TouchableWithoutFeedback, ScrollView, Dimensions, View, Text, Image } from 'react-native'
 import { Icon } from '../components/Icon'
 
 import { Filter } from './Home/Filter'
