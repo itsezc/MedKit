@@ -11,9 +11,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import Profile from '../screens/Profile'
 import Home from '../screens/Home'
 import Chat from '../screens/Chat'
-
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import Login from '../screens/Login'
 
 import { Icon } from '../components/Icon'
 
@@ -24,6 +22,10 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
 	{
+		Login: {
+			screen: Login,
+			path: 'login'
+		},
 		Profile: {
 			screen: Profile,
 			path: 'profile'
