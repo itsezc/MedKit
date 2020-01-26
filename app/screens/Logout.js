@@ -4,10 +4,15 @@ import { AsyncStorage as Storage } from 'react-native'
 
 export default (props) => {
 
-	useEffect(async() => {
+	const processLogout = async() => {
 		await Storage.removeItem('token')
-		props.navigation.push('/login')
-	})
+		console.log('Token', await Storage.getItem('token'))
+		props.navigation.push('Login')
+	}
+
+	useEffect(() => {
+		processLogout()
+	}, [])
 
 	return null
 }
