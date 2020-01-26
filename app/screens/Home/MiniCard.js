@@ -2,7 +2,7 @@ import React from 'react'
 import { TouchableWithoutFeedback, ScrollView, View, Text, Image} from 'react-native'
 import Styled from 'styled-components/native'
 
-import quickActions from '../../assets/data/quickActions.json'
+import quickActions from '../../assets/data/quickActions'
 
 const MiniCardContainer = Styled.View`
 	margin: 10px 20px 0px 20px;
