@@ -40,7 +40,14 @@ export default Profile = (props) => {
 				</TouchableWithoutFeedback>
 			</Back>
 				
-			<Container>
+			<Container
+				style={{
+					flex: 1,
+					padding: 0,
+					alignItems: 'center',
+					height: 'auto'
+				}}
+			>
 				<View 
 					style={{
 						display: 'flex',
@@ -57,7 +64,7 @@ export default Profile = (props) => {
 					style={{ 
 						padding: '15px',
 						zIndex: 2,
-						marginTop: 55
+						marginTop: -90
 					}}
 				>
 					<View
