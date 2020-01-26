@@ -27,11 +27,6 @@ const server = new ApolloServer({
 		}
 
 	},
-	dataSources: () => {
-		return {
-			NLU: new NLU()
-		}
-	},
 	cacheControl: {
 		defaultMaxAge: 1
 	}
