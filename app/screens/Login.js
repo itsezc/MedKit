@@ -32,7 +32,7 @@ const LOGIN_MUTATION = gql`
 	}
 `
 
-export default () => {
+export default (props) => {
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -47,6 +47,7 @@ export default () => {
 
 				try {
 					await Storage.setItem('token', token)
+					props.navigation.push('Home')
 				} catch (e) {
 					console.log('ERROR', e)
 				}

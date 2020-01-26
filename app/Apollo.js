@@ -1,7 +1,7 @@
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
-import { ApolloLink } from 'apollo-link'
+import { setContext } from 'apollo-link-context'
 
 import { AsyncStorage as Storage } from 'react-native'
 
@@ -11,15 +11,16 @@ const httpLink = new HttpLink({
 	uri: 'http://localhost:8086/graphql'
 })
 
-const middlewareLink = new ApolloLink(async(operation, forward) => {
+const middlewareLink = setContext(async (_, { headers }) => {
 
-	operation.setContext({
+	const token = await Storage.getItem('token')
+
+	return {
 		headers: {
-			authorization: await Storage.getItem('token') || null
+			...headers,
+			authorization: token ? `Bearer ${token}` : '',
 		}
-	})
-
-	return forward(operation)
+	}
 })
 
 const link = middlewareLink.concat(httpLink)
