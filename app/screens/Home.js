@@ -200,12 +200,12 @@ export default (props) => {
 						>
 							<CalendarCard
 								time='8:45'
-								name='Vaishali'
+								name='White'
 								tag='Doctor'
 							/>
 							<CalendarCard
 								time='12:00'
-								name='Rasi'
+								name='Pinkman'
 								tag='Doctor'
 							/>
 						</ScrollView>
