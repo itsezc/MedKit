@@ -40,7 +40,7 @@ export default () => {
 					<TextInput 
 						style={{ height: 60, width: '100%', borderColor: '#5F87DF', borderBottomWidth: 1, color: '#FFFFFF', fontSize: 30 }}
 						value={password}
-						onChangeText={text => setEmail(password)}
+						onChangeText={text => setPassword(text)}
 						secureTextEntry
 						placeholder={'password'}
 						placeholderTextColor='#FFFFFF'
