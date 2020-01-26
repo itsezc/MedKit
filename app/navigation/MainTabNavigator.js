@@ -4,10 +4,6 @@ import { Platform } from 'react-native'
 import { createStackNavigator } from 'react-navigation-stack'
 import { fromLeft } from 'react-navigation-transitions'
 
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-
-import TabBarIcon from '../components/TabBarIcon';
-
 import Profile from '../screens/Profile'
 import Home from '../screens/Home'
 import Chat from '../screens/Chat'
