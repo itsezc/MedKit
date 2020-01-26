@@ -105,7 +105,15 @@ export default Profile = (props) => {
 					}}
 				>
 					<List icon='LifeBuoy' text='Help' textColor='red' />
-					<List icon='Logout' text='Sign Out' textColor='red' />
+	
+					<List 
+						icon='Logout' 
+						text='Sign Out' 
+						textColor='red'
+						navigation={props.navigation}
+						link='Logout'
+					/>
+
 				</Card>
 
 				<Text style={{ marginTop: 15, color: '#eee' }}>Made by I.W.A</Text>
