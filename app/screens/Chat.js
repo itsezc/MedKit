@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 
 import { GiftedChat as Chat, Bubble } from 'react-native-gifted-chat'
 import { View, Text } from 'react-native'
+import Constants from 'expo-constants'
 
 import { useLazyQuery, gql } from '@apollo/client'
 
@@ -81,16 +82,21 @@ export default function HomeScreen(props) {
 		})
 	}
 
+	useEffect(() => {
+		console.log(Constants.statusBarHeight)
+	})
+
 	return (
 		<View
 			style={{
 				flex: 1,
-				backgroundColor: '#2B8FFF'
+				backgroundColor: '#2B8FFF',
+				marginTop: Constants.statusBarHeight
 			}}
 		>
 			<View 
 				style={{
-					height: '80px',
+					height: '50px',
 					justifyContent: 'center',
 					alignItems: 'center',
 					shadowOpacity: 0.25,
@@ -153,14 +159,12 @@ export default function HomeScreen(props) {
 									marginBottom: 5
 								}
 							}}
-							containerToNextStyle={{
-								left: {
-									borderTopLeftRadius: 0,
-								}
-							}}
 							containerToPreviousStyle={{
 								right: {
 									borderTopRightRadius: 0,
+								},
+								left: {
+									borderTopLeftRadius: 0,
 								}
 							}}
 						/>
