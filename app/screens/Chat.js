@@ -124,6 +124,8 @@ export default function HomeScreen(props) {
 				}}
 				renderComposer={() => false}
 				renderAvatar={null}
+				renderTime={() => false}
+				renderDay={() => false}
 			/>
 		</View>
 	)
