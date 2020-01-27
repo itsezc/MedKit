@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-import { GiftedChat as Chat, Bubble } from 'react-native-gifted-chat'
-import { View, Text } from 'react-native'
+import { Icon } from '../components/Icon'
+import { View, Text, TouchableWithoutFeedback } from 'react-native'
 import Constants from 'expo-constants'
 
+import { GiftedChat as Chat, Bubble } from 'react-native-gifted-chat'
 import { useLazyQuery, gql } from '@apollo/client'
 
 const GET_CHAT_RESPONSE = gql`
@@ -96,9 +97,10 @@ export default function HomeScreen(props) {
 		>
 			<View 
 				style={{
-					height: '50px',
-					justifyContent: 'center',
+					height: '65px',
+					flexDirection: 'row',
 					alignItems: 'center',
+					paddingHorizontal: 20,
 					shadowOpacity: 0.25,
 					shadowOffset: {
 						width: 0,
@@ -108,13 +110,50 @@ export default function HomeScreen(props) {
 					shadowColor: '#000'
 				}}	
 			>
-				<Text
+				<TouchableWithoutFeedback
+					onPress={() => props.navigation.push('Home')}
+				>
+					<View>
+						<Icon
+							name='ArrowLeftLine'
+							color='#FFFFFF'
+							size='26'
+						/>
+					</View>
+				</TouchableWithoutFeedback>
+
+				<View
 					style={{
-						color: '#FFFFFF'
+						flex: 1
 					}}
 				>
-					Check Up
-				</Text>
+					<Text
+						style={{
+							color: '#FFFFFF',
+							width: '100%',
+							textAlign: 'center',
+							fontSize: 15
+						}}
+					>
+						Dr. Robot
+					</Text>
+					<Text
+						style={{
+							color: '#FFFFFF',
+							textAlign: 'center',
+							fontSize: 12,
+							marginTop: 5
+						}}
+					>
+						15K people like me
+					</Text>
+				</View>
+
+				<Icon
+					name='CloseLine'
+					color='#FFFFFF'
+					size='26'
+				/>
 			</View>
 			<Chat
 				isTyping={true}
