@@ -28,7 +28,7 @@ export default function HomeScreen(props) {
 	const [messages, setMessages] = useState([
 		{
 			_id: 4,
-			text: 'User - This is a quick reply. Do you love Gifted Chat? (radio) KEEP IT',
+			text: 'It started in the last week',
 			createdAt: new Date(),
 			user: {
 				_id: 1
@@ -36,28 +36,28 @@ export default function HomeScreen(props) {
 		},
 		{
 			_id: 3,
-			text: 'User - This is a quick reply. Do you love Gifted Chat? (radio) KEEP IT',
-			createdAt: new Date(),
-			user: {
-				_id: 1
-			},
-		},
-		{
-			_id: 2,
-			text: 'Server - This is a quick reply. Do you love Gifted Chat? (radio) KEEP IT',
+			text: 'When did you start coughing?',
 			createdAt: new Date(),
 			user: {
 				_id: 2
 			},
 		}	,
 		{
-			_id: 1,
-			text: 'Server - This is a quick reply. Do you love Gifted Chat? (radio) KEEP IT',
+			_id: 2,
+			text: 'I\'m sorry to hear that, let me ask you a few questions about your symptoms',
 			createdAt: new Date(),
 			user: {
 				_id: 2
 			},
-		}	
+		},
+		{
+			_id: 1,
+			text: 'I have the following symptoms: chest pain, coughing, sneezing and high temperature',
+			createdAt: new Date(),
+			user: {
+				_id: 1
+			},
+		},
 	])
 
 	const [getChatResponse, { loading, data }] = useLazyQuery(GET_CHAT_RESPONSE, {
@@ -122,20 +122,19 @@ export default function HomeScreen(props) {
 				renderTime={() => false}
 				renderDay={() => false}
 				renderBubble ={(props) => {
-
-					// const user = props.messages.map(message => message.user._id)
-
 					return (
 						<Bubble
 							{...props}
 							textStyle={{
 								right: {
 									color: '#00406B',
-									margin: 0
+									margin: 0,
+									fontSize: 14
 								},
 								left: {
 									color: '#FFFFFF',
-									margin: 0
+									margin: 0,
+									fontSize: 14
 								}
 							}}
 							wrapperStyle={{
