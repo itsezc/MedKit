@@ -27,6 +27,14 @@ export default function HomeScreen(props) {
 
 	const [messages, setMessages] = useState([
 		{
+			_id: 4,
+			text: 'User - This is a quick reply. Do you love Gifted Chat? (radio) KEEP IT',
+			createdAt: new Date(),
+			user: {
+				_id: 1
+			},
+		},
+		{
 			_id: 3,
 			text: 'User - This is a quick reply. Do you love Gifted Chat? (radio) KEEP IT',
 			createdAt: new Date(),
@@ -144,6 +152,16 @@ export default function HomeScreen(props) {
 									paddingVertical: 20,
 									paddingHorizontal: 25,
 									marginBottom: 5
+								}
+							}}
+							containerToNextStyle={{
+								left: {
+									borderTopLeftRadius: 0,
+								}
+							}}
+							containerToPreviousStyle={{
+								right: {
+									borderTopRightRadius: 0,
 								}
 							}}
 						/>
