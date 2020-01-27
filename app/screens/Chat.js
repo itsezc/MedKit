@@ -25,7 +25,44 @@ const GET_CHAT_RESPONSE = gql`
 
 export default function HomeScreen(props) {
 
-	const [messages, setMessages] = useState([])
+	const [messages, setMessages] = useState([
+		{
+			_id: 2,
+			text: 'This is a quick reply. Do you love Gifted Chat? (radio) KEEP IT',
+			createdAt: new Date(),
+			quickReplies: {
+				type: 'radio', // or 'checkbox',
+				keepIt: true,
+				values: [
+				{
+				title: '😋 Yes',
+				value: 'yes',
+				},
+				{
+				title: '📷 Yes, let me show you with a picture!',
+				value: 'yes_picture',
+				},
+				{
+				title: '😞 Nope. What?',
+				value: 'no',
+				},
+				],
+			},
+			user: {
+				_id: 1,
+				name: 'React Native',
+			},
+		},
+		{
+			_id: 1,
+			text: 'This is a quick reply. Do you love Gifted Chat? (radio) KEEP IT',
+			createdAt: new Date(),
+			user: {
+				_id: 2,
+				name: 'React Native',
+			},
+		}		
+	])
 
 	const [getChatResponse, { loading, data }] = useLazyQuery(GET_CHAT_RESPONSE, {
 		onCompleted: (data) => data.handleMessage ? addToMessageBoard([ data.handleMessage ]) : null	
@@ -58,7 +95,7 @@ export default function HomeScreen(props) {
 			<View 
 				style={{
 					backgroundColor: '#2276DF',
-					height: '100px',
+					height: '80px',
 					justifyContent: 'center',
 					alignItems: 'center',
 					shadowOpacity: 0.35,
@@ -70,7 +107,13 @@ export default function HomeScreen(props) {
 					shadowColor: '#000'
 				}}	
 			>
-				<Text>LOL</Text>
+				<Text
+					style={{
+						color: '#FFFFFF'
+					}}
+				>
+					Check Up
+				</Text>
 			</View>
 			<Chat
 				isTyping={true}
@@ -80,6 +123,7 @@ export default function HomeScreen(props) {
 					_id: 1
 				}}
 				renderComposer={() => false}
+				renderAvatar={null}
 			/>
 		</View>
 	)
