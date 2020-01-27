@@ -30,7 +30,7 @@ export default function App(props) {
     return (
 		<ApolloProvider client={client}>
 			<Screen>
-				{Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+				{Platform.OS === 'ios' && <StatusBar barStyle='light-content' backgroundColor={'transparent'} />}
 				<AppNavigator />
 				{/* <Profile /> */}
 			</Screen>
