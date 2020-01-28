@@ -198,6 +198,14 @@ export default function HomeScreen(props) {
 									marginBottom: 5
 								}
 							}}
+							containerToNextStyle={{
+								left: {
+									borderBottomLeftRadius: 15,
+								},
+								right: {
+									borderBottomRightRadius: 15,
+								}
+							}}
 							containerToPreviousStyle={{
 								right: {
 									borderTopRightRadius: 0,
