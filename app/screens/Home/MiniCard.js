@@ -2,6 +2,8 @@ import React from 'react'
 import { TouchableWithoutFeedback, ScrollView, View, Text, Image } from 'react-native'
 import Styled from 'styled-components/native'
 
+import { useTranslation } from 'react-i18next'
+
 import quickActions from '../../assets/data/quickActions'
 
 const MiniCardContainer = Styled.View`
@@ -18,42 +20,50 @@ const MiniCardContainer = Styled.View`
 	shadow-color: #000;
 `
 
-export const MiniCard = (props) => (
-	<TouchableWithoutFeedback
-		onPress={() => props.link ? props.navigation.push(props.link) : null}
-	>
-		<View
-			style={{
-				display: 'flex'
-			}}
+export const MiniCard = (props) => {
+
+	const [t, i18n] = useTranslation()
+
+	return (
+		<TouchableWithoutFeedback
+			onPress={() => props.link ? props.navigation.push(props.link) : null}
 		>
 			<View
 				style={{
-					backgroundColor: '#3BCCBB',
-					height: '30px',
-					width: '65%',
-					position: 'absolute',
-					top: 0,
-					left: 32,
-					borderRadius: 10,
-					opacity: 0.5
+					display: 'flex'
 				}}
-			/>
-			<MiniCardContainer>
-				<Image
-					style={{ marginTop: 8, width: 55, height: 55, zIndex: 4 }}
-					source={props.image}
+			>
+				<View
+					style={{
+						backgroundColor: '#3BCCBB',
+						height: '30px',
+						width: '65%',
+						position: 'absolute',
+						top: 0,
+						left: 32,
+						borderRadius: 10,
+						opacity: 0.5
+					}}
 				/>
-				<Text
-					style={{ marginTop: 15, marginLeft: 2, fontSize: 20 }}
-				>
-					{props.name}
-				</Text>
-			</MiniCardContainer>
+				<MiniCardContainer>
+					<Image
+						style={{ marginTop: 8, width: 55, height: 55, zIndex: 4 }}
+						source={props.image}
+					/>
+					<Text
+						adjustsFontSizeToFit
+						allowFontScaling
+						minimumFontScale={5}
+						style={{ marginTop: 15, marginLeft: 2, fontSize: 20 }}
+					>
+						{t(props.name)}
+					</Text>
+				</MiniCardContainer>
 
-		</View>
-	</TouchableWithoutFeedback>
-)
+			</View>
+		</TouchableWithoutFeedback>
+	)
+}
 
 export const MiniCards = (props) => (
 	<View

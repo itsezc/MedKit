@@ -1,5 +1,7 @@
 {
 	"translation": {
-		"Hello": "வணக்கம்"
+		"Hello": "வணக்கம்",
+		"CheckUp": "சோதனை",
+		"OrderDrugs": "ஆர்டர் மருந்து"
 	}
 }

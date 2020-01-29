@@ -1,5 +1,7 @@
 {
 	"translation": {
-		"Hello": "hello"
+		"Hello": "hello",
+		"CheckUp": "Check Up",
+		"OrderDrugs": "Order Drugs"
 	}
 }

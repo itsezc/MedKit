@@ -6,12 +6,12 @@ import imageFood from '../images/food.png'
 export default {
 	"actions": [
 		{
-			"name": "Check Up",
+			"name": "CheckUp",
 			"image": imageCheckUp,
 			"link": "Chat"
 		},
 		{
-			"name": "Order Drugs",
+			"name": "OrderDrugs",
 			"image": imageOrderDrugs
 		},
 		{

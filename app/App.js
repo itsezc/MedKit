@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
-import { Platform, StatusBar, AppRegistry } from 'react-native'
+import * as React from 'react'
+const { useState } = React
 
-import './Translate'
+import i18N from './Translate'
+
+import { Platform, StatusBar, AppRegistry } from 'react-native'
 
 import { Ionicons } from '@expo/vector-icons';
 
 import { AppLoading } from 'expo'
-import { Asset } from 'expo-asset'
+import { Asset, JSON } from 'expo-asset'
 import * as Font from 'expo-font'
 
-import { ApolloProvider } from '@apollo/client'
+import { ApolloProvider, from } from '@apollo/client'
 import { client } from './Apollo'
 
 import AppNavigator from './navigation/AppNavigator'
@@ -18,7 +20,7 @@ import { Screen } from './components/styles/Screen'
 
 export default function App(props) {
 
-	const [isLoadingComplete, setLoadingComplete] = useState(false);
+	const [isLoadingComplete, setLoadingComplete] = useState(false)
 
 	if (!isLoadingComplete && !props.skipLoadingScreen) {
 		return (
@@ -27,7 +29,7 @@ export default function App(props) {
 				onError={handleLoadingError}
 				onFinish={() => handleFinishLoading(setLoadingComplete)}
 			/>
-		);
+		)
 	} else {
 		return (
 			<ApolloProvider client={client}>

@@ -12,7 +12,7 @@ import { CalendarCard } from './Home/CalendarCard'
 
 export default (props) => {
 
-	const { t, i18n } = useTranslation()
+	const [ t, i18n ] = useTranslation()
 
 	return(
 		<Screen
