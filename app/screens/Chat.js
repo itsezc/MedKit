@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 
 import { Icon } from '../components/Icon'
 import { View, Text, TouchableWithoutFeedback } from 'react-native'
@@ -75,17 +75,13 @@ export default function HomeScreen(props) {
 		const index = messages.length ? messages.length : 0
 		const message = newMessages[0].text
 
-		await getChatResponse({ 
+		getChatResponse({
 			variables: {
 				index,
 				message
 			}
 		})
 	}
-
-	useEffect(() => {
-		console.log(Constants.statusBarHeight)
-	})
 
 	return (
 		<View

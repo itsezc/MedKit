@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { Screen } from '../components/styles/Screen'
 
@@ -7,12 +8,12 @@ import { Icon } from '../components/Icon'
 
 import { Filter } from './Home/Filter'
 import { MiniCards } from './Home/MiniCard'
-
-import Styled from 'styled-components/native'
-
 import { CalendarCard } from './Home/CalendarCard'
 
 export default (props) => {
+
+	const { t, i18n } = useTranslation()
+
 	return(
 		<Screen
 			style={{
@@ -28,7 +29,7 @@ export default (props) => {
 					marginTop: 50,
 				}}
 			>
-				<Text style={{ color: '#F5F7FD', fontSize: 24 }}>Hello,</Text>
+				<Text style={{ color: '#F5F7FD', fontSize: 24 }}>{t('Hello')},</Text>
 				<Text style={{ color: '#FFFFFF', fontSize: 34, fontWeight: 'bold' }}>Chiru</Text>
 				<TouchableWithoutFeedback
 					onPress={() => props.navigation.push('Profile')}

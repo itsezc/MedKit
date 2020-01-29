@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableWithoutFeedback, ScrollView, View, Text, Image} from 'react-native'
+import { TouchableWithoutFeedback, ScrollView, View, Text, Image } from 'react-native'
 import Styled from 'styled-components/native'
 
 import quickActions from '../../assets/data/quickActions'
@@ -27,7 +27,7 @@ export const MiniCard = (props) => (
 				display: 'flex'
 			}}
 		>
-			<View 
+			<View
 				style={{
 					backgroundColor: '#3BCCBB',
 					height: '30px',
@@ -61,7 +61,7 @@ export const MiniCards = (props) => (
 			width: '100%',
 			marginTop: 130,
 			zIndex: 3
-		}}	
+		}}
 	>
 		<ScrollView
 			style={{
@@ -71,7 +71,7 @@ export const MiniCards = (props) => (
 			horizontal
 		>
 			{
-				quickActions.actions.map((action, index) => 
+				quickActions.actions.map((action, index) =>
 					<MiniCard
 						key={index}
 						name={action.name}
