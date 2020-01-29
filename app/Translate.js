@@ -4,29 +4,30 @@ import i18N from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 import LANG_EN from './assets/languages/en.json'
-import LANG_ES from './assets/languages/es.json'
-import LANG_HI from './assets/languages/hi.json'
 import LANG_TA from './assets/languages/ta.json'
 
-const resources = {
-	en: LANG_EN,
-	es: LANG_ES,
-	hi: LANG_HI,
-	ta: LANG_TA
-}
+const { languageTag, isRTL } = Localize.findBestAvailableLanguage(['en', 'es', 'hi', 'ta'])
 
-const fallback = { languageCode: 'en', isRTL: false }
-const { languageTag, isRTL } = Localize.findBestAvailableLanguage(Object.keys(resources))
+import(`./assets/languages/${languageTag}.json`)
+	.then((language) => {
 
-i18N
-	.use(initReactI18next)
-	.init({
-		resources,
-		lng: languageTag,
-		keySeparator: false,
-		interpolation: {
-			escapeValue: false
-		}
+		const resources = {}
+		resources[languageTag] = { translation: language.translation }
+
+		i18N
+			.use(initReactI18next)
+			.init({
+				resources,
+				lng: languageTag,
+				fallbackLng: 'en',
+				keySeparator: false,
+				interpolation: {
+					escapeValue: false
+				}
+			})
 	})
+
+
+	
 
 export default i18N
