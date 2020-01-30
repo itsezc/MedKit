@@ -41,7 +41,7 @@ export default (props) => {
 
 	const [{ email, password, emailError, passwordError }, setState] = useState(initialState)
 
-	const [processLogin, { loading, error }] = useMutation(LOGIN_MUTATION, {
+	const [processLogin, { loading }] = useMutation(LOGIN_MUTATION, {
 		onCompleted: async (data) => {
 
 			await verifyAuth(data)
