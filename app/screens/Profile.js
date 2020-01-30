@@ -40,10 +40,11 @@ export default Profile = (props) => {
 				</TouchableWithoutFeedback>
 			</Back>
 				
-			<Container
+			<View
 				style={{
 					flex: 1,
-					padding: 0,
+					paddingTop: 190,
+					width: '100%',
 					alignItems: 'center',
 					height: 'auto'
 				}}
@@ -118,7 +119,7 @@ export default Profile = (props) => {
 
 				<Text style={{ marginTop: 15, color: '#eee' }}>Made by I.W.A</Text>
 				<Text style={{ color: '#eee' }}>Version 1.0.0</Text>
-			</Container>
+			</View>
 		</Screen>
 	)
 }
