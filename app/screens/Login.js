@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 
-import { AsyncStorage as Storage } from 'react-native'
-
 import { TextField } from 'react-native-material-textfield'
 
 import { View, Text, TextInput, Button } from 'react-native'
@@ -10,7 +8,7 @@ import Styled from 'styled-components/native'
 import { Screen } from '../components/styles/Screen'
 import { Container } from '../components/styles/Container'
 
-import { errorHandler } from '../core/auth/errorHandler'
+import { verifyAuth, errorHandler } from '../core/auth'
 
 import { useMutation, gql } from '@apollo/client'
 
@@ -42,22 +40,15 @@ export default (props) => {
 	const [processLogin, { loading, error }] = useMutation(LOGIN_MUTATION, {
 		onCompleted: async (data) => {
 
-			const { login } = data
+			await verifyAuth(data)
 
-			if (login) {
-				const { token } = login
+			setEmail('')
+			setPassword('')
+			setEmailError('')
+			setPasswordError('')
 
-				try {
-					await Storage.setItem('token', token)
-					props.navigation.push('Home')
-				} catch (e) {
-					console.log('ERROR', e)
-				}
-
-				console.log('Token: ', await Storage.getItem('token'))
-			}
-
-			
+			props.navigation.push('Home')
+						
 		},
 		onError: async (error) => errorHandler(error, setEmailError, setPasswordError)
 	})
