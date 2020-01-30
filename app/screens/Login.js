@@ -30,27 +30,28 @@ const LOGIN_MUTATION = gql`
 	}
 `
 
+const initialState = {
+	email: '',
+	password: '',
+	emailError: '',
+	passwordError: ''
+}
+
 export default (props) => {
 
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
-	const [displayEmailError, setEmailError] = useState('')
-	const [displayPasswordError, setPasswordError] = useState('')
+	const [{ email, password, emailError, passwordError }, setState] = useState(initialState)
 
 	const [processLogin, { loading, error }] = useMutation(LOGIN_MUTATION, {
 		onCompleted: async (data) => {
 
 			await verifyAuth(data)
 
-			setEmail('')
-			setPassword('')
-			setEmailError('')
-			setPasswordError('')
+			setState({ ...initialState })
 
 			props.navigation.push('Home')
 						
 		},
-		onError: async (error) => errorHandler(error, setEmailError, setPasswordError)
+		onError: async (error) => errorHandler(error, setState)
 	})
 
 	return(
@@ -73,25 +74,25 @@ export default (props) => {
 				>
 					<TextField
 						value={email}
-						onChangeText={text => setEmail(text)}
+						onChangeText={text => setState(prevState => ({ ...prevState, email: text }))}
 						placeholder={'your@email.com'}
 						placeholderTextColor='#FFFFFF'
 						fontSize={30}
 						textColor='#FFFFFF'
 						baseColor='#5F87DF'
-						error={displayEmailError}
+						error={emailError}
 						errorColor='#FFFFFF'
 					/>
 
 					<TextField
 						value={password}
-						onChangeText={text => setPassword(text)}
+						onChangeText={text => setState(prevState => ({ ...prevState, password: text }))}
 						placeholder={'password'}
 						placeholderTextColor='#FFFFFF'
 						fontSize={30}
 						textColor='#FFFFFF'
 						baseColor='#5F87DF'
-						error={displayPasswordError}
+						error={passwordError}
 						errorColor='#FFFFFF'
 						secureTextEntry
 					/>
