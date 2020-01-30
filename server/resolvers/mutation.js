@@ -20,15 +20,14 @@ export const mutationResolver = {
 
 		const user = allAccounts[0]
 
-		!user ? throw new Error('No account found') : null
+		if (!user) throw new Error('No account found')
 
 		const validPassword = await BCrypt.compare(password, user.password)
 
-		!validPassword ? throw new Error('Invalid Password') : null
+		if (!validPassword) throw new Error('Invalid Password')
 
 		return {
-			token: JWT.sign({ id: user.id }, AUTH_TOKEN),
-			user
+			token: JWT.sign({ id: user.id }, AUTH_TOKEN)
 		}
 
 	},
@@ -44,8 +43,8 @@ export const mutationResolver = {
 		`
 
 		let checkAccount = await query(ACCOUNT_CHECK_QUERY, { email })
-
-		checkAccount.allAccounts.length > 0 ? throw new Error('An account with this email exists already') : null
+		
+		if (checkAccount.allAccounts.length > 0) throw new Error('An account with this email exists')
 
 		const hashedPassword = await BCrypt.hash(password, 14)
 
@@ -62,9 +61,7 @@ export const mutationResolver = {
 		const { createAccount } = await query(ACCOUNT_CREATE_QUERY, { email, password: hashedPassword })
 
 		return {
-			token: JWT.sign({ id: createAccount.id }, AUTH_TOKEN),
-			user: createAccount
+			token: JWT.sign({ id: createAccount.id }, AUTH_TOKEN)
 		}
-		
 	}
 }
