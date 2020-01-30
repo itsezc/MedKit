@@ -10,6 +10,8 @@ import Styled from 'styled-components/native'
 import { Screen } from '../components/styles/Screen'
 import { Container } from '../components/styles/Container'
 
+import { errorHandler } from '../core/auth/errorHandler'
+
 import { useMutation, gql } from '@apollo/client'
 
 const SubmitButton = Styled.Text`
@@ -57,25 +59,8 @@ export default (props) => {
 
 			
 		},
-		onError: async (error) => processError(error.toString().replace('Error: ', '').replace('GraphQL error:', '').slice(1))
+		onError: async (error) => errorHandler(error, setEmailError, setPasswordError)
 	})
-
-	const processError = (error) => {	
-		switch (error) {
-			case 'PASSWORD_INVALID':
-					console.log(error)
-					setPasswordError('The password is invalid')
-				break
-			
-			case 'NO_ACCOUNT':
-					console.log(error)
-					setEmailError('No account found on this email')
-				break
-			
-			default:
-				break;
-		}
-	}
 
 	return(
 		<Screen
