@@ -48,7 +48,6 @@ type Account {
 
 type LoginPayload {
 	token: String
-	user: Account
 }
 
 type Mutation {

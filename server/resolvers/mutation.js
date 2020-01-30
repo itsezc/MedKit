@@ -20,11 +20,11 @@ export const mutationResolver = {
 
 		const user = allAccounts[0]
 
-		if (!user) throw new Error('No account found')
+		if (!user) throw new Error('NO_ACCOUNT')
 
 		const validPassword = await BCrypt.compare(password, user.password)
 
-		if (!validPassword) throw new Error('Invalid Password')
+		if (!validPassword) throw new Error('PASSWORD_INVALID')
 
 		return {
 			token: JWT.sign({ id: user.id }, AUTH_TOKEN)

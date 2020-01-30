@@ -2,6 +2,8 @@
 	"translation": {
 		"Hello": "hello",
 		"CheckUp": "Check Up",
-		"OrderDrugs": "Order Drugs"
+		"OrderDrugs": "Order Drugs",
+		"Fitness": "Fitness",
+		"Food": "Food"
 	}
 }
