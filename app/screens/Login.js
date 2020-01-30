@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import { AsyncStorage as Storage } from 'react-native'
 
+import { TextField } from 'react-native-material-textfield'
+
 import { View, Text, TextInput, Button } from 'react-native'
 import Styled from 'styled-components/native'
 
@@ -24,10 +26,6 @@ const LOGIN_MUTATION = gql`
 	mutation Login($email: String!, $password: String!) {
 		login(email: $email, password: $password) {
 			token
-			user {
-				id 
-				email
-			}
 		}
 	}
 `
@@ -36,9 +34,11 @@ export default (props) => {
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [displayEmailError, setEmailError] = useState('')
+	const [displayPasswordError, setPasswordError] = useState('')
 
-	const [processLogin, { loading }] = useMutation(LOGIN_MUTATION, {
-		onCompleted: async(data) => {
+	const [processLogin, { loading, error }] = useMutation(LOGIN_MUTATION, {
+		onCompleted: async (data) => {
 
 			const { login } = data
 
@@ -56,8 +56,26 @@ export default (props) => {
 			}
 
 			
-		}
+		},
+		onError: async (error) => processError(error.toString().replace('Error: ', '').replace('GraphQL error:', '').slice(1))
 	})
+
+	const processError = (error) => {	
+		switch (error) {
+			case 'PASSWORD_INVALID':
+					console.log(error)
+					setPasswordError('The password is invalid')
+				break
+			
+			case 'NO_ACCOUNT':
+					console.log(error)
+					setEmailError('No account found on this email')
+				break
+			
+			default:
+				break;
+		}
+	}
 
 	return(
 		<Screen
@@ -77,21 +95,29 @@ export default (props) => {
 						marginTop: 100
 					}}
 				>
-					<TextInput 
-						style={{ height: 60, width: '100%', borderColor: '#5F87DF', borderBottomWidth: 1, color: '#FFFFFF', fontSize: 30 }}
+					<TextField
 						value={email}
 						onChangeText={text => setEmail(text)}
 						placeholder={'your@email.com'}
 						placeholderTextColor='#FFFFFF'
+						fontSize={30}
+						textColor='#FFFFFF'
+						baseColor='#5F87DF'
+						error={displayEmailError}
+						errorColor='#FFFFFF'
 					/>
 
-					<TextInput 
-						style={{ marginTop: 20, height: 60, width: '100%', borderColor: '#5F87DF', borderBottomWidth: 1, color: '#FFFFFF', fontSize: 30 }}
+					<TextField
 						value={password}
 						onChangeText={text => setPassword(text)}
-						secureTextEntry
 						placeholder={'password'}
 						placeholderTextColor='#FFFFFF'
+						fontSize={30}
+						textColor='#FFFFFF'
+						baseColor='#5F87DF'
+						error={displayPasswordError}
+						errorColor='#FFFFFF'
+						secureTextEntry
 					/>
 				</View>
 
