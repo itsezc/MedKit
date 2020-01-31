@@ -1,7 +1,7 @@
 import React from 'react'
 import Styled from 'styled-components/native'
 
-import { Icon } from '../../components/Icon'
+import { Icon } from '../../../components/Icon'
 import { View, Image, Text } from 'react-native'
 
 const CalendarTime = Styled.View`
