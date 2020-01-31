@@ -3,8 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import { Screen } from '../components/styles/Screen'
 
-import { TouchableWithoutFeedback, ScrollView, Dimensions, View, Text, Image } from 'react-native'
-import { Icon } from '../components/Icon'
+import { TouchableWithoutFeedback, Dimensions, View, Text, Image } from 'react-native'
 
 import { Calendar } from './Home/Calendar'
 import { MiniCards } from './Home/MiniCard'
