@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+import Moment from 'moment'
+
 import { View, Text, Dimensions, ScrollView } from 'react-native'
 import { Icon } from '../../../components/Icon'
 
@@ -170,20 +172,15 @@ export const Calendar = (props) => {
 								>
 									{
 										
-										displayActivites.map(({ name, time, tag }, index) => {
-											
-											console.log(index, time.toString())
+										displayActivites.map(({ name, time, tag }, index) => (
 										
-											return(
-												<CalendarCard
-													key={index}
-													name={name}
-													tag={tag}
-												/>
-											)
-											
-
-										})
+											<CalendarCard
+												key={index}
+												time={Moment(time).format('hh:mm')}
+												name={name}
+												tag={tag}
+											/>
+										))
 									}
 									</ScrollView>
 									
