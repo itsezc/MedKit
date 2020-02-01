@@ -95,6 +95,11 @@ export const Calendar = (props) => {
 
 	const handleFilterChange = (newFilter) => setFilter(newFilter)
 
+	const calculateActivities = (day) => {
+		const count = (selectedFilter === 'All' ? data.days[day].activities : data.days[day].activities.filter(activity => activity.tag === selectedFilter)).length
+		return `${count} ${(count === 1 ? 'Activity' : 'Activities')}`
+	}
+
 	return(
 		<>
 			<View
@@ -166,7 +171,7 @@ export const Calendar = (props) => {
 							color: '#A7A9AE'
 						}}
 					>
-						{(selectedFilter === 'All' ?  data.days[currentDay].activities : data.days[currentDay].activities.filter(activity => activity.tag === selectedFilter)).length} Activites
+						{calculateActivities(currentDay)}
 					</Text>
 
 					<Icon
@@ -195,7 +200,7 @@ export const Calendar = (props) => {
 							color: '#A7A9AE'
 						}}
 					>
-						{(selectedFilter === 'All' ?  data.days[currentDay + 1].activities : data.days[currentDay + 1].activities.filter(activity => activity.tag === selectedFilter)).length} Activity
+						{calculateActivities(currentDay + 1)}
 					</Text>
 
 					<ScrollView
