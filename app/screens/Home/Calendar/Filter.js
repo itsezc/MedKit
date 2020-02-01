@@ -32,7 +32,7 @@ const FilterItem = (props) => (
 
 export const Filter = (props) => {
 	
-	const [selected, setSelected] = useState(0)
+	const [selected, setSelected] = useState(props.filters.findIndex(element => element.name === props.selected))
 
 	return(
 		<ScrollView
