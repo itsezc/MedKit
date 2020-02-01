@@ -15,7 +15,7 @@ export const Calendar = (props) => {
 	const [data, setData] = useState({
 		days: [
 			{
-				date: "2020-01-21T00:00:00Z",
+				date: "2020-02-01T00:00:00Z",
 				activities: [
 					{
 						time: "2020-01-21T08:45:00Z",
@@ -40,7 +40,7 @@ export const Calendar = (props) => {
 				]
 			},
 			{
-				date: "2020-02-21T00:00:00Z",
+				date: "2020-02-02T00:00:00Z",
 				activities: [
 					{
 						time: "2020-02-21T08:00:00Z",
@@ -65,7 +65,7 @@ export const Calendar = (props) => {
 				]
 			},
 			{
-				date: "2020-03-21T00:00:00Z",
+				date: "2020-02-03T00:00:00Z",
 				activities: [
 					{
 						time: "2020-03-21T08:00:00Z",
@@ -87,6 +87,7 @@ export const Calendar = (props) => {
 		]
 	})
 
+	const [currentDay, setDay] = useState(0)
 	const [selectedFilter, setFilter] = useState('All')
 
 	const reformatDate = (date) => arr = new Date(date).toString()
@@ -152,7 +153,9 @@ export const Calendar = (props) => {
 							fontWeight: '500'
 						}}
 					>
-						Today
+						{
+							Moment(data.days[currentDay].date).format('Do MMM')
+						}
 					</Text>
 					<Text
 						style={{
@@ -179,7 +182,9 @@ export const Calendar = (props) => {
 							fontWeight: '500'
 						}}
 					>
-						24 Jan
+						{
+							Moment(data.days[currentDay + 1].date).format('Do MMM')
+						}
 					</Text>
 					<Text
 						style={{
@@ -198,11 +203,13 @@ export const Calendar = (props) => {
 							marginLeft: 120,
 							marginTop: -265,
 						}}
+						onScroll={async ({ nativeEvent: { contentOffset } }) => setDay(Math.round(contentOffset.y / 189))}
+						scrollEventThrottle={200}
 					>
 						{	
 							data.days.map(({ activities }, index) => {
 
-								let displayActivities = (selectedFilter === 'All' ? activities : activities.filter(activity => activity.tag === selectedFilter)).sort(sortByDate)
+								const displayActivities = (selectedFilter === 'All' ? activities : activities.filter(activity => activity.tag === selectedFilter)).sort(sortByDate)
 
 								return(
 								
@@ -217,7 +224,6 @@ export const Calendar = (props) => {
 									{
 										
 										displayActivities.map(({ name, time, tag }, index) => (
-										
 											<CalendarCard
 												key={index}
 												timeless={index !== 0 ? (displayActivities[index - 1].time === time ? true : false) : false} 
