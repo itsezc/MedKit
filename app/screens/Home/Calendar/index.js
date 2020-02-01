@@ -166,8 +166,8 @@ export const Calendar = (props) => {
 							color: '#A7A9AE'
 						}}
 					>
-						3 Activites
-							</Text>
+						{(selectedFilter === 'All' ?  data.days[currentDay].activities : data.days[currentDay].activities.filter(activity => activity.tag === selectedFilter)).length} Activites
+					</Text>
 
 					<Icon
 						style={{ position: 'absolute', left: -10, top: 230 }}
@@ -195,7 +195,7 @@ export const Calendar = (props) => {
 							color: '#A7A9AE'
 						}}
 					>
-						1 Activity
+						{(selectedFilter === 'All' ?  data.days[currentDay + 1].activities : data.days[currentDay + 1].activities.filter(activity => activity.tag === selectedFilter)).length} Activity
 					</Text>
 
 					<ScrollView
