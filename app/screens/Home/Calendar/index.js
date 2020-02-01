@@ -14,17 +14,17 @@ export const Calendar = (props) => {
 				date: "2020-01-21T00:00:00Z",
 				activities: [
 					{
-						time: "8:45",
+						time: "2020-01-21T08:45:00Z",
 						name: "Ibuprofen",
 						tag: "Medicine"
 					},
 					{
-						time: "12:00",
+						time: "2020-01-21T12:00:00Z",
 						name: "Biryani",
 						tag: "Cooking"
 					},
 					{
-						time: "8:45",
+						time: "2020-01-21T08:45:00Z",
 						name: "Push Ups",
 						tag: "Exercise"
 					},
@@ -34,12 +34,12 @@ export const Calendar = (props) => {
 				date: "2020-02-21T00:00:00Z",
 				activities: [
 					{
-						time: "8:45",
+						time: "2020-02-21T08:00:00Z",
 						name: "White",
 						tag: "Doctor"
 					},
 					{
-						time: "12:00",
+						time: "2020-02-21T13:30:00Z",
 						name: "Pinkman",
 						tag: "Doctor"
 					},
@@ -47,6 +47,9 @@ export const Calendar = (props) => {
 			}
 		]
 	}
+
+	const reformatDate = (date) => arr = new Date(date).toString()
+	const sortByDate = (a, b) => new Date(reformatDate(a.time)) - new Date(reformatDate(b.time))
 
 	return(
 		<>
@@ -152,7 +155,12 @@ export const Calendar = (props) => {
 						}}
 					>
 						{
-							data.days.map((day, index) => (
+							data.days.map(({ activities }, index) => {
+
+								const displayActivites = activities.sort(sortByDate)
+
+								return(
+								
 								<ScrollView
 									key={index}
 									style={{
@@ -161,17 +169,26 @@ export const Calendar = (props) => {
 									horizontal
 								>
 									{
-										day.activities.map(({ name, time, tag }, index) => (
-											<CalendarCard
-												key={index}
-												time={time}
-												name={name}
-												tag={tag}
-											/>
-										))
+										
+										displayActivites.map(({ name, time, tag }, index) => {
+											
+											console.log(index, time.toString())
+										
+											return(
+												<CalendarCard
+													key={index}
+													name={name}
+													tag={tag}
+												/>
+											)
+											
+
+										})
 									}
-								</ScrollView>
-							))
+									</ScrollView>
+									
+								)
+							})
 						}
 					</ScrollView>
 
