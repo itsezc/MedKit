@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+const { useState } = React
+
 import Moment from 'moment'
 
 import { View, Text, Dimensions, ScrollView } from 'react-native'
@@ -10,7 +12,7 @@ import { CalendarCard } from './Card'
 
 export const Calendar = (props) => {
 
-	const data = {
+	const [data, setData] = useState({
 		days: [
 			{
 				date: "2020-01-21T00:00:00Z",
@@ -48,10 +50,14 @@ export const Calendar = (props) => {
 				]
 			}
 		]
-	}
+	})
+
+	const [selectedFilter, setFilter] = useState('All')
 
 	const reformatDate = (date) => arr = new Date(date).toString()
 	const sortByDate = (a, b) => new Date(reformatDate(a.time)) - new Date(reformatDate(b.time))
+
+	const handleFilterChange = (newFilter) => setFilter(newFilter)
 
 	return(
 		<>
@@ -66,13 +72,15 @@ export const Calendar = (props) => {
 				wrapper
 			>
 				<Filter
+					selected={selectedFilter}
 					filters={[
-						{ name: 'All' },
-						{ name: 'Appointments' },
-						{ name: 'Medication' },
-						{ name: 'Exercise' },
-						{ name: 'Cooking' }
+						{ name: 'All', value: 'All' },
+						{ name: 'Appointments', value: 'Doctor' },
+						{ name: 'Medication', value: 'Medicine' },
+						{ name: 'Exercise', value: 'Exercise' },
+						{ name: 'Cooking', value: 'Cooking' }
 					]}
+					handleFilterChange={handleFilterChange}
 				/>
 			</View>
 
@@ -156,23 +164,24 @@ export const Calendar = (props) => {
 							marginTop: -265,
 						}}
 					>
-						{
+						{	
 							data.days.map(({ activities }, index) => {
 
-								const displayActivites = activities.sort(sortByDate)
+								let displayActivities = activities.sort(sortByDate)
+								displayActivities = selectedFilter === 'All' ? displayActivities : displayActivities.filter(activity => activity.tag === selectedFilter)
 
 								return(
 								
-								<ScrollView
-									key={index}
-									style={{
-										padding: 10,
-									}}
-									horizontal
-								>
+									<ScrollView
+										key={index}
+										style={{
+											padding: 10,
+										}}
+										horizontal
+									>
 									{
 										
-										displayActivites.map(({ name, time, tag }, index) => (
+										displayActivities.map(({ name, time, tag }, index) => (
 										
 											<CalendarCard
 												key={index}
