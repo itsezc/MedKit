@@ -51,7 +51,10 @@ export const Filter = (props) => {
 				props.filters.map((filter, index) => (
 					<TouchableWithoutFeedback
 						key={index}
-						onPress={() => setSelected(index)}
+						onPress={() => {
+							setSelected(index)
+							props.handleFilterChange(filter.value)
+						}}
 					>
 						<View onStartShouldSetResponder={() => true}>
 
