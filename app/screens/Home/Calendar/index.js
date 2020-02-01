@@ -23,14 +23,19 @@ export const Calendar = (props) => {
 						tag: "Medicine"
 					},
 					{
+						time: "2020-01-21T08:45:00Z",
+						name: "Running",
+						tag: "Exercise"
+					},
+					{
 						time: "2020-01-21T12:00:00Z",
 						name: "Biryani",
 						tag: "Cooking"
 					},
 					{
-						time: "2020-01-21T08:45:00Z",
-						name: "Push Ups",
-						tag: "Exercise"
+						time: "2020-01-21T13:00:00Z",
+						name: "Vaishali",
+						tag: "Doctor"
 					},
 				]
 			},
@@ -39,13 +44,43 @@ export const Calendar = (props) => {
 				activities: [
 					{
 						time: "2020-02-21T08:00:00Z",
-						name: "White",
+						name: "Vaishali",
 						tag: "Doctor"
 					},
 					{
+						time: "2020-02-21T08:00:00Z",
+						name: "Salad",
+						tag: "Cooking"
+					},
+					{
 						time: "2020-02-21T13:30:00Z",
-						name: "Pinkman",
+						name: "Rasi",
 						tag: "Doctor"
+					},
+					{
+						time: "2020-02-21T08:45:00Z",
+						name: "Push Ups",
+						tag: "Exercise"
+					},
+				]
+			},
+			{
+				date: "2020-03-21T00:00:00Z",
+				activities: [
+					{
+						time: "2020-03-21T08:00:00Z",
+						name: "Vaishali",
+						tag: "Doctor"
+					},
+					{
+						time: "2020-03-21T13:30:00Z",
+						name: "Rasi",
+						tag: "Doctor"
+					},
+					{
+						time: "2020-03-21T08:45:00Z",
+						name: "Push Ups",
+						tag: "Exercise"
 					},
 				]
 			}
@@ -167,8 +202,7 @@ export const Calendar = (props) => {
 						{	
 							data.days.map(({ activities }, index) => {
 
-								let displayActivities = activities.sort(sortByDate)
-								displayActivities = selectedFilter === 'All' ? displayActivities : displayActivities.filter(activity => activity.tag === selectedFilter)
+								let displayActivities = (selectedFilter === 'All' ? activities : activities.filter(activity => activity.tag === selectedFilter)).sort(sortByDate)
 
 								return(
 								
@@ -176,6 +210,7 @@ export const Calendar = (props) => {
 										key={index}
 										style={{
 											padding: 10,
+											height: 189
 										}}
 										horizontal
 									>
@@ -185,6 +220,7 @@ export const Calendar = (props) => {
 										
 											<CalendarCard
 												key={index}
+												timeless={index !== 0 ? (displayActivities[index - 1].time === time ? true : false) : false} 
 												time={Moment(time).format('hh:mm')}
 												name={name}
 												tag={tag}
