@@ -1,13 +1,55 @@
 import * as React from 'react'
+
 import { View, Text, Dimensions, ScrollView } from 'react-native'
+import { Icon } from '../../../components/Icon'
 
 import { Filter } from './Filter'
 import { CalendarCard } from './Card'
-import { Icon } from '../../../components/Icon'
 
 export const Calendar = (props) => {
+
+	const data = {
+		days: [
+			{
+				date: "2020-01-21T00:00:00Z",
+				activities: [
+					{
+						time: "8:45",
+						name: "Ibuprofen",
+						tag: "Medicine"
+					},
+					{
+						time: "12:00",
+						name: "Biryani",
+						tag: "Cooking"
+					},
+					{
+						time: "8:45",
+						name: "Push Ups",
+						tag: "Exercise"
+					},
+				]
+			},
+			{
+				date: "2020-02-21T00:00:00Z",
+				activities: [
+					{
+						time: "8:45",
+						name: "White",
+						tag: "Doctor"
+					},
+					{
+						time: "12:00",
+						name: "Pinkman",
+						tag: "Doctor"
+					},
+				]
+			}
+		]
+	}
+
 	return(
-		<React.Fragment>
+		<>
 			<View
 				style={{
 					backgroundColor: '#F0F5FD',
@@ -101,7 +143,7 @@ export const Calendar = (props) => {
 						}}
 					>
 						1 Activity
-							</Text>
+					</Text>
 
 					<ScrollView
 						style={{
@@ -109,51 +151,32 @@ export const Calendar = (props) => {
 							marginTop: -265,
 						}}
 					>
-						<ScrollView
-							style={{
-								padding: 10,
-							}}
-							horizontal
-						>
-							<CalendarCard
-								time='8:45'
-								name='Ibuprofen'
-								tag='Medicine'
-							/>
-							<CalendarCard
-								timeless
-								name='Push Ups'
-								tag='Exercise'
-							/>
-							<CalendarCard
-								time='12:00'
-								name='Biryani'
-								tag='Cooking'
-							/>
-						</ScrollView>
-
-						<ScrollView
-							style={{
-								padding: 10,
-							}}
-							horizontal
-						>
-							<CalendarCard
-								time='8:45'
-								name='White'
-								tag='Doctor'
-							/>
-							<CalendarCard
-								time='12:00'
-								name='Pinkman'
-								tag='Doctor'
-							/>
-						</ScrollView>
-
+						{
+							data.days.map((day, index) => (
+								<ScrollView
+									key={index}
+									style={{
+										padding: 10,
+									}}
+									horizontal
+								>
+									{
+										day.activities.map(({ name, time, tag }, index) => (
+											<CalendarCard
+												key={index}
+												time={time}
+												name={name}
+												tag={tag}
+											/>
+										))
+									}
+								</ScrollView>
+							))
+						}
 					</ScrollView>
 
 				</View>
 			</View>
-		</React.Fragment>
+		</>
 	)
 }

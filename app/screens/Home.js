@@ -8,7 +8,6 @@ import { TouchableWithoutFeedback, Dimensions, View, Text, Image } from 'react-n
 import { Calendar } from './Home/Calendar'
 import { MiniCards } from './Home/MiniCard'
 
-
 export default (props) => {
 
 	const [ t, i18n ] = useTranslation()
