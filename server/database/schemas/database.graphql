@@ -5,6 +5,14 @@ type Account @rootEntity {
     lastName: String
     dateOfBirth: DateTime
     weight: Float
+    activities: [Activities] @relation
+}
+
+type Activities @rootEntity {
+	name: String
+	time: DateTime
+	tag: String
+	account: Account @relation(inverseOf: "activities")
 }
 
 type Doctor @rootEntity {
@@ -28,11 +36,11 @@ type Symptom @rootEntity {
 type Treatment @rootEntity {
 	method: String
 	diseases: [Disease] @relation(inverseOf: "treatments")
-	minAge: number
+	minAge: Int
 }
 
 type Medication @rootEntity {
 	name: String
-	minAge: number
-	diseases [Disease] @rootEntity(inverseOf: "medication")
+	minAge: Int
+	diseases: [Disease] @relation(inverseOf: "medication")
 }
