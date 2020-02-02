@@ -169,12 +169,14 @@ export default function HomeScreen(props) {
 							textStyle={{
 								right: {
 									color: '#00406B',
-									margin: 0,
+									marginHorizontal: 0,
+									padding: 0,
 									fontSize: 14
 								},
 								left: {
 									color: '#FFFFFF',
-									margin: 0,
+									marginHorizontal: 0,
+									padding: 0,
 									fontSize: 14
 								}
 							}}
@@ -182,15 +184,15 @@ export default function HomeScreen(props) {
 								left: {
 									backgroundColor: '#2380E9',
 									borderTopLeftRadius: 0,
-									paddingVertical: 20,
-									paddingHorizontal: 25,
+									paddingVertical: 15,
+									paddingHorizontal: 20,
 									marginBottom: 5
 								},
 								right: {
 									backgroundColor: '#FFFFFF',
 									borderTopRightRadius: 0,
-									paddingVertical: 20,
-									paddingHorizontal: 25,
+									paddingVertical: 15,
+									paddingHorizontal: 20,
 									marginBottom: 5
 								}
 							}}
