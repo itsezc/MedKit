@@ -1,17 +1,5 @@
 scalar Date
 
-type Message {
-	id: String
-	text: String
-	entities: [MessageEntity]
-}
-
-type MessageEntity {
-	type: String
-	confidence: Float
-	value: String
-}
-
 type MessageHandler {
 	_id: Int
 	text: String
@@ -56,6 +44,5 @@ type Mutation {
 }
 
 type Query {
-	message(query: String): Message
 	handleMessage(index: Int, message: String): MessageHandler
 }
