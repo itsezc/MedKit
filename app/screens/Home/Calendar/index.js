@@ -97,7 +97,7 @@ export const Calendar = (props) => {
 
 	const calculateActivities = (day) => {
 		const count = (selectedFilter === 'All' ? data.days[day].activities : data.days[day].activities.filter(activity => activity.tag === selectedFilter)).length
-		return `${count} ${(count === 1 ? 'Activity' : 'Activities')}`
+		return `${count > 0 ? count : 'No'} ${(count === 1 ? 'Activity' : 'Activities')}`
 	}
 
 	return(
