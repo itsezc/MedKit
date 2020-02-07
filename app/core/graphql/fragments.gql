@@ -1,0 +1,6 @@
+fragment Basics on Account {
+	firstName
+	lastName
+	dateOfBirth
+	weight	
+}
