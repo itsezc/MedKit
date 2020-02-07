@@ -18,16 +18,16 @@ export const mutationResolver = {
 
 		const { allAccounts } = await query(ACCOUNT_CHECK_QUERY, { email })
 
-		const user = allAccounts[0]
+		const userAcc = allAccounts[0]
 
-		if (!user) throw new Error('NO_ACCOUNT')
+		if (!userAcc) throw new Error('NO_ACCOUNT')
 
-		const validPassword = await BCrypt.compare(password, user.password)
+		const validPassword = await BCrypt.compare(password, userAcc.password)
 
 		if (!validPassword) throw new Error('PASSWORD_INVALID')
 
 		return {
-			token: JWT.sign({ id: user.id }, AUTH_TOKEN)
+			token: JWT.sign({ id: userAcc.id }, AUTH_TOKEN)
 		}
 
 	},
