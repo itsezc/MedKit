@@ -32,6 +32,10 @@ type Account {
 	id: ID
 	email: String
 	password: String
+	firstName: String
+	lastName: String
+	dateOfBirth: Date
+	weight: Float
 }
 
 type LoginPayload {
@@ -45,4 +49,5 @@ type Mutation {
 
 type Query {
 	handleMessage(index: Int, message: String): MessageHandler
+	getUser(id: ID): Account
 }
