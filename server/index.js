@@ -15,12 +15,12 @@ cruddlServer
 const server = new ApolloServer({
 	typeDefs: appTypeDefs,
 	resolvers: appResolvers,
-	context: ({ req }) => {
+	context: async ({ req }) => {
 		
 		const authorization = req.headers.authorization
 		
 		const user = getUser(authorization)
-
+		
 		return {
 			...req, 
 			user

@@ -34,7 +34,7 @@ export const Calendar = (props) => {
 					},
 					{
 						time: "2020-01-21T13:00:00Z",
-						name: "Vaishali",
+						name: "Pinkman",
 						tag: "Doctor"
 					},
 				]
@@ -44,7 +44,7 @@ export const Calendar = (props) => {
 				activities: [
 					{
 						time: "2020-02-21T08:00:00Z",
-						name: "Vaishali",
+						name: "Pinkman",
 						tag: "Doctor"
 					},
 					{
@@ -54,7 +54,7 @@ export const Calendar = (props) => {
 					},
 					{
 						time: "2020-02-21T13:30:00Z",
-						name: "Rasi",
+						name: "White",
 						tag: "Doctor"
 					},
 					{
@@ -69,12 +69,12 @@ export const Calendar = (props) => {
 				activities: [
 					{
 						time: "2020-03-21T08:00:00Z",
-						name: "Vaishali",
+						name: "Pinkman",
 						tag: "Doctor"
 					},
 					{
 						time: "2020-03-21T13:30:00Z",
-						name: "Rasi",
+						name: "White",
 						tag: "Doctor"
 					},
 					{
