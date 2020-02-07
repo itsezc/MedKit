@@ -10,6 +10,7 @@ export const getUser = async (authorization) => {
 	if (authorization && authorization.length > bearerLength) {
 
 		const token = authorization.slice(bearerLength)
+
 		const { ok, result } = await new Promise(async (resolve) => {
 
 			JWT.verify(token, AUTH_TOKEN, (error, result) => {
@@ -27,37 +28,42 @@ export const getUser = async (authorization) => {
 				}
 
 			})
-
-			if (ok) {
-
-				const query = `
-					query getAccount($id: Int!) {
-						Account(id: $id) {
-							email
-						}
-					}
-				`
-
-				const user = await fetch.post('', 
-					JSON.stringify({
-						query,
-						variables: { id: result.id }
-					})
-				)
-
-				return user	
-
-			} else {
-
-				console.error(result)
-				return null
-
-			}
-
-			return null
-
 		})
 
+		if (ok) {
+
+			const query = `
+				query getAccount($id: ID!) {
+					Account(id: $id) {
+						id
+						email
+						firstName
+						lastName
+						dateOfBirth
+						weight
+					}
+				}
+			`
+
+			const user = await fetch.post('', 
+				JSON.stringify({
+					query,
+					variables: { id: result.id }
+				})
+			)
+
+			const { data: { data: { Account } } } = user 
+
+			return Account
+
+		} else {
+
+			console.error(await result)
+			return null
+
+		}
+
+		return null
 	}
 
 }
