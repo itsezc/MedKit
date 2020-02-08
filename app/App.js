@@ -9,7 +9,7 @@ import { AppLoading } from 'expo'
 import { Asset, JSON } from 'expo-asset'
 import * as Font from 'expo-font'
 
-import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloProvider } from '@apollo/client'
 import { client } from './Apollo'
 
 import AppNavigator from './navigation/AppNavigator'
