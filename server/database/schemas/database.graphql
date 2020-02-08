@@ -8,6 +8,11 @@ type Account @rootEntity {
     activities: [Activities] @relation
 }
 
+type Chat @rootEntity {
+	possibilities: [Disease]
+	user: [Account]
+}
+
 type Activities @rootEntity {
 	name: String
 	time: DateTime
