@@ -1,6 +1,8 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { useQuery, gql } from '@apollo/client'
+
 import { Screen } from '../components/styles/Screen'
 
 import { TouchableWithoutFeedback, Dimensions, View, Text, Image } from 'react-native'
@@ -8,9 +10,16 @@ import { TouchableWithoutFeedback, Dimensions, View, Text, Image } from 'react-n
 import { Calendar } from './Home/Calendar'
 import { MiniCards } from './Home/MiniCard'
 
+const GET_USER = gql`
+	{
+		user @client
+	}
+`
+
 export default (props) => {
 
-	const [ t, i18n ] = useTranslation()
+	const [t, i18n] = useTranslation()
+	const { data, client } = useQuery(GET_USER)
 
 	return(
 		<Screen
@@ -28,7 +37,7 @@ export default (props) => {
 				}}
 			>
 				<Text style={{ color: '#F5F7FD', fontSize: 24 }}>{t('Hello')},</Text>
-				<Text style={{ color: '#FFFFFF', fontSize: 34, fontWeight: 'bold' }}>Chiru</Text>
+				<Text style={{ color: '#FFFFFF', fontSize: 34, fontWeight: 'bold' }}>{data}</Text>
 				<TouchableWithoutFeedback
 					onPress={() => props.navigation.push('Profile')}
 				>
