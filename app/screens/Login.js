@@ -27,18 +27,14 @@ const LOGIN_MUTATION = gql`
 	mutation Login($email: String!, $password: String!) {
 		login(email: $email, password: $password) {
 			token
-		}
-	}
-`
-
-const LOGIN_PREFETCH = gql`
-	query prefetchUser($id: ID!) {
-		getUser(id: $id) {
-			email
-			firstName
-			lastName
-			dateOfBirth
-			weight
+			user {
+				id
+				email
+				firstName
+				lastName
+				dateOfBirth
+				weight
+			}
 		}
 	}
 `
@@ -58,6 +54,14 @@ export default (props) => {
 
 	const [processLogin, { loading }] = useMutation(LOGIN_MUTATION, {
 		onCompleted: async (data) => {
+
+			const { login: { user } } = data 
+
+			client.writeData({
+				data: {
+					user
+				}
+			})
 
 			await verifyAuth(data)
 
