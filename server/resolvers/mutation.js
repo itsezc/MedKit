@@ -12,6 +12,10 @@ export const mutationResolver = {
 					id
 					email
 					password
+					firstName
+					lastName
+					dateOfBirth
+					weight
 				}
 			}
 		`
@@ -27,7 +31,8 @@ export const mutationResolver = {
 		if (!validPassword) throw new Error('PASSWORD_INVALID')
 
 		return {
-			token: JWT.sign(userAcc, AUTH_TOKEN)
+			token: JWT.sign(userAcc, AUTH_TOKEN),
+			user: userAcc
 		}
 
 	},
