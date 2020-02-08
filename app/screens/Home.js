@@ -1,5 +1,4 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 
 import { useQuery, gql } from '@apollo/client'
 
@@ -12,69 +11,86 @@ import { MiniCards } from './Home/MiniCard'
 
 const GET_USER = gql`
 	{
-		user @client
+		getUser {
+			id
+			email
+			firstName
+			lastName
+		}
 	}
 `
 
 export default (props) => {
 
-	const [t, i18n] = useTranslation()
-	const { data, client } = useQuery(GET_USER)
+	const { loading, error, data } = useQuery(GET_USER)
 
-	return(
-		<Screen
-			style={{
-				padding: 0,
-				maxHeight: 270
-			}}
-		>
+	if (data) {
 
-			<View
+		const {
+			getUser: {
+				firstName
+			}
+		} = data
+
+		return(
+			<Screen
 				style={{
-					flex: 1,
-					marginLeft: 30,
-					marginTop: 50,
+					padding: 0,
+					maxHeight: 270
 				}}
 			>
-				<Text style={{ color: '#F5F7FD', fontSize: 24 }}>{t('Hello')},</Text>
-				<Text style={{ color: '#FFFFFF', fontSize: 34, fontWeight: 'bold' }}>{data}</Text>
-				<TouchableWithoutFeedback
-					onPress={() => props.navigation.push('Profile')}
+	
+				<View
+					style={{
+						flex: 1,
+						marginLeft: 30,
+						marginTop: 50,
+					}}
 				>
-					<Image
-						style={{ 
-							width: 55, 
-							height: 55, 
-							borderRadius: 30,
-							position: 'absolute',
-							right: 30,
-						}}
-						source='https://www.biography.com/.image/t_share/MTY2MzU3Nzk2OTM2MjMwNTkx/elon_musk_royal_society.jpg'
-					/>
-				</TouchableWithoutFeedback>
-			</View>
+					<Text style={{ color: '#F5F7FD', fontSize: 24 }}>Hello,</Text>
+					<Text style={{ color: '#FFFFFF', fontSize: 34, fontWeight: 'bold' }}>{firstName}</Text>
+					<TouchableWithoutFeedback
+						onPress={() => props.navigation.push('Profile')}
+					>
+						<Image
+							style={{ 
+								width: 55, 
+								height: 55, 
+								borderRadius: 30,
+								position: 'absolute',
+								right: 30,
+							}}
+							source='https://www.biography.com/.image/t_share/MTY2MzU3Nzk2OTM2MjMwNTkx/elon_musk_royal_society.jpg'
+						/>
+					</TouchableWithoutFeedback>
+				</View>
+	
+				<View
+					style={{
+						position: 'absolute',
+						backgroundColor: 'transparent',
+						borderStyle: 'solid',
+						borderLeftWidth: Dimensions.get('window').width,
+						borderRightWidth: 0,
+						borderBottomWidth: 50,
+						borderLeftColor: 'transparent',
+						borderRightColor: 'transparent',
+						borderBottomColor: '#F0F5FD',
+						marginTop: 220,
+					}}
+				/>
+	
+				<MiniCards 
+					navigation={props.navigation}
+				/>
+				
+				<Calendar />
+				
+			</Screen>
+		)
+	} else {
+		return null
+	}
 
-			<View
-				style={{
-					position: 'absolute',
-					backgroundColor: 'transparent',
-					borderStyle: 'solid',
-					borderLeftWidth: Dimensions.get('window').width,
-					borderRightWidth: 0,
-					borderBottomWidth: 50,
-					borderLeftColor: 'transparent',
-					borderRightColor: 'transparent',
-					borderBottomColor: '#F0F5FD',
-					marginTop: 220,
-				}}
-			/>
-
-			<MiniCards 
-				navigation={props.navigation}
-			/>
-			
-			<Calendar />
-			
-		</Screen>
-	)
+	
 }
