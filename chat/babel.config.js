@@ -13,7 +13,9 @@ module.exports = (api) => {
 	    '@babel/preset-typescript'
 	]
   
-	const plugins = []
+	const plugins = [
+		'import-graphql'
+	]
   
 	const ignore = []
   
