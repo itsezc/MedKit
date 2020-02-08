@@ -12,6 +12,7 @@ import { Container } from '../components/styles/Container'
 import { verifyAuth, errorHandler } from '../core/auth'
 
 import { useMutation, gql } from '@apollo/client'
+import { useApolloClient } from '@apollo/react-hooks'
 
 const SubmitButton = Styled.Text`
 	background-color: #34C5B3;
@@ -31,6 +32,18 @@ const LOGIN_MUTATION = gql`
 	}
 `
 
+const LOGIN_PREFETCH = gql`
+	query prefetchUser($id: ID!) {
+		getUser(id: $id) {
+			email
+			firstName
+			lastName
+			dateOfBirth
+			weight
+		}
+	}
+`
+
 const initialState = {
 	email: '',
 	password: '',
@@ -39,6 +52,8 @@ const initialState = {
 }
 
 export default (props) => {
+
+	client = useApolloClient()
 
 	const [{ email, password, emailError, passwordError }, setState] = useState(initialState)
 
