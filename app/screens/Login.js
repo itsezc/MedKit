@@ -11,8 +11,7 @@ import { Container } from '../components/styles/Container'
 
 import { verifyAuth, errorHandler } from '../core/auth'
 
-import { useMutation, gql } from '@apollo/client'
-import { useApolloClient } from '@apollo/react-hooks'
+import { useMutation, gql, useApolloClient } from '@apollo/client'
 
 const SubmitButton = Styled.Text`
 	background-color: #34C5B3;
