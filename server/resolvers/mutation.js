@@ -27,7 +27,7 @@ export const mutationResolver = {
 		if (!validPassword) throw new Error('PASSWORD_INVALID')
 
 		return {
-			token: JWT.sign({ id: userAcc.id }, AUTH_TOKEN)
+			token: JWT.sign(userAcc, AUTH_TOKEN)
 		}
 
 	},
