@@ -23,16 +23,44 @@ export default {
 
 	},
 
-	identify: async (parent, args, context, info) => {
+	identify: async (parent, { term }, context, info) => {		
 		
-		const QUERY_FIND_DISEASES = gql`
-			query identify($parameter: String!) {
-				identify(parameter: $parameter) {
-					result
-					type
+		/**
+		 * Find any diseases with the search term in the database
+		 */
+		
+		const QUERY_DISEASES = gql`
+			query findDisease($term: String) {
+				allDiseases(filter: {
+					name_like: $term
+				}) {
+					name
 				}
 			}
 		`
-		
+
+		const { allDiseases } = await query(QUERY_DISEASES, { term })
+
+		if (allDiseases.name) {
+			return {
+				parameter: allDiseases.name,
+				type: 'disease'
+			}
+		}
+
+		/** 
+		 * Find any symptoms with the search term in the database
+		*/
+
+		const QUERY_SYMPTOMS = gql`
+			query findSymptom($search: String) {
+				allSymptoms(filter: {
+					name_like: $search
+				}) {
+					id
+				}
+			}
+		`	
+
 	}
 }
