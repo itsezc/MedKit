@@ -10,7 +10,16 @@ import { schema as cruddlSchema } from './database'
 const appResolvers = {
 	Query,
 	Mutation,
-	Date
+	Date,
+	Account: {
+		__resolveReference(object) {
+			return {
+				id: 0,
+				firstName: 'Error',
+				lastName: 'Gateway'
+			}
+		}
+	}
 }
 
 export {
