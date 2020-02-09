@@ -43,8 +43,7 @@ export default {
 
 		if (allDiseases.name) {
 			return {
-				parameter: allDiseases.name,
-				type: 'disease'
+				disease: allDiseases.name
 			}
 		}
 
@@ -53,14 +52,22 @@ export default {
 		*/
 
 		const QUERY_SYMPTOMS = gql`
-			query findSymptom($search: String) {
-				allSymptoms(filter: {
-					name_like: $search
-				}) {
-					id
+			query findSymptom($term: String) {
+				allSymptoms(
+					filter: {
+						name_like: $term
+					}
+				) {
+					name
 				}
 			}
 		`	
+		const { allSymptoms } = await query(QUERY_DISEASES, { term })
 
+		if (allSymptoms.name) {
+			return {
+				symptoms: [allSymptoms]
+			}
+		}
 	}
 }
