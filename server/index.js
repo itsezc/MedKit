@@ -1,4 +1,5 @@
 import { ApolloServer } from 'apollo-server'
+import { ApolloGateway } from '@apollo/gateway'
 
 import { cruddlSchema, appTypeDefs, appResolvers } from './database/generateSchema'
 import { getUser } from './core/getUser'
@@ -8,11 +9,7 @@ const cruddlServer = new ApolloServer({
 	context: ({ req }) => req
 })
 
-cruddlServer
-	.listen({ port: 8085 })
-	.then(( info ) => console.log(`ArangoDB (Cruddl) server started on port - ${info.port}`))
-
-const server = new ApolloServer({
+const authServer = new ApolloServer({
 	typeDefs: appTypeDefs,
 	resolvers: appResolvers,
 	context: async ({ req }) => {
@@ -31,7 +28,36 @@ const server = new ApolloServer({
 		defaultMaxAge: 1
 	}
 })
+	
+;(async () => {
 
-server
-	.listen({ port: 8086 })
-	.then(( info ) => console.log(`Apollo server started on port - ${info.port}`))
+	await cruddlServer
+		.listen({ port: 8085 })
+		.then(( info ) => console.log(`ArangoDB (Cruddl) server started on port - ${info.port}`))
+
+
+	await authServer
+		.listen({ port: 8086 })
+		.then(async (info) => {
+		
+			console.log(`Auth server started on port - ${info.port}`)
+			
+			const gateway = new ApolloGateway({
+				serviceList: [
+					// { name: 'chatHandler', url: 'https://localhost:8087' },
+					{ name: 'auth', url: 'http://localhost:8086/graphql' }
+				]
+			})
+			
+			const server = new ApolloServer({
+				gateway,
+				engine: false,
+				subscriptions: false
+			})
+		
+			await server
+				.listen({ port: 8088 })
+				.then((info) => console.log(`🚀 Apollo Federation started on port - ${info.port}`))
+		
+		})	
+})()
