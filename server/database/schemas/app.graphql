@@ -28,8 +28,8 @@ type MessageQuickReplyValue {
 	value: String
 }
 
-type Account {
-	id: ID
+type Account @key (fields: "id"){
+	id: ID 
 	email: String
 	password: String
 	firstName: String
@@ -43,12 +43,12 @@ type LoginPayload {
 	user: Account
 }
 
-type Mutation {
+extend type Mutation {
 	login(email: String!, password: String!): LoginPayload
 	register(email: String!, password: String!): LoginPayload
 }
 
-type Query {
+extend type Query {
 	handleMessage(index: Int, message: String): MessageHandler
 	getUser(id: ID): Account
 }
