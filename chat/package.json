@@ -1,25 +1,26 @@
 {
-  "name": "chat",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
-    "@babel/node": "^7.8.4",
-    "@babel/preset-env": "^7.8.4",
-    "@babel/preset-typescript": "^7.8.3",
-    "babel-plugin-import-graphql": "^2.7.0",
-    "typescript": "^3.7.5"
-  },
-  "dependencies": {
-    "apollo-server": "^2.10.0",
-    "graphql": "^14.6.0"
-  }
+	"name": "chat",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start:dev": "nodemon --exec npx babel-node ./index.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/cli": "^7.8.4",
+		"@babel/core": "^7.8.4",
+		"@babel/node": "^7.8.4",
+		"@babel/preset-env": "^7.8.4",
+		"@babel/preset-typescript": "^7.8.3",
+		"babel-plugin-import-graphql": "^2.7.0",
+		"nodemon": "^2.0.2",
+		"typescript": "^3.7.5"
+	},
+	"dependencies": {
+		"apollo-server": "^2.10.0",
+		"graphql": "^14.6.0"
+	}
 }
