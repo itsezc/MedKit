@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "npx babel-node ./source/index.js",
+		"dev": "nodemon --exec babel-node ./source/index.js",
 		"flow": "npx flow-bin start"
 	},
 	"keywords": [],
