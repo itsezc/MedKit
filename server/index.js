@@ -1,3 +1,5 @@
+// @flow
+
 import { ApolloServer, gql } from 'apollo-server'
 import { ApolloGateway, RemoteGraphQLDataSource } from '@apollo/gateway'
 import { buildFederatedSchema } from '@apollo/federation'
@@ -5,14 +7,14 @@ import { buildFederatedSchema } from '@apollo/federation'
 import { ApolloEngineLogger } from './lib/log'
 import remoteContext from './lib/remoteContext'
 import { cruddlSchema, appTypeDefs, appResolvers } from './database/generateSchema'
-import { getUser } from './core/getUser'
+import { getUser } from './core/User/getUser'
 
-const cruddlServer = new ApolloServer({
+const cruddlServer: ApolloServer = new ApolloServer({
 	schema: cruddlSchema,
 	context: ({ req }) => req
 }) 
 
-const authServer = new ApolloServer({
+const authServer: ApolloServer = new ApolloServer({
 	schema: buildFederatedSchema([{ typeDefs: gql`${appTypeDefs}`, resolvers: appResolvers }]),
 	context: async ({ req }) => {
 		
