@@ -1,5 +1,3 @@
-// @flow
-
 import appTypeDefs from './schemas/app.graphql'
 import { Date } from '../resolvers/scalars'
 import { queryResolver as Query } from '../resolvers/query'

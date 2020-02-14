@@ -1,7 +1,7 @@
-import { AUTH_TOKEN } from '../authToken'
+import { AUTH_TOKEN } from '../../authToken'
 import JWT from 'jsonwebtoken'
 
-import { fetch } from './GClient'
+import { fetch } from '../GClient'
 
 export const getUser = async (authorization) => {
 	
