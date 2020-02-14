@@ -9,8 +9,8 @@ type Account @rootEntity {
 }
 
 type Chat @rootEntity {
-	possibilities: [Disease]
-	user: [Account]
+	possibilities: [Disease] @relation
+	user: [Account] @relation
 }
 
 type Activities @rootEntity {
