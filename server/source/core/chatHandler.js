@@ -1,7 +1,4 @@
 export const handleMessage = (index, message) => {
-
-	
-
 	return({
 		_id: index + 1,
 		text: 'New example message',
