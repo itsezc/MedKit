@@ -7,7 +7,9 @@ export const getUser = async (authorization) => {
 	
 	const bearerLength = 'Bearer '.length
 
-	if (authorization && authorization.length > bearerLength) {
+	if (authorization
+		&& authorization !== 'undefined'
+		&& authorization.length > bearerLength) {
 
 		const token = authorization.slice(bearerLength)
 
