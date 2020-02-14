@@ -2,6 +2,7 @@ import { ApolloServer, gql } from 'apollo-server'
 import { ApolloGateway, RemoteGraphQLDataSource } from '@apollo/gateway'
 import { buildFederatedSchema } from '@apollo/federation'
 
+import { ApolloEngineLogger } from './lib/log'
 import remoteContext from './lib/remoteContext'
 import { cruddlSchema, appTypeDefs, appResolvers } from './database/generateSchema'
 import { getUser } from './core/getUser'
@@ -16,7 +17,7 @@ const authServer = new ApolloServer({
 	context: async ({ req }) => {
 		
 		const authorization = req.headers.authorization
-		
+
 		const user = getUser(authorization)
 		
 		return {
@@ -55,18 +56,25 @@ const authServer = new ApolloServer({
 
 			const server = new ApolloServer({
 				gateway,
-				engine: false,
+				engine: {
+					apiKey: 'service:MedKit:Jq_m5qJG3pPBp_ScaExdiA',
+					schemaTag: 'development',
+					debugPrintReports: true,
+				},
 				subscriptions: false,
 				context: async ({ req }) => {
 					return {
 						...req, 
-						authorization: req.headers.authorization
+						authorization: req.headers.authorization || null
 					}
 
 				},
 				cacheControl: {
 					defaultMaxAge: 1
-				}
+				},
+				plugins: [
+					ApolloEngineLogger
+				]
 			})
 		
 			await server
