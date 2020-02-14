@@ -1,4 +1,4 @@
-import { ApolloServer } from 'apollo-server'
+import { ApolloServer, gql } from 'apollo-server'
 import { ApolloGateway } from '@apollo/gateway'
 import { buildFederatedSchema } from '@apollo/federation'
 
@@ -13,12 +13,8 @@ const cruddlServer = new ApolloServer({
 })
 
 const authServer = new ApolloServer({
-	schema: buildFederatedSchema([
-		{
-			typeDefs: appTypeDefs,
-			resolvers: appResolvers,
-		}
-	]),
+	schema: buildFederatedSchema([{ typeDefs: gql`${appTypeDefs}`, resolvers: appResolvers }]
+	),
 	context: async ({ req }) => {
 		
 		const authorization = req.headers.authorization
@@ -49,22 +45,22 @@ const authServer = new ApolloServer({
 		
 			console.log(`Auth server started on port - ${info.port}`)
 			
-			// const gateway = new ApolloGateway({
-			// 	serviceList: [
-			// 		// { name: 'chatHandler', url: 'https://localhost:8087' },
-			// 		{ name: 'auth', url: 'http://localhost:8086/graphql' }
-			// 	]
-			// })
+			const gateway = new ApolloGateway({
+				serviceList: [
+					// { name: 'chatHandler', url: 'https://localhost:8087' },
+					{ name: 'auth', url: 'http://localhost:8086/graphql' }
+				]
+			})
 
-			// const server = new ApolloServer({
-			// 	gateway,
-			// 	engine: false,
-			// 	subscriptions: false
-			// })
+			const server = new ApolloServer({
+				gateway,
+				engine: false,
+				subscriptions: false
+			})
 		
-			// await server
-			// 	.listen({ port: 8088 })
-			// 	.then((info) => console.log(`🚀 Apollo Federation started on port - ${info.port}`))
+			await server
+				.listen({ port: 8088 })
+				.then((info) => console.log(`🚀 Apollo Federation started on port - ${info.port}`))
 		
 		})	
 })()

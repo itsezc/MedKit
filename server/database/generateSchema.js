@@ -12,11 +12,11 @@ const appResolvers = {
 	Mutation,
 	Date,
 	Account: {
-		__resolveReference(object) {
+		__resolveReference(account, context) {
 			return {
 				id: 0,
-				firstName: 'Error',
-				lastName: 'Gateway'
+				firstName: 'Apollo',
+				lastName: 'Federation'
 			}
 		}
 	}
