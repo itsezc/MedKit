@@ -1,9 +1,9 @@
-import { ApolloServer } from 'apollo-server'
+import { ApolloServer, gql } from 'apollo-server'
+import { buildFederatedSchema } from '@apollo/federation'
 
 // @ts-ignore
 import typeDefs from './schema.graphql'
 
 const Server: ApolloServer = new ApolloServer({
-	typeDefs,
-	
+	schema: buildFederatedSchema([ { typeDefs: gql`${typeDefs}`, resolvers } ])
 })
