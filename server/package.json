@@ -4,8 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "npx babel-node ./source/index.js",
+		"start": "node ./build/index.js",
 		"dev": "nodemon --exec babel-node ./source/index.js",
+		"build": "npx babel source --out-dir build",
 		"flow": "npx flow-bin start"
 	},
 	"keywords": [],
