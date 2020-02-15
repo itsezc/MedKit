@@ -1,1 +1,3 @@
-export const AUTH_TOKEN = 'MedKitDemo'
+// @flow 
+
+export const AUTH_TOKEN: string = 'MedKitDemo'

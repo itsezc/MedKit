@@ -6,17 +6,17 @@ import JWT from 'jsonwebtoken'
 
 import { fetch } from '../GClient'
 
-export const authUser = async (authorization: string | void) => {
+export const authUser = async (authorization: string | void): IAccount => {
 	
-	const bearerLength = 'Bearer '.length
+	const bearerLength: number = 'Bearer '.length
 
 	if (authorization
 		&& authorization !== 'undefined'
 		&& authorization.length > bearerLength) {
 
-		const token = authorization.slice(bearerLength)
+		const token: string = authorization.slice(bearerLength)
 
-		const { ok, result } = await new Promise(async (resolve) => {
+		const { ok, result }: { ok: boolean, result: any } = await new Promise(async (resolve) => {
 
 			JWT.verify(token, AUTH_TOKEN, (error, result) => {
 
@@ -37,12 +37,12 @@ export const authUser = async (authorization: string | void) => {
 
 		if (ok) {
 
-			return await fetchAccount(result.id)
+			const { id }: { id: number} = result
+			return await fetchAccount(id)
 
 		} else {
 
 			console.error(await result)
-			return null
 
 		}
 	}

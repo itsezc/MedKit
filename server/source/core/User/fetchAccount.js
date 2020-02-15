@@ -2,7 +2,7 @@
 
 import { query } from '../GClient'
 
-export default async(id: number): Promise<Account> => {
+export default async(id: number): Promise<IAccount> => {
 
 	const GET_USER = `
 		query getAccount($id: ID!) {
@@ -17,7 +17,7 @@ export default async(id: number): Promise<Account> => {
 		}
 	`
 
-	const { Account } = await query(GET_USER, { id })
+	const { Account }: { Account: IAccount } = await query(GET_USER, { id })
 
 	return Account
 }
