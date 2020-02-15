@@ -2,6 +2,12 @@ type Response {
 	content: String
 }
 
+type IdentifyResponse {
+	diseases: [String]
+	symptoms: [String]
+}
+
 type Query {
 	handleMessage(content: String): Response
+	identify(term: String!): IdentifyResponse
 }
