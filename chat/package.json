@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "npx babel source --out-dir build",
-		"dev": "nodemon --exec npx babel-node ./source/index.ts"
+		"dev": "nodemon --exec npx babel-node ./source/index.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -21,6 +21,7 @@
 		"typescript": "^3.7.5"
 	},
 	"dependencies": {
+		"@apollo/federation": "^0.12.1",
 		"apollo-server": "^2.10.0",
 		"graphql": "^14.6.0"
 	}
