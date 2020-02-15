@@ -1,6 +1,8 @@
 import { ApolloServer, gql } from 'apollo-server'
 import { buildFederatedSchema } from '@apollo/federation'
 
+import resolvers from './resolvers'
+
 // @ts-ignore
 import typeDefs from './schema.graphql'
 
