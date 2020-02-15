@@ -1,72 +1,25 @@
-import { AUTH_TOKEN } from '../../authToken'
-import JWT from 'jsonwebtoken'
+// @flow
 
-import { fetch } from '../GClient'
+import { query } from '../GClient'
 
-export const getUser = async (authorization) => {
-	
-	const bearerLength = 'Bearer '.length
+export default async(id: number) => {
 
-	if (authorization
-		&& authorization !== 'undefined'
-		&& authorization.length > bearerLength) {
-
-		const token = authorization.slice(bearerLength)
-
-		const { ok, result } = await new Promise(async (resolve) => {
-
-			JWT.verify(token, AUTH_TOKEN, (error, result) => {
-
-				if (error) {
-					resolve({
-						ok: false, 
-						result: error
-					})
-				} else {
-					resolve({
-						ok: true,
-						result
-					})
-				}
-
-			})
-		})
-
-		if (ok) {
-
-			const query = `
-				query getAccount($id: ID!) {
-					Account(id: $id) {
-						id
-						email
-						firstName
-						lastName
-						dateOfBirth
-						weight
-					}
-				}
-			`
-
-			const user = await fetch.post('', 
-				JSON.stringify({
-					query,
-					variables: { id: result.id }
-				})
-			)
-
-			const { data: { data: { Account } } } = user 
-
-			return Account
-
-		} else {
-
-			console.error(await result)
-			return null
-
+	const GET_USER = `
+		query getAccount($id: ID!) {
+			Account(id: $id) {
+				id
+				email
+				firstName
+				lastName
+				dateOfBirth
+				weight
+			}
 		}
+	`
 
-		return null
-	}
+	const reqUser = await query(GET_USER, { id })
 
+	const user = reqUser.Account
+
+	return user
 }
-
