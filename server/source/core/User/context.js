@@ -1,7 +1,7 @@
 // @flow 
 
 import { AUTH_TOKEN } from '../../authToken'
-import getUser from './getUser'
+import fetchAccount from './fetchAccount'
 import JWT from 'jsonwebtoken'
 
 import { fetch } from '../GClient'
@@ -37,7 +37,7 @@ export const authUser = async (authorization: string | void) => {
 
 		if (ok) {
 
-			return await getUser(result.id)
+			return await fetchAccount(result.id)
 
 		} else {
 
