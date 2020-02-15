@@ -10,6 +10,7 @@ module.exports = (api) => {
 			}
 		  }
 	    ],
+	    '@babel/preset-flow',
 	    '@babel/preset-typescript'
 	]
   
