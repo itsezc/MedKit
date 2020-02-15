@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start:dev": "nodemon --exec npx babel-node ./index.ts"
+		"build": "npx babel source --out-dir build",
+		"dev": "nodemon --exec npx babel-node ./source/index.ts"
 	},
 	"keywords": [],
 	"author": "",
