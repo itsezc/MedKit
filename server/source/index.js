@@ -7,7 +7,7 @@ import { buildFederatedSchema } from '@apollo/federation'
 import { ApolloEngineLogger } from './lib/log'
 import remoteContext from './lib/remoteContext'
 import { cruddlSchema, appTypeDefs, appResolvers } from './database/generateSchema'
-import { getUser } from './core/User/getUser'
+import { getUser } from './core/User/context'
 
 const cruddlServer: ApolloServer = new ApolloServer({
 	schema: cruddlSchema,

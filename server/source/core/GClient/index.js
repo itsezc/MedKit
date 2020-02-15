@@ -1,3 +1,5 @@
+// @flow 
+
 import Request from 'axios'
 
 export const fetch = Request.create({
@@ -11,7 +13,7 @@ export const fetch = Request.create({
 	responseType: 'json'
 })
 
-export const query = async(query, variables) => {
+export const query = async(query: string, variables?: any) => {
 	const { data } = await fetch.post('', JSON.stringify({ query, variables }))
 	return data.data
 }
