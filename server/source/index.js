@@ -7,7 +7,7 @@ import { buildFederatedSchema } from '@apollo/federation'
 import { ApolloEngineLogger } from './lib/log'
 import remoteContext from './lib/remoteContext'
 import { cruddlSchema, appTypeDefs, appResolvers } from './database/generateSchema'
-import { getUser } from './core/User/context'
+import { authUser } from './core/User/context'
 
 const cruddlServer: ApolloServer = new ApolloServer({
 	schema: cruddlSchema,
@@ -20,7 +20,7 @@ const authServer: ApolloServer = new ApolloServer({
 		
 		const authorization = req.headers.authorization
 
-		const user = getUser(authorization)
+		const user = authUser(authorization)
 		
 		return {
 			...req, 

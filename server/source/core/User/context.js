@@ -1,9 +1,12 @@
+// @flow 
+
 import { AUTH_TOKEN } from '../../authToken'
+import getUser from './getUser'
 import JWT from 'jsonwebtoken'
 
 import { fetch } from '../GClient'
 
-export const getUser = async (authorization) => {
+export const authUser = async (authorization: string | void) => {
 	
 	const bearerLength = 'Bearer '.length
 
@@ -34,29 +37,7 @@ export const getUser = async (authorization) => {
 
 		if (ok) {
 
-			const query = `
-				query getAccount($id: ID!) {
-					Account(id: $id) {
-						id
-						email
-						firstName
-						lastName
-						dateOfBirth
-						weight
-					}
-				}
-			`
-
-			const user = await fetch.post('', 
-				JSON.stringify({
-					query,
-					variables: { id: result.id }
-				})
-			)
-
-			const { data: { data: { Account } } } = user 
-
-			return Account
+			return await getUser(result.id)
 
 		} else {
 
@@ -64,8 +45,6 @@ export const getUser = async (authorization) => {
 			return null
 
 		}
-
-		return null
 	}
 
 }
