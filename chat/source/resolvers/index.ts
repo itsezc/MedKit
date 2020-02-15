@@ -1,5 +1,5 @@
 import { gql } from 'apollo-server'
-import { query } from '../../server/core/GClient'
+import indentify from '../library/indentify'
 
 /**
  *  1) Symptom || Disease -> Analyse if it is a symptom or disease
@@ -23,51 +23,5 @@ export default {
 
 	},
 
-	identify: async (parent, { term }, context, info) => {		
-		
-		/**
-		 * Find any diseases with the search term in the database
-		 */
-		
-		const QUERY_DISEASES = gql`
-			query findDisease($term: String) {
-				allDiseases(filter: {
-					name_like: $term
-				}) {
-					name
-				}
-			}
-		`
-
-		const { allDiseases } = await query(QUERY_DISEASES, { term })
-
-		if (allDiseases.name) {
-			return {
-				disease: allDiseases.name
-			}
-		}
-
-		/** 
-		 * Find any symptoms with the search term in the database
-		*/
-
-		const QUERY_SYMPTOMS = gql`
-			query findSymptom($term: String) {
-				allSymptoms(
-					filter: {
-						name_like: $term
-					}
-				) {
-					name
-				}
-			}
-		`	
-		const { allSymptoms } = await query(QUERY_DISEASES, { term })
-
-		if (allSymptoms.name) {
-			return {
-				symptoms: [allSymptoms]
-			}
-		}
-	}
+	indentify
 }
