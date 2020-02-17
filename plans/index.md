@@ -32,8 +32,13 @@ After Identifying, two diseases and their symptoms
 	(S) Sneezing
 	(S) High Temp
 	(S) Coughing
+		Yes / No 
+		If Yes -> 
+			
 
 (D) Chest Infection
 	(S) Coughing
 	(S) Hard to Breathe
+
+
 

@@ -31,6 +31,7 @@ type MessageQuickReplyValue {
 type Account @key(fields: "id"){
 	id: ID 
 	email: String
+	phone: String
 	password: String
 	firstName: String
 	lastName: String

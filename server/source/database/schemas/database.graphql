@@ -1,5 +1,7 @@
 type Account @rootEntity {
     email: String @unique
+    phone: String
+    phoneExt: String
     password: String
     firstName: String
     lastName: String
