@@ -1,8 +1,6 @@
 import * as React from 'react'
 const { useState } = React
 
-import i18N from './Translate'
-
 import { Platform, StatusBar, AppRegistry } from 'react-native'
 
 import { AppLoading } from 'expo'
@@ -43,16 +41,15 @@ export default function App(props) {
 async function loadResourcesAsync() {
 	await Promise.all([
 		Asset.loadAsync([
-			require('./assets/images/robot-dev.png'),
-			require('./assets/images/robot-prod.png'),
+			require('./assets/images/food.png'),
+			require('./assets/images/icon.png'),
 		]),
 		Font.loadAsync({
-			// We include SpaceMono because we use it in HomeScreen.js. Feel free to
-			// remove this if you are not using it in your app
 			'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
 		}),
 	]);
 }
+ 
 
 function handleLoadingError(error) {
 	// In this case, you might want to report the error to your error reporting
@@ -64,4 +61,4 @@ function handleFinishLoading(setLoadingComplete) {
 	setLoadingComplete(true);
 }
 
-AppRegistry.registerComponent('MedicalApp', () => App)
+;AppRegistry.registerComponent('MedKit', () => App)
