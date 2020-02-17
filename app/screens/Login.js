@@ -74,9 +74,10 @@ export default (props) => {
 	})
 
 	return(
-		<Screen
+		<View
 			style={{
-				backgroundImage: null
+				flex: 1,
+				backgroundColor: '#2276df'
 			}}
 		>
 			<Container>
@@ -132,6 +133,6 @@ export default (props) => {
 					</SubmitButton>
 				</View>
 			</Container>
-		</Screen>
+		</View>
 	)
 }

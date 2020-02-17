@@ -9,6 +9,6 @@ export const Container = Style.View`
 	padding: 100px 30px 50px 30px;
 	justify-content: center;
 	align-items: stretch;
-	height: 100vh;
+	height: 100%;
 `
 
