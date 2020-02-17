@@ -3,11 +3,9 @@ import { AsyncStorage as Storage } from 'react-native'
 
 export const verifyAuth = async (data) => {
 
-	const { login } = data 
+	const { login: { token } } = data 
 
-	if (login) {
-
-		const { token } = login
+	if (token) {
 
 		try {
 
@@ -18,7 +16,5 @@ export const verifyAuth = async (data) => {
 			console.log('ERROR', e)
 
 		}
-
-		console.log('Token: ', await Storage.getItem('token'))
 	}
 }
