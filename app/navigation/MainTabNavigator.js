@@ -13,8 +13,7 @@ import Logout from '../screens/Logout'
 import { Icon } from '../components/Icon'
 
 const config = Platform.select({
-	web: { headerMode: 'none' },
-	default: {},
+	default: { headerMode: 'none' },
 });
 
 const HomeStack = createStackNavigator(
