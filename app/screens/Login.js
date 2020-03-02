@@ -125,9 +125,7 @@ export default (props) => {
 					}}
 				>
 					<SubmitButton
-						onPress={() => {
-							processLogin({ variables: { email, password }})
-						}}
+						onPress={() => processLogin({ variables: { email, password }})}
 					>
 						Done
 					</SubmitButton>

@@ -1,58 +1,48 @@
+import { gql } from 'apollo-server'
 import { query } from '../GClient'
 
-// Example: cold (can be both a symptom and disease - i.e. Common Cold)
+export default async function(parent, { terms }, context, info) {
+	
+	/**
+		Find diseases based on the terms provided
+		Terms is reference for the names of symptoms
 
-export default async function(parent, { term }, context, info) {
-
-	const QUERY_DISEASES = gql`
-		query findDisease($term: String!) {
+		@type Terms is an array of strings
+	*/
+	const FIND_DISEASES = gql`
+		query findDiseases($terms: [String]!) {
 			allDiseases(
 				filter: {
-					name_like: $term
+
 				}
 			) {
-				name
+				id
 			}
 		}
 	`
+
+	/**
+		Example response:
+		
+		[
+			{
+				id: 1,
+			},
+			{
+				id: 24,
+			}
+		]
 	
-	const { allDiseases } = await query(QUERY_DISEASES, { term })
-
-	if (allDiseases.name) {
-		return {
-			diseases: allDiseases.name // An array of names whether its 0, 1, 100
-		}
-	}
-
-	/** 
-		* Find any symptoms with the search term in the database
 	*/
 
-	const QUERY_SYMPTOMS = gql`
-		query findSymptom($term: String) {
-			allSymptoms(
-				filter: {
-					name_like: $term
-				}
-			) {
-				name
-			}
-		}
-	`	
-	const { allSymptoms } = await query(QUERY_DISEASES, { term })
+	const { allDiseases } = await query(FIND_DISEASES, { terms })
 
-	if (allSymptoms.name) {
-		return {
-			symptoms: [allSymptoms]
-		}
+	const diseases = []
+	
+	await allDiseases.forEach(disease => diseases.push(disease.id))
+
+	return {
+		diseases
 	}
 
-	// return {
-	// 	diseases: [
-	// 		'cold',
-	// 		'chest infection',
-	// 		'fever',
-	// 		'asthma'
-	// 	]
-	// }
 }

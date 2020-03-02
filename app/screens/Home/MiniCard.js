@@ -2,27 +2,25 @@ import React from 'react'
 import { TouchableWithoutFeedback, ScrollView, View, Text, Image } from 'react-native'
 import Styled from 'styled-components/native'
 
-import { useTranslation } from 'react-i18next'
-
 import quickActions from '../../assets/data/quickActions'
 
+
 const MiniCardContainer = Styled.View`
-	margin: 10px 20px 0px 20px;
-	border-radius: 10px;
 	background-color: #FFFFFF;
-	width: 80%;
-	padding: 10px;
 	width: 145px;
 	height: 130px;
+	padding: 10px;
+	margin: 10px 20px 0px 20px;
+	border-radius: 10px;
 	shadow-opacity: 0.1;
 	shadow-offset: 0px 0px;
 	shadow-radius: 6px;
 	shadow-color: #000;
+	z-index: 3;
 `
 
-export const MiniCard = (props) => {
 
-	const [t, i18n] = useTranslation()
+export const MiniCard = (props) => {
 
 	return (
 		<TouchableWithoutFeedback
@@ -36,13 +34,14 @@ export const MiniCard = (props) => {
 				<View
 					style={{
 						backgroundColor: '#3BCCBB',
-						height: '30px',
+						height: 30,
 						width: '65%',
 						position: 'absolute',
 						top: 0,
 						left: 32,
 						borderRadius: 10,
-						opacity: 0.5
+						opacity: 0.5,
+						zIndex: 2
 					}}
 				/>
 				<MiniCardContainer>
@@ -56,7 +55,7 @@ export const MiniCard = (props) => {
 						minimumFontScale={5}
 						style={{ marginTop: 15, marginLeft: 2, fontSize: 20 }}
 					>
-						{t(props.name)}
+						{props.name}
 					</Text>
 				</MiniCardContainer>
 

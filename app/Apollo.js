@@ -6,7 +6,7 @@ import { AsyncStorage as Storage } from 'react-native'
 const cache = new InMemoryCache()
 
 const httpLink = new HttpLink({
-	uri: 'http://localhost:8088/graphql'
+	uri: 'http://192.168.0.111:8088/graphql'
 })
 
 const middlewareLink = setContext(async (_, { headers }) => {

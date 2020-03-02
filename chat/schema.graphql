@@ -3,11 +3,11 @@ type Response {
 }
 
 type IdentifyResponse {
-	diseases: [String]
-	symptoms: [String]
+	diseases: [ID]
+	symptoms: [ID]
 }
 
 type Query {
 	handleMessage(content: String): Response
-	identify(term: String!): IdentifyResponse
+	identify(term: [String]!): IdentifyResponse
 }

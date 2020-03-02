@@ -7,7 +7,7 @@ Option B: allSymptoms(filter: { name: $term })
 
 ### Identification
 
-Fetch the diseases[] assosicated with symptom
+Fetch the diseases[] assosicated with symptoms
 
 Option A / Option B {
 	diseases {

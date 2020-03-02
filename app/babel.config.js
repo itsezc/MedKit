@@ -6,6 +6,6 @@ module.exports = function(api) {
     		presets: [
 			'module:metro-react-native-babel-preset',
 			'@babel/preset-flow'
-		],
+		]
   	};
 };

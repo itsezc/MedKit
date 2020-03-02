@@ -60,7 +60,7 @@ export default (props) => {
 								position: 'absolute',
 								right: 30,
 							}}
-							source='https://www.biography.com/.image/t_share/MTY2MzU3Nzk2OTM2MjMwNTkx/elon_musk_royal_society.jpg'
+							source={{ uri: 'https://www.biography.com/.image/t_share/MTY2MzU3Nzk2OTM2MjMwNTkx/elon_musk_royal_society.jpg'}}
 						/>
 					</TouchableWithoutFeedback>
 				</View>
@@ -84,7 +84,7 @@ export default (props) => {
 					navigation={props.navigation}
 				/>
 				
-				<Calendar />
+				{/*  <Calendar /> */}
 				
 			</Screen>
 		)

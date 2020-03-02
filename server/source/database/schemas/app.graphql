@@ -28,7 +28,7 @@ type MessageQuickReplyValue {
 	value: String
 }
 
-type Account @key(fields: "id"){
+type Account @key(fields: "id") {
 	id: ID 
 	email: String
 	phone: String
