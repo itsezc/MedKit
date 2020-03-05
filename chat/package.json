@@ -18,6 +18,7 @@
 		"@babel/preset-env": "^7.8.4",
 		"@babel/preset-flow": "^7.8.3",
 		"@babel/preset-typescript": "^7.8.3",
+		"@types/socket.io": "^2.1.4",
 		"babel-plugin-import-graphql": "^2.7.0",
 		"babel-watch": "^7.0.0",
 		"nodemon": "^2.0.2",
@@ -27,6 +28,7 @@
 		"@apollo/federation": "^0.12.1",
 		"apollo-server": "^2.10.0",
 		"axios": "^0.19.2",
-		"graphql": "^14.6.0"
+		"graphql": "^14.6.0",
+		"socket.io": "^2.3.0"
 	}
 }
