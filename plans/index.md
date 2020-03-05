@@ -34,3 +34,5 @@
 	Notes:
 
 	You'll know what queries and mutations are possible by running the server (connected to an ArangoDB) and going on http://localhost:8085 - which is the ORM server and clicking on the Docs.
+
+	Technically, its improbable to be 100% accurate or get the right disease every time
