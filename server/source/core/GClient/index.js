@@ -13,7 +13,7 @@ export const fetch = Request.create({
 	responseType: 'json'
 })
 
-export const query = async(query: string, variables?: any) => {
+export const query = async(query: string | DocumentNode, variables?: any) => {
 	const { data } = await fetch.post('', JSON.stringify({ query, variables }))
 	return data.data
 }
