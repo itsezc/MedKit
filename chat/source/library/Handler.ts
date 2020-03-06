@@ -1,4 +1,5 @@
 import SocketIO from 'socket.io'
+import { Event } from '../constants'
 
 export function Handler(Socket: SocketIO.Socket, Server: SocketIO.Server) {
 
@@ -8,7 +9,7 @@ export function Handler(Socket: SocketIO.Socket, Server: SocketIO.Server) {
 
 	console.log('Client connected with ID', id)
 
-	Socket.on('message', async(data: string | object) => {
+	Socket.on(Event.MESSAGE, async(data: string | object) => {
 				
 		const { index, message }: { index: number, message: string } = typeof data === 'string' ?
 													JSON.parse(data) : data
@@ -24,7 +25,7 @@ export function Handler(Socket: SocketIO.Socket, Server: SocketIO.Server) {
 		})
 	})
 
-	Socket.on('disconnect', () => {
+	Socket.on(Event.DISCONNECT, () => {
 		console.log('Client disconnected with ID', id)
 	})
 	
