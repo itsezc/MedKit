@@ -1,48 +1,25 @@
-import { gql } from 'apollo-server'
+import gql from 'graphql-tag'
 import { query } from '../GClient'
+import { DocumentNode } from 'graphql'
 
-export default async function(parent, { terms }, context, info) {
+export default async ({ terms }: { terms: [string] }) => {
 	
-	/**
-		Find diseases based on the terms provided
-		Terms is reference for the names of symptoms
+	terms.forEach(async (term: string) => {
 
-		@type Terms is an array of strings
-	*/
-	const FIND_DISEASES = gql`
-		query findDiseases($terms: [String]!) {
-			allDiseases(
-				filter: {
-
+		const FIND_DISEASES: DocumentNode = gql`
+			query findDiseases($term: String!) {
+				allDiseases(
+					filter: {
+						symptoms_some: {
+							id: $term
+						}
+					}
+				) {
+					name
 				}
-			) {
-				id
 			}
-		}
-	`
-
-	/**
-		Example response:
-		
-		[
-			{
-				id: 1,
-			},
-			{
-				id: 24,
-			}
-		]
-	
-	*/
-
-	const { allDiseases } = await query(FIND_DISEASES, { terms })
-
-	const diseases = []
-	
-	await allDiseases.forEach(disease => diseases.push(disease.id))
-
-	return {
-		diseases
-	}
+		`
+		const results = await query(FIND_DISEASES, { term })
+	})
 
 }
