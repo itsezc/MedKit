@@ -12,7 +12,7 @@ export class Server {
 	}
 
 	private async init() {
-		this.http = Hapi.server({ port: this.port })
+		this.http = new Hapi.Server({ port: this.port })
 		await this.http.start()
 		console.log(`[HTTP] Server started on port ${this.http.info.port}`)
 		this.server = SocketIO(this.http.listener)
