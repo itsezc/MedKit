@@ -1,4 +1,4 @@
-import SocketIO from 'socket.io'
+import SocketIO, { Socket } from 'socket.io'
 import Hapi from '@hapi/hapi'
 
 export class Server {
@@ -27,10 +27,22 @@ export class Server {
 			
 			console.log('Client connected with ID', id)
 
-			socket.on('message', (message: any) => {
-				console.log('Message recieved', message)
+			// { "index": 5, "message": "Wow" }
 
-				this.server.emit('message', message)
+			socket.on('message', async(data: string | object) => {
+				
+				const { index, message }: { index: number, message: string } = typeof data === 'string' ?
+															JSON.parse(data) : data
+
+				this.server.emit('message', {
+					_id: index + 1,
+					createdAt: new Date(),
+					text: message,
+					user: {
+						_id: 2,
+						name: 'MedKit',
+					}
+				})
 			})
 
 			socket.on('disconnect', () => {
