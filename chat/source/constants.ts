@@ -1,5 +1,6 @@
 export enum Event {
 	CONNECT = 'connect',
 	DISCONNECT = 'disconnect',
-	MESSAGE = 'message'
+	MESSAGE = 'message',
+	IDENTIFY = 'identify'
 }

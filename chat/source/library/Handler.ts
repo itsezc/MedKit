@@ -1,5 +1,6 @@
 import SocketIO from 'socket.io'
 import { Event } from '../constants'
+import Identify from './identify'
 
 export function Handler(Socket: SocketIO.Socket, Server: SocketIO.Server) {
 
@@ -8,6 +9,8 @@ export function Handler(Socket: SocketIO.Socket, Server: SocketIO.Server) {
 	const { id } = Socket
 
 	console.log('Client connected with ID', id)
+
+	Socket.on(Event.IDENTIFY, Identify)
 
 	Socket.on(Event.MESSAGE, async(data: string | object) => {
 				
