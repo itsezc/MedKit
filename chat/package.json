@@ -5,8 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "npx babel source --out-dir build",
-		"dev": "nodemon --exec npx babel-node --extensions '.ts,.tsx' ./source/main.ts",
-		"dev:new": "babel-watch --watch source source/main.ts --extensions \".ts\""
+		"dev": "babel-watch --watch source source/main.ts --extensions \".ts\""
 	},
 	"keywords": [],
 	"author": "",
@@ -26,6 +25,8 @@
 	},
 	"dependencies": {
 		"@apollo/federation": "^0.12.1",
+		"@hapi/hapi": "^19.1.1",
+		"@types/hapi": "^18.0.3",
 		"apollo-server": "^2.10.0",
 		"axios": "^0.19.2",
 		"graphql": "^14.6.0",
