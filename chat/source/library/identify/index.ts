@@ -2,18 +2,18 @@ import gql from 'graphql-tag'
 import { query } from '../GClient'
 import { DocumentNode } from 'graphql'
 
-export default async ({ terms }: { terms: [string] }) => {
+export default async ({ symptoms }: { symptoms: [string] }) => {
 
 	const results: [string?] = []
 	
-	terms.forEach(async (term: string) => {
+	symptoms.forEach(async(symptom: string) => {
 
 		const FIND_DISEASES: DocumentNode = gql`
-			query findDiseases($term: String!) {
+			query findDiseases($symptom: String!) {
 				allDiseases(
 					filter: {
 						symptoms_some: {
-							id: $term
+							id: $symptom
 						}
 					}
 				) {
@@ -21,7 +21,7 @@ export default async ({ terms }: { terms: [string] }) => {
 				}
 			}
 		`
-		const diseases: [{ id: string }] = await query(FIND_DISEASES, { term })
+		const diseases: [{ id: string }] = await query(FIND_DISEASES, { symptom })
 	
 		diseases.forEach(({ id }) => results.push(id))
 		
