@@ -1,18 +1,23 @@
 import SocketIO from 'socket.io'
+import Hapi from '@hapi/hapi'
 
 export class Server {
 	
 	public static readonly PORT:number = 8087
 	private server: SocketIO.Server
-	
+	private http: Hapi.Server
+
 	constructor() {
 		this.init()
-		this.process()
-		this.listen()
 	}
 
-	private init() {
-		this.server = SocketIO()
+	private async init() {
+		this.http = Hapi.server({
+			port: this.PORT
+		})
+		await this.http.start()
+		this.server = SocketIO(this.http.listener)
+		this.process()
 	}
 
 	private process() {
@@ -33,9 +38,4 @@ export class Server {
 			})
 		})
 	}
-
-	private listen() {
-		this.server.listen(PORT)
-	}
-
 }
