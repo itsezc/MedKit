@@ -1,4 +1,4 @@
-export function Frequent(array: []) {
+export function Frequent(array: [string]): string {
 	return Object.entries(array.reduce((previous: any, current: any) => {
 		if (previous[current] === undefined) previous[current] = 1
 		else previous[current]++
