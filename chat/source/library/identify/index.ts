@@ -4,7 +4,7 @@ import { DocumentNode } from 'graphql'
 
 export default async ({ terms }: { terms: [string] }) => {
 
-	const results = []
+	const results: [string?] = []
 	
 	terms.forEach(async (term: string) => {
 
@@ -24,6 +24,7 @@ export default async ({ terms }: { terms: [string] }) => {
 		const diseases: [{ id: string }] = await query(FIND_DISEASES, { term })
 	
 		diseases.forEach(({ id }) => results.push(id))
+		
 	})
 
 }
