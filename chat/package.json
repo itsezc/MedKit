@@ -27,9 +27,9 @@
 		"@apollo/federation": "^0.12.1",
 		"@hapi/hapi": "^19.1.1",
 		"@types/hapi__hapi": "^19.0.2",
-		"apollo-server": "^2.10.0",
 		"axios": "^0.19.2",
 		"graphql": "^14.6.0",
+		"graphql-tag": "^2.10.3",
 		"socket.io": "^2.3.0"
 	}
 }
