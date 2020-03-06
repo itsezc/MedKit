@@ -5,4 +5,3 @@ export function Frequent(array: []) {
 		return previous
 	}, {})).reduce((previous, current) => (current[1] >= previous[1] ? current : previous))[0]
 }
-

@@ -3,6 +3,8 @@ import { query } from '../GClient'
 import { DocumentNode } from 'graphql'
 
 export default async ({ terms }: { terms: [string] }) => {
+
+	const results = []
 	
 	terms.forEach(async (term: string) => {
 
@@ -15,11 +17,13 @@ export default async ({ terms }: { terms: [string] }) => {
 						}
 					}
 				) {
-					name
+					id
 				}
 			}
 		`
-		const results = await query(FIND_DISEASES, { term })
+		const diseases: [{ id: string }] = await query(FIND_DISEASES, { term })
+	
+		diseases.forEach(({ id }) => results.push(id))
 	})
 
 }
