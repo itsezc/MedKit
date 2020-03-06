@@ -2,11 +2,11 @@ import gql from 'graphql-tag'
 import { query } from '../GClient'
 import { DocumentNode } from 'graphql'
 
-export default async ({ symptoms }: { symptoms: [string] }) => {
+export default async ({ symptoms }: { symptoms: string[] }) => {
 
-	const results: [string?] = []
+	const results: string[] = []
 	
-	symptoms.forEach(async(symptom: string) => {
+	symptoms.forEach(async(symptom) => {
 
 		const FIND_DISEASES: DocumentNode = gql`
 			query findDiseases($symptom: String!) {
