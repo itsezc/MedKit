@@ -3,7 +3,7 @@ import Hapi from '@hapi/hapi'
 
 export class Server {
 	
-	public static readonly PORT:number = 8087
+	public readonly port:number = 8087
 	private server: SocketIO.Server
 	private http: Hapi.Server
 
@@ -12,11 +12,11 @@ export class Server {
 	}
 
 	private async init() {
-		this.http = Hapi.server({
-			port: this.PORT
-		})
+		this.http = Hapi.server({ port: this.port })
 		await this.http.start()
+		console.log(`[HTTP] Server started on port ${this.http.info.port}`)
 		this.server = SocketIO(this.http.listener)
+		console.log(`[WS] Server binded to HTTP`)
 		this.process()
 	}
 
@@ -25,12 +25,12 @@ export class Server {
 
 			const { id } = socket
 			
-			console.log('Client connected with ID ', id)
+			console.log('Client connected with ID', id)
 
 			socket.on('message', (message: any) => {
-				console.log('message')
+				console.log('Message recieved', message)
 
-				// this.server.emit('message', )
+				this.server.emit('message', message)
 			})
 
 			socket.on('disconnect', () => {
