@@ -1,5 +1,6 @@
 import SocketIO, { Socket } from 'socket.io'
 import Hapi from '@hapi/hapi'
+import { Handler } from './library/Handler'
 
 export class Server {
 	
@@ -21,33 +22,6 @@ export class Server {
 	}
 
 	private process() {
-		this.server.on('connect', (socket: SocketIO.Socket) => {
-
-			const { id } = socket
-			
-			console.log('Client connected with ID', id)
-
-			// { "index": 5, "message": "Wow" }
-
-			socket.on('message', async(data: string | object) => {
-				
-				const { index, message }: { index: number, message: string } = typeof data === 'string' ?
-															JSON.parse(data) : data
-
-				this.server.emit('message', {
-					_id: index + 1,
-					createdAt: new Date(),
-					text: message,
-					user: {
-						_id: 2,
-						name: 'MedKit',
-					}
-				})
-			})
-
-			socket.on('disconnect', () => {
-				console.log('Client disconnected with ID', id)
-			})
-		})
+		this.server.on('connect', (Socket) => Handler(Socket, this.server))
 	}
 }
