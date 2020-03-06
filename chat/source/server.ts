@@ -21,7 +21,7 @@ export class Server {
 	}
 
 	private process() {
-		this.server.on('connect', (socket: any) => {
+		this.server.on('connect', (socket: SocketIO.Socket) => {
 
 			const { id } = socket
 			
