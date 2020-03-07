@@ -1,6 +1,22 @@
 export const Data = {
 
-	__relations: [],
+	__relations: [
+		{
+			type: 'Disease',
+			Disease: {
+				name: 'Common Cold'
+			},
+			Symptom: [
+				{
+					name: 'Feeling Cold'
+				},
+				{
+					name: 'Cough'
+				}
+			]
+		}
+			
+	],
 
 	Accounts: [
 		`
