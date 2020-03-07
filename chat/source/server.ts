@@ -6,7 +6,7 @@ import { Event } from './constants'
 export class Server {
 	
 	public readonly port:number = 8087
-	private server: SocketIO.Server
+	public server: SocketIO.Server
 	private http: Hapi.Server
 
 	constructor() {
@@ -23,6 +23,6 @@ export class Server {
 	}
 
 	private process() {
-		this.server.on(Event.CONNECT, (Socket) => Handler(Socket, this.server))
+		this.server.on(Event.CONNECT, (Socket) => Handler)
 	}
 }
