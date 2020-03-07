@@ -1,6 +1,7 @@
 // @flow 
 
 import Request from 'axios'
+import type { DocumentNode } from 'graphql'
 
 export const fetch = Request.create({
 	method: 'post',
