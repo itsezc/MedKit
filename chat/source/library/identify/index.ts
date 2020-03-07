@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 import { query } from '../GClient'
 import { DocumentNode } from 'graphql'
 
-export default async ({ symptoms }: { symptoms: string[] }) => {
+export async function Identify({ symptoms }: { symptoms: string[] }): Promise<string[]> {
 
 	const results: string[] = []
 	
@@ -27,4 +27,5 @@ export default async ({ symptoms }: { symptoms: string[] }) => {
 		
 	})
 
+	return results
 }
