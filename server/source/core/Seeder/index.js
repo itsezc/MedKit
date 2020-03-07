@@ -16,10 +16,10 @@ export async function Seed(): Promise<boolean | void> {
 		await query(DELETE_ALL_DISEASES)
 		await query(DELETE_ALL_SYMPTOMS)
 
-		let seed = (({ __relations, ...object }) => object)(Data)
+		let seed: { [string]: string[] } = (({ __relations, ...object }) => object)(Data)
 
 		Object.keys(seed).forEach(async(property) =>
-			await Data[property].forEach(async(GQuery) => 
+			await Data[property].forEach(async(GQuery: string) => 
 				console.log(await query(GQuery))
 			)
 		)
@@ -27,8 +27,6 @@ export async function Seed(): Promise<boolean | void> {
 	} catch (e) {
 		console.error(e)
 	}
-	
-	
 
 	return true
 }

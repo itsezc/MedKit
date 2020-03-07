@@ -1,4 +1,7 @@
 export const Data = {
+
+	__relations: [],
+
 	Accounts: [
 		`
 			mutation {
