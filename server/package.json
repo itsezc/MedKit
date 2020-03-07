@@ -7,7 +7,8 @@
 		"start": "node ./build/index.js",
 		"dev": "nodemon --exec babel-node ./source/index.js",
 		"build": "npx babel source --out-dir build",
-		"flow": "npx flow-bin start"
+		"flow": "npx flow-bin start",
+		"seed": "npx babel-node ./source/core/Seeder/index.js"
 	},
 	"keywords": [],
 	"author": "",
