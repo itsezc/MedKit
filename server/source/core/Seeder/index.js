@@ -1,6 +1,5 @@
 // @flow
 
-import { gql } from 'apollo-server'
 import { query } from '../GClient'
 import { Data } from '../../../seed'
 
@@ -16,14 +15,14 @@ export async function Seed(): Promise<boolean | void> {
 		await query(DELETE_ALL_DISEASES)
 		await query(DELETE_ALL_SYMPTOMS)
 
-		let seed: { [string]: string[] } = (({ __relations, ...object }) => object)(Data)
+		const seed: { [string]: string[] } = (({ __relations, ...object }) => object)(Data)
 
-		Object.keys(seed).forEach(async(property) =>
+		await Object.keys(seed).forEach(async(property) =>
 			await Data[property].forEach(async(GQuery: string) => 
 				console.log(await query(GQuery))
 			)
 		)
-		
+
 	} catch (e) {
 		console.error(e)
 	}
