@@ -8,5 +8,7 @@ export function getDiseases(diseases: string[]): string[] {
 	const possibilites = getUnique(diseases)
 	const likely = Array.from(new Set(removePossibilities(diseases, possibilites)))
 
+	// .. Check to see vs Database values or Frequency
+
 	return likely
 }
