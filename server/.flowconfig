@@ -8,5 +8,6 @@
 [lints]
 
 [options]
+module.name_mapper.extension='graphql' -> '<PROJECT_ROOT>/source/util/graphqlShim.js'
 
 [strict]
