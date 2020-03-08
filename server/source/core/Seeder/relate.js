@@ -26,8 +26,6 @@ async function Relate() {
 
 				let relations = Object.keys(relation).filter(el => el !== 'type' && el !== type)
 
-				const relationIDS: number[] = []
-
 				relations.forEach(async(el) => {
 
 					await relation[el].forEach(async(q, index) => {
