@@ -2,9 +2,9 @@ import gql from 'graphql-tag'
 import { query } from '../GClient'
 import { DocumentNode } from 'graphql'
 
-export async function Identify({ symptoms }: { symptoms: string[] }): Promise<string[]> {
+export async function Identify({ symptoms }: { symptoms: string[] }): Promise<typeof symptoms> {
 
-	const results: string[] = []
+	const results: typeof symptoms = []
 	
 	symptoms.forEach(async(symptom) => {
 
