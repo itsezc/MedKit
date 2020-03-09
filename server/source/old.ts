@@ -1,5 +1,3 @@
-// @flow
-
 import { ApolloServer, gql } from 'apollo-server'
 import { ApolloGateway, RemoteGraphQLDataSource } from '@apollo/gateway'
 import { buildFederatedSchema } from '@apollo/federation'
@@ -13,9 +11,16 @@ const cruddlServer: ApolloServer = new ApolloServer({
 	schema: cruddlSchema,
 	context: ({ req }) => req
 }) 
-
+//whats document node?
 const authServer: ApolloServer = new ApolloServer({
-	schema: buildFederatedSchema([{ typeDefs: gql`${appTypeDefs}`, resolvers: appResolvers }]),
+	schema: buildFederatedSchema(
+		[
+			{
+				typeDefs: gql`${appTypeDefs}`,
+				resolvers: appResolvers
+			}
+		]
+	),
 	context: async ({ req }) => {
 		
 		const authorization = req.headers.authorization
