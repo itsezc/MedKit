@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"build": "npx babel source --out-dir build",
+		"build": "npx babel source --out-dir build --extensions '.ts,.tsx'",
 		"dev": "babel-watch --watch source source/main.ts --extensions \".ts\""
 	},
 	"keywords": [],
