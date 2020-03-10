@@ -2,7 +2,17 @@
 
 import { query } from '../GClient'
 
-export default async(id: number): Promise<IAccount> => {
+type IAccount = {
+	id?: string,
+	email?: string,
+	password?: string,
+	firstName?: string,
+	lastName?: string,
+	dateOfBirth?: string,
+	weight?: number
+}
+
+export default async(id: string): Promise<IAccount> => {
 
 	const GET_USER = `
 		query getAccount($id: ID!) {

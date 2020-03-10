@@ -1,4 +1,4 @@
-import appTypeDefs from './schemas/app.graphql'
+import * as appTypeDefs from './schemas/app.graphql'
 import { Date } from '../resolvers/scalars'
 import { queryResolver as Query } from '../resolvers/query'
 import { mutationResolver as Mutation } from '../resolvers/mutation'

@@ -6,9 +6,11 @@ import { GraphQLSchema, DocumentNode } from 'graphql'
 
 export class Server {
 
-	private readonly Gateway: ApolloGateway = new ApolloGateway()
+	private Server: ApolloServer
 	private ORM: ApolloServer
 	private Auth: ApolloServer
+
+	private gateway: ApolloGateway
 
 	private cruddlSchema: GraphQLSchema
 	private appTypeDefs: DocumentNode
@@ -16,19 +18,21 @@ export class Server {
 
 	constructor() {
 		this.init()
-		this.initORM()
-		this.initAuth()
 	}
 
 	private async init() {
-		const { cruddlSchema, appResolvers, appTypeDefs } = await import('./database/generateSchema')
+		const { cruddlSchema, appTypeDefs, appResolvers } = await import('./database/generateSchema')
+
 		this.cruddlSchema = cruddlSchema
-		this.appResolvers = appResolvers
 		this.appTypeDefs = appTypeDefs
+		this.appResolvers = appResolvers
+
+		await this.initORM()
+		await this.initAuth()
+		await this.initGateway()
 	}
 
 	private async initORM() {
-		
 		this.ORM = new ApolloServer({
 			schema: this.cruddlSchema,
 			context: ({ req }) => req
@@ -46,7 +50,7 @@ export class Server {
 		this.Auth = new ApolloServer({
 			schema: buildFederatedSchema([
 				{
-					typeDefs: this.appTypeDefs,
+					typeDefs: gql`${this.appTypeDefs}`,
 					resolvers: this.appResolvers
 				}
 			]),
@@ -59,5 +63,41 @@ export class Server {
 				}
 			}
 		})
+
+		this.Auth
+			.listen({ port: 8086 })
+			.then((info) => console.log(`[FEDERATION] Auth server started on port - ${info.port}`))
+	}
+
+	private async initGateway() {
+		this.gateway = new ApolloGateway({
+			serviceList: [
+				{ name: 'Auth', url: 'http://localhost:8086/graphql' }
+			]
+		})
+
+		this.Server = new ApolloServer({
+			gateway: this.gateway,
+			engine: {
+				apiKey: 'service:MedKit:Jq_m5qJG3pPBp_ScaExdiA',
+				schemaTag: 'development',
+				debugPrintReports: true,
+			},
+			subscriptions: false,
+			context: async ({ req }) => {
+				return {
+					...req, 
+					authorization: req.headers.authorization || null
+				}
+
+			},
+			cacheControl: {
+				defaultMaxAge: 1
+			}
+		})
+
+		this.Server
+			.listen({ port: 8088 })
+			.then(info => console.log(`[GATEWAY] started on port - ${info.port}`))
 	}
 }

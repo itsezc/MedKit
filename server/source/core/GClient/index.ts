@@ -1,12 +1,12 @@
 // @flow 
 
 import Request from 'axios'
-import type { DocumentNode } from 'graphql'
+import { DocumentNode } from 'graphql'
 
 export const query = async(
 		query: string | DocumentNode, 
-		variables?: any = null, 
-		port?: number = 8085
+		variables?: any, 
+		port: number = 8085
 	) => {
 
 	const fetch = Request.create({

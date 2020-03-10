@@ -7,7 +7,7 @@ export const queryResolver = {
 		return user
 	},
 
-	handleMessage: async (parent, { index, message }, { dataSources }, info) => {
+	handleMessage: async (parent, args: { index, message }, { dataSources }, info) => {
 		return handleMessage(index, message)
 	}
 
