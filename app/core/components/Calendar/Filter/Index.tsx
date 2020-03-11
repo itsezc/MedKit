@@ -1,34 +1,7 @@
 import React, { useState } from 'react'
 import { TouchableWithoutFeedback, ScrollView, View, Text } from 'react-native'
 
-import Styled from 'styled-components/native'
-
-const FilterContainer = Styled.View`
-	border-radius: 5px;
-	margin: 0 10px 0 0px;
-	padding: 10px 20px;
-	shadow-opacity: 0.1;
-	shadow-offset: 0px 0px;
-	shadow-radius: 6px;
-	shadow-color: #000;
-`
-
-const FilterItem = (props) => (
-	<FilterContainer
-		style={{
-			backgroundColor: props.selected ? '#2276DF' : '#FFFFFF'
-		}}	
-	>
-		<Text
-			style={{
-				color: props.selected ? '#FFFFFF' : '#000000',
-				fontWeight: props.selected ? 'bold' : 'normal'
-			}}
-		>
-			{props.name}
-		</Text>
-	</FilterContainer>
-)
+import { FilterItem } from './Item'
 
 export const Filter = (props) => {
 	
@@ -48,18 +21,18 @@ export const Filter = (props) => {
 			horizontal
 		>
 			{
-				props.filters.map((filter, index) => (
+				props.filters.map(({ name, value, selected }: { name: string, value: string, selected: boolean }, index) => (
 					<TouchableWithoutFeedback
 						key={index}
 						onPress={() => {
 							setSelected(index)
-							props.handleFilterChange(filter.value)
+							props.handleFilterChange(value)
 						}}
 					>
 						<View onStartShouldSetResponder={() => true}>
 
 							<FilterItem
-								name={filter.name}
+								name={name}
 								selected={index === selected ? true : false}
 							/>
 
