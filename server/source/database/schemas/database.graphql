@@ -10,11 +10,6 @@ type Account @rootEntity {
     activities: [Activity] @relation
 }
 
-type Chat @rootEntity {
-	possibilities: [Disease] @relation
-	user: [Account] @relation
-}
-
 type Activity @rootEntity {
 	name: String
 	tag: String
@@ -36,7 +31,6 @@ type ExerciseEquipment @rootEntity {
 	image: String
 	exercise: @relation(inverseOf: "equipment")
 }
-
 
 # Diseases
 # and related properties
@@ -72,6 +66,11 @@ type Medication @rootEntity {
 	diseases: [Disease] @relation(inverseOf: "medication")
 }
 
+type Chat @rootEntity {
+	possibilities: [Disease] @relation
+	user: [Account] @relation
+}
+
 type Question @rootEntity {
 	question: String!
 	replies: [QuickReply]
@@ -81,4 +80,19 @@ type Question @rootEntity {
 type QuickReply @childEntity {
 	title: String!
 	value: String!
+}
+
+
+
+# Doctors & Appointments
+
+type Doctor {
+	account: Account @relation
+	appointments: [Appointments] @relation
+}
+
+type Appointment {
+	doctor: Doctor @relation
+	time: DateTime
+	account: Account @relation
 }
