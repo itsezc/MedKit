@@ -36,6 +36,7 @@ type Disease @rootEntity {
 	symptoms: [Symptom] @relation
 	treatments: [Treatment] @relation
 	medication: [Medication] @relation
+	questions: [Question] @relation
 }
 
 type Symptom @rootEntity {
@@ -54,4 +55,15 @@ type Medication @rootEntity {
 	name: String!
 	minAge: Int
 	diseases: [Disease] @relation(inverseOf: "medication")
+}
+
+type Question @rootEntity {
+	question: String!
+	replies: [QuickReply]
+	diseases: [Disease] @relation(inverseOf: "question")
+}
+
+type QuickReply @childEntity {
+	title: String!
+	value: String!
 }
