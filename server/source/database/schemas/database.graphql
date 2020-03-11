@@ -10,10 +10,6 @@ type Account @rootEntity {
     activities: [Activities] @relation
 }
 
-type Question @rootEntity {
-	question: String!
-}
-
 type Chat @rootEntity {
 	possibilities: [Disease] @relation
 	user: [Account] @relation
@@ -60,7 +56,7 @@ type Medication @rootEntity {
 type Question @rootEntity {
 	question: String!
 	replies: [QuickReply]
-	diseases: [Disease] @relation(inverseOf: "question")
+	diseases: [Disease] @relation(inverseOf: "questions")
 }
 
 type QuickReply @childEntity {
