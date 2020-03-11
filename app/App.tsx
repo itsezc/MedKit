@@ -1,25 +1,21 @@
 import 'react-native-gesture-handler'
 
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Platform, StatusBar } from 'react-native'
 
 import { NavigationContainer } from '@react-navigation/native'
+import { Navigation } from './core/navigation'
+
+import { ApolloProvider } from '@apollo/client'
+import { client } from './core/apollo'
 
 export default function App() {
 	return (
-		<NavigationContainer>
-			<View style={styles.container}>
-				<Text>Open up App.tsx to start working on your app!</Text>
-			</View>
-		</NavigationContainer>
+		<ApolloProvider client={client}>
+			<NavigationContainer>
+				{Platform.OS === 'ios' && <StatusBar barStyle='light-content' backgroundColor={'transparent'} />}
+				<Navigation />
+			</NavigationContainer>
+		</ApolloProvider>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-});
