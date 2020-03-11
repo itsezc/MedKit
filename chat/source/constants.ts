@@ -3,5 +3,6 @@ export enum Event {
 	DISCONNECT = 'disconnect',
 	MESSAGE = 'message',
 	IDENTIFY = 'identify',
-	GET_DISEASES = 'getDiseases'
+	GET_DISEASES = 'getDiseases',
+	ASK_QUESTIONS = 'askQuestions'
 }
