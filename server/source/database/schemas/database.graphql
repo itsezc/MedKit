@@ -35,11 +35,6 @@ type ExerciseEquipment @rootEntity {
 # Diseases
 # and related properties
 
-type Doctor @rootEntity {
-	email: String @unique
-	password: String
-}
-
 type Disease @rootEntity {
 	name: String @unique
 	symptoms: [Symptom] @relation
@@ -82,8 +77,6 @@ type QuickReply @childEntity {
 	value: String!
 }
 
-
-
 # Doctors & Appointments
 
 type Doctor {
@@ -95,4 +88,17 @@ type Appointment {
 	doctor: Doctor @relation
 	time: DateTime
 	account: Account @relation
+}
+
+# Healthy Reciepes 
+
+type Reciepe @rootEntity {
+	name: String!
+	image: String
+	ingridents: [Ingredient] @relation
+}
+
+type Ingredient @rootEntity {
+	name: String! 
+	image: String
 }
