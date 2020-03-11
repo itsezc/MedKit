@@ -22,6 +22,25 @@ type Activity @rootEntity {
 	account: Account @relation(inverseOf: "activities")
 }
 
+# Workouts
+
+type Exercise @rootEntity {
+	name: String!
+	description: String
+	image: String
+	equipment: ExerciseEquipment @relation
+}
+
+type ExerciseEquipment @rootEntity {
+	name: String! @unique
+	image: String
+	exercise: @relation(inverseOf: "equipment")
+}
+
+
+# Diseases
+# and related properties
+
 type Doctor @rootEntity {
 	email: String @unique
 	password: String
