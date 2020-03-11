@@ -12,6 +12,7 @@
 		"isolatedModules": false,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
+		"skipLibCheck": true,
 		"lib": [
 			"dom",
 			"es2018"
