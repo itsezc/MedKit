@@ -4,7 +4,7 @@ import { AUTH_TOKEN } from '../../authToken'
 import fetchAccount from './fetchAccount'
 import JWT from 'jsonwebtoken'
 
-export const authUser = async (authorization: string | void): IAccount => {
+export const authUser = async (authorization: string | void) => {
 	
 	const bearerLength: number = 'Bearer '.length
 
