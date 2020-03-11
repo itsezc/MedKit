@@ -3,7 +3,7 @@ import { query } from '../GClient'
 import gql from 'graphql-tag'
 import { DocumentNode } from 'graphql'
 
-export async function generateQuestions(diseases: string[], server: SocketIO.Server): Promise<Question[][]> {
+export async function generateQuestions(diseases: string[]): Promise<Question[][]> {
 
 	const questions: Question[][] = []
 
