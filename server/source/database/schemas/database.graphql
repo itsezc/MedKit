@@ -14,7 +14,10 @@ type Activity @rootEntity {
 	name: String
 	tag: String
 	time: DateTime
-	account: Account @relation(inverseOf: "activities")
+	account: Account! @relation
+	workout: Exercise @relation
+	appointment: Appointment @relation
+	reciepe: Reciepe @relation
 }
 
 # Workouts
@@ -29,7 +32,7 @@ type Exercise @rootEntity {
 type ExerciseEquipment @rootEntity {
 	name: String! @unique
 	image: String
-	exercise: @relation(inverseOf: "equipment")
+	exercise: Exercise @relation(inverseOf: "equipment")
 }
 
 # Diseases
@@ -79,15 +82,15 @@ type QuickReply @childEntity {
 
 # Doctors & Appointments
 
-type Doctor {
+type Doctor @rootEntity {
 	account: Account @relation
-	appointments: [Appointments] @relation
+	appointments: [Appointment] @relation
 }
 
-type Appointment {
-	doctor: Doctor @relation
+type Appointment @rootEntity {
+	doctor: Doctor! @relation
 	time: DateTime
-	account: Account @relation
+	account: Account! @relation
 }
 
 # Healthy Reciepes 
