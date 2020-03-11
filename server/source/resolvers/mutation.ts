@@ -1,10 +1,10 @@
-import { query } from '../core/GClient'
+import { query } from '../util/GClient'
 import { AUTH_TOKEN } from '../authToken'
 import BCrypt from 'bcryptjs'
 import JWT from 'jsonwebtoken'
 
 export const mutationResolver = {
-	login: async (parent, { email, password }, context, info) => {
+	login: async (parent, { email, password }: { email: string, password: string }, context, info) => {
 
 		const ACCOUNT_CHECK_QUERY = `
 			query checkAccount($email: String!) {

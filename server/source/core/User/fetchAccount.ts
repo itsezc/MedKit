@@ -1,6 +1,6 @@
 // @flow
 
-import { query } from '../GClient'
+import { query } from '../../util/GClient'
 
 type IAccount = {
 	id?: string,

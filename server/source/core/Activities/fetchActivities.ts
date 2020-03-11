@@ -1,4 +1,4 @@
-import { query } from '../GClient'
+import { query } from '../../util/GClient'
 import gql from 'graphql-tag'
 
 type Activity = {

@@ -1,4 +1,4 @@
-import { query } from '../core/GClient'
+import { query } from '../util/GClient'
 import { handleMessage } from '../core/chatHandler'
 
 export const queryResolver = {
