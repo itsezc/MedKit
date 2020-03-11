@@ -17,7 +17,7 @@ import RainGB from '../../assets/images/RainBG.svg'
 
 export const Screen = ({ children }) => (
 	<View>
-		<RainGB />
+		{/* <RainGB /> */}
 		{children}
 	</View>
 )
