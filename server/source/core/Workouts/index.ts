@@ -1,0 +1,1 @@
+export { fetchWorkouts } from './fetchWorkouts'
