@@ -7,7 +7,7 @@ type Account @rootEntity {
     lastName: String
     dateOfBirth: DateTime
     weight: Float
-    activities: [Activities] @relation
+    activities: [Activity] @relation
 }
 
 type Chat @rootEntity {
@@ -15,10 +15,10 @@ type Chat @rootEntity {
 	user: [Account] @relation
 }
 
-type Activities @rootEntity {
+type Activity @rootEntity {
 	name: String
-	time: DateTime
 	tag: String
+	time: DateTime
 	account: Account @relation(inverseOf: "activities")
 }
 
