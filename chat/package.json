@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "npx babel source --out-dir build --extensions '.ts,.tsx'",
-		"dev": "babel-watch --watch source source/main.ts --extensions \".ts\""
+		"dev": "babel-watch --watch source source/index.ts --extensions \".ts\""
 	},
 	"keywords": [],
 	"author": "",
@@ -24,6 +24,7 @@
 	},
 	"dependencies": {
 		"@hapi/hapi": "^19.1.1",
+		"@tensorflow/tfjs": "^1.6.1",
 		"@types/hapi__hapi": "^19.0.2",
 		"axios": "^0.19.2",
 		"graphql": "^14.6.0",
