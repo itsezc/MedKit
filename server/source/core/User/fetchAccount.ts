@@ -1,4 +1,4 @@
-import gql from 'graphq-tag'
+import gql from 'graphql-tag'
 import { query } from '../../util/GClient'
 
 type IAccount = {

@@ -2,6 +2,9 @@ import { ApolloServer, gql } from 'apollo-server'
 import { ApolloGateway } from '@apollo/gateway'
 import { buildFederatedSchema } from '@apollo/federation'
 
+import { ApolloEngineLogger } from './lib/log'
+import remoteContext from './lib/remoteContext'
+
 import { GraphQLSchema, DocumentNode } from 'graphql'
 
 export class Server {
@@ -73,7 +76,10 @@ export class Server {
 		this.gateway = new ApolloGateway({
 			serviceList: [
 				{ name: 'Auth', url: 'http://localhost:8086/graphql' }
-			]
+			],
+			buildService({ url }) {
+				return new remoteContext({ url })
+			}
 		})
 
 		this.Server = new ApolloServer({
@@ -93,7 +99,10 @@ export class Server {
 			},
 			cacheControl: {
 				defaultMaxAge: 1
-			}
+			},
+			plugins: [
+				ApolloEngineLogger
+			]
 		})
 
 		this.Server
