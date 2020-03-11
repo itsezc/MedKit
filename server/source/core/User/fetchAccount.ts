@@ -1,5 +1,4 @@
-// @flow
-
+import gql from 'graphq-tag'
 import { query } from '../../util/GClient'
 
 type IAccount = {
@@ -12,9 +11,9 @@ type IAccount = {
 	weight?: number
 }
 
-export default async(id: string): Promise<IAccount> => {
+export default async(id: string) => {
 
-	const GET_USER = `
+	const GET_USER = gql`
 		query getAccount($id: ID!) {
 			Account(id: $id) {
 				id
