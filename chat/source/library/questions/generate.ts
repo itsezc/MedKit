@@ -3,9 +3,8 @@ import { query } from '../GClient'
 import gql from 'graphql-tag'
 import { DocumentNode } from 'graphql'
 
-export async function generateQuestions(diseases: string[], server: SocketIO.Server) {
+export async function generateQuestions(diseases: string[], server: SocketIO.Server): Promise<Question[][]> {
 
-	const current: string = diseases[0]
 	const questions: Question[][] = []
 
 	/**
@@ -32,4 +31,6 @@ export async function generateQuestions(diseases: string[], server: SocketIO.Ser
 		const { allQuestions } = await query(GET_QUESTIONS, { disease })
 		questions[index] = allQuestions
 	})
+
+	return questions
 }
