@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import Login from '../screens/Login'
 import Register from '../screens/Register'
+import Home from '../screens/Home'
 
 const Stack = createStackNavigator()
 
@@ -16,12 +17,16 @@ export function Navigation(): JSX.Element {
 		{
 			name: 'Register',
 			component: Register
+		},
+		{
+			name: 'Home',
+			component: Home
 		}
 	]
 	
 	return (
 		<Stack.Navigator
-			initialRouteName='Login'
+			initialRouteName='Home'
 			headerMode='none'
 		>
 			{
