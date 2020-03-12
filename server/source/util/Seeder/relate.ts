@@ -30,7 +30,7 @@ async function Relate() {
 
 					await relation[el].forEach(async(q, index) => {
 
-						const getID = `
+						const getID: string = `
 							query {
 								all${el}s (
 									filter: {

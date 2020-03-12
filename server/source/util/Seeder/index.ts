@@ -1,13 +1,14 @@
-// @flow
-
 import { query } from '../GClient'
 import { Data } from '../../../seed'
 
+import gql from 'graphql-tag'
+import { DocumentNode } from 'graphql'
+
 export async function Seed(): Promise<boolean | void> {
 
-	const DELETE_ALL_ACCOUNTS: GraphQL = `mutation { deleteAllAccounts { id } }`
-	const DELETE_ALL_DISEASES: GraphQL = `mutation { deleteAllDiseases { id } }`
-	const DELETE_ALL_SYMPTOMS: GraphQL = `mutation { deleteAllSymptoms { id } }`
+	const DELETE_ALL_ACCOUNTS: string = `mutation { deleteAllAccounts { id } }`
+	const DELETE_ALL_DISEASES: string = `mutation { deleteAllDiseases { id } }`
+	const DELETE_ALL_SYMPTOMS: string = `mutation { deleteAllSymptoms { id } }`
 
 	try {
 	
@@ -15,9 +16,9 @@ export async function Seed(): Promise<boolean | void> {
 		await query(DELETE_ALL_DISEASES)
 		await query(DELETE_ALL_SYMPTOMS)
 
-		const seed: { [string]: string[] } = (({ __relations, ...object }) => object)(Data)
+		const seed = (({ __relations, ...object }) => object)(Data)
 
-		await Object.keys(seed).forEach(async(property) =>
+		Object.keys(seed).forEach(async(property) =>
 			await Data[property].forEach(async(GQuery: string) => 
 				console.log(await query(GQuery))
 			)

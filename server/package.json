@@ -8,7 +8,7 @@
 		"dev": "nodemon --exec babel-node ./source/index.ts --extensions \".ts\"",
 		"build": "npx babel source --out-dir build",
 		"flow": "npx flow-bin start",
-		"seed": "npx babel-node ./source/core/Seeder/index.js && npx babel-node ./source/util/Seeder/relate.js"
+		"seed": "npx babel-node ./source/util/Seeder/index.ts --extensions \".ts\",\".js\" && npx babel-node ./source/util/Seeder/relate.ts --extensions \".ts\",\".js\""
 	},
 	"keywords": [],
 	"author": "",
