@@ -1,5 +1,4 @@
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client'
-import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
 import { AsyncStorage as Storage } from 'react-native'
 
