@@ -1,9 +1,10 @@
 import * as React from 'react'
 
-import { Text, Button } from 'react-native'
+import { Text, View } from 'react-native'
 import { TextField } from 'react-native-material-textfield'
 
-import { Screen } from '../../components/Screen'
+import { Screen, Container } from '../../components'
+import { Button } from '../../components/Login'
 
 import { verifyAuth, errorHandler } from '../../auth'
 import { useMutation, gql, useApolloClient } from '@apollo/client'
@@ -25,10 +26,10 @@ const LOGIN_MUTATION = gql`
 `
 
 const initialState = {
-	email = '',
-	password = '',
-	emailError = '',
-	passwordError = ''
+	email: '',
+	password: '',
+	emailError: '',
+	passwordError:''
 }
 
 export default function ({ navigation }) {
@@ -47,12 +48,61 @@ export default function ({ navigation }) {
 		onError: async(error) => errorHandler(error, setState)
 	})
 
+
+
 	return (
 		<Screen>
-			<Button
-				title='Register'
-				onPress={() => navigation.push('Register')}
-			/>
+			<Container>
+				<Text
+					style={{ fontSize: 28, fontWeight: 'bold', color: '#FFFFFF' }}
+				>
+					Login to your Account
+				</Text>
+
+				<View
+					style={{
+						marginTop: 100
+					}}
+				>
+					<TextField
+						value={email}
+						onChangeText={text => setState(prevState => ({ ...prevState, email: text }))}
+						placeholder={'your@email.com'}
+						placeholderTextColor='#FFFFFF'
+						fontSize={30}
+						textColor='#FFFFFF'
+						baseColor='#5F87DF'
+						error={emailError}
+						errorColor='#FFFFFF'
+					/>
+
+					<TextField
+						value={password}
+						onChangeText={text => setState(prevState => ({ ...prevState, password: text }))}
+						placeholder={'password'}
+						placeholderTextColor='#FFFFFF'
+						fontSize={30}
+						textColor='#FFFFFF'
+						baseColor='#5F87DF'
+						error={passwordError}
+						errorColor='#FFFFFF'
+						secureTextEntry
+					/>
+				</View>
+
+				<View 
+					style={{
+						flex: 1,
+						justifyContent: 'flex-end',
+					}}
+				>
+					<Button
+						onPress={() => processLogin({ variables: { email, password } })}
+					>
+						Login
+					</Button>
+				</View>
+			</Container>
 		</Screen>
 	)
 
