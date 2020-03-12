@@ -5,10 +5,10 @@ const { useState } = React
 import Moment from 'moment'
 
 import { View, Text, Dimensions, ScrollView } from 'react-native'
-import { Icon } from '../../../components/Icon'
+import { Icon } from '../Icon'
 
-import { Filter } from './Filter'
-import { CalendarCard } from './Card'
+import { Filter } from './filter'
+import { CalendarCard } from './card'
 
 export const Calendar = (props) => {
 
@@ -90,7 +90,7 @@ export const Calendar = (props) => {
 	const [currentDay, setDay] = useState(0)
 	const [selectedFilter, setFilter] = useState('All')
 
-	const reformatDate = (date) => arr = new Date(date).toString()
+	const reformatDate = (date: Date): string => arr = new Date(date).toString()
 	const sortByDate = (a, b) => new Date(reformatDate(a.time)) - new Date(reformatDate(b.time))
 
 	const handleFilterChange = (newFilter) => setFilter(newFilter)

@@ -1,7 +1,7 @@
 import React from 'react'
 import Styled from 'styled-components/native'
 
-import { Icon } from '../../../components/Icon'
+import { Icon } from '../Icon'
 import { View, Image, Text } from 'react-native'
 
 const CalendarTime = Styled.View`
@@ -84,8 +84,7 @@ export const CalendarCard = ({ name, timeless, time, tag }) => {
 			<CalendarContainer timeless={timeless}>
 				<Image
 					style={{ width: 65, height: 65, opacity: 0.4, marginLeft: 5 }}
-					source={image}
-						
+					source={{ uri: image }}
 				/>
 				<Text style={{ fontSize: 15, fontWeight: '500', marginTop: 10, marginLeft: 5 }}>{name}</Text>
 				<CalendarTag style={{ backgroundColor: tagColor }} >{tag}</CalendarTag>
