@@ -1,3 +1,2 @@
 export { loadResourcesAsync, handleLoadingError } from './resources'
-export { Main } from './main'
-
+export { Main } from './components/main'
