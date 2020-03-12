@@ -21,7 +21,7 @@ export const Filter = (props) => {
 			horizontal
 		>
 			{
-				props.filters.map(({ name, value, selected }: { name: string, value: string, selected: boolean }, index) => (
+				props.filters.map(({ name, value, selected }: { name: string, value: string, selected: number }, index: number) => (
 					<TouchableWithoutFeedback
 						key={index}
 						onPress={() => {
