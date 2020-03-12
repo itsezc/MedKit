@@ -45,10 +45,8 @@ export default function ({ navigation }) {
 			setState({ ...initialState })
 			navigation.navigate('Home')
 		},
-		onError: async(error) => errorHandler(error, setState)
+		onError: async (error) => errorHandler(error, setState)
 	})
-
-
 
 	return (
 		<Screen>
@@ -90,7 +88,7 @@ export default function ({ navigation }) {
 					/>
 				</View>
 
-				<View 
+				<View
 					style={{
 						flex: 1,
 						justifyContent: 'flex-end',
@@ -105,4 +103,4 @@ export default function ({ navigation }) {
 			</Container>
 		</Screen>
 	)
-
+}
