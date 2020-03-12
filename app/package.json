@@ -27,7 +27,10 @@
     "react-native-reanimated": "~1.4.0",
     "react-native-safe-area-context": "0.6.0",
     "react-native-screens": "2.0.0-alpha.12",
+    "react-native-svg": "^9.13.3",
+    "react-native-svg-icon": "^0.8.1",
     "react-native-web": "~0.11.7",
+    "remixicon": "^2.3.0",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
