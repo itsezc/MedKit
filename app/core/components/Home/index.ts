@@ -1,0 +1,1 @@
+export { MiniCards } from './MiniCard'
