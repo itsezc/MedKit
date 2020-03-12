@@ -3,6 +3,9 @@ import { Text } from 'react-native'
 
 import { FilterContainer } from './container'
 
+
+// backgroundColor: selected ? '#2276DF' : '#FFFFFF'
+
 function FilterItem({ name, selected }: { name: string, selected: boolean }): JSX.Element {
 	return (
 		<FilterContainer

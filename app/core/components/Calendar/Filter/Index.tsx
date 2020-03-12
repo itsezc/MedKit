@@ -5,7 +5,7 @@ import { FilterItem } from './item'
 
 export const Filter = (props) => {
 	
-	const [selected, setSelected] = useState(props.filters.findIndex(element => element.name === props.selected) || 0)
+	const [selected, setSelected] = useState(/* props.filters.findIndex(element => element.name === props.selected) || */ 0)
 
 	return(
 		<ScrollView
@@ -21,7 +21,7 @@ export const Filter = (props) => {
 			horizontal
 		>
 			{
-				props.filters.map(({ name, value, selected }: { name: string, value: string, selected: number }, index: number) => (
+				props.filters.map(({ name, value  }: { name: string, value: string }, index: number) => (
 					<TouchableWithoutFeedback
 						key={index}
 						onPress={() => {

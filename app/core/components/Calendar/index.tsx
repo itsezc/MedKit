@@ -106,11 +106,9 @@ export const Calendar = (props) => {
 				style={{
 					backgroundColor: '#F0F5FD',
 					zIndex: 2,
-					paddingTop: 50,
-					top: -50,
+					paddingTop: 98,
+					top: -101,
 				}}
-
-				wrapper
 			>
 				<Filter
 					selected={selectedFilter}
@@ -129,7 +127,7 @@ export const Calendar = (props) => {
 				style={{
 					backgroundColor: '#F0F5FD',
 					zIndex: 2,
-					top: -50,
+					top: -101,
 				}}
 			>
 				<View
