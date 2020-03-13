@@ -29,7 +29,7 @@ type MessageQuickReplyValue {
 }
 
 type Account @key(fields: "id") {
-	id: ID 
+	id: ID
 	email: String
 	phone: String
 	password: String
@@ -41,12 +41,23 @@ type Account @key(fields: "id") {
 
 type LoginPayload {
 	token: String
-	user: Account
 }
 
 extend type Mutation {
-	login(email: String!, password: String!): LoginPayload
-	register(email: String!, password: String!): LoginPayload
+	login(
+		email: String!, 
+		password: String!,
+		deviceID: String!
+	): LoginPayload
+	register(
+		email: String!, 
+		password: String!,
+		passwordConfirm: String!,
+		firstName: String!,
+		lastName: String!,
+		dateOfBirth: Date!,
+		deviceID: String!
+	): LoginPayload
 }
 
 extend type Query {
