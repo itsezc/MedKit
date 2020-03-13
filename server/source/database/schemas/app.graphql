@@ -43,12 +43,19 @@ type LoginPayload {
 	token: String
 }
 
+type Activity {
+	name: String
+	tag: String
+	time: Date
+}
+
 extend type Mutation {
 	login(
 		email: String!, 
 		password: String!,
 		deviceID: String!
 	): LoginPayload
+
 	register(
 		email: String!, 
 		password: String!,
@@ -63,4 +70,5 @@ extend type Mutation {
 extend type Query {
 	handleMessage(index: Int, message: String): MessageHandler
 	getUser(id: ID): Account
+	getActivities: [Activity]
 }
