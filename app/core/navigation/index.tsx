@@ -6,6 +6,7 @@ import Login from '../screens/Login'
 import Register from '../screens/Register'
 import Home from '../screens/Home'
 import Profile from '../screens/Profile'
+import Chat from '../screens/Chat'
 
 const Stack = createStackNavigator()
 
@@ -26,6 +27,10 @@ export function Navigation(): JSX.Element {
 		{
 			name: 'Profile',
 			component: Profile
+		}, 
+		{
+			name: 'Chat',
+			component: Chat
 		}
 	]
 	
