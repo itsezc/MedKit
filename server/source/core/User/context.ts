@@ -1,7 +1,5 @@
-// @flow 
-
 import { AUTH_TOKEN } from '../../authToken'
-import fetchAccount from './fetchAccount'
+import fetchAccount from './library/fetchAccount'
 import JWT from 'jsonwebtoken'
 
 export const authUser = async (authorization: string | void) => {
@@ -35,7 +33,7 @@ export const authUser = async (authorization: string | void) => {
 
 		if (ok) {
 
-			const { id }: { id: number} = result
+			const { id }: { id: string } = result
 			return await fetchAccount(id)
 
 		} else {
@@ -45,5 +43,6 @@ export const authUser = async (authorization: string | void) => {
 		}
 	}
 
+	return null
 }
 
