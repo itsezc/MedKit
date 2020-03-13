@@ -83,6 +83,26 @@ export const Calendar = (props) => {
 						tag: "Exercise"
 					},
 				]
+			},
+			{
+				date: "2020-02-04T00:00:00Z",
+				activities: [
+					{
+						time: "2020-03-21T08:00:00Z",
+						name: "Pinkman",
+						tag: "Doctor"
+					},
+					{
+						time: "2020-03-21T13:30:00Z",
+						name: "White",
+						tag: "Doctor"
+					},
+					{
+						time: "2020-03-21T08:45:00Z",
+						name: "Push Ups",
+						tag: "Exercise"
+					},
+				]
 			}
 		]
 	})
@@ -140,7 +160,7 @@ export const Calendar = (props) => {
 						borderLeftWidth: 2,
 						borderTopWidth: 2,
 						borderColor: '#D5E2F9',
-						height: Dimensions.get('window').height - 410
+						height: Dimensions.get('window').height - 400
 					}}
 				>
 					<Icon
@@ -213,13 +233,15 @@ export const Calendar = (props) => {
 							data.days.map(({ activities }, index) => {
 
 								const displayActivities = (selectedFilter === 'All' ? activities : activities.filter(activity => activity.tag === selectedFilter)).sort(sortByDate)
+								const marginBottom = index === data.days.length ? 40 : 20
 
 								return(
 								
 									<ScrollView
 										key={index}
 										style={{
-											padding: 10,
+											// padding: 10,
+											marginBottom,
 											height: 189
 										}}
 										horizontal
