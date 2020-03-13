@@ -13,7 +13,7 @@ type IAccount = {
 
 export default async(id: string) => {
 
-	const GET_USER = gql`
+	const GET_USER: string = `
 		query getAccount($id: ID!) {
 			Account(id: $id) {
 				id
@@ -26,7 +26,7 @@ export default async(id: string) => {
 		}
 	`
 
-	const { Account }: { Account: IAccount } = await query(GET_USER, { id })
+	const { Account } = await query(GET_USER, { id })
 
 	return Account
 }
