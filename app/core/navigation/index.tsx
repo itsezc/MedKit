@@ -3,6 +3,7 @@ import { TransitionPresets } from '@react-navigation/stack'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import Login from '../screens/Login'
+import Logout from '../screens/Logout'
 import Register from '../screens/Register'
 import Home from '../screens/Home'
 import Profile from '../screens/Profile'
@@ -31,6 +32,10 @@ export function Navigation(): JSX.Element {
 		{
 			name: 'Chat',
 			component: Chat
+		},
+		{
+			name: 'Logout',
+			component: Logout
 		}
 	]
 	
