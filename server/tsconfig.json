@@ -18,12 +18,9 @@
 		],
 		"typeRoots": [
 			"./node_modules/@types",
-			"typings"
+			"./typings"
 		]
 	},
-	"include": [
-		"index.d.ts"
-	],
 	"exclude": [
 		"node_modules",
 		"./babel.config.js"
