@@ -1,2 +1,2 @@
-export { verifyAuth } from './verifyAuth'
+export { saveToken } from './saveToken'
 export { errorHandler } from './errorHandler'
