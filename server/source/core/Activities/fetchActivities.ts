@@ -1,5 +1,4 @@
 import { query } from '../../util/GClient'
-import gql from 'graphql-tag'
 
 type Activity = {
 	name: string,
@@ -8,12 +7,13 @@ type Activity = {
 }
 
 export async function fetchActivities({ id }: { id: string }): Promise<Activity[]> {
-	const GET_ACTIVITIES = gql`
+
+	const GET_ACTIVITIES: string = `
 		query getActivities($id: ID!) {
 			Account(id: $id) {
-				activities: {
+				activities {
 					name
-					type
+					tag
 					time
 				}
 			}
