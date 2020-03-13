@@ -3,7 +3,6 @@ import Styled from 'styled-components/native'
 
 export const FilterContainer = Styled.View`
 	border-radius: 5px;
-	margin: 0 10px 0 0px;
 	padding: 10px 20px;
 	shadow-opacity: 0.1;
 	shadow-offset: 0px 0px;

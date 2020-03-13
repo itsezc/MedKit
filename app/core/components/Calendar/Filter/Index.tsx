@@ -6,17 +6,17 @@ import { FilterItem } from './item'
 export const Filter = (props) => {
 	
 	const [selected, setSelected] = useState(/* props.filters.findIndex(element => element.name === props.selected) || */ 0)
-
+	const maxValue = props.filters.length - 1
+	
 	return(
 		<ScrollView
 			style={{
-				minWidth: '100%',
+				width: '100%',
 				maxHeight: 60,
-				paddingTop: 10,
 				paddingBottom: 10,
 				paddingLeft: 20,
-				paddingRight: 30,
-				marginTop: 20
+				paddingRight: 20,
+				marginTop: 25
 			}}
 			horizontal
 		>
@@ -34,6 +34,7 @@ export const Filter = (props) => {
 							<FilterItem
 								name={name}
 								selected={index === selected ? true : false}
+								last={index === maxValue ? true : false}
 							/>
 
 						</View>

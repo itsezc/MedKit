@@ -3,14 +3,13 @@ import { Text } from 'react-native'
 
 import { FilterContainer } from './container'
 
+function FilterItem({ name, selected, last }: { name: string, selected: boolean, last: boolean }): JSX.Element {
 
-// backgroundColor: selected ? '#2276DF' : '#FFFFFF'
-
-function FilterItem({ name, selected }: { name: string, selected: boolean }): JSX.Element {
 	return (
 		<FilterContainer
 			style={{
-				backgroundColor: selected ? '#2276DF' : '#FFFFFF'
+				backgroundColor: selected ? '#2276DF' : '#FFFFFF',
+				marginRight: last ? 40 : 20
 			}}
 		>
 			<Text
