@@ -6,21 +6,14 @@ import { TextField } from 'react-native-material-textfield'
 import { Screen, Container } from '../../components'
 import { Button } from '../../components/Login'
 
-import { verifyAuth, errorHandler } from '../../auth'
+import * as Device from 'expo-device'
+import { saveToken, errorHandler } from '../../auth'
 import { useMutation, gql, useApolloClient } from '@apollo/client'
 
 const LOGIN_MUTATION = gql`
-	mutation Login($email: String!, $password: String!) {
-		login(email: $email, password: $password) {
+	mutation Login($email: String!, $password: String!, $deviceID: String!) {
+		login(email: $email, password: $password, deviceID: $deviceID) {
 			token
-			user {
-				id
-				email
-				firstName
-				lastName
-				dateOfBirth
-				weight
-			}
 		}
 	}
 `
@@ -35,13 +28,14 @@ const initialState = {
 export default function ({ navigation }) {
 
 	const client = useApolloClient()
+	const deviceID = Device.osBuildId
 
 	const [{ email, password, emailError, passwordError }, setState] = React.useState(initialState)
 
 	const [processLogin, { loading }] = useMutation(LOGIN_MUTATION, {
 		onCompleted: async (data) => {
-			const { login: { user } } = data
-			await verifyAuth(data)
+			const { login: { token } } = data
+			await saveToken(token)
 			setState({ ...initialState })
 			navigation.navigate('Home')
 		},
@@ -95,7 +89,7 @@ export default function ({ navigation }) {
 					}}
 				>
 					<Button
-						onPress={() => processLogin({ variables: { email, password } })}
+						onPress={() => processLogin({ variables: { email, password, deviceID } })}
 					>
 						Login
 					</Button>

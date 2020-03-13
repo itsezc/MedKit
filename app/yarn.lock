@@ -4076,6 +4076,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-device@npm:~2.0.0":
+  version: 2.0.0
+  resolution: "expo-device@npm:2.0.0"
+  dependencies:
+    ua-parser-js: ^0.7.19
+  checksum: c940cecd62ba2f5662079a4e9249f659181bcf8bf4b0cca925a387af95d3e8cebc5441054df5b519e5d200545df1ccb0fdbb2299b12910c420e27d7ee39b8ba5
+  languageName: node
+  linkType: hard
+
 "expo-error-recovery@npm:~1.0.0":
   version: 1.0.0
   resolution: "expo-error-recovery@npm:1.0.0"
@@ -7262,16 +7271,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-native-svg@npm:9.13.3":
-  version: 9.13.3
-  resolution: "react-native-svg@npm:9.13.3"
+"react-native-svg@npm:^9.13.3":
+  version: 9.13.6
+  resolution: "react-native-svg@npm:9.13.6"
   dependencies:
     css-select: ^2.0.2
     css-tree: ^1.0.0-alpha.37
   peerDependencies:
     react: "*"
     react-native: ">=0.50.0"
-  checksum: a5c7d1b8ae80146a6fd3b7c22cc621c9da3a42f01c04aceeab7a73776b8de4032efd53dcbbd7e940af1d447868ec0ed58738501ac6d36eb7defdcac9f0564941
+  checksum: b20e0054c08238a9707f714d46d24853ca72e24f8c4e13c670e8e4801b6f783a4429bf0be892528b3f6c4db53bf833c90b8a2443c6691685dfa3f84b3cc756ae
   languageName: node
   linkType: hard
 
@@ -7697,6 +7706,7 @@ fsevents@^1.2.7:
     apollo-link-context: ^1.0.19
     babel-preset-expo: ~8.0.0
     expo: ~36.0.0
+    expo-device: ~2.0.0
     expo-localization: ^8.0.0
     graphql: ^14.6.0
     i18next: ^19.3.2
@@ -7710,7 +7720,7 @@ fsevents@^1.2.7:
     react-native-reanimated: ~1.4.0
     react-native-safe-area-context: 0.6.0
     react-native-screens: 2.0.0-alpha.12
-    react-native-svg: 9.13.3
+    react-native-svg: ^9.13.3
     react-native-svg-icon: ^0.8.1
     react-native-web: ~0.11.7
     remixicon: ^2.3.0
