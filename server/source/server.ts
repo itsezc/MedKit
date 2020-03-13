@@ -59,7 +59,7 @@ export class Server {
 			]),
 			context: async ({ req }) => {
 				const authorization = req.headers.authorization
-				const user = authUser(authorization)
+				const user = await authUser(authorization)
 				return {
 					...req,
 					user
