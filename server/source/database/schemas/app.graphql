@@ -69,6 +69,6 @@ extend type Mutation {
 
 extend type Query {
 	handleMessage(index: Int, message: String): MessageHandler
-	getUser(id: ID): Account
+	getUser: Account
 	getActivities: [Activity]
 }
