@@ -1,25 +1,28 @@
 // @ts-nocheck
 import i18n from 'i18next'
-import { reactI18nextModule } from 'react-i18next'
-import { Localization } from 'expo-localization'
+import { initReactI18next } from 'react-i18next'
+import * as Localization from 'expo-localization'
 
-const languageDector = {
-	type: 'languageDectector',
-	async: true,
-	detect: callback => {
-		return Localization.getLocalizationAsync().then(({ locale }) => {
-			callback(false)
-		})
-	},
-	init: () => {},
-	cacheUserLanguage: () => {}
-}
+import en from '../../assets/languages/en.json'
+import hi from '../../assets/languages/hi.json'
 
 i18n
-	.use(languageDector)
-	.use(reactI18nextModule)
+	.use(initReactI18next)
 	.init({
+		lng: Localization.locale,
+		load: 'languageOnly',
 		fallbackLng: 'en',
-
-		resources: {}
+		resources: {
+			en,
+			hi
+		},
+		// resources: {},
+		debug: true,
+		interpolation: {
+			escapeValue: false
+		}
 	})
+
+// i18n.addResourceBundle(Localization.locale, '', await import(`../../assets/languages/${Localization.locale}.json`))
+
+export default i18n
