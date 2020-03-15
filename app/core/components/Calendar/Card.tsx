@@ -3,6 +3,8 @@ import Styled from 'styled-components/native'
 
 import { Icon } from '../Icon'
 import { View, Image, Text } from 'react-native'
+import { TouchableWithoutFeedback } from 'react-native'
+import { Action } from '../Home'
 
 const CalendarTime = Styled.View`
 	border-radius: 12px;
@@ -36,6 +38,8 @@ const CalendarContainer = Styled.View`
 
 export const CalendarCard = ({ name, timeless, time, tag }) => {
 
+	const [actionVisible, showAction] = React.useState(false)
+
 	let image = ''
 	let tagColor = ''
 
@@ -64,9 +68,9 @@ export const CalendarCard = ({ name, timeless, time, tag }) => {
 			break;
 	}
 
-	return(
+	return (
 		<View>
-			{ timeless ? 
+			{timeless ? 
 				null :
 				<CalendarTime>
 					<Icon
@@ -81,14 +85,26 @@ export const CalendarCard = ({ name, timeless, time, tag }) => {
 				</CalendarTime>
 			}
 			
-			<CalendarContainer timeless={timeless}>
-				<Image
-					style={{ width: 65, height: 65, opacity: 0.4, marginLeft: 5 }}
-					source={{ uri: image }}
-				/>
-				<Text style={{ fontSize: 15, fontWeight: '500', marginTop: 10, marginLeft: 5 }}>{name}</Text>
-				<CalendarTag style={{ backgroundColor: tagColor }} >{tag}</CalendarTag>
-			</CalendarContainer>
+			{
+				actionVisible ?
+					<Action
+						visible={actionVisible}
+						handleChange={showAction}
+					/> : null
+			}
+
+			<TouchableWithoutFeedback
+				onPress={() => showAction(true)}
+			>
+				<CalendarContainer timeless={timeless}>
+					<Image
+						style={{ width: 65, height: 65, opacity: 0.4, marginLeft: 5 }}
+						source={{ uri: image }}
+					/>
+					<Text style={{ fontSize: 15, fontWeight: '500', marginTop: 10, marginLeft: 5 }}>{name}</Text>
+					<CalendarTag style={{ backgroundColor: tagColor }} >{tag}</CalendarTag>
+				</CalendarContainer>
+			</TouchableWithoutFeedback>
 		</View>
 	)
 }
