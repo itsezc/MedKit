@@ -9,6 +9,7 @@ const Button = Styled.Text`
 	border-radius: 50px;
 	font-weight: bold;
 	font-size: 16px;
+	font-family: 'circular-std';
 `
 
 export { Button }

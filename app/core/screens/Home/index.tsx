@@ -19,9 +19,8 @@ export default function ({ navigation }): JSX.Element {
 			}
 		}
 	`
-	
 	const { loading, error, data } = useQuery(GET_USER)
-
+	
 	if (data) {
 		const { getUser: { firstName } } = data 
 		return (

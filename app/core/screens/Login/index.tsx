@@ -46,7 +46,7 @@ export default function ({ navigation }) {
 		<Screen>
 			<Container>
 				<Text
-					style={{ fontSize: 28, fontWeight: 'bold', color: '#FFFFFF' }}
+					style={{ fontSize: 28, fontFamily: 'circular-std', color: '#FFFFFF' }}
 				>
 					Login to your Account
 				</Text>
@@ -66,6 +66,7 @@ export default function ({ navigation }) {
 						baseColor='#5F87DF'
 						error={emailError}
 						errorColor='#FFFFFF'
+						fontFamily='circular-std'
 					/>
 
 					<TextField
@@ -79,6 +80,7 @@ export default function ({ navigation }) {
 						error={passwordError}
 						errorColor='#FFFFFF'
 						secureTextEntry
+						fontFamily='circular-std'
 					/>
 				</View>
 
