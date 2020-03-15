@@ -4,11 +4,12 @@ const { useState } = React
 
 import Moment from 'moment'
 
-import { View, Text, Dimensions, ScrollView } from 'react-native'
+import { View, Text, Dimensions, ScrollView, TouchableWithoutFeedback } from 'react-native'
 import { Icon } from '../Icon'
 
 import { Filter } from './filter'
 import { CalendarCard } from './card'
+import { Action } from '../Home'
 
 export const Calendar = (props) => {
 
@@ -109,6 +110,8 @@ export const Calendar = (props) => {
 
 	const [currentDay, setDay] = useState(0)
 	const [selectedFilter, setFilter] = useState('All')
+
+	const [openModal, setModal] = useState(false)
 
 	const reformatDate = (date: Date): string => arr = new Date(date).toString()
 	const sortByDate = (a, b) => new Date(reformatDate(a.time)) - new Date(reformatDate(b.time))
@@ -229,11 +232,11 @@ export const Calendar = (props) => {
 						onScroll={async ({ nativeEvent: { contentOffset } }) => setDay(Math.round(contentOffset.y / 189))}
 						scrollEventThrottle={200}
 					>
-						{	
+						{
 							data.days.map(({ activities }, index) => {
 
 								const displayActivities = (selectedFilter === 'All' ? activities : activities.filter(activity => activity.tag === selectedFilter)).sort(sortByDate)
-								const marginBottom = index === data.days.length ? 40 : 20
+								const marginBottom = index === (data.days.length - 1) ? 40 : 20
 
 								return(
 								
