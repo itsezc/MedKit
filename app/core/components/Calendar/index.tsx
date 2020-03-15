@@ -13,6 +13,7 @@ import { Action } from '../Home'
 
 export const Calendar = (props) => {
 
+	const [actionVisible, showAction] = React.useState(false)
 	const [data, setData] = useState({
 		days: [
 			{
@@ -125,6 +126,10 @@ export const Calendar = (props) => {
 
 	return(
 		<>
+			<Action
+				visible={actionVisible}
+				handleChange={showAction}
+			/>
 			<View
 				style={{
 					backgroundColor: '#F0F5FD',
@@ -239,7 +244,6 @@ export const Calendar = (props) => {
 								const marginBottom = index === (data.days.length - 1) ? 40 : 20
 
 								return(
-								
 									<ScrollView
 										key={index}
 										style={{
@@ -258,6 +262,7 @@ export const Calendar = (props) => {
 												time={Moment(time).format('hh:mm')}
 												name={name}
 												tag={tag}
+												handleModal={showAction}
 											/>
 										))
 									}

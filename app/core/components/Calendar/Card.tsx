@@ -36,9 +36,7 @@ const CalendarContainer = Styled.View`
 	shadow-color: #000;
 `
 
-export const CalendarCard = ({ name, timeless, time, tag }) => {
-
-	const [actionVisible, showAction] = React.useState(false)
+export const CalendarCard = ({ name, timeless, time, tag, handleModal }) => {
 
 	let image = ''
 	let tagColor = ''
@@ -84,17 +82,8 @@ export const CalendarCard = ({ name, timeless, time, tag }) => {
 					</Text>
 				</CalendarTime>
 			}
-			
-			{
-				actionVisible ?
-					<Action
-						visible={actionVisible}
-						handleChange={showAction}
-					/> : null
-			}
-
 			<TouchableWithoutFeedback
-				onPress={() => showAction(true)}
+				onPress={() => handleModal(true)}
 			>
 				<CalendarContainer timeless={timeless}>
 					<Image
