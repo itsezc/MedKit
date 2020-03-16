@@ -9,8 +9,11 @@ import {
 import { View, Image, Text, TouchableWithoutFeedback, Dimensions } from 'react-native'
 
 import { useQuery, gql } from '@apollo/client'
+import { useTranslation } from 'react-i18next'
 
 export default function ({ navigation }): JSX.Element {
+
+	const { t, i18n } = useTranslation()
 
 	const GET_USER = gql`
 		{
@@ -32,7 +35,7 @@ export default function ({ navigation }): JSX.Element {
 						marginTop: 50,
 					}}
 				>
-					<Text style={{ color: '#F5F7FD', fontSize: 24 }}>Hello,</Text>
+					<Text style={{ color: '#F5F7FD', fontSize: 24 }}>{t('hello')},</Text>
 					<Text style={{ color: '#FFFFFF', fontSize: 34, fontWeight: 'bold' }}>{firstName}</Text>
 					<TouchableWithoutFeedback
 						onPress={() => navigation.navigate('Profile')}
