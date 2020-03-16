@@ -10,6 +10,8 @@ import * as Device from 'expo-device'
 import { saveToken, errorHandler } from '../../auth'
 import { useMutation, gql, useApolloClient } from '@apollo/client'
 
+import { useTranslation } from 'react-i18next'
+
 const LOGIN_MUTATION = gql`
 	mutation Login($email: String!, $password: String!, $deviceID: String!) {
 		login(email: $email, password: $password, deviceID: $deviceID) {
@@ -26,6 +28,8 @@ const initialState = {
 }
 
 export default function ({ navigation }) {
+
+	const [t, i18next] = useTranslation()
 
 	const client = useApolloClient()
 	const deviceID = Device.osBuildId
@@ -48,7 +52,7 @@ export default function ({ navigation }) {
 				<Text
 					style={{ fontSize: 28, fontFamily: 'circular-std', color: '#FFFFFF' }}
 				>
-					Login to your Account
+					{t('loginToAccount')}
 				</Text>
 
 				<View
@@ -59,7 +63,7 @@ export default function ({ navigation }) {
 					<TextField
 						value={email}
 						onChangeText={text => setState(prevState => ({ ...prevState, email: text }))}
-						placeholder={'your@email.com'}
+						placeholder={t('exampleEmail')}
 						placeholderTextColor='#FFFFFF'
 						fontSize={30}
 						textColor='#FFFFFF'
@@ -72,7 +76,7 @@ export default function ({ navigation }) {
 					<TextField
 						value={password}
 						onChangeText={text => setState(prevState => ({ ...prevState, password: text }))}
-						placeholder={'password'}
+						placeholder={t('password')}
 						placeholderTextColor='#FFFFFF'
 						fontSize={30}
 						textColor='#FFFFFF'
@@ -93,7 +97,7 @@ export default function ({ navigation }) {
 					<Button
 						onPress={() => processLogin({ variables: { email, password, deviceID } })}
 					>
-						Login
+						{t('login')}
 					</Button>
 				</View>
 			</Container>
