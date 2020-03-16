@@ -9,20 +9,17 @@ import hi from '../../assets/languages/hi.json'
 i18n
 	.use(initReactI18next)
 	.init({
-		lng: Localization.locale,
+		// lng: Localization.locale,
+		lng: 'hi',
 		load: 'languageOnly',
 		fallbackLng: 'en',
 		resources: {
 			en,
 			hi
 		},
-		// resources: {},
 		debug: true,
 		interpolation: {
 			escapeValue: false
 		}
 	})
-
-// i18n.addResourceBundle(Localization.locale, '', await import(`../../assets/languages/${Localization.locale}.json`))
-
 export default i18n
