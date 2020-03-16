@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { TransitionPresets } from '@react-navigation/stack'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack'
 
 import Login from '../screens/Login'
 import Logout from '../screens/Logout'
