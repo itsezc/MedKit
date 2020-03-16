@@ -49,6 +49,11 @@ type Activity {
 	time: Date
 }
 
+type Activities {
+	date: Date
+	activities: [Activity]
+}
+
 extend type Mutation {
 	login(
 		email: String!, 
@@ -70,5 +75,5 @@ extend type Mutation {
 extend type Query {
 	handleMessage(index: Int, message: String): MessageHandler
 	getUser: Account
-	getActivities: [Activity]
+	getActivities: [Activities]
 }
