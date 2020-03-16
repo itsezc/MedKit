@@ -1,3 +1,5 @@
+import Moment from 'moment'
+
 export const Data = {
 
 	__relations: [
@@ -13,7 +15,22 @@ export const Data = {
 				{
 					name: 'Cough'
 				}
-			]
+			],
+			param: 'name',
+			searchParam: 'Symptom'
+		},
+		{
+			type: 'Account',
+			Account: {
+				email: 'chirub@foretag.co'
+			},
+			Activity: [
+				{
+					name: "20 Pushups"
+				}
+			],
+			param: 'email',
+			searchParam: 'Activitie'
 		}
 			
 	],
@@ -27,12 +44,45 @@ export const Data = {
 						lastName: "Boggavarapu",
 						email: "chirub@foretag.co",
 						password: "$2y$14$.7eeAceLDesI7mDAMkI6cuAbiYba.wkngN5lAu8yTxSRKWvyayzJG",
-						weight: 65,
-
+						weight: 65
 					}
 				) {
 					id
 					firstName
+				}
+			}
+		`,
+
+		`
+			mutation {
+				createAccount(
+					input: {
+						firstName: "Vrishin",
+						lastName: "Patel",
+						email: "vrishtrix@pornhub.com",
+						password: "$2y$14$.7eeAceLDesI7mDAMkI6cuAbiYba.wkngN5lAu8yTxSRKWvyayzJG",
+						weight: 45
+					}
+				) {
+					id
+					firstName
+				}
+			}
+		`
+	],
+
+	Activities: [
+		`
+			mutation {
+				createActivity(
+					input: {
+						name: "20 Pushups",
+						tag: "Exercise",
+						time: "${Moment(Moment().add(3, 'days')._d).format()}"
+					}
+				) {
+					id
+					name
 				}
 			}
 		`

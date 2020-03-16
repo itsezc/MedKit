@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { query } from '../GClient'
 import { Data } from '../../../seed'
 
@@ -7,32 +8,35 @@ async function Relate() {
 
 		__relations.forEach(async(relation) => {
 
-			const { type } = relation
+			const { type, param, searchParam } = relation
+
 
 			const GET_QUERY: string = `
 				query {
 					all${type}s (
 						filter: {
-							name: "${relation[type].name}"
+							${param || 'name'}: "${relation[type][param || 'name']}"
 						}
 					) {
 						id
 					}
 				}
 			`
+
 			try {
 				let result = await query(GET_QUERY)
-				let rootID = result['all' + type + 's'][0].id 
+				let rootID = result['all' + type + 's'][0].id
 
-				let relations = Object.keys(relation).filter(el => el !== 'type' && el !== type)
-
+				let relations = Object.keys(relation).filter(el => el !== 'type' && el !== 'param' && el !== 'searchParam' && el !== type)
 				relations.forEach(async(el) => {
 
 					await relation[el].forEach(async(q, index) => {
 
+						const field = searchParam ? searchParam : el
+
 						const getID: string = `
 							query {
-								all${el}s (
+								all${field}s (
 									filter: {
 										name: "${relation[el][index].name}"
 									}
@@ -42,20 +46,25 @@ async function Relate() {
 							}
 						`
 						const elResult = await query(getID)
+						// console.log('elResult', elResult)
 
 						const CREATE_RELATION: string = `
 							mutation {
 								update${type}(
 									input: {
 										id: "${rootID}",
-										add${el}s: ["${elResult['all' + el + 's'][0].id}"]
+										add${field}s: ["${elResult['all' + field + 's'][0].id}"]
 									}
 								) {
 									id
+									activities {
+										name
+									}
 								}
 							}
 						`
-						
+
+						// console.log('relation', CREATE_RELATION)
 						console.log(await query(CREATE_RELATION))
 
 					})
