@@ -8,7 +8,8 @@
 		"dev": "nodemon --exec babel-node ./source/index.ts --extensions \".ts\"",
 		"build": "npx babel source --out-dir build",
 		"flow": "npx flow-bin start",
-		"seed": "npx babel-node ./source/util/Seeder/index.ts --extensions \".ts\",\".js\" && npx babel-node ./source/util/Seeder/relate.ts --extensions \".ts\",\".js\""
+		"seed": "npx babel-node ./source/util/Seeder/index.ts --extensions \".ts\",\".js\" && npx babel-node ./source/util/Seeder/relate.ts --extensions \".ts\",\".js\"",
+		"onlyseed": "npx babel-node ./source/util/Seeder/index.ts --extensions \".ts\",\".js\""
 	},
 	"keywords": [],
 	"author": "",
@@ -25,6 +26,7 @@
 		"@babel/preset-typescript": "^7.8.3",
 		"@babel/runtime": "^7.7.7",
 		"@types/jsonwebtoken": "^8.3.8",
+		"@types/moment": "^2.13.0",
 		"babel-plugin-import-graphql": "^2.7.0",
 		"nodemon": "^2.0.2"
 	},
@@ -39,6 +41,8 @@
 		"cruddl": "^1.1.0-alpha.4",
 		"graphql": "^14.5.8",
 		"graphql-tag": "^2.10.3",
-		"jsonwebtoken": "^8.5.1"
+		"js-joda": "^1.11.0",
+		"jsonwebtoken": "^8.5.1",
+		"moment": "^2.24.0"
 	}
 }
