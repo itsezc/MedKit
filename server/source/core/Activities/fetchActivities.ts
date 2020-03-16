@@ -15,7 +15,7 @@ type Activity = {
 export async function fetchActivities({ id }: { id: string }): Promise<Activities[]> {
 
 	// @ts-ignore
-	const maxDays = Moment(Moment().add(7, 'days')._d).format()
+	const maxDays = Moment(Moment().add(7, 'days')).utc().format()
 
 	const GET_ACTIVITIES: string = `
 		query getActivities($id: ID!, $maxDays: DateTime!) {
@@ -36,8 +36,18 @@ export async function fetchActivities({ id }: { id: string }): Promise<Activitie
 
 	const grouped: Activities[] = []
 
+	for (var i = 0; i < 7; i++) {
+
+		const date = Moment().set({ 'hour': 0, 'minute': 0, 'second': 0 }).add(i, 'day').utc().format()
+		grouped.push({
+			date
+		})
+	}
+
 	await activities.forEach((activity: Activity, index: number) => {
+
 		let group = Moment(activity.time).set({ 'hour': 0, 'minute': 0, 'second': 0 }).utc().format()
+
 		const currentGroup = grouped.some(e => e.date === group)
 
 		if (!currentGroup) {
@@ -47,8 +57,8 @@ export async function fetchActivities({ id }: { id: string }): Promise<Activitie
 			})
 		} else {
 			const x = grouped.findIndex(element => element.date === group)
-			grouped[x].activities.push(activity)
-
+			grouped[x].activities ?
+				grouped[x].activities.push(activity) : grouped[x].activities = [activity]
 		}
 	})
 
