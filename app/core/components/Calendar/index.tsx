@@ -11,7 +11,19 @@ import { Filter } from './filter'
 import { CalendarCard } from './card'
 import { Action } from '../Home'
 
+import { useQuery, gql, DocumentNode } from '@apollo/client'
+
 export const Calendar = (props) => {
+
+	const FETCH_ACTIVITIES = gql`
+		{
+			getActivities {
+				name
+				tag
+				time
+			}
+		}
+	`
 
 	const [actionVisible, showAction] = React.useState(false)
 	const [data, setData] = useState({
@@ -21,7 +33,7 @@ export const Calendar = (props) => {
 				activities: [
 					{
 						time: "2020-01-21T08:45:00Z",
-						name: "Ibuprofen",
+						name: "Marijjuana",
 						tag: "Medicine"
 					},
 					{
@@ -141,11 +153,11 @@ export const Calendar = (props) => {
 				<Filter
 					selected={selectedFilter}
 					filters={[
-						{ name: 'All', value: 'All' },
-						{ name: 'Appointments', value: 'Doctor' },
-						{ name: 'Medication', value: 'Medicine' },
-						{ name: 'Exercise', value: 'Exercise' },
-						{ name: 'Cooking', value: 'Cooking' }
+						{ name: 'all', value: 'All' },
+						{ name: 'appointments', value: 'Doctor' },
+						{ name: 'medication', value: 'Medicine' },
+						{ name: 'exercise', value: 'Exercise' },
+						{ name: 'cooking', value: 'Cooking' }
 					]}
 					handleFilterChange={handleFilterChange}
 				/>

@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+
+import { useTranslation } from 'react-i18next'
 import { TouchableWithoutFeedback, ScrollView, View, Text } from 'react-native'
 
 import { FilterItem } from './item'
 
 export const Filter = (props) => {
 	
+	const [ t, i18next ] = useTranslation()
 	const [selected, setSelected] = useState(/* props.filters.findIndex(element => element.name === props.selected) || */ 0)
 	
 	return(
@@ -31,7 +34,7 @@ export const Filter = (props) => {
 						<View onStartShouldSetResponder={() => true}>
 
 							<FilterItem
-								name={name}
+								name={t(name)}
 								selected={index === selected ? true : false}
 								last={index === (props.filters.length - 1) ? true : false}
 							/>
