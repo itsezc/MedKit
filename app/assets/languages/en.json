@@ -8,6 +8,8 @@
 		"all": "All",
 		"appointments": "Appointments",
 		"medication": "Medication",
+		"medicine": "Medicine",
+		"doctor": "Doctor",
 		"exercise": "Exercise",
 		"cooking": "Cooking",
 		"loginToAccount": "Login to your Account",
