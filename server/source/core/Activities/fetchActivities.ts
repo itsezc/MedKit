@@ -23,7 +23,8 @@ export async function fetchActivities({ id }: { id: string }): Promise<Activitie
 				activities(
 					filter: {
 						time_lt: $maxDays
-					}
+					},
+					orderBy: time_ASC
 				) {
 					name
 					tag
