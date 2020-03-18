@@ -190,10 +190,6 @@ export const Calendar = (props) => {
 		const { getActivities } = data
 		const days = getActivities
 
-		const reformatDate = (date: Date): string => new Date(date).toString()
-		
-		const sortByDate = (a, b) => a.time - b.time
-
 		const handleFilterChange = (newFilter) => setFilter(newFilter)
 
 		const calculateActivities = (day) => {
@@ -214,7 +210,7 @@ export const Calendar = (props) => {
 					style={{
 						backgroundColor: '#F0F5FD',
 						zIndex: 2,
-						paddingTop: 98,
+						paddingTop: 95,
 						top: -101,
 					}}
 				>
@@ -321,8 +317,8 @@ export const Calendar = (props) => {
 								days.map(({ activities }, index) => {
 									
 									if (activities !== null) {
-										const displayActivities = (selectedFilter === 'All' ? activities : activities.filter(activity => activity.tag === selectedFilter)) /*.sort(sortByDate) */
-										// const displayActivities = activities.sort(sortByDate)
+										const displayActivities = (selectedFilter === 'All' ? activities : activities.filter(activity => activity.tag === selectedFilter)) 
+									
 										const marginBottom = index === (days.length - 1) ? 40 : 20
 	
 										return(
@@ -351,7 +347,22 @@ export const Calendar = (props) => {
 											
 										)
 									} else {
-										return null
+										return (
+											<View
+												key={index}
+												style={{
+													height: 189,
+													justifyContent: 'center', flex: 1
+												}}
+											>
+												<Text
+													style={{
+														textAlign: 'center',
+														justifyContent:'center',
+													}}
+												>No Activities</Text>
+											</View>
+										)
 									}
 
 
