@@ -4,7 +4,7 @@ import Styled from 'styled-components/native'
 import { Icon } from '../Icon'
 import { View, Image, Text } from 'react-native'
 import { TouchableWithoutFeedback } from 'react-native'
-import { Action } from '../Home'
+import { useTranslation } from 'react-i18next'
 
 const CalendarTime = Styled.View`
 	border-radius: 12px;
@@ -37,6 +37,8 @@ const CalendarContainer = Styled.View`
 `
 
 export const CalendarCard = ({ name, timeless, time, tag, handleModal }) => {
+
+	const [t, i18next] = useTranslation()
 
 	let image = ''
 	let tagColor = ''
@@ -91,7 +93,7 @@ export const CalendarCard = ({ name, timeless, time, tag, handleModal }) => {
 						source={{ uri: image }}
 					/>
 					<Text style={{ fontSize: 15, fontWeight: '500', marginTop: 10, marginLeft: 5 }}>{name}</Text>
-					<CalendarTag style={{ backgroundColor: tagColor }} >{tag}</CalendarTag>
+					<CalendarTag style={{ backgroundColor: tagColor }} >{t(tag.toLowerCase())}</CalendarTag>
 				</CalendarContainer>
 			</TouchableWithoutFeedback>
 		</View>

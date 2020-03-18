@@ -31,7 +31,11 @@ export const Filter = (props) => {
 							props.handleFilterChange(value)
 						}}
 					>
-						<View onStartShouldSetResponder={() => true}>
+						<View
+							style={{
+								paddingVertical: 2
+							}}
+							onStartShouldSetResponder={() => true}>
 
 							<FilterItem
 								name={t(name)}
