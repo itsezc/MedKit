@@ -8,4 +8,5 @@ export const FilterContainer = Styled.View`
 	shadow-offset: 0px 0px;
 	shadow-radius: 6px;
 	shadow-color: #000;
+	elevation: 1;
 `
