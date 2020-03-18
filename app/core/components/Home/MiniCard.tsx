@@ -14,8 +14,9 @@ const MiniCardContainer = Styled.View`
 	border-radius: 10px;
 	shadow-opacity: 0.1;
 	shadow-offset: 0px 0px;
-	shadow-radius: 6px;
+	shadow-radius: 3px;
 	shadow-color: #000;
+	elevation: 3;
 	z-index: 3;
 `
 
@@ -29,7 +30,8 @@ export function MiniCard({ link, image, name, navigation }): JSX.Element {
 		>
 			<View
 				style={{
-					display: 'flex'
+					display: 'flex',
+					paddingVertical: 3
 				}}
 			>
 				<View
@@ -69,7 +71,7 @@ export const MiniCards = (props) => (
 	<View
 		style={{
 			width: '100%',
-			marginTop: 130,
+			marginTop: 118,
 			zIndex: 3
 		}}
 	>
