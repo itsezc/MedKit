@@ -27,7 +27,7 @@ export default function ({ navigation }): JSX.Element {
 	if (data) {
 		const { getUser: { firstName } } = data 
 		return (
-			<Screen>
+			<Screen animated>
 				<View
 					style={{
 						flex: 1,
@@ -48,7 +48,7 @@ export default function ({ navigation }): JSX.Element {
 								position: 'absolute',
 								right: 30,
 							}}
-							source={{ uri: 'https://www.biography.com/.image/t_share/MTY2MzU3Nzk2OTM2MjMwNTkx/elon_musk_royal_society.jpg'}}
+							source={{ uri: 'https://avatars2.githubusercontent.com/u/33750251?s=460&u=406522584630aeddd14e73f7ea3d5a45993b2cad&v=4'}}
 						/>
 					</TouchableWithoutFeedback>
 				</View>
@@ -63,7 +63,7 @@ export default function ({ navigation }): JSX.Element {
 						borderLeftColor: 'transparent',
 						borderRightColor: 'transparent',
 						borderBottomColor: '#F0F5FD',
-						marginTop: 200,
+						marginTop: 165,
 					}}
 				/>
 				<MiniCards navigation={navigation} />
