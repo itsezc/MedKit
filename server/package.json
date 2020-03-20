@@ -5,9 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node ./build/index.js",
-		"dev": "nodemon --exec babel-node ./source/index.ts --extensions \".ts\"",
+		"dev": "nodemon --exec 'npm run clear:cache && babel-node ./source/index.ts --extensions \".ts\"'",
 		"build": "npx babel source --out-dir build",
-		"flow": "npx flow-bin start",
+		"clear:cache": "rm -rf ./node_modules/.cache/@babel",
 		"seed": "npx babel-node ./source/util/Seeder/index.ts --extensions \".ts\",\".js\" && npx babel-node ./source/util/Seeder/relate.ts --extensions \".ts\",\".js\"",
 		"onlyseed": "npx babel-node ./source/util/Seeder/index.ts --extensions \".ts\",\".js\""
 	},
