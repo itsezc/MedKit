@@ -48,7 +48,7 @@ export class Server {
 	}
 
 	private async initAuth() {
-		const { authUser } = await import('./core/User')
+		const { authUser } = await import('./core/Account')
 		
 		this.Auth = new ApolloServer({
 			schema: buildFederatedSchema([

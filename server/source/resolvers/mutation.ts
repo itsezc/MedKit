@@ -1,4 +1,4 @@
-import { Auth, Register } from '../core/User'
+import { Auth, Register } from '../core/Account'
 
 export const mutationResolver = {
 	login: async (parent, args, context, info) => Auth(args),
