@@ -1,7 +1,7 @@
 import SocketIO from 'socket.io'
 
 import { app } from '..'
-import { Event } from '../constants'
+import { Event } from '../../../common/constants'
 
 import { Identify } from './identify'
 import { getDiseases } from './getDiseases'
