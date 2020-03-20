@@ -1,50 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+
+import { chatHandler } from '../../chat'
+import Moment from 'moment'
 
 import { Screen, Icon } from '../../components'
 import { View, Text, TouchableWithoutFeedback } from 'react-native'
-import Constants from 'expo-constants'
+import { GiftedChat as Chat, Bubble, Send } from 'react-native-gifted-chat'
 
-
-import { GiftedChat as Chat, Bubble } from 'react-native-gifted-chat'
-import { useLazyQuery, gql } from '@apollo/client'
-
-const GET_CHAT_RESPONSE = gql`
-	query chatResponse($index: Int, $message: String) {
-		handleMessage(index: $index, message: $message) {
-			_id
-			text
-			createdAt
-			user {
-				_id
-				name
-				avatar
-			}
-			image
-			video
-			system
-		}
-	}
-`
-
-export default function({ navigation }) {
+export default function ({ navigation }) {
 
 	const [messages, setMessages] = useState([
 		{
-			_id: 4,
-			text: 'It started in the last week',
+			_id: 1,
+			text: 'I have the following symptoms: chest pain, coughing, sneezing and high temperature',
 			createdAt: new Date(),
 			user: {
 				_id: 1
-			},
+			}
 		},
-		{
-			_id: 3,
-			text: 'When did you start coughing?',
-			createdAt: new Date(),
-			user: {
-				_id: 2
-			},
-		}	,
 		{
 			_id: 2,
 			text: 'I\'m sorry to hear that, let me ask you a few questions about your symptoms',
@@ -54,34 +27,50 @@ export default function({ navigation }) {
 			},
 		},
 		{
-			_id: 1,
-			text: 'I have the following symptoms: chest pain, coughing, sneezing and high temperature',
+			_id: 3,
+			text: 'When did you start coughing?',
 			createdAt: new Date(),
 			user: {
-				_id: 1
+				_id: 2
 			},
-		},
+			quickReplies: {
+				type: 'checkbox', // or 'radio',
+				values: [
+					{
+						title: 'Less than a day',
+						value: 'yes',
+					},
+					{
+						title: 'Less than a week',
+						value: 'yes_picture',
+					},
+					{
+						title: 'Over 1 week',
+						value: 'no',
+					},
+					{
+						title: 'Over 1 month',
+						value: 'no',
+					},
+				],
+			}
+		}
 	])
+	
+	useEffect(() => {
+		const handler = new chatHandler(setMessages)
+	}, [])
 
-	const [getChatResponse, { loading, data }] = useLazyQuery(GET_CHAT_RESPONSE, {
-		onCompleted: (data) => data.handleMessage ? addToMessageBoard([ data.handleMessage ]) : null	
-	})
+	const quickReplies = messages[messages.length - 1]?.quickReplies?.values
 
 	const addToMessageBoard = newMessages => setMessages(prevMessages => Chat.append(prevMessages, newMessages))
 
 	const sendMessage = async (newMessages = []) => {
 
-		await addToMessageBoard(newMessages)
+		addToMessageBoard(newMessages)
 
 		const index = messages.length ? messages.length : 0
 		const message = newMessages[0].text
-
-		getChatResponse({
-			variables: {
-				index,
-				message
-			}
-		})
 	}
 
 	return (
@@ -162,15 +151,16 @@ export default function({ navigation }) {
 					}}
 				>
 					<Chat
-						messages={messages}
+						messages={messages.reverse()}
 						onSend={newMessages => sendMessage(newMessages)}
 						user={{
 							_id: 1
 						}}
-						renderComposer={() => false}
 						renderAvatar={null}
+						renderComposer={() => false}
 						renderTime={() => false}
 						renderDay={() => false}
+						renderQuickReplies={() => false}
 						renderBubble ={(props) => {
 							return (
 								<Bubble
@@ -227,6 +217,45 @@ export default function({ navigation }) {
 						}}
 					/>
 				</View>
+				{
+					quickReplies ? (
+						<View
+							style={{
+								paddingVertical: 20,
+								zIndex: 2,
+								backgroundColor: '#2276DF',
+								justifyContent: 'center',
+								alignItems: 'center',
+								flexDirection: 'column'
+							}}
+						>
+							{
+								quickReplies.map(({ title, value }, index) => (
+									<View
+										style={{
+											backgroundColor: '#3BCCBB',
+											marginVertical: 5,
+											width: '60%',
+											borderRadius: 25
+										}}
+										key={index}
+									>
+										<Text
+											
+											style={{
+												textAlign: 'center',
+												color: '#FFFFFF',
+												paddingVertical: 15
+											}}
+										>
+											{title}
+										</Text>
+									</View>
+								))
+							}
+						</View>
+					): null
+				}
 			</View>
 		</Screen>
 	)
