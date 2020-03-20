@@ -1,1 +1,1 @@
-export { query } from '../../../server/source/core/GClient'
+export { query } from '../../../server/source/util/GClient'
