@@ -60,6 +60,7 @@ type Treatment @rootEntity {
 
 type Medication @rootEntity {
 	name: String!
+	description: String
 	minAge: Int
 	diseases: [Disease] @relation(inverseOf: "medication")
 }
@@ -104,4 +105,19 @@ type Reciepe @rootEntity {
 type Ingredient @rootEntity {
 	name: String! 
 	image: String
+}
+
+# Pharamacies
+
+type Pharamacy @rootEntity {
+	name: String
+	owner: Account @relation
+	location: Location
+}
+
+# Utilities
+
+type Location @entityExtension {
+	latitude: Float
+	longitude: Float
 }
