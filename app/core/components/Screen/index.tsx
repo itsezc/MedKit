@@ -11,10 +11,12 @@ const ScreenContainer = Styled.View`
 `
 
 function Screen(props: {
-	animated?: boolean, children: React.ReactElement | React.ReactElement[]}) {
+	animated?: boolean,
+	pattern?: boolean,
+	children: React.ReactElement | React.ReactElement[]
+}) {
 	return (
 		<ScreenContainer>
-			
 			{
 				props.animated === true ? 
 					<ImageBackground
@@ -22,7 +24,13 @@ function Screen(props: {
 						source={require('../../../assets/images/RainBG.gif')}
 					>
 						{props.children}
-					</ImageBackground> : props.children
+					</ImageBackground> : props.pattern === true ? 
+						<ImageBackground
+							style={{width: '100%', height: '100%'}}
+							source={require('../../../assets/images/cool-background.png')}
+						>
+							{props.children}
+						</ImageBackground>: props.children
 			}
 		</ScreenContainer>
 	)
