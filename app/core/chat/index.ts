@@ -1,1 +1,0 @@
-export { chatHandler } from './handler'
