@@ -11,5 +11,8 @@ export {
 	MiniCards,
 	Action as HomeAction
 } from './Home'
+export {
+	Card as DrugsCard
+} from './Drugs'
 export { Icon } from './Icon'
 export { Button } from './Login'
