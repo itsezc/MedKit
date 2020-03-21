@@ -1,0 +1,18 @@
+version: '3'
+services:
+  arango:
+    image: arangodb:latest
+    restart: always
+    ports:
+      - '8529:8529'
+    environment:
+      ARANGO_ROOT_PASSWORD: ArangoR00t!
+
+  redis:
+    image: redis:latest
+    command: ['redis-server', '--appendonly', 'yes']
+    restart: always
+    ports: 
+      - '6379:6379'
+    volumes:
+      - ..data/redis:/data

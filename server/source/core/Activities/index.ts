@@ -1,0 +1,1 @@
+export { fetchActivities } from './fetchActivities'

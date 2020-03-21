@@ -1,0 +1,21 @@
+{
+	"translation": {
+		"hello": "Hello",
+		"checkUp": "Check Up",
+		"orderDrugs": "Order Drugs",
+		"fitness": "Fitness",
+		"food": "Food",
+		"all": "All",
+		"appointments": "Appointments",
+		"medication": "Medication",
+		"medicine": "Medicine",
+		"doctor": "Doctor",
+		"exercise": "Exercise",
+		"cooking": "Cooking",
+		"loginToAccount": "Login to your Account",
+		"login": "Login",
+		"email": "Email",
+		"password": "password",
+		"exampleEmail": "your@email.com"
+	}
+}

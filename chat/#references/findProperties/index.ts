@@ -1,0 +1,2 @@
+import { query } from '../GClient'
+
