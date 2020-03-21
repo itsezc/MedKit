@@ -12,7 +12,8 @@ export default {
 		},
 		{
 			"name": "orderDrugs",
-			"image": imageOrderDrugs
+			"image": imageOrderDrugs,
+			"link": "Drugs"
 		},
 		{
 			"name": "fitness",
