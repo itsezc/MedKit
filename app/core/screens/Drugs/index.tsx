@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { View, Text, TextInput, Image } from 'react-native'
-import { Screen, ProfileBack as Back, DrugsCard as Card } from '../../components'
+import { Icon, Screen, ProfileBack as Back, DrugsCard as Card } from '../../components'
 import { ScrollView } from 'react-native-gesture-handler'
 
 export default function({ navigation }) {
@@ -9,11 +9,35 @@ export default function({ navigation }) {
 	const [products, setProducts] = useState([
 		{
 			name: "Paracetamol",
-			type: "Counter"
+			type: "counter"
 		},
 		{
 			name: "Ibuprofen",
-			type: "Counter"
+			type: "counter"
+		},
+		{
+			name: "Aspirin",
+			type: "prescription"
+		},
+		{
+			name: "Vicodin",
+			type: "prescription"
+		},
+		{
+			name: "Azithromycin",
+			type: "prescription"
+		},
+		{
+			name: "Guaifenesin",
+			type: "counter"
+		},
+		{
+			name: "Loratadine",
+			type: "counter"
+		},
+		{
+			name: "Benadryl",
+			type: "counter"
 		}
 	])
 
@@ -70,12 +94,26 @@ export default function({ navigation }) {
 					paddingHorizontal: 30,
 				}}
 			>
+				<View
+					style={{
+						position: 'absolute',
+						marginLeft: 40,
+						marginTop: 14,
+						zIndex: 3
+					}}
+				>
+					<Icon 
+						name='Search'
+						size='22'
+						color='#DDDDDD'
+					/>
+				</View>
 				<TextInput
 					style={{
 						height: 50,
 						backgroundColor: '#FFFFFF',
 						borderRadius: 15,
-						paddingLeft: 30
+						paddingLeft: 40
 					}}
 					placeholder='Search for a Drug'
 				/>
@@ -84,7 +122,7 @@ export default function({ navigation }) {
 			<ScrollView
 				style={{
 					marginTop: 40,
-					marginHorizontal: 30
+					marginHorizontal: 20,
 				}}
 			>
 				{
