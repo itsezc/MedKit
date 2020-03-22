@@ -1,6 +1,4 @@
-import * as React from 'react'
-
-const { useState } = React
+import React, { useState } from 'react'
 
 import Moment from 'moment'
 
@@ -15,7 +13,7 @@ import { useQuery, gql } from '@apollo/client'
 
 export const Calendar = (props) => {
 
-	const [actionVisible, showAction] = React.useState(false)
+	const [actionVisible, showAction] = useState(false)
 	const [currentDay, setDay] = useState(0)
 	const [selectedFilter, setFilter] = useState('All')
 
@@ -33,157 +31,7 @@ export const Calendar = (props) => {
 		}
 	`
 
-	// const data = {
-	// 		"getActivities": [
-	// 		{
-	// 		"date": "2020-03-16T00:00:00Z",
-	// 		"activities": null
-	// 		},
-	// 		{
-	// 		"date": "2020-03-17T00:00:00Z",
-	// 		"activities": null
-	// 		},
-	// 		{
-	// 		"date": "2020-03-18T00:00:00Z",
-	// 		"activities": [
-	// 			{
-	// 			"name": "20 Pushups",
-	// 			"tag": "Exercise",
-	// 			"time": "2020-03-18T20:25:29Z"
-	// 			},
-	// 			{
-	// 			"name": "Dr. Vaishali",
-	// 			"tag": "Doctor",
-	// 			"time": "2020-03-18T15:25:29Z"
-	// 			}
-	// 		]
-	// 		},
-	// 		{
-	// 		"date": "2020-03-19T00:00:00Z",
-	// 		"activities": [
-	// 			{
-	// 			"name": "Dr. Rasi",
-	// 			"tag": "Doctor",
-	// 			"time": "2020-03-19T15:25:29Z"
-	// 			},
-	// 			{
-	// 			"name": "Dr. Niyathi",
-	// 			"tag": "Doctor",
-	// 			"time": "2020-03-19T15:25:29Z"
-	// 			}
-	// 		]
-	// 		},
-	// 		{
-	// 		"date": "2020-03-20T00:00:00Z",
-	// 		"activities": null
-	// 		},
-	// 		{
-	// 		"date": "2020-03-21T00:00:00Z",
-	// 		"activities": null
-	// 		},
-	// 		{
-	// 		"date": "2020-03-22T00:00:00Z",
-	// 		"activities": null
-	// 		}
-	// 		]
-	// 	}
 	const { loading, error, data } = useQuery(FETCH_ACTIVITIES)
-
-	// const [data, setData] = useState({
-	// 	days: [
-	// 		{
-	// 			date: "2020-02-01T00:00:00Z",
-	// 			activities: [
-	// 				{
-	// 					time: "2020-01-21T08:45:00Z",
-	// 					name: "Marijjuana",
-	// 					tag: "Medicine"
-	// 				},
-	// 				{
-	// 					time: "2020-01-21T08:45:00Z",
-	// 					name: "Running",
-	// 					tag: "Exercise"
-	// 				},
-	// 				{
-	// 					time: "2020-01-21T12:00:00Z",
-	// 					name: "Biryani",
-	// 					tag: "Cooking"
-	// 				},
-	// 				{
-	// 					time: "2020-01-21T13:00:00Z",
-	// 					name: "Pinkman",
-	// 					tag: "Doctor"
-	// 				},
-	// 			]
-	// 		},
-	// 		{
-	// 			date: "2020-02-02T00:00:00Z",
-	// 			activities: [
-	// 				{
-	// 					time: "2020-02-21T08:00:00Z",
-	// 					name: "Pinkman",
-	// 					tag: "Doctor"
-	// 				},
-	// 				{
-	// 					time: "2020-02-21T08:00:00Z",
-	// 					name: "Salad",
-	// 					tag: "Cooking"
-	// 				},
-	// 				{
-	// 					time: "2020-02-21T13:30:00Z",
-	// 					name: "White",
-	// 					tag: "Doctor"
-	// 				},
-	// 				{
-	// 					time: "2020-02-21T08:45:00Z",
-	// 					name: "Push Ups",
-	// 					tag: "Exercise"
-	// 				},
-	// 			]
-	// 		},
-	// 		{
-	// 			date: "2020-02-03T00:00:00Z",
-	// 			activities: [
-	// 				{
-	// 					time: "2020-03-21T08:00:00Z",
-	// 					name: "Pinkman",
-	// 					tag: "Doctor"
-	// 				},
-	// 				{
-	// 					time: "2020-03-21T13:30:00Z",
-	// 					name: "White",
-	// 					tag: "Doctor"
-	// 				},
-	// 				{
-	// 					time: "2020-03-21T08:45:00Z",
-	// 					name: "Push Ups",
-	// 					tag: "Exercise"
-	// 				},
-	// 			]
-	// 		},
-	// 		{
-	// 			date: "2020-02-04T00:00:00Z",
-	// 			activities: [
-	// 				{
-	// 					time: "2020-03-21T08:00:00Z",
-	// 					name: "Pinkman",
-	// 					tag: "Doctor"
-	// 				},
-	// 				{
-	// 					time: "2020-03-21T13:30:00Z",
-	// 					name: "White",
-	// 					tag: "Doctor"
-	// 				},
-	// 				{
-	// 					time: "2020-03-21T08:45:00Z",
-	// 					name: "Push Ups",
-	// 					tag: "Exercise"
-	// 				},
-	// 			]
-	// 		}
-	// 	]
-	// })
-
 	
 	if (data) {
 
