@@ -5,6 +5,18 @@ export function Card({ name, type, navigation, countHandler }) {
 
 	const [selected, setSelected] = useState(false)
 
+	let backgroundColor: string
+
+	switch (type) {
+		case 'counter':
+			backgroundColor = '#F1ECFF'
+			break;
+		case 'prescription':
+			backgroundColor = '#E0F7E2'
+		default:
+			break;
+	}
+
 	return (
 		<TouchableWithoutFeedback
 			onPress={() => {
@@ -15,7 +27,8 @@ export function Card({ name, type, navigation, countHandler }) {
 		>
 			<View
 				style={{
-					flexDirection: 'row'
+					flexDirection: 'row',
+					paddingHorizontal: 10
 				}}
 			>
 				{
@@ -28,7 +41,15 @@ export function Card({ name, type, navigation, countHandler }) {
 								height: 60,
 								marginRight: 10,
 								marginTop: 10,
-								borderRadius: 20
+								borderRadius: 20,
+								shadowColor: '#000',
+								shadowOffset: { 
+									width: 0,
+									height: 0,
+								},
+								shadowRadius: 3,
+								elevation: 3,
+								marginBottom: 20,
 							}}
 						/> : null
 				}
@@ -40,7 +61,7 @@ export function Card({ name, type, navigation, countHandler }) {
 						borderRadius: 15,
 						padding: 15,
 						alignItems: 'center',
-						shadowColor: '#FFF',
+						shadowColor: '#000',
 						shadowOffset: { 
 							width: 0,
 							height: 0,
@@ -65,7 +86,7 @@ export function Card({ name, type, navigation, countHandler }) {
 					<View
 						style={{
 							marginLeft: 'auto',
-							backgroundColor: '#F1ECFF',
+							backgroundColor,
 							paddingVertical: 4,
 							paddingHorizontal: 12,
 							borderRadius: 10
@@ -73,11 +94,11 @@ export function Card({ name, type, navigation, countHandler }) {
 					>
 						<Text
 							style={{
-								fontSize: 12,
+								fontSize: 10,
 								textAlign: 'center'
 							}}
 						>
-							{type}
+							{type.toUpperCase()}
 						</Text>
 					</View>
 					
