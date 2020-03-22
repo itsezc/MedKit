@@ -27,7 +27,7 @@ function Screen(props: {
 					</ImageBackground> : props.pattern === true ? 
 						<ImageBackground
 							style={{width: '100%', height: '100%'}}
-							source={require('../../../assets/images/cool-background.png')}
+							source={require('../../../assets/images/bg_abstract_blue.jpg')}
 						>
 							{props.children}
 						</ImageBackground>: props.children
