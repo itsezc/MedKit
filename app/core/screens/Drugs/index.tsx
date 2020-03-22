@@ -16,6 +16,8 @@ export default function({ navigation }) {
 			type: "Counter"
 		}
 	])
+
+	const [count, setCount] = useState(0)
 	
 	return (
 		<Screen
@@ -58,7 +60,7 @@ export default function({ navigation }) {
 							textAlign: 'center'
 						}}
 					>
-						12
+						{count}
 					</Text>
 				</View>
 			</View>
@@ -92,6 +94,7 @@ export default function({ navigation }) {
 							name={name}
 							type={type}
 							navigation={navigation}
+							countHandler={setCount}
 						/>
 					))
 				}
