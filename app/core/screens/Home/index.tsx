@@ -3,8 +3,7 @@ import * as React from 'react'
 import {
 	Screen,
 	Calendar,
-	MiniCards,
-	HomeAction
+	MiniCards
 } from '../../components'
 import { View, Image, Text, TouchableWithoutFeedback, Dimensions } from 'react-native'
 
