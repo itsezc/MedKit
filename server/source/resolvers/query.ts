@@ -1,14 +1,11 @@
-import { handleMessage } from '../core/chatHandler'
 import { fetchActivities } from '../core/Activities'
+import { fetchSymptoms, fetchSymptom } from '../core/Symptoms'
 
 export const queryResolver = {
 
 	getUser: async (parent, args, { user }, info) => user,
-
-	handleMessage: async (parent, args: { index, message }, context, info) => {
-		return handleMessage(index, message)
-	},
-
-	getActivities: async(parent, args, { user }, info) => fetchActivities(user)
-
+	getActivities: async(parent, args, { user }, info) => fetchActivities(user),
+	getSymptoms: async(parent, args, context, info) => fetchSymptoms,
+	getSymptom: async(parent, { name }, context, info) => fetchSymptom(name)
+	
 }
