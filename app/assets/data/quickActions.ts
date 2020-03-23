@@ -21,7 +21,8 @@ export default {
 		},
 		{
 			"name": "food",
-			"image": imageFood
+			"image": imageFood,
+			"link": "Recipes"
 		}
 	]
 }
