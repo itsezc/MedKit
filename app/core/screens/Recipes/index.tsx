@@ -74,6 +74,7 @@ export default function ({ navigation }): JSX.Element {
 
 			<ScrollView
 				horizontal
+				showsHorizontalScrollIndicator={false}
 				style={{
 					maxHeight: 250,
 					marginTop: 30,

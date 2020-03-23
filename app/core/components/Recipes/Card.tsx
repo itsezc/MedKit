@@ -1,6 +1,8 @@
 import React from 'react'
+
 import { View, Text, Image, ImageBackground } from 'react-native'
-import { Icon } from '../../components'
+import { Icon } from '../../components/Icon'
+
 export function Card(): JSX.Element {
 	return (
 		<View
