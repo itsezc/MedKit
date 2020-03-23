@@ -14,6 +14,9 @@ export async function Handler(Socket: SocketIO.Socket, Server: SocketIO.Server) 
 	console.log('Client connected with ID', id)
 
 	Server.emit(Event.MESSAGE, await createMessage('Hello what is wrong with you'))
+	Server.emit(Event.MESSAGE, await createMessage('Here is another message from the chatHandler', 1))
+
+	Socket.on('requestDisconnect', () => Socket.disconnect())
 
 	Socket.on(Event.IDENTIFY, Identify)
 	Socket.on(Event.GET_DISEASES, getDiseases)
