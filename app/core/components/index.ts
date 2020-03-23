@@ -14,5 +14,8 @@ export {
 export {
 	Card as DrugsCard
 } from './Drugs'
+export {
+	Card as RecipesCard
+} from './Recipes'
 export { Icon } from './Icon'
 export { Button } from './Login'
