@@ -6,17 +6,20 @@ import { ImageBackground, Image, Animated } from 'react-native'
 
 const ScreenContainer = Styled.View`
 	flex: 1;
-	background-color: #2276df;
+	background-color: ${props => props.background || '#2276df'};
 	paddingTop: ${Constants.statusBarHeight}px;
 `
 
 function Screen(props: {
 	animated?: boolean,
 	pattern?: boolean,
+	background?: string,
 	children: React.ReactElement | React.ReactElement[]
 }) {
 	return (
-		<ScreenContainer>
+		<ScreenContainer
+			background={props.background}
+		>
 			{
 				props.animated === true ? 
 					<ImageBackground

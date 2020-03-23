@@ -37,7 +37,7 @@ export function Card({ name, type, navigation, countHandler }) {
 							style={{
 								paddingVertical: 15,
 								backgroundColor: '#2460D7',
-								width: 12,
+								width: 6,
 								height: 60,
 								marginRight: 10,
 								marginTop: 10,
