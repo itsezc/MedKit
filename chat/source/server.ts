@@ -1,7 +1,7 @@
 import SocketIO, { Socket } from 'socket.io'
 import Hapi from '@hapi/hapi'
 import { Handler } from './library/Handler'
-import { Event } from './constants'
+import { Event } from '../../common/constants'
 
 export class Server {
 	
@@ -23,6 +23,6 @@ export class Server {
 	}
 
 	private process() {
-		this.server.on(Event.CONNECT, (Socket) => Handler)
+		this.server.on(Event.CONNECT, (Socket) => Handler(Socket, this.server))
 	}
 }
