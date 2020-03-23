@@ -1,32 +1,4 @@
-scalar Date
-
-type MessageHandler {
-	_id: Int
-	text: String
-	createdAt: Date,
-	user: MessageUser
-	image: String
-	video: String
-	system: Boolean
-}
-
-type MessageUser {
-	_id: Int
-	name: String
-	avatar: String
-}
-
-type MessageQuickReply {
-	type: String
-	keepIt: Boolean
-	values: [MessageQuickReplyValue]
-	user: MessageUser
-}
-
-type MessageQuickReplyValue {
-	title: String
-	value: String
-}
+scalar DateTime
 
 type Account @key(fields: "id") {
 	id: ID
@@ -35,7 +7,7 @@ type Account @key(fields: "id") {
 	password: String
 	firstName: String
 	lastName: String
-	dateOfBirth: Date
+	DateTimeOfBirth: DateTime
 	weight: Float
 }
 
@@ -46,12 +18,34 @@ type LoginPayload {
 type Activity {
 	name: String
 	tag: String
-	time: Date
+	time: DateTime
 }
 
 type Activities {
-	date: Date
+	date: DateTime
 	activities: [Activity]
+}
+
+type Symptom {
+	id: ID
+	name: String
+}
+
+type Drugs {
+	name: String
+	description: String
+}
+
+type Ingredient {
+	name: String 
+	image: String
+}
+
+type Reciepe {
+	name: String
+	image: String
+	ingredient: [Ingredient]
+	createdAt: DateTime
 }
 
 extend type Mutation {
@@ -67,13 +61,15 @@ extend type Mutation {
 		passwordConfirm: String!,
 		firstName: String!,
 		lastName: String!,
-		dateOfBirth: Date!,
+		dateOfBirth: DateTime!,
 		deviceID: String!
 	): LoginPayload
 }
 
 extend type Query {
-	handleMessage(index: Int, message: String): MessageHandler
 	getUser: Account
 	getActivities: [Activities]
+	getReciepes: [Reciepe]
+	getSymptoms: [Symptom]
+	getSymptom(name: String!): Symptom
 }
