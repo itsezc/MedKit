@@ -1,64 +1,67 @@
 import React, { useState, useEffect } from 'react'
 
 import { chatHandler } from '../../chat'
-import Moment from 'moment'
 
 import { Screen, Icon } from '../../components'
 import { View, Text, TouchableWithoutFeedback } from 'react-native'
-import { GiftedChat as Chat, Bubble, Send } from 'react-native-gifted-chat'
+import { GiftedChat as Chat, Bubble } from 'react-native-gifted-chat'
 
 export default function ({ navigation }) {
 
 	const [messages, setMessages] = useState([
-		{
-			_id: 1,
-			text: 'I have the following symptoms: chest pain, coughing, sneezing and high temperature',
-			createdAt: new Date(),
-			user: {
-				_id: 1
-			}
-		},
-		{
-			_id: 2,
-			text: 'I\'m sorry to hear that, let me ask you a few questions about your symptoms',
-			createdAt: new Date(),
-			user: {
-				_id: 2
-			},
-		},
-		{
-			_id: 3,
-			text: 'When did you start coughing?',
-			createdAt: new Date(),
-			user: {
-				_id: 2
-			},
-			quickReplies: {
-				type: 'checkbox', // or 'radio',
-				values: [
-					{
-						title: 'Less than a day',
-						value: 'yes',
-					},
-					{
-						title: 'Less than a week',
-						value: 'yes_picture',
-					},
-					{
-						title: 'Over 1 week',
-						value: 'no',
-					},
-					{
-						title: 'Over 1 month',
-						value: 'no',
-					},
-				],
-			}
-		}
+		// {
+		// 	_id: 1,
+		// 	text: 'I have the following symptoms: chest pain, coughing, sneezing and high temperature',
+		// 	createdAt: new Date(),
+		// 	user: {
+		// 		_id: 1
+		// 	}
+		// },
+		// {
+		// 	_id: 2,
+		// 	text: 'I\'m sorry to hear that, let me ask you a few questions about your symptoms',
+		// 	createdAt: new Date(),
+		// 	user: {
+		// 		_id: 2
+		// 	},
+		// },
+		// {
+		// 	_id: 3,
+		// 	text: 'When did you start coughing?',
+		// 	createdAt: new Date(),
+		// 	user: {
+		// 		_id: 2
+		// 	},
+		// 	quickReplies: {
+		// 		type: 'checkbox', // or 'radio',
+		// 		values: [
+		// 			{
+		// 				title: 'Less than a day',
+		// 				value: 'yes',
+		// 			},
+		// 			{
+		// 				title: 'Less than a week',
+		// 				value: 'yes_picture',
+		// 			},
+		// 			{
+		// 				title: 'Over 1 week',
+		// 				value: 'no',
+		// 			},
+		// 			{
+		// 				title: 'Over 1 month',
+		// 				value: 'no',
+		// 			},
+		// 		],
+		// 	}
+		// }
 	])
 	
 	useEffect(() => {
-		const handler = new chatHandler(setMessages)
+		const handler = new chatHandler(addToMessageBoard)
+
+		return function cleanup() {
+			handler.disconnect()
+		}
 	}, [])
 
 	const quickReplies = messages[messages.length - 1]?.quickReplies?.values
@@ -151,7 +154,7 @@ export default function ({ navigation }) {
 					}}
 				>
 					<Chat
-						messages={messages.reverse()}
+						messages={messages}
 						onSend={newMessages => sendMessage(newMessages)}
 						user={{
 							_id: 1
