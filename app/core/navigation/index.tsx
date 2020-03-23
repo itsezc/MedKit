@@ -8,6 +8,7 @@ import Home from '../screens/Home'
 import Profile from '../screens/Profile'
 import Chat from '../screens/Chat'
 import Drugs from '../screens/Drugs'
+import Recipes from '../screens/Recipes'
 
 const Stack = createStackNavigator()
 
@@ -40,6 +41,10 @@ export function Navigation(): JSX.Element {
 		{
 			name: 'Drugs',
 			component: Drugs
+		},
+		{
+			name: 'Recipes',
+			component: Recipes
 		}
 	]
 	
