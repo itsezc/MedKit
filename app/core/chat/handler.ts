@@ -4,15 +4,14 @@ import { GiftedChat } from 'react-native-gifted-chat'
 	
 export class chatHandler {
 	
-	private readonly Socket = SocketIO('http://localhost:8087')
-	private setMessages
+	private readonly Socket = SocketIO('http://192.168.0.111:8087')
+	private setMessages: Function
 
 	constructor(setMessages) {
-		this.setMessages = setMessages
-		this.Socket.on('message', this.handleMessage)
+		this.Socket.on('message', message => setMessages(message))
 	}
 
-	private handleMessage(newMessage) {
-		return this.setMessages(prevMessages => GiftedChat.append(prevMessages, newMessage))
+	public disconnect() {
+		this.Socket.emit('requestDisconnect')
 	}
 }
