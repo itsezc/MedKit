@@ -12,6 +12,9 @@ export {
 	Action as HomeAction
 } from './Home'
 export {
+	Header as ChatHeader
+} from './Chat'
+export {
 	Card as DrugsCard
 } from './Drugs'
 export {
