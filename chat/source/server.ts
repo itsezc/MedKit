@@ -4,25 +4,22 @@ import { Handler } from './library/Handler'
 import { Event } from '../../common/constants'
 
 export class Server {
-	
-	public readonly port:number = 8087
-	public server: SocketIO.Server
-	private http: Hapi.Server
 
-	constructor() {
+	constructor(
+		public readonly port: number = 8087,
+		private HTTP: Hapi.Server = new Hapi.Server({ port }),
+		public Server: SocketIO.Server = SocketIO(HTTP.listener) 
+	) {
 		this.init()
 	}
 
 	private async init() {
-		this.http = new Hapi.Server({ port: this.port })
-		await this.http.start()
-		console.log(`[HTTP] Server started on port ${this.http.info.port}`)
-		this.server = SocketIO(this.http.listener)
-		console.log(`[WS] Server binded to HTTP`)
+		await this.HTTP.start()
+		console.log(`[SOCKET] Server started on port ${this.HTTP.info.port}`)
 		this.process()
 	}
 
 	private process() {
-		this.server.on(Event.CONNECT, (Socket) => Handler(Socket, this.server))
+		this.Server.on(Event.CONNECT, (Socket) => Handler(Socket, this.Server))	
 	}
 }
