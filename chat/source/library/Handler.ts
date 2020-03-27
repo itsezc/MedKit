@@ -9,10 +9,14 @@ import { getDiseases } from './getDiseases'
 import { askQuestions } from './questions'
 import { Message } from './message'
 
+type IAccount = {
+	id: string
+}
+
 export async function Handler(Socket: SocketIO.Socket, Server: SocketIO.Server) {
 	
 	const { id } = Socket
-	const User: object = {}
+	let User: IAccount | object
 
 	console.log('Client connected with ID', id)
 
@@ -43,7 +47,7 @@ export async function Handler(Socket: SocketIO.Socket, Server: SocketIO.Server) 
 	Socket.on(Event.MESSAGE, message => console.log(message))
 
 	// Stage 1-3
-	Socket.on(Event.IDENTIFY, Identify)
+	Socket.on(Event.IDENTIFY, (data) => Identify(data, User as IAccount))
  	
 	Socket.on(Event.GET_DISEASES, getDiseases)
 	Socket.on(Event.ASK_QUESTIONS, (diseases: string[]) => askQuestions(diseases, Server))
