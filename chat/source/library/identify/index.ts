@@ -1,7 +1,7 @@
 import { query } from '../GClient'
 import { updateList } from '../../core/redis'
 
-export async function Identify({ symptoms, userID }: { symptoms: string[], userID: string }): Promise<typeof symptoms> {
+export async function Identify({ symptoms }: { symptoms: string[] }, { id }: { id: string }): Promise<typeof symptoms> {
 
 	const results: typeof symptoms = []
 	
@@ -26,7 +26,7 @@ export async function Identify({ symptoms, userID }: { symptoms: string[], userI
 		
 	})
 
-	await updateList(`user_${userID}`, results)
+	await updateList(`user_${id}`, results)
 
 	return results
 }
