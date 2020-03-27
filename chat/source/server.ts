@@ -1,14 +1,14 @@
-import SocketIO, { Socket } from 'socket.io'
+import SocketIO from 'socket.io'
 import Hapi from '@hapi/hapi'
+
 import { Handler } from './library/Handler'
 import { Event } from '../../common/constants'
 
 export class Server {
-
 	constructor(
 		public readonly port: number = 8087,
-		private HTTP: Hapi.Server = new Hapi.Server({ port }),
-		public Server: SocketIO.Server = SocketIO(HTTP.listener) 
+		public HTTP: Hapi.Server = new Hapi.Server({ port }),
+		public Server: SocketIO.Server = SocketIO(HTTP.listener)
 	) {
 		this.init()
 	}

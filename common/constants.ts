@@ -1,4 +1,5 @@
 export enum Event {
+	AUTH = 'auth',
 	CONNECT = 'connect',
 	REQUEST_DISCONNECT = 'requestDisconnect',
 	DISCONNECT = 'disconnect',
