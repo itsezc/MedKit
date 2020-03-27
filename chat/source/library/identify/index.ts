@@ -1,14 +1,13 @@
-import gql from 'graphql-tag'
 import { query } from '../GClient'
-import { DocumentNode } from 'graphql'
+import { updateList } from '../../core/redis'
 
-export async function Identify({ symptoms }: { symptoms: string[] }): Promise<typeof symptoms> {
+export async function Identify({ symptoms, userID }: { symptoms: string[], userID: string }): Promise<typeof symptoms> {
 
 	const results: typeof symptoms = []
 	
 	symptoms.forEach(async(symptom) => {
 
-		const FIND_DISEASES: DocumentNode = gql`
+		const FIND_DISEASES: string = `
 			query findDiseases($symptom: String!) {
 				allDiseases(
 					filter: {
@@ -26,6 +25,8 @@ export async function Identify({ symptoms }: { symptoms: string[] }): Promise<ty
 		diseases.forEach(({ id }) => results.push(id))
 		
 	})
+
+	await updateList(`user_${userID}`, results)
 
 	return results
 }
