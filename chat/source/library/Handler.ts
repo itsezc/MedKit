@@ -1,4 +1,4 @@
-import SocketIO, { Socket } from 'socket.io'
+import SocketIO from 'socket.io'
 
 import { Event } from '../../../common/constants'
 
@@ -33,7 +33,7 @@ export async function Handler(Socket: SocketIO.Socket, Server: SocketIO.Server) 
 			}
 		]
 	}))
-
+	
 	Socket.on(Event.REQUEST_DISCONNECT, () => Socket.disconnect())
 	Socket.on(Event.MESSAGE, message => console.log(message))
 

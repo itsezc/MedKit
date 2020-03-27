@@ -1,5 +1,5 @@
-import { fetchActivities } from '../core/Activities'
-import { fetchSymptoms, fetchSymptom } from '../core/Symptoms'
+import { fetchActivities } from '../lib/Activities'
+import { fetchSymptoms, fetchSymptom } from '../lib/Symptoms'
 
 export const queryResolver = {
 

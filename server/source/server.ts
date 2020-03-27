@@ -2,8 +2,8 @@ import { ApolloServer, gql } from 'apollo-server'
 import { ApolloGateway } from '@apollo/gateway'
 import { buildFederatedSchema } from '@apollo/federation'
 
-import { ApolloEngineLogger } from './lib/log'
-import remoteContext from './lib/remoteContext'
+import { ApolloEngineLogger } from './core/log'
+import remoteContext from './core/remoteContext'
 
 import { GraphQLSchema, DocumentNode } from 'graphql'
 
@@ -48,7 +48,7 @@ export class Server {
 	}
 
 	private async initAuth() {
-		const { authUser } = await import('./core/Account')
+		const { authUser } = await import('./lib/Account')
 		
 		this.Auth = new ApolloServer({
 			schema: buildFederatedSchema([

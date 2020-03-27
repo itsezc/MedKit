@@ -48,10 +48,6 @@ async function Relate() {
 
 						const elResult = await query(getID)
 
-						// console.log(elResult)
-
-						// console.log(':: ', type, field, `${elResult['all' + field + 's'][0].id}`)
-
 						const CREATE_RELATION: string = `
 							mutation {
 								update${type}(

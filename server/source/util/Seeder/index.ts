@@ -4,7 +4,7 @@ import { Data } from '../../../seed'
 export async function Seed(): Promise<boolean | void> {
 
 	const DELETE_ALL_ACCOUNTS: string = `mutation { deleteAllAccounts { id } }`
-	const DELETE_ALL_DISEASES: string  = `mutation { deleteAllDiseases { id } }`
+	const DELETE_ALL_DISEASES: string = `mutation { deleteAllDiseases { id } }`
 	const DELETE_ALL_SYMPTOMS: string = `mutation { deleteAllSymptoms { id } }`
 	const DELETE_ALL_ACTIVITIES: string = `mutation { deleteAllActivities { id } }`
 
