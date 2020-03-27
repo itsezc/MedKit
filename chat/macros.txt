@@ -1,0 +1,2 @@
+{ "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMDI2NSIsImRldmljZUlEIjoibG9sIiwiaWF0IjoxNTg1MzIwNTM5fQ.2mWu4wQDxVOZ8dMbaUo1wRFbjQN7JCEnXHw9LZGhbs0" }
+{ "symptoms": ["311248", "311250"] }
