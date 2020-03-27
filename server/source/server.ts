@@ -10,10 +10,11 @@ import { GraphQLSchema, DocumentNode } from 'graphql'
 export class Server {
 
 	private Server: ApolloServer
+	private gateway: ApolloGateway
+
 	private ORM: ApolloServer
 	private Auth: ApolloServer
-
-	private gateway: ApolloGateway
+	private Health: ApolloServer
 
 	private cruddlSchema: GraphQLSchema
 	private appTypeDefs: DocumentNode
