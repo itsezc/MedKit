@@ -31,7 +31,7 @@ type Symptom {
 	name: String
 }
 
-type Drugs {
+type Medicine {
 	name: String
 	description: String
 }
@@ -72,4 +72,5 @@ extend type Query {
 	getReciepes: [Reciepe]
 	getSymptoms: [Symptom]
 	getSymptom(name: String!): Symptom
+	getTopMedicines: [Medicine]
 }
