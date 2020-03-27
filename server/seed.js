@@ -59,7 +59,7 @@ export const Data = {
 					input: {
 						firstName: "Vrishin",
 						lastName: "Patel",
-						email: "vrishtrix@pornhub.com",
+						email: "vrishinp@foretag.co",
 						password: "$2y$14$.7eeAceLDesI7mDAMkI6cuAbiYba.wkngN5lAu8yTxSRKWvyayzJG",
 						weight: 45
 					}
@@ -78,7 +78,7 @@ export const Data = {
 					input: {
 						name: "20 Pushups",
 						tag: "Exercise",
-						time: "${Moment(Moment().add(3, 'days')._d).format()}"
+						time: "${Moment(Moment().add(3, 'days')).utc().format()}"
 					}
 				) {
 					id

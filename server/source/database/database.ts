@@ -26,7 +26,7 @@ const Project = new ProjectConstructor({
 		}
 	],
 	getExecutionOptions: ({ context }) => ({ authRoles: ['users'] }),
-	getOperationIdentifier: ({ context }) => context
+	getOperationIdentifier: ({ context }: { context: Object }) => context
 })
 
 const schema = Project.createSchema(DB)

@@ -45,8 +45,12 @@ async function Relate() {
 								}
 							}
 						`
+
 						const elResult = await query(getID)
-						// console.log('elResult', elResult)
+
+						// console.log(elResult)
+
+						// console.log(':: ', type, field, `${elResult['all' + field + 's'][0].id}`)
 
 						const CREATE_RELATION: string = `
 							mutation {
@@ -57,14 +61,10 @@ async function Relate() {
 									}
 								) {
 									id
-									activities {
-										name
-									}
 								}
 							}
 						`
 
-						// console.log('relation', CREATE_RELATION)
 						console.log(await query(CREATE_RELATION))
 
 					})
