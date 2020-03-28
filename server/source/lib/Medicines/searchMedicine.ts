@@ -16,5 +16,5 @@ export async function searchMedicine({ term }: { term: string }) {
 
 	const { allMedications } = await query(SEARCH_MEDICINE, { term })
 
-	return allMedications
+	return allMedications[0]
 }

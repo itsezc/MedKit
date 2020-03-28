@@ -73,4 +73,5 @@ extend type Query {
 	getSymptoms: [Symptom]
 	getSymptom(name: String!): Symptom
 	getTopMedicines: [Medicine]
+	searchMedicine(term: String!): Medicine
 }

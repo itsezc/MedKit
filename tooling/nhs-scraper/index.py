@@ -17,5 +17,6 @@ for diseasePanel in diseasesPanels:
 	diseases.append(disease.text)
 
 excludes = set(excludes)
-results = [x for x in diseases if x not in excludes]
+results = list(dict.fromkeys([x for x in diseases if x not in excludes]))
+
 print results

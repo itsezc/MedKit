@@ -1,4 +1,6 @@
-install_requires=[
+install_requires = [
+	'json',
 	'requests',
-	'beautifulsoup4'
+	'beautifulsoup4',
+	'gql'
 ]
