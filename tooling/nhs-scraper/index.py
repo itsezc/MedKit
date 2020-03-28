@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from _graphql import client
+from queries.deleteDiseases import deleteDiseases
 
 URL = 'https://www.nhs.uk/conditions/'
 page = requests.get(URL)
@@ -20,5 +21,7 @@ for diseasePanel in diseasesPanels:
 
 excludes = set(excludes)
 results = list(dict.fromkeys([x for x in diseases if x not in excludes]))
+
+deleteDiseases()
 
 print results
