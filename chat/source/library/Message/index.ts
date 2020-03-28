@@ -1,1 +1,0 @@
-export { Message as sendMessage } from './message'

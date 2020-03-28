@@ -10,11 +10,15 @@ module.exports = (api) => {
 			}
 		  }
 	    ],
-	    '@babel/preset-flow',
 	    '@babel/preset-typescript'
 	]
   
-	const plugins = []
+	const plugins = [
+	    '@babel/plugin-transform-runtime',
+	    '@babel/plugin-syntax-function-bind',
+	    '@babel/plugin-proposal-class-properties',
+	    '@babel/plugin-proposal-throw-expressions'
+	]
   
 	const ignore = []
   

@@ -1,38 +1,31 @@
 {
-	"name": "chat",
+	"name": "@medkit/chat",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"build": "npx babel source --out-dir build --extensions '.ts,.tsx'",
-		"dev": "babel-watch --watch source source/index.ts --extensions \".ts\""
+		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
 		"@babel/cli": "^7.8.4",
-		"@babel/core": "^7.8.4",
-		"@babel/node": "^7.8.4",
-		"@babel/preset-env": "^7.8.4",
-		"@babel/preset-flow": "^7.8.3",
-		"@babel/preset-typescript": "^7.8.3",
-		"@types/jsonwebtoken": "^8.3.8",
-		"@types/redis": "^2.8.16",
+		"@babel/core": "^7.9.0",
+		"@babel/node": "^7.8.7",
+		"@babel/plugin-proposal-class-properties": "^7.8.3",
+		"@babel/plugin-proposal-throw-expressions": "^7.8.3",
+		"@babel/plugin-syntax-function-bind": "^7.8.3",
+		"@babel/plugin-transform-runtime": "^7.9.0",
+		"@babel/preset-env": "^7.9.0",
+		"@babel/preset-typescript": "^7.9.0",
+		"@types/hapi__hapi": "^19.0.2",
 		"@types/socket.io": "^2.1.4",
-		"babel-watch": "^7.0.0",
-		"nodemon": "^2.0.2",
-		"typescript": "^3.7.5"
+		"inversify": "^5.0.1",
+		"reflect-metadata": "^0.1.13"
 	},
 	"dependencies": {
 		"@hapi/hapi": "^19.1.1",
-		"@tensorflow/tfjs": "^1.6.1",
-		"@types/hapi__hapi": "^19.0.2",
-		"axios": "^0.19.2",
-		"graphql": "^14.6.0",
-		"graphql-tag": "^2.10.3",
-		"jsonwebtoken": "^8.5.1",
-		"redis": "^3.0.2",
 		"socket.io": "^2.3.0"
 	}
 }

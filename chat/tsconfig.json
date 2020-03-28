@@ -12,17 +12,20 @@
 		"isolatedModules": false,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
-		"skipLibCheck": true,
 		"lib": [
 			"dom",
 			"es2018"
 		],
 		"typeRoots": [
-			"./node_modules/@types",
-			"typings"
+			"./typings",
+			"./node_modules/@types"
+		],
+		"types": [
+			"reflect-metadata"
 		]
 	},
 	"exclude": [
-		"node_modules"
+		"node_modules",
+		"./babel.config.js"
 	]
 }
