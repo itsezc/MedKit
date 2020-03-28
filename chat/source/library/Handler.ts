@@ -58,8 +58,7 @@ export async function Handler(Socket: SocketIO.Socket, Server: SocketIO.Server) 
 	Socket.on(Event.MESSAGE, message => console.log(message))
 
 	// Stage 1-3
-	// @ts-ignore
-	Socket.on(Event.IDENTIFY, (data) => Identify(JSON.parse(data), Socket.User as IAccount, Server))
+	Socket.on(Event.IDENTIFY, (data) => Identify(JSON.parse(data), Socket, Server))
  	
 	Socket.on(Event.GET_DISEASES, getDiseases)
 	Socket.on(Event.ASK_QUESTIONS, (diseases: string[]) => askQuestions(diseases, Server))

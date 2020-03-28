@@ -1,19 +1,23 @@
 import { query } from '../GClient'
-import { updateList } from '../../core/redis'
+import { cache, updateList } from '../../core/redis'
 
 export async function Identify(
 	{ symptoms }: { symptoms: string[] },
-	{ id }: { id: string },
+	Socket: SocketIO.Socket,
 	Server: SocketIO.Server
 ): Promise<void> {
 
-	console.log('User ID', id)
-
 	let results: typeof symptoms = []
-
+	
 	const response = async (results: typeof symptoms) => {
-		await updateList(`user_${id}`, results)
-		Server.emit('message', results)
+
+		console.log(':: Results', results)
+	
+		cache.get(Socket.id, async (err, reply) => {
+			await updateList(`user_${reply}`, results)
+			Server.emit('message', results)
+		})
+		
 	} 
 
 	symptoms.forEach(async(symptom, index, array) => {
