@@ -1,0 +1,7 @@
+{
+	"cold": {
+		"symptoms": ["cough", "sneeze", "feeling cold"],
+		"treatments": ["sit down for 20 minutes"],
+		"medication": ["ibuprofen"]
+	}
+}

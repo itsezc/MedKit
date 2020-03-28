@@ -1,9 +1,25 @@
 {
 	"excludes": [
 		"Abortion",
+		"Alcohol misuse",
+		"Alexander technique",
 		"Allergies",
+		"Amputation",
+		"Anaesthesia",
+		"Angelman syndrome",
+		"Antibiotics",
+		"Bedbugs",
+		"Biopsy",
+		"Bite (animal or human)",
 		"Blood groups",
+		"Body piercing",
+		"CABG",
+		"Chemotherapy",
 		"CT Scan",
-		"Magnesium test"
+		"Fluoride",
+		"Magnesium test",
+		"Obesity",
+		"Wisdom tooth removal",
+		"X-ray"
 	]
 }
