@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 from _graphql import client
 from queries.deleteDiseases import deleteDiseases
+from queries.addDisease import addDisease
 
 URL = 'https://www.nhs.uk/conditions/'
 page = requests.get(URL)
@@ -24,4 +25,9 @@ results = list(dict.fromkeys([x for x in diseases if x not in excludes]))
 
 deleteDiseases()
 
-print results
+for result in results:
+	addDisease(name=result)
+
+print 'Total amount of diseases', len(results)
+
+# print results
