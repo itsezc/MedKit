@@ -1,4 +1,4 @@
-from gql import gql, Client
+from gql import gql
 from _graphql import client
 
 def deleteDiseases():
