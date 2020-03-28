@@ -1,6 +1,8 @@
 {
 	"excludes": [
 		"Allergies",
-		"CT Scan"
+		"Blood groups",
+		"CT Scan",
+		"Magnesium test"
 	]
 }
