@@ -1,0 +1,6 @@
+{
+	"excludes": [
+		"Allergies",
+		"CT Scan"
+	]
+}
