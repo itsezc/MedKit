@@ -2,6 +2,8 @@ import json
 import requests
 from bs4 import BeautifulSoup
 
+from _graphql import client
+
 URL = 'https://www.nhs.uk/conditions/'
 page = requests.get(URL)
 
