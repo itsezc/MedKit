@@ -7,7 +7,7 @@ import { Auth } from '../core/auth'
 import { Identify } from './identify'
 import { getDiseases } from './getDiseases'
 import { askQuestions } from './questions'
-import { Message } from './message'
+import { sendMessage } from './message'
 
 type IAccount = {
 	id: string
@@ -30,22 +30,32 @@ export async function Handler(Socket: SocketIO.Socket, Server: SocketIO.Server) 
 	// then the diseases are organised into likely and unlikely and ordered on the mode
 	// then the questions are generated based on each disease of the previous step in order
 
-	/*
-		Server.emit(Event.MESSAGE, new Message('Hello, welcome to MedKit, today we\'ll diagnose you for COVID-19'))
-		Server.emit(Event.MESSAGE, new Message('To begin, do you have a dry cough?', Event.MESSAGE, 1, {
-			type: 'checkbox',
-			values: [
-				{
-					title: 'Yes',
-					value: 'yes'
-				},
-				{
-					title: 'No',
-					value: 'no'
-				}
-			]
-		}))
-	*/
+	Server.emit(Event.MESSAGE, sendMessage({
+			text: 'Hello, welcome to MedKit, today we\'ll diagnose you for COVID-19',
+			index: 0
+		})
+	)
+
+	Server.emit(Event.MESSAGE, sendMessage({
+			text: 'To begin, do you have a dry cough?',
+			index: 1,
+			nextEvent: Event.MESSAGE,
+			quickReplies: {
+				type: 'checkbox',
+				values: [
+					{
+						title: 'Yes',
+						value: 'yes'
+					},
+					{
+						title: 'No',
+						value: 'no'
+					}
+				]
+			}
+		})
+	)
+
 	
 	Socket.on(Event.REQUEST_DISCONNECT, () => Socket.disconnect())
 	Socket.on(Event.MESSAGE, message => console.log(message))

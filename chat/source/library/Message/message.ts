@@ -21,29 +21,25 @@ type IReply = {
 	nextEvent: Event
 }
 
-export class Message {
-
-	protected reply: IReply
-
-	constructor(
-		private message: string,
-		private nextEvent: Event = Event.MESSAGE,
-		private index: number = 0 ,
-		private quickReplies?: IQuickReply,
-	) { this.init() }
-
-	async init(): Promise<IReply> {
-		this.reply = {
-			_id: this.index + 1,
-			createdAt: new Date(),
-			text: this.message,
-			user: {
-				_id: 2
-			},
-			quickReplies: this.quickReplies,
-			nextEvent: this.nextEvent
-		}
-
-		return this.reply
+export function Message({ 
+	text,
+	index,
+	nextEvent,
+	quickReplies
+}: {
+	text: string,
+	index: number,
+	nextEvent?: Event,
+	quickReplies?: IQuickReply 
+}): IReply {
+	return {
+		_id: index + 1,
+		createdAt: new Date(),
+		text,
+		user: {
+			_id: 2
+		},
+		quickReplies,
+		nextEvent
 	}
 }
