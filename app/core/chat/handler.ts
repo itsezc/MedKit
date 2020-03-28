@@ -1,6 +1,4 @@
 import SocketIO from 'socket.io-client'
-
-import { GiftedChat } from 'react-native-gifted-chat'
 	
 export class chatHandler {
 	

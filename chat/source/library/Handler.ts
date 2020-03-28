@@ -16,13 +16,10 @@ type IAccount = {
 export async function Handler(Socket: SocketIO.Socket, Server: SocketIO.Server) {
 	
 	const { id } = Socket
-	let User: IAccount | object = {
-		id: 0
-	}
 
 	console.log('Client connected with ID', id)
 
-	Socket.on(Event.AUTH, (data) => Auth(data, User))
+	Socket.on(Event.AUTH, (data) => Auth(JSON.parse(data), Socket, Server))
 
 	// .. create a screen on the mobile app that lets the user select their symptoms
 	// then the chat screen is loaded with a list of symptom ids
@@ -30,38 +27,39 @@ export async function Handler(Socket: SocketIO.Socket, Server: SocketIO.Server) 
 	// then the diseases are organised into likely and unlikely and ordered on the mode
 	// then the questions are generated based on each disease of the previous step in order
 
-	Server.emit(Event.MESSAGE, sendMessage({
-			text: 'Hello, welcome to MedKit, today we\'ll diagnose you for COVID-19',
-			index: 0
-		})
-	)
+	// Server.emit(Event.MESSAGE, sendMessage({
+	// 		text: 'Hello, welcome to MedKit, today we\'ll diagnose you for COVID-19',
+	// 		index: 0
+	// 	})
+	// )
 
-	Server.emit(Event.MESSAGE, sendMessage({
-			text: 'To begin, do you have a dry cough?',
-			index: 1,
-			nextEvent: Event.MESSAGE,
-			quickReplies: {
-				type: 'checkbox',
-				values: [
-					{
-						title: 'Yes',
-						value: 'yes'
-					},
-					{
-						title: 'No',
-						value: 'no'
-					}
-				]
-			}
-		})
-	)
+	// Server.emit(Event.MESSAGE, sendMessage({
+	// 		text: 'To begin, do you have a dry cough?',
+	// 		index: 1,
+	// 		nextEvent: Event.MESSAGE,
+	// 		quickReplies: {
+	// 			type: 'checkbox',
+	// 			values: [
+	// 				{
+	// 					title: 'Yes',
+	// 					value: 'yes'
+	// 				},
+	// 				{
+	// 					title: 'No',
+	// 					value: 'no'
+	// 				}
+	// 			]
+	// 		}
+	// 	})
+	// )
 
 	
 	Socket.on(Event.REQUEST_DISCONNECT, () => Socket.disconnect())
 	Socket.on(Event.MESSAGE, message => console.log(message))
 
 	// Stage 1-3
-	Socket.on(Event.IDENTIFY, (data) => Identify(JSON.parse(data), User as IAccount, Server))
+	// @ts-ignore
+	Socket.on(Event.IDENTIFY, (data) => Identify(JSON.parse(data), Socket.User as IAccount, Server))
  	
 	Socket.on(Event.GET_DISEASES, getDiseases)
 	Socket.on(Event.ASK_QUESTIONS, (diseases: string[]) => askQuestions(diseases, Server))

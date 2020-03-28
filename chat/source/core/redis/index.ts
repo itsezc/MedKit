@@ -13,3 +13,7 @@ export const updateList =
 		cache.DEL(key)
 		data.forEach(peice => cache.LPUSH(key, peice))
 	}
+
+export {
+	redis
+}

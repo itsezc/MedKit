@@ -7,6 +7,8 @@ export async function Identify(
 	Server: SocketIO.Server
 ): Promise<void> {
 
+	console.log('User ID', id)
+
 	let results: typeof symptoms = []
 
 	const response = async (results: typeof symptoms) => {

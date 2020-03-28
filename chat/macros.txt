@@ -1,2 +1,2 @@
-{ "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMDI2NSIsImRldmljZUlEIjoibG9sIiwiaWF0IjoxNTg1MzIwNTM5fQ.2mWu4wQDxVOZ8dMbaUo1wRFbjQN7JCEnXHw9LZGhbs0" }
-{ "symptoms": ["311248", "311250"] }
+{ "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM3MjIwMCIsImRldmljZUlEIjoibG9sIiwiaWF0IjoxNTg1NDE5NjI0fQ.EsJoJL4Pc3Cj8MsF2lQRuAujtBKdpRHKdJ5t4ltS4DY" }
+{ "symptoms": ["372203", "372213"] }
