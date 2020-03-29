@@ -1,14 +1,14 @@
 import { Event } from '../../common/constants'
 
-export type IMessage = {
+type IMessage = {
 	_id: number,
 	text: string,
 	createdAt: Date,
 	user: {
 		_id: number
 	},
-	quickReplies: IQuickReply,
-	nextEvent: Event
+	quickReplies?: IQuickReply,
+	nextEvent?: Event
 }
 
 type IQuickReply = {
