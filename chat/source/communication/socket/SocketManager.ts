@@ -42,7 +42,7 @@ export default class SocketManager implements ISocketManager {
 		this.eventManager.init(this)
 		this.server.on('connection', (socket) => {
 			this.eventManager.events.forEach((event, key) => {
-				this.socket.on(key, (data: any) => {
+				socket.on(key, (data: any) => {
 					event.execute(data)
 				})
 			})
