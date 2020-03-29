@@ -4,18 +4,15 @@ import SERVICE_IDENTIFIER from '../config/identifiers'
 
 import Chat from '../Chat'
 
-import ISocketManager from '../communication/socket/ISocketManager'
-import SocketManager from '../communication/socket/SocketManager'
-
-import IHTTPManager from '../communication/http/IHTTPManager'
-import HTTPManager from '../communication/http/HTTPManager'
-
+import { SocketManager, ISocketManager, EventManager, IEventManager } from '../communication/socket'
+import { HTTPManager, IHTTPManager } from '../communication/http'
 import { RedisManager, IRedisManager } from '../storage/redis'
 
 let DIContainer = new Container()
 DIContainer.bind<Chat>(Chat).toSelf().inRequestScope()
-DIContainer.bind<ISocketManager>(SERVICE_IDENTIFIER.ISocketManager).to(SocketManager).inSingletonScope()
 DIContainer.bind<IHTTPManager>(SERVICE_IDENTIFIER.IHTTPManager).to(HTTPManager).inSingletonScope()
+DIContainer.bind<ISocketManager>(SERVICE_IDENTIFIER.ISocketManager).to(SocketManager).inSingletonScope()
+DIContainer.bind<IEventManager>(SERVICE_IDENTIFIER.IEventManager).to(EventManager).inSingletonScope()
 DIContainer.bind<IRedisManager>(SERVICE_IDENTIFIER.IRedisManager).to(RedisManager).inSingletonScope()
 
 export default DIContainer
