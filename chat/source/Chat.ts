@@ -1,6 +1,6 @@
 import { inject, injectable } from 'inversify'
 
-import ISocketManger from './communication/ISocketManager'
+import ISocketManger from './communication/socket/ISocketManager'
 
 @injectable()
 export default class Chat {
