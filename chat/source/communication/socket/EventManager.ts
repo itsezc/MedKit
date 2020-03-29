@@ -20,6 +20,7 @@ export default class EventManager implements IEventManager {
 		@inject(SERVICE_IDENTIFIER.IRedisManager) redisManager: IRedisManager,
 	) {
 		this.redisManager = redisManager
+		this.redisManager.init()
 		this.events = new Map<string, Identify>()
 	}
 

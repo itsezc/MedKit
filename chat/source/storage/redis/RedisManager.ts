@@ -6,7 +6,7 @@ import IRedisManager from './IRedisManager'
 @injectable()
 export default class RedisManager implements IRedisManager {
 	
-	protected client: Redis.RedisClient
+	public client: Redis.RedisClient
 
 	public init() {
 		this.client = Redis.createClient()
