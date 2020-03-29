@@ -1,3 +1,6 @@
+import Hapi from '@hapi/hapi'
+
 export default interface ISocketManager {
-	init(server: SocketIO.Server): void
+	init(server:  Hapi.Server): void
+	getServer(): SocketIO.Server
 }

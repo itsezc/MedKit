@@ -1,4 +1,6 @@
 import { inject, injectable } from 'inversify'
+import SocketIO from 'socket.io'
+import Hapi from '@hapi/hapi'
 
 import ISocketManager from './ISocketManager'
 
@@ -6,7 +8,11 @@ import ISocketManager from './ISocketManager'
 export default class SocketManager implements ISocketManager {
 	private server: SocketIO.Server
 
-	public init(server: SocketIO.Server): void {
-		this.server = server
+	public init(server: Hapi.Server): void {
+		this.server = SocketIO(server.listener)
+	}
+
+	public getServer() {
+		return this.server
 	}
 }

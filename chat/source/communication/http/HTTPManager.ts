@@ -15,7 +15,11 @@ export default class HTTPManager implements IHTTPManager {
 		this.socketManager = socketManager
 	}
 
-	init(server: Hapi.Server) {
-		this.server = server
+	init(port: number) {
+		this.server = new Hapi.Server({ port })
+	}
+
+	public getServer() {
+		return this.server
 	}
 }
