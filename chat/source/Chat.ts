@@ -1,27 +1,26 @@
+import 'reflect-metadata'
 import { inject, injectable } from 'inversify'
 
-import IHTTPManager from './communication/http/IHTTPManager'
+import IChat from './config/interfaces/IChat'
 import ISocketManger from './communication/socket/ISocketManager'
 
+import SERVICE_IDENTIFIERS from './config/identifiers'
+
 @injectable()
-export default class Chat {
+export default class Chat implements IChat {
 
 	public static readonly DEBUG = true
 	public readonly PORT: number = 8087
 
-	private httpManager: IHTTPManager
 	private socketManager: ISocketManger
 	
 	public constructor(
-		@inject('IHTTPManager') httpManager: IHTTPManager,
-		@inject('ISocketManager') socketManager: ISocketManger
+		@inject(SERVICE_IDENTIFIERS.ISocketManager) socketManager: ISocketManger
 	) {
-		this.httpManager = httpManager
 		this.socketManager = socketManager
 	}
 
 	init(): void {
-		this.httpManager.init(this.PORT)
-		this.socketManager.init(this.httpManager.getServer())
+		this.socketManager.init(this.PORT)
 	}
 }
