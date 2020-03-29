@@ -1,5 +1,5 @@
-import { Event } from '../../../../common/constants'
-import { IQuickReply, IMessage } from '../../../typings'
+import { Event } from '../../../common/constants'
+import { IQuickReply, IMessage } from '../../typings'
 
 export function compileMessage({
 	text,
