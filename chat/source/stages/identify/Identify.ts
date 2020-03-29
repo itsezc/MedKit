@@ -15,7 +15,7 @@ export default class Identify implements IEvent {
 	) {}
 
 	public async execute(data: any): Promise<void> {
-		const { symptoms }: { symptoms: string[] } = JSON.parse(data)
+		const { symptoms }: { symptoms: string[] } = data
 		symptoms.forEach(async (symptom, index, array) => {
 			const FIND_DISEASES: string = `
 				query findDiseases($symptom: ID!) {
@@ -37,7 +37,6 @@ export default class Identify implements IEvent {
 	}
 
 	public async response(results: string[]): Promise<void> {
-		// console.log(this.cache)
 		this.cache.getClient().get(this.socket.getSocket().id, async (err, reply) => {
 			this.cache.updateList(`user_${reply}`, results)
 		})

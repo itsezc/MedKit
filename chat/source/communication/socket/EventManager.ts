@@ -3,6 +3,7 @@ import { inject, injectable } from 'inversify'
 import { IEventMap } from './IEvent'
 import IEventManager from './IEventManager'
 
+import Auth from '../../events/auth/Auth'
 import Identify from '../../stages/identify/Identify'
 
 import SERVICE_IDENTIFIER from '../../config/identifiers'
@@ -38,7 +39,8 @@ export default class EventManager implements IEventManager {
 
 	public getEvents() {
 		return {
-			identify: Identify
+			identify: Identify,
+			auth: Auth
 		}
 	}
 }
