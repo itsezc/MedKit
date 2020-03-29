@@ -1,4 +1,5 @@
 import { injectable } from 'inversify'
+
 import Hapi from '@hapi/hapi'
 
 import IHTTPManager from './IHTTPManager'

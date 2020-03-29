@@ -10,17 +10,8 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"@babel/cli": "^7.8.4",
-		"@babel/core": "^7.9.0",
-		"@babel/node": "^7.8.7",
-		"@babel/plugin-proposal-class-properties": "^7.8.3",
-		"@babel/plugin-proposal-decorators": "^7.8.3",
-		"@babel/plugin-proposal-throw-expressions": "^7.8.3",
-		"@babel/plugin-syntax-function-bind": "^7.8.3",
-		"@babel/plugin-transform-runtime": "^7.9.0",
-		"@babel/preset-env": "^7.9.0",
-		"@babel/preset-typescript": "^7.9.0",
 		"@types/hapi__hapi": "^19.0.2",
+		"@types/redis": "^2.8.17",
 		"@types/socket.io": "^2.1.4",
 		"inversify": "^5.0.1",
 		"nodemon": "^2.0.2",
@@ -30,6 +21,7 @@
 	},
 	"dependencies": {
 		"@hapi/hapi": "^19.1.1",
+		"redis": "^3.0.2",
 		"socket.io": "^2.3.0"
 	}
 }
