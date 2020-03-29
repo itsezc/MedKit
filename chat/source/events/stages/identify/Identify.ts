@@ -1,9 +1,9 @@
-import { IRedisManager } from '../../storage/redis'
-import { ISocketManager } from '../../communication/socket'
+import { IRedisManager } from '../../../storage/redis'
+import { ISocketManager } from '../../../communication/socket'
 
-import { query } from '../../util/GClient'
+import { query } from '../../../util/GClient'
 
-import { IEvent } from '../../communication/socket/IEvent'
+import { IEvent } from '../../../communication/socket/IEvent'
 
 export default class Identify implements IEvent {
 	
