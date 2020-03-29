@@ -1,36 +1,29 @@
 {
-	"name": "chat",
-	"version": "1.0.0",
+	"name": "@medkit/chat",
+	"version": "1.0.1",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"build": "npx babel source --out-dir build --extensions '.ts,.tsx'",
-		"dev": "babel-watch --watch source source/index.ts --extensions \".ts\""
+		"dev": "nodemon --exec ts-node ./source/index.ts"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"@babel/cli": "^7.8.4",
-		"@babel/core": "^7.8.4",
-		"@babel/node": "^7.8.4",
-		"@babel/preset-env": "^7.8.4",
-		"@babel/preset-flow": "^7.8.3",
-		"@babel/preset-typescript": "^7.8.3",
+		"@types/hapi__hapi": "^19.0.2",
+		"@types/jest": "^25.1.4",
 		"@types/jsonwebtoken": "^8.3.8",
-		"@types/redis": "^2.8.16",
+		"@types/redis": "^2.8.17",
 		"@types/socket.io": "^2.1.4",
-		"babel-watch": "^7.0.0",
+		"inversify": "^5.0.1",
+		"jest": "^25.2.3",
 		"nodemon": "^2.0.2",
-		"typescript": "^3.7.5"
+		"reflect-metadata": "^0.1.13",
+		"ts-node": "^8.8.1",
+		"typescript": "^3.8.3"
 	},
 	"dependencies": {
 		"@hapi/hapi": "^19.1.1",
-		"@tensorflow/tfjs": "^1.6.1",
-		"@types/hapi__hapi": "^19.0.2",
-		"axios": "^0.19.2",
-		"graphql": "^14.6.0",
-		"graphql-tag": "^2.10.3",
 		"jsonwebtoken": "^8.5.1",
 		"redis": "^3.0.2",
 		"socket.io": "^2.3.0"

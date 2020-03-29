@@ -8,21 +8,30 @@
 		"allowJs": true,
 		"resolveJsonModule": true,
 		"strict": true,
-		"strictNullChecks": false,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": false,
 		"isolatedModules": false,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
+		"suppressImplicitAnyIndexErrors": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
 		"skipLibCheck": true,
 		"lib": [
 			"dom",
-			"es2018"
+			"esnext"
 		],
 		"typeRoots": [
-			"./node_modules/@types",
-			"typings"
+			"./typings",
+			"./node_modules/@types"
+		],
+		"types": [
+			"node",
+			"reflect-metadata"
 		]
 	},
 	"exclude": [
-		"node_modules"
+		"node_modules",
+		"./babel.config.js"
 	]
 }

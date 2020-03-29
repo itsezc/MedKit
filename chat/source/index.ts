@@ -1,4 +1,8 @@
-import { Server } from './server'
+import 'reflect-metadata'
 
-const app = new Server()
-export { app }
+import Chat from './Chat'
+import ChatContainer from './injectors/ChatContainer'
+
+const chatHandler = ChatContainer.get<Chat>(Chat)
+
+chatHandler.init()
