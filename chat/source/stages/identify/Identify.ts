@@ -18,6 +18,7 @@ export default class Identify implements IEvent {
 	}
 
 	public async execute(data: any): Promise<void> {
+
 		const { symptoms }: { symptoms: string[] } = data
 		symptoms.forEach(async (symptom, index, array) => {
 			const FIND_DISEASES: string = `

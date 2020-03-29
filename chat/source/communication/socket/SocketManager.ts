@@ -9,8 +9,8 @@ import SERVICE_IDENTIFERS from '../../config/identifiers'
 
 @injectable()
 export default class SocketManager implements ISocketManager {
-	private server: SocketIO.Server
-	private socket: SocketIO.Socket
+	protected server: SocketIO.Server
+	protected socket: SocketIO.Socket
 
 	private httpManager: IHTTPManager
 	private eventManager: IEventManager
@@ -38,9 +38,10 @@ export default class SocketManager implements ISocketManager {
 		return this.socket
 	}
 	
-	protected handleEvents(): void {
-		this.eventManager.init(this)
+	private handleEvents(): void {
 		this.server.on('connection', (socket) => {
+			this.socket = socket
+			this.eventManager.init(this)
 			this.eventManager.events.forEach((event, key) => {
 				socket.on(key, (data: any) => {
 					event.execute(data)
