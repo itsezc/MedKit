@@ -5,6 +5,7 @@ import IEventManager from './IEventManager'
 
 import Auth from '../../events/auth/Auth'
 import Identify from '../../events/stages/identify/Identify'
+import FilterDiseases from '../../events/stages/filterDiseases/FilterDisease'
 
 import SERVICE_IDENTIFIER from '../../config/identifiers'
 import { IRedisManager } from '../../storage/redis'
@@ -39,8 +40,9 @@ export default class EventManager implements IEventManager {
 
 	public getEvents() {
 		return {
+			auth: Auth,
 			identify: Identify,
-			auth: Auth
+			filterDiseases: FilterDiseases
 		}
 	}
 }
