@@ -1,8 +1,8 @@
-import { AsyncStorage as Storage } from 'react-native'
+import { Auth } from './Auth'
 
 export async function saveToken(token: string) {
 	try {
-		await Storage.setItem('token', token)
+		await Auth.setToken(token)
 	} catch (e) {
 		console.error('ERROR', e)
 	}

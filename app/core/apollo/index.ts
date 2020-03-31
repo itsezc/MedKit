@@ -1,6 +1,7 @@
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client'
 import { setContext } from 'apollo-link-context'
-import { AsyncStorage as Storage } from 'react-native'
+
+import { Auth } from '../auth/Auth'
 
 const cache = new InMemoryCache()
 
@@ -9,7 +10,7 @@ const httpLink = new HttpLink({
 })
 
 const middlewareLink = setContext(async (_, { headers }) => {
-	const token = await Storage.getItem('token')
+	const token = await Auth.getToken()
 	return {
 		headers: {
 			...headers,
