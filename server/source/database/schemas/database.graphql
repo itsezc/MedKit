@@ -1,3 +1,16 @@
+enum Gender {
+	MALE
+	FEMALE
+}
+
+enum Ethnicity {
+	WHITE,
+	BLACK,
+	ASIAN,
+	MIXED,
+	ARAB
+}
+
 type Account @rootEntity {
     email: String! @unique
     phone: String
@@ -6,6 +19,9 @@ type Account @rootEntity {
     firstName: String
     lastName: String
     dateOfBirth: DateTime
+    gender: Gender
+    ethnicity: Ethnicity
+    height: Int
     weight: Float
     activities: [Activity] @relation
 }
@@ -62,6 +78,7 @@ type Medication @rootEntity {
 	name: String!
 	description: String
 	minAge: Int
+	gender: Gender
 	diseases: [Disease] @relation(inverseOf: "medication")
 }
 
