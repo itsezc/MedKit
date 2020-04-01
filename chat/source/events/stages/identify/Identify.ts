@@ -3,7 +3,7 @@ import { ISocketManager } from '../../../communication/socket'
 
 import { query } from '../../../util/GClient'
 
-import { IEvent } from '../../../communication/socket/IEvent'
+import { IEvent } from '../../../communication/socket/events/IEvent'
 
 export default class Identify implements IEvent {
 	

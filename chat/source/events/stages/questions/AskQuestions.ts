@@ -1,4 +1,4 @@
-import { IEvent } from '../../../communication/socket/IEvent'
+import { IEvent } from '../../../communication/socket/events/IEvent'
 
 import { IRedisManager } from '../../../storage/redis'
 import { ISocketManager } from '../../../communication/socket'

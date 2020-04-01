@@ -1,5 +1,5 @@
-import ISocketManager from './ISocketManager'
-import { IEvent, IEventMap } from './IEvent'
+import ISocketManager from '../ISocketManager'
+import { IEvent } from './IEvent'
 
 export default interface IEventManager {
 	events: Map<string, IEvent>

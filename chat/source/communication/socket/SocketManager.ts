@@ -3,7 +3,7 @@ import SocketIO from 'socket.io'
 
 import ISocketManager from './ISocketManager'
 import IHTTPManager from '../http/IHTTPManager'
-import IEventManager from './IEventManager'
+import IEventManager from './events/IEventManager'
 
 import SERVICE_IDENTIFERS from '../../config/identifiers'
 

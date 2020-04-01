@@ -2,14 +2,14 @@ import { inject, injectable } from 'inversify'
 
 import { IEventMap } from './IEvent'
 
-import { Auth, Disconnect } from '../../events'
+import { Auth, Disconnect } from '../../../events'
 
-import Identify from '../../events/stages/identify/Identify'
-import FilterDiseases from '../../events/stages/filterDiseases/FilterDisease'
+import Identify from '../../../events/stages/identify/Identify'
+import FilterDiseases from '../../../events/stages/filterDiseases/FilterDisease'
 
-import SERVICE_IDENTIFIER from '../../config/identifiers'
-import { IRedisManager } from '../../storage/redis'
-import { ISocketManager, IEventManager } from '.'
+import SERVICE_IDENTIFIER from '../../../config/identifiers'
+import { IRedisManager } from '../../../storage/redis'
+import { ISocketManager, IEventManager } from '..'
 
 @injectable()
 export default class EventManager implements IEventManager {
