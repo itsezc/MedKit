@@ -24,40 +24,10 @@ export default class AskQuestions implements IEvent {
 
 	private async generateQuestions(diseases: string[]) {
 		diseases.forEach(async (disease) => {
-			const symptoms = await this.fetchSymptoms(disease)		
+			const symptoms = await this.fetchAllSymptoms(disease)		
 			symptoms.forEach(async symptom => {
 
 			})
 		})
-	}
-
-	private async fetchSymptoms(disease: string) {
-		const GET_SYMPTOMS: string = `
-			query getSymptomsOfDiseases($id: ID!, $language: String!) {
-				allDiseases (
-					fitler: {
-						id: $id
-					}
-				) {
-					symptoms ( 
-						fitler: {
-							language: $language
-						}
-					) {
-						questions {
-							question
-							type
-							answers {
-								title
-								value
-							}
-						}
-					}
-				}
-			}
-		`
-		const { allDiseases } = await query(GET_SYMPTOMS, { id: disease })
-		const symptoms = allDiseases[0].symptoms
-		return symptoms
 	}
 }
