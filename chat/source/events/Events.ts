@@ -3,5 +3,8 @@ export enum Events {
 	REQUEST_DISCONNECT = 'requestDisconnect',
 	AUTH = 'auth',
 	IDENTIFY = 'identify',
-	ANSWER = 'answer'
+	ANSWER = 'answer',
+
+
+	AUTH_SUCCESS = 'authSuccess'
 }

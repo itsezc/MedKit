@@ -23,4 +23,8 @@ export default class Chat implements IChat {
 	init(): void {
 		this.socketManager.init(this.PORT)
 	}
+
+	close(): void {
+		this.socketManager.close()
+	}
 }
