@@ -32,6 +32,16 @@ module.exports = (env, argv) => {
 						'babel-loader'
 					]
 				},
+				{
+					test: /\.(woff(2)?|ttf|eot)$/,
+					use: [
+						'file-loader'
+					]
+				},
+				{
+					test: /\.svg$/,
+					use:  ['svg-inline-loader']
+				  }
 			]
 		}
 	}
