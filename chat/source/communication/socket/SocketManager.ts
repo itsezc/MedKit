@@ -44,9 +44,13 @@ export default class SocketManager implements ISocketManager {
 			this.eventManager.init(this)
 			this.eventManager.events.forEach((event, key) => {
 				socket.on(key, (data: any) => {
-					event.execute(JSON.parse(data))
+					event.execute(data ? JSON.parse(data) : null)
 				})
 			})
 		})		
+	}
+
+	public close() {
+		this.server.close()
 	}
 }
