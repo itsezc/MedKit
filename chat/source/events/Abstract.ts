@@ -1,9 +1,9 @@
-import { IRedisManager } from '../../../storage/redis'
-import { ISocketManager } from '../index'
-import { query } from '../../../util/GClient'
-import { Auth } from '../../../events/auth'
+import { IRedisManager } from '../storage/redis'
+import { ISocketManager } from '../communication/socket'
+import { query } from '../util/GClient'
+import { Auth } from './auth'
 
-export default abstract class AbstractEvent {
+abstract class AbstractEvent {
 	public query = query
 	public cache = this.redis.getClient()
 	public server: SocketIO.Server = this.socketIO.getServer()
@@ -14,13 +14,16 @@ export default abstract class AbstractEvent {
 		public redis: IRedisManager,
 		public socketIO: ISocketManager
 	) { 
-		this.cache.HGET(this.socketID, 'token', async (err, reply) => {
-			if (this.constructor.name !== 'Auth') {
+		if (this.constructor.name !== 'Auth') {
+			this.cache.HGET(this.socketID, 'token', async (err, reply) => {
 				const { verified } = await Auth.verify(reply)
 				if (!verified) {
+					this.socket.disconnect(true)
 					throw new Error('Authentication failed')
 				}
-			}
-		})
+			})
+		}
 	}
 }
+
+export { AbstractEvent as Event }

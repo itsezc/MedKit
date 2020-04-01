@@ -1,4 +1,5 @@
-import { Event, IEvent, Events } from '../../communication/socket'
+import { Event } from '../Abstract'
+import { IEvent, Events } from '../../communication/socket'
 
 import JWT from 'jsonwebtoken'
 import { AUTH_TOKEN } from '../../../../server/source/authToken'
