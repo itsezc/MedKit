@@ -1,11 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import { ApolloProvider } from '@apollo/client'
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: new HttpLink({
+    uri: 'http://192.168.0.111:8088/graphql',
+  })
+});
+
+
+import { Login } from './Login'
+
 const App = () => {
+
+	
+
 	return (
-		<div>
-			Hello
-		</div>
+		<ApolloProvider client={client}>
+			<Login />
+		</ApolloProvider>
 	)
 }
 
