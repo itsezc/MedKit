@@ -9,7 +9,7 @@ export default class RedisManager implements IRedisManager {
 	public client: Redis.RedisClient
 
 	public init() {
-		this.client = Redis.createClient()
+		this.client = Redis.createClient(6379, 'http://62.171.183.5')
 		this.client.on('error', (error) => console.error(error))
 	}
 
