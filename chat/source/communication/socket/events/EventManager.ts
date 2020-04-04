@@ -1,11 +1,8 @@
 import { inject, injectable } from 'inversify'
 
-import { IEventMap } from './IEvent'
+import { IEvent, IEventMap } from './IEvent'
 
-import { Auth, Disconnect } from '../../../events'
-
-import Identify from '../../../stages/identify/Identify'
-import FilterDiseases from '../../../stages/filterDiseases/FilterDisease'
+import { Auth, Disconnect, Init } from '../../../events'
 
 import SERVICE_IDENTIFIER from '../../../config/identifiers'
 import { IRedisManager } from '../../../storage/redis'
@@ -23,7 +20,7 @@ export default class EventManager implements IEventManager {
 	) {
 		this.redisManager = redisManager
 		this.redisManager.init()
-		this.events = new Map<string, Identify>()
+		this.events = new Map<string, IEvent>()
 	}
 
 	public async init(socket: ISocketManager): Promise<void> {
@@ -42,8 +39,7 @@ export default class EventManager implements IEventManager {
 		return {
 			auth: Auth,
 			requestDisconnect: Disconnect,
-			identify: Identify,
-			filterDiseases: FilterDiseases
+			init: Init
 		}
 	}
 }
