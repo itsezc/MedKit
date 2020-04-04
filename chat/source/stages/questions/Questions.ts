@@ -1,5 +1,5 @@
-import { Event } from '../../events/Abstract'
-import { IEvent, Events } from '../../communication/socket'
+import { Stage } from '../Stage'
+import { IStage } from '../IStage'
 
 type IQuestion = {
 	question: string,
@@ -12,18 +12,14 @@ type IAnswer = {
 	value: string
 }
 
-export default class Questions extends Event implements IEvent {
-	public async execute(data: any) {
-		const { diseases }: { diseases: string[] } = data
-		this.generateQuestions(diseases)
-	}
-
-	private async generateQuestions(diseases: string[]) {
+export default class Questions extends Stage implements IStage {	
+	public async process() {
+		const diseases = await this.redis.getList(`${this.socketID}_questions`)
 		const cachedQuestions: string[] = []
 		diseases.forEach(async disease => {
 			const questions = await this.fetchAllQuestions(disease)
-			questions.forEach(({ question }) => this.cache.LPUSH(`${this.socketID}_questions`, question))
-			this.cache.HSET(this.socketID, 'currentQuestion', '0')
+			questions.forEach(({ question }) => this.redis.getClient().rpush(`${this.socketID}_questions`, question))
+			this.redis.getClient().hset(this.socketID, 'currentQuestion', '0')
 		})
 	}
 

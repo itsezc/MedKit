@@ -1,17 +1,10 @@
-import { IEvent } from '../../communication/socket/events/IEvent'
+import { Stage } from '../Stage'
+import { IStage } from '../IStage'
 
-import { IRedisManager } from '../../storage/redis'
-import { ISocketManager } from '../../communication/socket'
-
-export default class FilterDiseases implements IEvent {
-	public constructor(
-		private cache: IRedisManager,
-		private socket: ISocketManager
-	) { }
-	
-	public async execute(data: any): Promise<void> {
-		const { diseases }: { diseases: string[] } = data
-		this.socket.getServer().emit('message', await FilterDiseases.sortByFrequency(diseases))
+export default class FilterDiseases extends Stage implements IStage {
+	public async process() {
+		const diseases = await this.redis.getList(`${this.socketID}_diseases`)
+		this.redis.updateList(`${this.socketID}_diseases`, await FilterDiseases.sortByFrequency(diseases))
 	}
 
 	public static async sortByFrequency(diseases: string[]): Promise<typeof diseases> {

@@ -1,14 +1,12 @@
+import { Stage } from '../Stage'
+import { IStage } from '../IStage'
+
 import { query } from '../../util/GClient'
 
-import { Event } from '../../events/Abstract'
-import { IEvent } from '../../communication/socket'
-
-export default class Identify extends Event implements IEvent {
-	
+export default class Identify extends Stage implements IStage {
 	private results: string[] = []
 
-	public async execute(data: any) {
-		const { symptoms }: { symptoms: string[] } = data
+	public async process(symptoms: string[]) {
 		symptoms.forEach(async (symptom, index, array) => {
 			const FIND_DISEASES: string = `
 				query findDiseases($symptom: ID!) {
@@ -30,9 +28,8 @@ export default class Identify extends Event implements IEvent {
 	}
 
 	public async response() {
-		this.cache.get(this.socketID, async (err, reply) => {
-			this.redis.updateList(`user_${reply}`, this.results)
-		})
-		this.server.emit('message', this.results)
+		this.redis.updateList(`${this.socketID}_diseases`, this.results)
+		// this.server.emit('message', this.results)
+		console.log('Socket', this.socketID, 'results', this.results)
 	}
 }
