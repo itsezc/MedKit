@@ -1,6 +1,8 @@
 import 'reflect-metadata'
 import { inject, injectable } from 'inversify'
 
+import Config from '../config.json'
+
 import IChat from './config/interfaces/IChat'
 import ISocketManger from './communication/socket/ISocketManager'
 
@@ -10,7 +12,7 @@ import SERVICE_IDENTIFIERS from './config/identifiers'
 export default class Chat implements IChat {
 
 	public static readonly DEBUG = true
-	public readonly PORT: number = 8087
+	public readonly PORT: number = Config.port
 
 	private socketManager: ISocketManger
 	
