@@ -1,9 +1,9 @@
-import { IEvent } from '../../../communication/socket/events/IEvent'
+import { IEvent } from '../../communication/socket/events/IEvent'
 
-import { IRedisManager } from '../../../storage/redis'
-import { ISocketManager } from '../../../communication/socket'
+import { IRedisManager } from '../../storage/redis'
+import { ISocketManager } from '../../communication/socket'
 
-import { query } from '../../../util/GClient'
+import { query } from '../../util/GClient'
 
 /**
  * All the possible diseases in likely order

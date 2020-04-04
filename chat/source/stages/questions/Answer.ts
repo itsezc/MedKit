@@ -1,4 +1,4 @@
-import { Event, IEvent, Events } from '../../../communication/socket'
+import { Event, IEvent, Events } from '../../communication/socket'
 
 export default class Answer extends Event implements IEvent {
 	public async execute(data: any): Promise<void> {

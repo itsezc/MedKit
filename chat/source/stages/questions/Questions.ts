@@ -1,4 +1,5 @@
-import { Event, IEvent, Events } from '../../../communication/socket'
+import { Event } from '../../events/Abstract'
+import { IEvent, Events } from '../../communication/socket'
 
 type IQuestion = {
 	question: string,
@@ -12,12 +13,12 @@ type IAnswer = {
 }
 
 export default class Questions extends Event implements IEvent {
-	public async execute(data: any): Promise<void> {
+	public async execute(data: any) {
 		const { diseases }: { diseases: string[] } = data
 		this.generateQuestions(diseases)
 	}
 
-	private async generateQuestions(diseases: string[]): Promise<void> {
+	private async generateQuestions(diseases: string[]) {
 		const cachedQuestions: string[] = []
 		diseases.forEach(async disease => {
 			const questions = await this.fetchAllQuestions(disease)

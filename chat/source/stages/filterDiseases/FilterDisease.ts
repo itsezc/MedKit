@@ -1,7 +1,7 @@
-import { IEvent } from '../../../communication/socket/events/IEvent'
+import { IEvent } from '../../communication/socket/events/IEvent'
 
-import { IRedisManager } from '../../../storage/redis'
-import { ISocketManager } from '../../../communication/socket'
+import { IRedisManager } from '../../storage/redis'
+import { ISocketManager } from '../../communication/socket'
 
 export default class FilterDiseases implements IEvent {
 	public constructor(
