@@ -15,7 +15,15 @@ export default class RedisManager implements IRedisManager {
 
 	public async updateList(key: string, data: string[]) {
 		this.client.DEL(key)
-		data.forEach(piece => this.client.LPUSH(key, piece))
+		this.client.rpush(key, ...data)
+	}
+
+	public async getList(key: string): Promise<typeof results> {
+		const results: string[] = []
+		this.client.lrange(key, 0, -1, async (err, reply) => {
+			if (!err) reply.forEach(instance => results.push(instance))
+		})
+		return results
 	}
 
 	public getClient(): Redis.RedisClient {
