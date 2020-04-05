@@ -3,7 +3,8 @@ import { IEvent } from '../../communication/socket'
 
 export default class Disconnection extends Event implements IEvent {
 	public async execute(): Promise<void> {
-		this.cache.DEL(this.socketID)
+		await this.cache.del(this.socketID)
+		await this.cache.del(`${this.socketID}_questions_answers`)
 		this.socket.disconnect(true)
 	}
 }
