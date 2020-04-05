@@ -16,12 +16,8 @@ abstract class AbstractEvent {
 	
 	public async auth() {
 		if (this.constructor.name !== 'Auth') {
-			this.cache.HGET(this.socketID, 'verified', async (err, reply) => {
-				if (err) console.error(err)
-				if (reply !== '1') {
-					this.socket.disconnect(true)
-				}
-			})
+			const verified = await this.cache.hget(this.socketID, 'verified')
+			if (verified !== '1') this.socket.disconnect(true)
 		}
 	}
 }

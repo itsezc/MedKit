@@ -17,7 +17,7 @@ export default class Init extends Event implements IEvent {
 
 	public async preCalc(symptoms: string[]) {
 		await this.identify.process(symptoms)
-		await this.diseases.filter()
-		await this.questions.generate()
+		await this.diseases.process()
+		await this.questions.process()
 	}
 }

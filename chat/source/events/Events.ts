@@ -6,5 +6,7 @@ export enum Events {
 	ANSWER = 'answer',
 
 
-	AUTH_SUCCESS = 'authSuccess'
+	AUTH_SUCCESS = 'authSuccess',
+
+	ASK_QUESTION = 'askQuestion'
 }

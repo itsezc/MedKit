@@ -10,11 +10,11 @@ export default class Auth extends Event implements IEvent {
 		const { verified, id } = await Auth.verify(token)
 		if (verified
 			&& id !== undefined) {
-			this.cache.HMSET(this.socketID, {
-				'token': token,
-				'account': id,
-				'verified': 1
-			})
+			this.cache.hmset(this.socketID,
+				['token', token],
+				['account', id],
+				['verified', '1']
+			)
 			this.server.emit(Events.AUTH_SUCCESS, true)
 		}
 	}

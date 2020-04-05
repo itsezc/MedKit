@@ -1,4 +1,4 @@
-import Init from './Auth'
+import Init from './Init'
 
 export {
 	Init
