@@ -11,6 +11,16 @@ enum Ethnicity {
 	ARAB
 }
 
+enum QuestionsType {
+	TEXT,
+	IMAGE
+}
+
+enum QuestionsRepliesType {
+	CHECKBOX,
+	RADIO
+}
+
 type Account @rootEntity {
     email: String! @unique
     phone: String
@@ -59,13 +69,15 @@ type Disease @rootEntity {
 	symptoms: [Symptom] @relation
 	treatments: [Treatment] @relation
 	medication: [Medication] @relation
-	questions: [Question] @relation
 }
 
 type Symptom @rootEntity {
 	name: String! @unique
 	description: String
+	languageCode: String
+	language: Language @reference(keyField: "languageCode") 
 	diseases: [Disease] @relation(inverseOf: "symptoms")
+	questions: [Question] @relation(inverseOf: "symptom")
 }
 
 type Treatment @rootEntity {
@@ -88,9 +100,11 @@ type Chat @rootEntity {
 }
 
 type Question @rootEntity {
-	question: String!
-	replies: [QuickReply]
-	diseases: [Disease] @relation(inverseOf: "questions")
+	question: String
+	type: QuestionsType
+	display: QuestionsRepliesType
+	answers: [QuickReply]
+	symptom: Symptom @relation
 }
 
 type QuickReply @childEntity {
@@ -137,4 +151,8 @@ type Pharamacy @rootEntity {
 type Location @entityExtension {
 	latitude: Float
 	longitude: Float
+}
+
+type Language @rootEntity {
+	isoCode: String @key
 }
