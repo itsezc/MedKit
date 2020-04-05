@@ -37,12 +37,7 @@ export default class Questions extends Stage implements IStage {
 						}
 					) {
 						questions {
-							question
-							type
-							answers {
-								title
-								value
-							}
+							id
 						}
 					}
 				}
