@@ -29,6 +29,7 @@ type Account @rootEntity {
     firstName: String
     lastName: String
     dateOfBirth: DateTime
+    address: Address
     gender: Gender
     ethnicity: Ethnicity
     height: Int
@@ -116,12 +117,15 @@ type QuickReply @childEntity {
 
 type Hospital @rootEntity {
 	name: String
+	address: Address
 	location: Location
 	doctors: [Doctor] @relation(inverseOf: "hospital")
+	appointments: [Appointment] @relation(inverseOf: "hospital")
 }
 
 type TestCenter @rootEntity {
 	name: String
+	address: Address
 	location: Location
 }
 
@@ -132,7 +136,8 @@ type Doctor @rootEntity {
 }
 
 type Appointment @rootEntity {
-	doctor: Doctor! @relation
+	hospital: Hospital @relation
+	doctor: Doctor! @relation(inverseOf: "appointments")
 	time: DateTime
 	account: Account! @relation
 }
@@ -183,4 +188,12 @@ type Location @entityExtension {
 
 type Language @rootEntity {
 	isoCode: String @key
+}
+
+type Address @valueObject {
+	street: String
+	postcode: String
+	city: String
+	state: String
+	country: String
 }
