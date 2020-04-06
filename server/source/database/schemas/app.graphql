@@ -70,7 +70,7 @@ extend type Query {
 	getUser: Account
 	getActivities: [Activities]
 	getReciepes: [Reciepe]
-	getSymptoms: [Symptom]
+	getSymptoms(current: [ID]): [Symptom]
 	getSymptom(name: String!): Symptom
 	getTopMedicines: [Medicine]
 	searchMedicine(term: String!): Medicine
