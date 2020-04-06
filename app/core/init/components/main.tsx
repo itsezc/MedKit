@@ -9,7 +9,6 @@ import '../translate'
 export function Main() {
 	return (
 		<NavigationContainer>
-			{Platform.OS === 'ios' && <StatusBar barStyle='light-content' backgroundColor={'transparent'} />}
 			<Navigation />
 		</NavigationContainer>
 	)

@@ -8,7 +8,7 @@ export default {
 		{
 			"name": "checkUp",
 			"image": imageCheckUp,
-			"link": "Chat"
+			"link": "ChatSymptoms"
 		},
 		{
 			"name": "orderDrugs",
