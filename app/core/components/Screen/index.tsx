@@ -1,13 +1,11 @@
 import * as React from 'react'
-import Constants from 'expo-constants'
 import Styled from 'styled-components/native'
 
-import { ImageBackground, Image, Animated } from 'react-native'
+import { ImageBackground  } from 'react-native'
 
 const ScreenContainer = Styled.View`
 	flex: 1;
 	background-color: ${props => props.background || '#2276df'};
-	paddingTop: ${Constants.statusBarHeight}px;
 `
 
 function Screen(props: {
