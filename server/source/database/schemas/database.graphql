@@ -120,6 +120,11 @@ type Hospital @rootEntity {
 	doctors: [Doctor] @relation(inverseOf: "hospital")
 }
 
+type TestCenter @rootEntity {
+	name: String
+	location: Location
+}
+
 type Doctor @rootEntity {
 	account: Account @relation
 	hospital: Hospital @relation
@@ -133,10 +138,19 @@ type Appointment @rootEntity {
 }
 
 type Scan @rootEntity {
-	account: Account @relation(inverseOf: "scans")
+	account: Account @relation
 	image: [String]
 	taken: DateTime
 	hospital: Hospital @relation
+}
+
+type Test @rootEntity {
+	account: Account @relation
+	collected: DateTime
+	received: DateTime
+	comment: String
+	hospital: Hospital @relation
+	testCenter: TestCenter @relation
 }
 
 # Healthy Reciepes 
