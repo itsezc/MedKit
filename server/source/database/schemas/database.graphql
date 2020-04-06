@@ -40,7 +40,7 @@ type Activity @rootEntity {
 	name: String
 	tag: String
 	time: DateTime
-	account: Account! @relation
+	account: Account @relation(inverseOf: "ac")
 	workout: Exercise @relation
 	appointment: Appointment @relation
 	reciepe: Reciepe @relation
@@ -114,8 +114,15 @@ type QuickReply @childEntity {
 
 # Doctors & Appointments
 
+type Hospital @rootEntity {
+	name: String
+	location: Location
+	doctors: [Doctor] @relation(inverseOf: "hospital")
+}
+
 type Doctor @rootEntity {
 	account: Account @relation
+	hospital: Hospital @relation
 	appointments: [Appointment] @relation
 }
 
@@ -123,6 +130,13 @@ type Appointment @rootEntity {
 	doctor: Doctor! @relation
 	time: DateTime
 	account: Account! @relation
+}
+
+type Scan @rootEntity {
+	account: Account @relation(inverseOf: "scans")
+	image: [String]
+	taken: DateTime
+	hospital: Hospital @relation
 }
 
 # Healthy Reciepes 
