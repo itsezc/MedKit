@@ -17,8 +17,8 @@ class Ask extends Event implements IEvent {
 
 	private async fetchQuestion(id: string): Promise<typeof question> {
 		const FETCH_QUESTION: string = `
-			getQuestion($id: ID!) {
-				question(id: $Id) {
+			query getQuestion($id: ID!) {
+				Question(id: $id) {
 					question
 					type
 					answers {

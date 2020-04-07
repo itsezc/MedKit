@@ -1,4 +1,5 @@
 import { inject, injectable } from 'inversify'
+
 import SocketIO from 'socket.io'
 
 import ISocketManager from './ISocketManager'

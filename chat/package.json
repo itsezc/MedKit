@@ -27,6 +27,7 @@
 	},
 	"dependencies": {
 		"@hapi/hapi": "^19.1.1",
+		"@tensorflow/tfjs-node": "^1.7.2",
 		"handy-redis": "^1.8.0",
 		"jsonwebtoken": "^8.5.1",
 		"redis": "^3.0.2",
