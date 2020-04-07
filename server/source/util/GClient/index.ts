@@ -12,7 +12,7 @@ export const query = async(
 	const fetch = Request.create({
 		method: 'post',
 		baseURL: 'http://localhost:' + port.toString(),
-		timeout: 1000,
+		timeout: 5000,
 		headers: {
 			'Accept': 'application/json',
 			'Content-Type': 'application/json'
