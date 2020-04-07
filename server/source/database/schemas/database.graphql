@@ -41,7 +41,7 @@ type Activity @rootEntity {
 	name: String
 	tag: String
 	time: DateTime
-	account: Account @relation(inverseOf: "ac")
+	account: Account @relation(inverseOf: "activities")
 	workout: Exercise @relation
 	appointment: Appointment @relation
 	reciepe: Reciepe @relation
