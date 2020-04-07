@@ -13,24 +13,29 @@ function Screen(props: {
 	pattern?: boolean,
 	background?: string,
 	statusBar?: string,
+	statusBarColor?: 'light-content' | 'dark-content',
 	children: React.ReactElement | React.ReactElement[]
 }) {
 	return (
 		<ScreenContainer
 			background={props.background}
 		>
-			{Platform.OS === 'ios' && <StatusBar barStyle='light-content' backgroundColor={'transparent'} />}
-			{Platform.OS === 'android' && <StatusBar barStyle='light-content' backgroundColor={props.statusBar || '#2276df'} />}
+			<StatusBar
+				barStyle={props.statusBarColor || 'light-content'} backgroundColor={props.statusBar || '#2276df'}/>
 			{
 				props.animated === true ? 
 					<ImageBackground
-						style={{width: '100%', height: '100%'}}
+						style={{
+							width: '100%', height: '100%',
+						}}
 						source={require('../../../assets/images/RainBG.gif')}
 					>
 						{props.children}
 					</ImageBackground> : props.pattern === true ? 
 						<ImageBackground
-							style={{width: '100%', height: '100%'}}
+							style={{
+								width: '100%', height: '100%',
+							}}
 							source={require('../../../assets/images/bg_abstract_blue.jpg')}
 						>
 							{props.children}
