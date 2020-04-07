@@ -33,7 +33,7 @@ module.exports = (env, argv) => {
 					]
 				},
 				{
-					test: /\.(woff(2)?|ttf|eot)$/,
+					test: /\.(png|jpe?g|gif)$/i,
 					use: [
 						'file-loader'
 					]
