@@ -3,8 +3,7 @@ import * as React from 'react'
 import { Text, View } from 'react-native'
 import { TextField } from 'react-native-material-textfield'
 
-import { Screen, Container } from '../../components'
-import { Button } from '../../components/Login'
+import { Screen, Container, Button } from '../../components'
 
 import * as Device from 'expo-device'
 import { saveToken, errorHandler } from '../../auth'
@@ -29,7 +28,7 @@ const initialState = {
 
 export default function ({ navigation }) {
 
-	const [t, i18next] = useTranslation()
+	const [t] = useTranslation()
 
 	const client = useApolloClient()
 	const deviceID = Device.osBuildId

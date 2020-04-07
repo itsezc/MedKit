@@ -8,6 +8,8 @@ export default function ({ navigation }): JSX.Element {
 	return (
 		<Screen
 			background='#FFFFFF'
+			statusBar='#FFFFFF'
+			statusBarColor='dark-content'
 		>
 			<View
 				style={{
