@@ -19,7 +19,6 @@ export default () => {
       const { Title } = Typography;
       const { Header, Content, Footer } = Layout;
 
-      const [remember, updateRemember] = React.useState(true);
       const deviceID = 'web';
 
       const [processLogin, { loading }] = useMutation(LOGIN_MUTATION, {
@@ -78,7 +77,7 @@ export default () => {
                                                       >
                                                             <Row>
                                                                   <Col span={12}>
-                                                                        <Checkbox checked={remember}>
+                                                                        <Checkbox>
                                                                               Remember me
                                                                         </Checkbox>
                                                                   </Col>
