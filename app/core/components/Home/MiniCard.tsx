@@ -71,7 +71,7 @@ export const MiniCards = (props) => (
 	<View
 		style={{
 			width: '100%',
-			marginTop: 118,
+			marginTop: 120,
 			zIndex: 3
 		}}
 	>

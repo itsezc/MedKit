@@ -92,7 +92,7 @@ export const Calendar = (props) => {
 							borderLeftWidth: 2,
 							borderTopWidth: 2,
 							borderColor: '#D5E2F9',
-							height: Dimensions.get('window').height - 400
+							height: Dimensions.get('window').height - 370
 						}}
 					>
 						<Icon
