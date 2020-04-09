@@ -27,8 +27,15 @@ const SEARCH_SYMPTOMS = gql`
 export default function ({ navigation }) {
 	const [symptoms, setSymptoms] = React.useState([])
 	const [current, setCurrent] = React.useState([])
+	const [currentNames, setCurrentNames] = React.useState([])
+	const [search, setSearch] = React.useState(null)
 
-	let [searchSymptom, searchProps] = useLazyQuery(SEARCH_SYMPTOMS)
+	const [searchQuery, searchProps] = useLazyQuery(SEARCH_SYMPTOMS, {
+		onCompleted: (data) => {
+			setSymptoms(data.getSymptom)
+		}
+	})
+
 	const { loading, error, refetch, data } = useQuery(
 		FETCH_SYMPTOMS,
 		{ variables: { current }}
@@ -40,17 +47,21 @@ export default function ({ navigation }) {
 		setCurrent(prev => [...prev, id])
 	}
 
-	React.useEffect(() => {
+	React.useMemo(() => {
 		refetch()
-	}, [current])
+	}, [current, currentNames])
 
 	React.useMemo(() => {
 		if (data
 			&& data.getSymptoms) setSymptoms(data.getSymptoms)
 	}, [data])
 
-	if (searchProps.data
-		&& searchProps.data.getSymptom) console.log('Search', searchProps.data.getSymptom)
+	React.useMemo(() => {
+		if (search === '')
+			setSymptoms(data.getSymptoms)
+		else if (search !== null || search !== '')
+			searchQuery({ variables: { current, name: search } })
+	}, [search])
 
 	return (
 		<Screen
@@ -72,7 +83,7 @@ export default function ({ navigation }) {
 					onPress={() => navigation.navigate('Home')}
 				>
 					<Icon
-						name='CloseLine'
+						name='ArrowLeftLine'
 						size={30}
 						color='#ffffff'
 					/>
@@ -115,68 +126,153 @@ export default function ({ navigation }) {
 						backgroundColor: '#FFFFFF',
 						borderRadius: 40,
 						paddingLeft: 40,
-						shadowColor: '#000',
-						shadowOffset: {
-							height: 0,
-							width: 0
-						},
-						shadowOpacity: 0.25,
-						shadowRadius: 3,
-						elevation: 1,
+						// shadowColor: '#000',
+						// shadowOffset: {
+						// 	height: 0,
+						// 	width: 0
+						// },
+						// shadowOpacity: 0.25,
+						// shadowRadius: 3,
+						// elevation: 1,
 					}}
-					onChangeText={text => searchSymptom({ variables: { text } })}
+					onChangeText={text => setSearch(text)}
 					placeholder='Search Symptoms'
 				/>
+			</View>
+
+			<View
+				style={{
+					borderRadius: 25,
+					backgroundColor: '#ffffff',
+					marginTop: 20,
+					marginHorizontal: 20,
+					height: 100,
+					justifyContent: 'center',
+					alignItems: 'center'
+				}}
+			>
+				{
+					current.length === 0 ? 
+						(<Text
+							style={{
+								fontFamily: 'circular-std',
+								fontSize: 20,
+								color: '#F5F5F5'
+							}}
+						>
+							Your symptoms
+						</Text>) : (
+							<ScrollView
+								horizontal
+								contentContainerStyle={{
+									justifyContent: 'center',
+									alignItems: 'center'
+								}}
+							>
+								{
+									currentNames.map((value, index) => (
+										<TouchableOpacity
+											key={index}
+											style={{
+												marginRight: 15,
+												backgroundColor: '#6E78F7',
+												paddingVertical: 10,
+												paddingHorizontal: 15,
+												borderRadius: 20,
+												flexDirection: 'row'
+											}}
+											onPress={() => { 
+												setCurrent(currentNames.filter((item, currentIndex) => currentIndex !== index))
+												setCurrentNames(currentNames.filter(item => item !== value))
+											}}
+										>
+											<Icon
+												name='CloseLine'
+												size={20}
+												color='#FFFFFF'
+												style={{
+													marginRight: 5
+												}}
+											/>
+											<Text
+												style={{
+													color: '#FFFFFF'
+												}}
+											>{value}</Text>
+										</TouchableOpacity>
+									))
+								}
+							</ScrollView>
+						)
+				}
+				
 			</View>
 				
 			<ScrollView
 				style={{
-					marginTop: 40,
+					marginTop: 20,
 					backgroundColor: '#FFFFFF',
 					borderTopLeftRadius: 25,
 					borderTopRightRadius: 25,
 					paddingHorizontal: 20,
 					paddingTop: 20,
-					flexDirection: 'column'
 				}}
 			>
 				{
 					loading ? <Text>Loading...</Text> : (
-						symptoms.map((symptom: any, index) => {
-							const selected = current.includes(symptom.id)
-							return (
-								<TouchableOpacity	
-									key={index}
+						symptoms.length !== 0 ?
+							(
+								symptoms.map((symptom: any, index) => {
+									const selected = current.includes(symptom.id)
+									return (
+										<TouchableOpacity	
+											key={index}
+											style={{
+												flex: 1,
+												flexDirection: 'row',
+												alignItems: 'center',
+												padding: 20,
+												borderBottomColor: '#F5F5F5',
+												borderBottomWidth: 1
+											}}
+											onPress={async () => {
+												if (selected) {
+													setCurrent(prev => prev.filter(item => item !== symptom.id))
+													setCurrentNames(prev => prev.filter(item => item !== symptom.name))
+												} else {
+													updateList(symptom.id)
+													setCurrentNames(prev => [...prev, symptom.name])
+												}
+												// console.log('Current ', selected, 'current', current, 'symptoms', symptoms)
+											}}
+										>
+											<Icon
+												name={
+													selected ? 'CheckTickCircleLine' : 'CheckCircleLine'
+												}
+												size={28}
+												color='#EEEEEE'
+											/>
+											<Text
+												style={{
+													marginLeft: 25,
+													color: '#363946'
+												}}
+											>{symptom.name}</Text>
+										</TouchableOpacity>
+									)
+								})
+							) : (
+								<View
 									style={{
 										flex: 1,
-										flexDirection: 'row',
-										alignItems: 'center',
-										padding: 20,
-										borderBottomColor: '#F5F5F5',
-										borderBottomWidth: 1
-									}}
-									onPress={async () => {
-										if (selected) setCurrent(prev => prev.filter(item => item !== symptom.id))
-										else updateList(symptom.id)
-										// console.log('Current ', selected, 'current', current, 'symptoms', symptoms)
+										justifyContent: 'center',
+										alignItems: 'center'
 									}}
 								>
-									<Icon
-										name={
-											selected ? 'CheckTickCircleLine' : 'CheckCircleLine'
-										}
-										size={28}
-										color='#EEEEEE'
-									/>
-									<Text
-										style={{
-											marginLeft: 25,
-											color: '#363946'
-										}}
-									>{symptom.name}</Text>
-								</TouchableOpacity>
+									<Text>Oops it looks like there aren't any symptoms associated with your selection.</Text>
+								</View>
 							)
-						})
 					)
 				}
 			</ScrollView>	
