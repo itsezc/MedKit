@@ -71,7 +71,7 @@ extend type Query {
 	getActivities: [Activities]
 	getReciepes: [Reciepe]
 	getSymptoms(current: [ID]): [Symptom]
-	getSymptom(name: String!): [Symptom]
+	getSymptom(current: [ID], name: String): [Symptom]
 	getTopMedicines: [Medicine]
 	searchMedicine(term: String!): Medicine
 }
