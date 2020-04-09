@@ -20,6 +20,32 @@ export const Data = {
 			searchParam: 'Symptom'
 		},
 		{
+			type: 'Disease',
+			Disease: {
+				name: 'Asthma'
+			},
+			Symptom: [
+				{
+					name: 'Cough'
+				}
+			],
+			param: 'name',
+			searchParam: 'Symptom'
+		},
+		{
+			type: 'Disease',
+			Disease: {
+				name: 'Aphasia'
+			},
+			Symptom: [
+				{
+					name: 'Speaking difficulty'
+				}
+			],
+			param: 'name',
+			searchParam: 'Symptom'
+		},
+		{
 			type: 'Account',
 			Account: {
 				email: 'chirub@foretag.co'
@@ -115,6 +141,20 @@ export const Data = {
 					name
 				}
 			}
+		`,
+
+		`
+			mutation {
+				createSymptom(
+					input: {
+						name: "Speaking difficulty",
+						description: "Having trouble with verbal communication"
+					}
+				) {
+					id
+					name
+				}
+			}
 		`
 
 	],
@@ -124,7 +164,7 @@ export const Data = {
 			mutation {
 				createDisease(
 					input: {
-						name: "Fever",
+						name: "Aphasia",
 
 					}
 				) {
