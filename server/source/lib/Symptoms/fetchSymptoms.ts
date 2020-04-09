@@ -1,9 +1,9 @@
 import { query } from '../../util/GClient'
 
-async function filterSymptoms(current: string[]): Promise<typeof results> {
- 	let results: Array<{ id: string, name: string }> = []
+export async function filterSymptoms(current: string[], name?: string): Promise<typeof results> {
+	let results: Array<{ id: string, name: string }> = []
 	const GET_DISEASES: string = `
-		query getDiseasesSymptoms($current: [ID!]!) {
+		query getDiseasesSymptoms($current: [ID!], $name: String) {
 			allDiseases (
 				filter: {
 					symptoms_some: {
@@ -13,7 +13,10 @@ async function filterSymptoms(current: string[]): Promise<typeof results> {
 			) {
 				symptoms (
 					filter: {
-						id_not_in: $current
+						id_not_in: $current,
+						AND: {
+							name_contains: $name
+						}
 					}
 				) {
 					id
@@ -23,7 +26,7 @@ async function filterSymptoms(current: string[]): Promise<typeof results> {
 		}
 	`
 	const { allDiseases }: { allDiseases: /* Array<{ symptoms: { id: string, name: string } }> */ any }
-		= await query(GET_DISEASES, { current })
+		= await query(GET_DISEASES, { current, name })
 	
 	allDiseases.forEach(({ symptoms }: { symptoms: any }) => symptoms.forEach((symptom: any) => results.push(symptom)))
 	return results
@@ -37,29 +40,11 @@ export async function fetchSymptoms(current: string[]): Promise<typeof allSympto
 	const FETCH_SYMPTOMS = `
 		query {
 			allSymptoms(
-				first: 10
-			) {
-				id
-				name
-			}
-		}
-	`
-	const { allSymptoms }: { allSymptoms: Array<{ id: string, name: string }> } = await query(FETCH_SYMPTOMS)
-	console.log(':::: RESULTS', allSymptoms)
-	return allSymptoms
-}
-
-
-/**
- * @CHECK
- */
-export async function fetchSymptom(name: string) {
-
-	const FETCH_SYMPTOM = `
-		query searchSymptom($name: String!) {
-			allSymptoms(
+				first: 10,
 				filter: {
-					name_contains: $name
+					diseases_some: {
+						id_gt: 1
+					}
 				}
 			) {
 				id
@@ -67,7 +52,11 @@ export async function fetchSymptom(name: string) {
 			}
 		}
 	`
-
-	const { allSymptoms } = await query(FETCH_SYMPTOM, { name })
+	const { allSymptoms }: { allSymptoms: Array<{ id: string, name: string }> } = await query(FETCH_SYMPTOMS)
 	return allSymptoms
+}
+
+export async function fetchSymptom(current: string[], name: string) {
+	const symptoms = await filterSymptoms(current, name)
+	return [...new Map(symptoms.map(item => [item['id'], item])).values()]
 }
