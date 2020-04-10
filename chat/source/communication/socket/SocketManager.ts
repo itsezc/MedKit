@@ -41,14 +41,14 @@ export default class SocketManager implements ISocketManager {
 	
 	private handleEvents(): void {
 		this.server.on('connection', (socket) => {
+			console.log('Connected - ', socket.id)
 			this.socket = socket
 			this.eventManager.init(this)
 			this.eventManager.events.forEach((event, key) => {
-				socket.on(key, (data: any) => {
-					event.execute(data ? JSON.parse(data) : null)
-				})
+				socket.on(key, (data) => event.execute(data))
 			})
-		})		
+			socket.on('disonnect', () => console.log('Disconnected', socket.id))
+		})
 	}
 
 	public close() {
