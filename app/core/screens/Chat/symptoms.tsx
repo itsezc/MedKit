@@ -2,9 +2,9 @@ import React from 'react'
 
 import { Screen, Icon } from '../../components'
 import { Animated, View, Text, TextInput, ScrollView } from 'react-native'
+import { TouchableWithoutFeedback, TouchableOpacity } from 'react-native-gesture-handler'
 
 import { useQuery, useLazyQuery, gql } from '@apollo/client'
-import { TouchableWithoutFeedback, TouchableOpacity } from 'react-native-gesture-handler'
 
 const FETCH_SYMPTOMS = gql`
 	query fetchSymptoms($current: [ID]) {
@@ -279,37 +279,35 @@ export default function ({ navigation }) {
 								symptoms.map((symptom: any, index) => {
 									const selected = current.includes(symptom.id)
 									return (
-										<TouchableOpacity	
-											key={index}
-											style={{
-												flex: 1,
-												flexDirection: 'row',
-												alignItems: 'center',
-												padding: 20,
-												borderBottomColor: '#F5F5F5',
-												borderBottomWidth: 1
-											}}
-											onPress={() => {
-												if (!selected) {
+										selected === false ? 
+											<TouchableOpacity	
+												key={index}
+												style={{
+													flex: 1,
+													flexDirection: 'row',
+													alignItems: 'center',
+													padding: 20,
+													borderBottomColor: '#F5F5F5',
+													borderBottomWidth: 1
+												}}
+												onPress={() => {
 													updateList(symptom.id)
 													setCurrentNames(prev => [...prev, symptom.name])
-												}
-											}}
-										>
-											<Icon
-												name={
-													selected ? 'CheckTickCircleLine' : 'CheckCircleLine'
-												}
-												size={28}
-												color='#EEEEEE'
-											/>
-											<Text
-												style={{
-													marginLeft: 25,
-													color: '#363946'
 												}}
-											>{symptom.name}</Text>
-										</TouchableOpacity>
+											>
+												<Icon
+													name='CheckCircleLine'
+													size={28}
+													color='#EEEEEE'
+												/>
+												<Text
+													style={{
+														marginLeft: 25,
+														color: '#363946'
+													}}
+												>{symptom.name}</Text>
+											</TouchableOpacity>
+										: null
 									)
 								})
 							) : (

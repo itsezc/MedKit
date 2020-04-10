@@ -46,10 +46,3 @@ Note:
 	If there are still multiple diseases, ask if the user has the additional symptoms of those diseases and Filter
 
 	If the user cannot confirm, then apply machine learning
-
-
-
-Symptoms: 
-	Filtering
-		When selected both Cough and Feeling Cold and then unselecting one, the other doesn't show.
-		
