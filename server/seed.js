@@ -14,6 +14,9 @@ export const Data = {
 				},
 				{
 					name: 'Cough'
+				},
+				{
+					name: 'Runny nose'
 				}
 			],
 			param: 'name',
@@ -27,6 +30,41 @@ export const Data = {
 			Symptom: [
 				{
 					name: 'Cough'
+				}
+			],
+			param: 'name',
+			searchParam: 'Symptom'
+		},
+		{
+			type: 'Disease',
+			Disease: {
+				name: 'Chest Infection'
+			},
+			Symptom: [
+				{
+					name: 'Cough'
+				}
+			],
+			param: 'name',
+			searchParam: 'Symptom'
+		},
+		{
+			type: 'Disease',
+			Disease: {
+				name: 'COVID-19'
+			},
+			Symptom: [
+				{
+					name: 'Cough'
+				},
+				{
+					name: 'Tiredness'
+				},
+				{
+					name: 'Breathing difficulty'
+				},
+				{
+					name: 'Runny nose'
 				}
 			],
 			param: 'name',
@@ -155,6 +193,48 @@ export const Data = {
 					name
 				}
 			}
+		`,
+
+		`
+			mutation {
+				createSymptom(
+					input: {
+						name: "Breathing difficulty",
+						description: "Having trouble taking in air"
+					}
+				) {
+					id
+					name
+				}
+			}
+		`,
+
+		`
+			mutation {
+				createSymptom(
+					input: {
+						name: "Tiredness",
+						description: "Feeling lazy"
+					}
+				) {
+					id
+					name
+				}
+			}
+		`,
+
+		`
+			mutation {
+				createSymptom(
+					input: {
+						name: "Runny nose",
+						description: "Nose"
+					}
+				) {
+					id
+					name
+				}
+			}
 		`
 
 	],
@@ -165,6 +245,19 @@ export const Data = {
 				createDisease(
 					input: {
 						name: "Aphasia",
+
+					}
+				) {
+					id
+					name
+				}
+			}
+		`,
+		`
+			mutation {
+				createDisease(
+					input: {
+						name: "COVID-19",
 
 					}
 				) {
