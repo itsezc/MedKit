@@ -40,7 +40,7 @@ Note:
 	i.e. User selects Cough, the only avaliable options would be Weezing, Sneezing, High Temperature etc. suggest these to the user
 	
 	If then the User selects Sneezing, then filter out Diseases (with both the symptoms) and then further filter the searchable symptoms
-
+ 
 	Eventually ... If there is only one disease possible then its that Disease
 
 	If there are still multiple diseases, ask if the user has the additional symptoms of those diseases and Filter
