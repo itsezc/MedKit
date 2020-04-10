@@ -7,9 +7,10 @@ export function Header({ navigation }): JSX.Element {
 	return (
 		<View 
 			style={{
-				height: 65,
+				height: 95,
 				flexDirection: 'row',
 				alignItems: 'center',
+				paddingTop: 20,
 				paddingHorizontal: 20,
 				shadowColor: '#000',
 				shadowOpacity: 0.25,
