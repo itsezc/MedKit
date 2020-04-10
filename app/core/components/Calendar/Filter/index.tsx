@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { TouchableWithoutFeedback, ScrollView, View, Text } from 'react-native'
 
-import { FilterItem } from './item'
+import { FilterItem } from './Item'
 
 export const Filter = (props) => {
 	
