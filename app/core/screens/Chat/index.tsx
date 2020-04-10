@@ -13,10 +13,7 @@ export default function ({ navigation }) {
 	useEffect(() => {
 		setMessages([])
 		const handler = new chatHandler(addToMessageBoard)
-
-		return function cleanup() {
-			handler.disconnect()
-		}
+		return () => handler.disconnect()
 	}, [])
 
 	const quickReplyType = messages[messages.length - 1]?.quickReplies?.type
