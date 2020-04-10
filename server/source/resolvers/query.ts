@@ -6,8 +6,8 @@ export const queryResolver = {
 
 	getUser: async (parent, args, { user }, info) => user,
 	getActivities: async(parent, args, { user }, info) => fetchActivities(user),
-	getSymptoms: async(parent, args, context, info) => fetchSymptoms(),
-	getSymptom: async (parent, { name }, context, info) => fetchSymptom(name),
+	getSymptoms: async(parent, { current }: { current: string[] }, context, info) => fetchSymptoms(current),
+	getSymptom: async (parent, { current, name }: { current: string [], name: string }, context, info) => fetchSymptom(current, name),
 	
 	searchMedicine: async (parent, args, context, info) => searchMedicine(args),
 	topMedicines: async (parent, args, context, info) => topMedicines({ limit: 10 })

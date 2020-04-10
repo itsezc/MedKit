@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { Screen, Icon } from '../../components'
-import { View, Text, TextInput, ScrollView } from 'react-native'
+import { Animated, View, Text, TextInput, ScrollView } from 'react-native'
+import { TouchableWithoutFeedback, TouchableOpacity } from 'react-native-gesture-handler'
 
 import { useQuery, useLazyQuery, gql } from '@apollo/client'
-import { TouchableWithoutFeedback, TouchableOpacity } from 'react-native-gesture-handler'
 
 const FETCH_SYMPTOMS = gql`
 	query fetchSymptoms($current: [ID]) {
@@ -25,10 +25,13 @@ const SEARCH_SYMPTOMS = gql`
 `
 
 export default function ({ navigation }) {
+
 	const [symptoms, setSymptoms] = React.useState([])
 	const [current, setCurrent] = React.useState([])
 	const [currentNames, setCurrentNames] = React.useState([])
 	const [search, setSearch] = React.useState(null)
+
+	const [shakeAnim, setShake] = React.useState(new Animated.Value(0))
 
 	const [searchQuery, searchProps] = useLazyQuery(SEARCH_SYMPTOMS, {
 		onCompleted: (data) => {
@@ -62,6 +65,16 @@ export default function ({ navigation }) {
 		else if (search !== null || search !== '')
 			searchQuery({ variables: { current, name: search } })
 	}, [search])
+
+	const startShake = () => {
+		Animated.sequence([
+			Animated.timing(shakeAnim, { toValue: 10, duration: 100, useNativeDriver: true }),
+			Animated.timing(shakeAnim, { toValue: -10, duration: 100, useNativeDriver: true }),
+			Animated.timing(shakeAnim, { toValue: 10, duration: 100, useNativeDriver: true }),
+			Animated.timing(shakeAnim, { toValue: 0, duration: 100, useNativeDriver: true })
+		]).start();
+	}
+	  
 
 	return (
 		<Screen
@@ -182,7 +195,7 @@ export default function ({ navigation }) {
 												flexDirection: 'row'
 											}}
 											onPress={() => { 
-												setCurrent(currentNames.filter((item, currentIndex) => currentIndex !== index))
+												setCurrent(current.filter((item, currentIndex) => currentIndex !== index))
 												setCurrentNames(currentNames.filter(item => item !== value))
 											}}
 										>
@@ -205,8 +218,49 @@ export default function ({ navigation }) {
 							</ScrollView>
 						)
 				}
-				
 			</View>
+
+			<TouchableOpacity
+				style={{
+					justifyContent: 'center',
+					alignItems: 'center',
+					marginTop: 20,
+				}}
+				onPress={() => {
+					if (current === null || current.length < 1) startShake()
+					else navigation.navigate('Chat')
+				}}
+			>
+				<Animated.View
+					style={{
+						borderRadius: 20,
+						backgroundColor: '#3BCCBB',
+						paddingVertical: 10,
+						paddingHorizontal: 20,
+						flexDirection: 'row',
+						justifyContent: 'center',
+						alignItems: 'center',
+						transform: [{translateX: shakeAnim }] 
+					}}
+				>
+					<Text
+						style={{
+							color: '#FFFFFF',
+							marginRight: 5
+						}}
+					>Next</Text>
+					<Icon 
+						name='ArrowRightSLine'
+						size={20}
+						color='#FFFFFF'
+						style={{
+							marginTop: 2,
+							marginLeft: 'auto'
+						}}
+					/>
+				</Animated.View>
+				
+			</TouchableOpacity>
 				
 			<ScrollView
 				style={{
@@ -225,41 +279,35 @@ export default function ({ navigation }) {
 								symptoms.map((symptom: any, index) => {
 									const selected = current.includes(symptom.id)
 									return (
-										<TouchableOpacity	
-											key={index}
-											style={{
-												flex: 1,
-												flexDirection: 'row',
-												alignItems: 'center',
-												padding: 20,
-												borderBottomColor: '#F5F5F5',
-												borderBottomWidth: 1
-											}}
-											onPress={async () => {
-												if (selected) {
-													setCurrent(prev => prev.filter(item => item !== symptom.id))
-													setCurrentNames(prev => prev.filter(item => item !== symptom.name))
-												} else {
+										selected === false ? 
+											<TouchableOpacity	
+												key={index}
+												style={{
+													flex: 1,
+													flexDirection: 'row',
+													alignItems: 'center',
+													padding: 20,
+													borderBottomColor: '#F5F5F5',
+													borderBottomWidth: 1
+												}}
+												onPress={() => {
 													updateList(symptom.id)
 													setCurrentNames(prev => [...prev, symptom.name])
-												}
-												// console.log('Current ', selected, 'current', current, 'symptoms', symptoms)
-											}}
-										>
-											<Icon
-												name={
-													selected ? 'CheckTickCircleLine' : 'CheckCircleLine'
-												}
-												size={28}
-												color='#EEEEEE'
-											/>
-											<Text
-												style={{
-													marginLeft: 25,
-													color: '#363946'
 												}}
-											>{symptom.name}</Text>
-										</TouchableOpacity>
+											>
+												<Icon
+													name='CheckCircleLine'
+													size={28}
+													color='#EEEEEE'
+												/>
+												<Text
+													style={{
+														marginLeft: 25,
+														color: '#363946'
+													}}
+												>{symptom.name}</Text>
+											</TouchableOpacity>
+										: null
 									)
 								})
 							) : (

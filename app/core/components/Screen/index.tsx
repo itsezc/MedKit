@@ -21,7 +21,8 @@ function Screen(props: {
 			background={props.background}
 		>
 			<StatusBar
-				barStyle={props.statusBarColor || 'light-content'} backgroundColor={props.statusBar || '#2276df'}/>
+				translucent
+				barStyle={props.statusBarColor || 'light-content'} backgroundColor='transparent' />
 			{
 				props.animated === true ? 
 					<ImageBackground
