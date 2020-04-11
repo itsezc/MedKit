@@ -44,7 +44,7 @@ type Activity @rootEntity {
 	account: Account @relation(inverseOf: "activities")
 	workout: Exercise @relation
 	appointment: Appointment @relation
-	reciepe: Reciepe @relation
+	recipe: Recipe @relation
 }
 
 # Workouts
@@ -158,9 +158,9 @@ type Test @rootEntity {
 	testCenter: TestCenter @relation
 }
 
-# Healthy Reciepes 
+# Healthy Recipes 
 
-type Reciepe @rootEntity {
+type Recipe @rootEntity {
 	name: String!
 	image: String
 	ingridents: [Ingredient] @relation
@@ -169,6 +169,11 @@ type Reciepe @rootEntity {
 type Ingredient @rootEntity {
 	name: String! 
 	image: String
+}
+
+type AccountFovoriteRecipe @rootEntity {
+	account: Account @relation
+	recipes: [Recipe] @relation
 }
 
 # Pharamacies
