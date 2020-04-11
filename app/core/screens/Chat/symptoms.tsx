@@ -177,17 +177,20 @@ export default function ({ navigation }) {
 						</Text>) : (
 							<ScrollView
 								horizontal
+								style={{
+									paddingHorizontal: 20,
+								}}
 								contentContainerStyle={{
 									justifyContent: 'center',
-									alignItems: 'center'
+									alignItems: 'center',
 								}}
 							>
 								{
-									currentNames.map((value, index) => (
+									currentNames.map((value, index, array) => (
 										<TouchableOpacity
 											key={index}
 											style={{
-												marginRight: 15,
+												marginRight: index === array.length - 1 ? 40 : 15,
 												backgroundColor: '#6E78F7',
 												paddingVertical: 10,
 												paddingHorizontal: 15,
