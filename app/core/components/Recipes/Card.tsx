@@ -2,8 +2,20 @@ import React from 'react'
 
 import { View, Text, Image, ImageBackground } from 'react-native'
 import { Icon } from '../../components/Icon'
+import { BlurView } from 'expo-blur'
 
-export function Card(): JSX.Element {
+export function Card(
+	{ 
+		favorite,
+		featured,
+		tag
+	}: 
+	{ 
+		favorite?: boolean,
+		featured?: boolean,
+		tag?: string
+	}
+): JSX.Element {
 	return (
 		<View
 			style={{
@@ -26,11 +38,35 @@ export function Card(): JSX.Element {
 					justifyContent: 'flex-end'
 				}}
 			>
+				{
+					tag ?
+					(
+						<View
+							style={{
+								marginBottom: 'auto',
+								marginLeft: 'auto',
+								paddingVertical: 5,
+								paddingHorizontal: 10,
+								backgroundColor: '#FFFFFF',
+								borderBottomLeftRadius: 10,
+								borderTopRightRadius: 10
+							}}
+						>
+							<Text
+								style={{
+									color: '#E69C59',
+									fontWeight: 'bold'
+								}}
+							>{tag}</Text>
+						</View>
+					): null
+				}
+				
 				<View
 					style={{
-						backgroundColor: 'rgba(52, 52, 52, 0.8)',
+						backgroundColor: (featured === true ? 'rgba(116, 125, 139, 0.8)' : 'rgba(0, 0, 0, 0.5)'),
 						opacity: 1,
-						paddingHorizontal: 10,
+						paddingHorizontal: 20,
 						paddingVertical: 10,
 						borderBottomLeftRadius: 15,
 						borderBottomRightRadius: 15,
@@ -84,9 +120,9 @@ export function Card(): JSX.Element {
 						}}
 					>
 						<Icon 
-							name='Heart2Line'
+							name={ favorite ? 'Heart2Fill' : 'Heart2Line' }
 							size='24'
-							color='#363946'
+							color={ favorite ? '#DA615D' : '#AFB4C0' }
 						/>
 					</View>
 				</View>
