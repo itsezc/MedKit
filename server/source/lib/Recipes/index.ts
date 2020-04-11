@@ -1,20 +1,27 @@
 import Moment from 'moment'
-import { query } from '../../util/GClient'
 
-export async function fetchReciepes() {
+import { params, types, query } from 'typed-graphqlify'
+import { request } from 'graphql-request'
 
-	const FETCH_RECIEPES: string = `
-		query {
-			allReciepes() {
-				name
-				image
-				ingredients {
-					name
-					image
+export async function fetchFavorites({ id }: { id: string }) {
+	const GET_FAVORITES = {
+		allAccountFovoriteRecipes: params(
+			{
+				filter: {
+					acccount: {
+						id
+					}
 				}
-				createdAt
-			}
-		}
-	`
-
+			}, [
+				{
+					id: types.string,
+					name: types.string,
+					preview: types.string
+				}
+			]
+		)
+	}
+	const process = query(GET_FAVORITES)
+	const result = await request('http://localhost:8085/graphql', process)
+	return result
 }
