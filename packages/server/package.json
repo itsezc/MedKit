@@ -28,6 +28,8 @@
 		"@apollo/gateway": "^0.14.0",
 		"apollo-server": "^2.12.0",
 		"cruddl": "^1.1.0",
-		"graphql": "^15.0.0"
+		"graphql": "^15.0.0",
+		"graphql-request": "^1.8.2",
+		"typed-graphqlify": "^2.3.0"
 	}
 }
