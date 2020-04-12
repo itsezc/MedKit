@@ -1,4 +1,4 @@
-import { inject, injectable } from 'inversify'
+import { injectable } from 'inversify'
 import { IFederationManager } from './IFederationManager'
 
 import { ApolloServer } from 'apollo-server'
@@ -11,7 +11,7 @@ export default class FederationManager implements IFederationManager {
 	protected server: ApolloServer
 	protected port: number
 
-	public async init(typeDefs: DocumentNode, resolvers: GraphQLResolverMap<any>) {
+	public async init(typeDefs: DocumentNode, resolvers: any) {
 		this.server = new ApolloServer({
 			schema: buildFederatedSchema([ { typeDefs, resolvers }])
 		})
