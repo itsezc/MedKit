@@ -1,10 +1,11 @@
 import { inject, injectable } from 'inversify'
+import { IGatewayManager } from './IGatewayManager'
 
 import { ApolloServer } from 'apollo-server'
 import { ApolloGateway } from '@apollo/gateway'
 
 @injectable()
-export default class GatewayManager {
+export default class GatewayManager implements IGatewayManager {
 	protected gateway: ApolloGateway
 	protected server: ApolloServer
 	protected port: number

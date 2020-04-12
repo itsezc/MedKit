@@ -1,4 +1,5 @@
 import { inject, injectable } from 'inversify'
+import { IFederationManager } from './IFederationManager'
 
 import { ApolloServer } from 'apollo-server'
 import { buildFederatedSchema } from '@apollo/federation'
@@ -6,7 +7,7 @@ import { buildFederatedSchema } from '@apollo/federation'
 import { DocumentNode } from 'graphql'
 
 @injectable()
-export default class FederationManager {
+export default class FederationManager implements IFederationManager {
 	protected server: ApolloServer
 	protected port: number
 
