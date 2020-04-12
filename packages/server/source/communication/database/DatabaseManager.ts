@@ -1,9 +1,11 @@
-import { inject, injectable } from  'inversify'
+import { injectable } from  'inversify'
 import { IDatabaseManager } from './IDatabaseManager'
 
 import { GraphQLSchema } from 'graphql'
 import { ArangoDBAdapter, Project } from 'cruddl'
 import { ApolloServer } from 'apollo-server'
+
+import schema from '../../graphql/database.graphql'
 
 @injectable()
 export default class DatabaseManager implements IDatabaseManager {
@@ -29,7 +31,7 @@ export default class DatabaseManager implements IDatabaseManager {
 			sources: [
 				{
 					name: 'schema.graphql',
-					body: coreSchema
+					body: schema as unknown as string
 				},
 				{
 					name: 'permission-profiles.json',
