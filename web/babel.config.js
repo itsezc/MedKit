@@ -19,7 +19,7 @@ module.exports = (api) => {
 		'@babel/plugin-syntax-function-bind',
 		'@babel/plugin-proposal-class-properties',
 		'@babel/plugin-proposal-throw-expressions',
-		["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }],
+//		["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }],
 	]
 
 	const ignore = []

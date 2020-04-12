@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-import { ApolloProvider } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client'
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
@@ -11,9 +11,12 @@ const client = new ApolloClient({
   })
 });
 
-import Login from './pages/Login/index';
+
+import { Login } from './Login'
 
 const App = () => {
+
+	
 
 	return (
 		<ApolloProvider client={client}>
@@ -22,4 +25,4 @@ const App = () => {
 	)
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'))
