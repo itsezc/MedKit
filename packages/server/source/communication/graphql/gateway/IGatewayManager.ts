@@ -1,3 +1,3 @@
 export interface IGatewayManager {
-	init(): void
+	init(): Promise<void>
 }

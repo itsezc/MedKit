@@ -3,17 +3,14 @@ import { IGatewayManager } from './IGatewayManager'
 
 import { ApolloServer } from 'apollo-server'
 import { ApolloGateway } from '@apollo/gateway'
+import { remoteContext } from './modules/remoteContext'
 
 @injectable()
 export default class GatewayManager implements IGatewayManager {
 	protected gateway: ApolloGateway
 	protected server: ApolloServer
-	protected port: number
 
-	public constructor() 
-	{
-		this.createGateway()
-	}
+	public constructor(protected port: number) { this.createGateway() }
 
 	public async init() {
 		this.server =  new ApolloServer({
@@ -35,8 +32,10 @@ export default class GatewayManager implements IGatewayManager {
 				defaultMaxAge: 1
 			},
 		})
-		.listen({ port: this.port })
-		.then(info => console.log(`[GATEWAY] started on port - ${info.port}`))
+		
+		this.server
+			.listen({ port: this.port })
+			.then(info => console.log(`[GATEWAY] started on port - ${info.port}`))
 	}
 
 	public async createGateway() {
@@ -49,7 +48,5 @@ export default class GatewayManager implements IGatewayManager {
 			}
 		})
 	}
-
-
 }
 
