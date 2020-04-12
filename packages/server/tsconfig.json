@@ -21,6 +21,9 @@
 			"./typings"
 		]
 	},
+	"files": [
+		"typings/graphql.d.ts"
+	],
 	"exclude": [
 		"node_modules",
 		"./babel.config.js"
