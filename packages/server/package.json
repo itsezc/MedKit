@@ -1,8 +1,8 @@
 {
-	"name": "server",
+	"name": "@medkit/server",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "source/index.js",
 	"scripts": {
 		"start": "node ./build/index.js",
 		"dev": "nodemon --exec 'npm run clear:cache && babel-node ./source/index.ts --extensions \".ts\"'",
