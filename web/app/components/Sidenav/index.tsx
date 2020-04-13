@@ -6,7 +6,6 @@ import { HomeOutlined, FormOutlined, LogoutOutlined, MessageFilled } from '@ant-
 
 export default (props:any) => {
 
-      const { Sider } = Layout;
       const { SubMenu } = Menu;
 
       return (
