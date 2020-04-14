@@ -35,6 +35,7 @@ type Account @rootEntity {
     height: Int
     weight: Float
     activities: [Activity] @relation
+    recipes: [Recipe] @relation
 }
 
 type Activity @rootEntity {
@@ -169,11 +170,6 @@ type Recipe @rootEntity {
 type Ingredient @rootEntity {
 	name: String! 
 	image: String
-}
-
-type AccountFovoriteRecipe @rootEntity {
-	account: Account @relation
-	recipes: [Recipe] @relation
 }
 
 # Pharamacies
