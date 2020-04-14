@@ -41,9 +41,9 @@ type Ingredient {
 	image: String
 }
 
-type Reciepe {
+type Recipe {
 	name: String
-	image: String
+	preview: String
 	ingredient: [Ingredient]
 	createdAt: DateTime
 }
@@ -69,7 +69,7 @@ extend type Mutation {
 extend type Query {
 	getUser: Account
 	getActivities: [Activities]
-	getReciepes: [Reciepe]
+	getRecipes: [Recipe]
 	getSymptoms(current: [ID]): [Symptom]
 	getSymptom(current: [ID], name: String): [Symptom]
 	getTopMedicines: [Medicine]
