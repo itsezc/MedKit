@@ -1,24 +1,18 @@
-import Moment from 'moment'
-
 import { params, types, query } from 'typed-graphqlify'
 import { request } from 'graphql-request'
 
 export async function fetchFavorites({ id }: { id: string }) {
 	const GET_FAVORITES = {
-		allAccountFovoriteRecipes: params(
-			{
-				filter: {
-					acccount: {
-						id
+		Account: params(
+			{ id }, {
+				recipes: [
+					{
+						id: types.string,
+						name: types.string,
+						preview: types.string
 					}
-				}
-			}, [
-				{
-					id: types.string,
-					name: types.string,
-					preview: types.string
-				}
-			]
+				]
+			}
 		)
 	}
 	const process = query(GET_FAVORITES)

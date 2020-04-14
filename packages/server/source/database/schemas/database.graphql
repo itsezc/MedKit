@@ -163,7 +163,7 @@ type Test @rootEntity {
 
 type Recipe @rootEntity {
 	name: String!
-	image: String
+	preview: String
 	ingridents: [Ingredient] @relation
 }
 
