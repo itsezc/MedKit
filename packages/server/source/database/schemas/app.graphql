@@ -70,6 +70,7 @@ extend type Query {
 	getUser: Account
 	getActivities: [Activities]
 	getRecipes: [Recipe]
+	getFavoriteRecipes: [Recipe]
 	getSymptoms(current: [ID]): [Symptom]
 	getSymptom(current: [ID], name: String): [Symptom]
 	getTopMedicines: [Medicine]
