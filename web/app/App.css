@@ -1,8 +1,9 @@
 @import '~antd/dist/antd.css';
 
 /* Side navigation */
-@import './components/Sidenav/style.css'
+@import './components/Sidenav/style.css';
 
 /* Header */
+@import './components/Header/style.css';
 
 /* Footer */
