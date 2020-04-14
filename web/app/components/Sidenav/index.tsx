@@ -1,7 +1,12 @@
 import React from 'react';
 
-import { Layout, Menu } from 'antd';
+//navigation
+import { Menu } from 'antd';
+
+//data display
 import { Avatar } from 'antd';
+
+//icons
 import { HomeOutlined, FormOutlined, LogoutOutlined, MessageFilled } from '@ant-design/icons';
 
 export default (props:any) => {

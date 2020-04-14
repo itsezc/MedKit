@@ -2,7 +2,7 @@
                   REFERENCES
 ***********************************************
 
-<Sider collapsed={true} style={{ height: '100vh' }}>
+<Sider collapsed={true} style={{ height: '100vh', position: 'fixed', overflow: 'auto', left: 0 }}>
 
 **********************************************/
 
