@@ -1,4 +1,4 @@
-export async function setTree(obj: object, path: string[], value: any, setrecursively = false) {
+export default async function setTree(obj: object, path: string[], value: any, setrecursively = false) {
 	path.reduce((a, b, level) => {
 		if (setrecursively && typeof a[b] === 'undefined' && level !== path.length) {
 			a[b] = {}

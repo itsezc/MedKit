@@ -1,9 +1,9 @@
 import { params, types, query } from 'typed-graphqlify'
 import { request } from 'graphql-request'
 
-import { setTree } from '../../functions/setTree'
+import setTree from '../../functions/setTree'
 
-export async function getDiseases(current: string[], search: string = ''): Promise<any[]> {
+export default async function getDiseases(current: string[], search: string = ''): Promise<any[]> {
 	const filter = {}
 	current.forEach(async (symptom, index) => {
 		const depth = []

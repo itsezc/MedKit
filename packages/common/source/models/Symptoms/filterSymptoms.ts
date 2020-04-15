@@ -1,6 +1,6 @@
-import { getDiseases } from './getDiseases'
+import getDiseases from './getDiseases'
 
-export async function filterSymptoms(current: string[], search: string = '') {
+export default async function filterSymptoms(current: string[], search = '') {
 	const results: Array<{ id: string, name: string }> = []
 	const diseases = await getDiseases(current, search)
 	diseases.forEach(({ symptoms }) => {
