@@ -1,5 +1,5 @@
 import { query } from '../../util/GClient'
-import { filterSymptoms } from '../../../../common/models/Symptoms/filterSymptoms'
+import { filterSymptoms } from '@medkit/common/models/Symptoms/filterSymptoms'
 
 // export async function filterSymptoms(current: string[], name?: string): Promise<typeof results> {
 // 	let results: Array<{ id: string, name: string }> = []
