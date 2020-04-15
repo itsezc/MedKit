@@ -16,6 +16,6 @@ export async function fetchFavorites({ id }: { id: string }) {
 		)
 	}
 	const process = query(GET_FAVORITES)
-	const result = await request('http://localhost:8085/graphql', process)
-	return result
+	const { Account } = await request('http://localhost:8085/graphql', process)
+	return Account.recipes
 }
