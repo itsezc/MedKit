@@ -1,5 +1,3 @@
-// @flow 
-
 import Request from 'axios'
 import { DocumentNode } from 'graphql'
 
