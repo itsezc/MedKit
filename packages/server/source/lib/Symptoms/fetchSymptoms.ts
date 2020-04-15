@@ -1,5 +1,5 @@
 import { query } from '../../util/GClient'
-import { filterSymptoms } from '@medkit/common/models/Symptoms/filterSymptoms'
+import { filterSymptoms } from '../../flux/models/Symptoms/filterSymptoms'
 
 // export async function filterSymptoms(current: string[], name?: string): Promise<typeof results> {
 // 	let results: Array<{ id: string, name: string }> = []
@@ -32,7 +32,6 @@ import { filterSymptoms } from '@medkit/common/models/Symptoms/filterSymptoms'
 // 	allDiseases.forEach(({ symptoms }: { symptoms: any }) => symptoms.forEach((symptom: any) => results.push(symptom)))
 // 	return results
 // }
-
 
 export async function fetchSymptoms(current: string[]): Promise<typeof allSymptoms> {
 	if (current !== undefined
