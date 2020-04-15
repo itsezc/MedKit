@@ -20,6 +20,6 @@ export const query = async(
 		responseType: 'json'
 	})
 
-	const { data } = await fetch.post('', JSON.stringify({ query, variables }))
+	const { data } = await fetch.post('', { query, variables })
 	return data.data
 }
