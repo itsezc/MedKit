@@ -1,35 +1,44 @@
-import { Stage } from '../Stage'
-import { IStage } from '../IStage'
+import { Event } from '../../events/Abstract'
+import { IEvent } from '../../communication/socket'
 
 import { query } from '../../util/GClient'
+import { getDiseases } from '../../../../server/source/flux/models/Symptoms/getDiseases'
 
-export default class Identify extends Stage implements IStage {
-	private results: string[] = []
+import Result from '../result/Result'
 
-	public async process(symptoms: string[]) {
-		symptoms.forEach(async (symptom, index, array) => {
-			const FIND_DISEASES: string = `
-				query findDiseases($symptom: ID!) {
-					allDiseases(
-						filter: {
-							symptoms_some: {
-								id: $symptom
-							}
-						}
-					) {
-						id
-					}
-				}
-			`
-			const { allDiseases }: { allDiseases: [{ id: string }] } = await query(FIND_DISEASES, { symptom })
-			allDiseases.forEach(async ({ id }) => this.results.push(id))
-			if (index === array.length - 1) await this.response()
-		})
+export default class Identify extends Event implements IEvent {
+	async execute({ current }: { current: string[] }) {
+		current.forEach(async element => 
+			await this.cache.rpush(this.socketID.concat('_symptoms'), element))
+		
+		if (await this.checkUnique(current) === false) this.checkAlternatives(current)
+		else new Result(this.redis, this.socketIO).execute()
 	}
 
-	public async response() {
-		this.redis.updateList(`${this.socketID}_diseases`, this.results)
-		// this.server.emit('message', this.results)
-		console.log('Socket', this.socketID, 'results', this.results)
+	private async checkUnique(current: string[]): Promise<boolean | void> {
+		const GET_DISEASES: string = `
+			query getDiseases($current: [ID]!) {
+				allDiseases(
+					filter: {
+						symptoms_every: {
+							id_in: $current
+						}
+					}
+				) {
+					id
+					name
+				}
+			}
+		`
+
+		const { allDiseases } = await query(GET_DISEASES, { current })
+		if (allDiseases.length > 0) return false 
+	}
+
+	private async checkAlternatives(current: string[]) {
+		const diseases = await getDiseases(current)
+		diseases.forEach(async ({ symptoms }) => {
+			symptoms.forEach(async (symptom: any) => await this.cache.rpush(`${this.socketID}_ask_symptoms`, symptom.id))
+		})
 	}
 }
