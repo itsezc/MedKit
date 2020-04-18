@@ -64,6 +64,8 @@ extend type Mutation {
 		dateOfBirth: DateTime!,
 		deviceID: String!
 	): LoginPayload
+
+	makeFavorite(recipe: [ID]): ID
 }
 
 extend type Query {

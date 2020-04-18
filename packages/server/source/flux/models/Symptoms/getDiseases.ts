@@ -80,7 +80,7 @@ export async function getDiseases(current: string[] = [], search: string = ''): 
 			}
 		}
 	`
-	console.log('::::', GET_DISEASES)
+	// console.log('::::', GET_DISEASES)
 	const { allDiseases } = await query(GET_DISEASES, { search })
 	return allDiseases
 }
