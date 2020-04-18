@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { View, Text } from 'react-native'
-import { Screen, Icon, RecipesCard as Card } from '../../components'
+import { Screen, Icon, RecipesCard as Card, FeaturedRecipes } from '../../components'
 import { ScrollView } from 'react-native-gesture-handler'
 
 export default function({ navigation }): JSX.Element {
@@ -106,74 +106,21 @@ export default function({ navigation }): JSX.Element {
 				}}
 			>
 				<Card 
+					name='Breakfast'
 					tag='Breakfast'
 				/>
-				<Card 
+				<Card
+					name='Lunch'
 					tag='Lunch'
 				/>
 				<Card 
+					name='Dinner'
 					tag='Dinner'
 				/>
 			</ScrollView>
 			{/* End Planner */}
 
-			{/* Featured */}
-			<View
-				style={{
-					marginHorizontal: 25,
-					flexDirection: 'row',
-					alignItems: 'center',
-					marginTop: 40
-				}}
-			>
-				<Text
-					style={{
-						color: '#BCBDBE',
-						fontFamily: 'circular-std',
-						fontSize: 16
-					}}
-				>
-					Featured
-				</Text>
-
-				<Text
-					style={{
-						marginLeft: 'auto',
-						marginRight: 5,
-						fontSize: 18,
-						fontWeight: 'bold',
-						color: '#E69C59'
-					}}
-				>All</Text>
-
-				<Icon 
-					name='ArrowRightLine'
-					size='18'
-					color='#E69C59'
-				/>
-			</View>
-
-			<ScrollView
-				horizontal
-				showsHorizontalScrollIndicator={false}
-				style={{
-					maxHeight: 250,
-					marginTop: 10,
-					marginHorizontal: 25,
-				}}
-			>
-				<Card
-					favorite
-					featured
-				/>
-				<Card 
-					featured
-				/>
-				<Card 
-					featured
-				/>
-			</ScrollView>
-			{/* End Featured */}
+			<FeaturedRecipes />
 
 			<View
 				style={{

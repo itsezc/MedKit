@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Styled from 'styled-components/native'
 
-import { ImageBackground, Platform, StatusBar } from 'react-native'
+import { ImageBackground, StatusBar } from 'react-native'
 
 const ScreenContainer = Styled.View`
 	flex: 1;

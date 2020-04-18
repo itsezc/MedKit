@@ -18,7 +18,8 @@ export {
 	Card as DrugsCard
 } from './Drugs'
 export {
-	Card as RecipesCard
+	Card as RecipesCard,
+	FeaturedRecipes
 } from './Recipes'
 export { Icon } from './Icon'
 export { Button } from './Login'
