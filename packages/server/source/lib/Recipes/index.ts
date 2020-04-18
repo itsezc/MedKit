@@ -1,4 +1,4 @@
-import { params, types, query } from 'typed-graphqlify'
+import { params, types, query, mutation } from 'typed-graphqlify'
 import { request } from 'graphql-request'
 
 export async function fetchFavorites({ id }: { id: string }) {
@@ -18,4 +18,18 @@ export async function fetchFavorites({ id }: { id: string }) {
 	const process = query(GET_FAVORITES)
 	const { Account } = await request('http://localhost:8085/graphql', process)
 	return Account.recipes
+}
+
+export async function makeFavorite({ account, recipe }: { account: string, recipe: string[] }) {
+	const process = mutation('makeFavorite', params({ $account: 'ID!', $recipe: '[ID!]!' }, {
+		updateAccount: params({ input: { 
+				id: '$account',
+				addRecipes: '$recipe'
+			} 
+		}, {
+			id: types.string
+		})
+	}))
+	const { id } = await request('http://localhost:8085/graphql', process)
+	return id
 }
