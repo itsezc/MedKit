@@ -1,18 +1,21 @@
 import React from 'react'
 
-import { View, Text, Image, ImageBackground } from 'react-native'
+import { View, Text, ImageBackground } from 'react-native'
 import { Icon } from '../../components/Icon'
-import { BlurView } from 'expo-blur'
 
 export function Card(
-	{ 
+	{
+		name,
 		favorite,
 		featured,
+		preview,
 		tag
 	}: 
-	{ 
+	{
+		name: string,
 		favorite?: boolean,
 		featured?: boolean,
+		preview?: string,
 		tag?: string
 	}
 ): JSX.Element {
@@ -27,7 +30,7 @@ export function Card(
 		>
 			<ImageBackground
 				source={{
-					uri: 'https://www.bostonmagazine.com/wp-content/uploads/sites/2/2019/04/sheet-pan-dinners.jpg'
+					uri: preview ? preview : 'https://www.bostonmagazine.com/wp-content/uploads/sites/2/2019/04/sheet-pan-dinners.jpg'
 				}}
 				imageStyle={{ borderRadius: 15 }}
 				style={{
@@ -85,8 +88,7 @@ export function Card(
 								overflow: 'scroll'
 							}}
 						>
-							Program for gaining muscle mass
-							
+							{name}
 						</Text>
 						<View
 							style={{
