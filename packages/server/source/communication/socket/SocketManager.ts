@@ -23,11 +23,21 @@ export default class SocketManager implements ISocketManager {
 		this.server = SocketIO(this.HTTPManager.getApp().server)
 	}
 
-	public getServer(): SocketIO.Server {
+	public getServer() {
 		return this.server
 	}
 
-	public getSocket(): SocketIO.Socket {
+	public getSocket() {
 		return this.socket
+	}
+
+	private handleEvents() {
+		this.server.on('connection', (socket) => {
+			this.socket = socket
+		})
+	}
+
+	public close() {
+		this.server.close()
 	}
 }
