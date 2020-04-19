@@ -2,9 +2,10 @@ import { injectable } from 'inversify'
 
 import Fastify from 'fastify'
 import { Server, IncomingMessage, ServerResponse } from 'http'
+import { IHTTPManager } from './IHTTPManager'
 
 @injectable()
-export default class HTTPManager {
+export class HTTPManager implements IHTTPManager {
 	private app: Fastify.FastifyInstance<Server, IncomingMessage, ServerResponse>
 
 	public async init() {
@@ -18,7 +19,7 @@ export default class HTTPManager {
 		}
 	}
 
-	public getServer() {
+	public getApp() {
 		return this.app
 	}
 }
