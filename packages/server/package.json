@@ -31,7 +31,12 @@
 		"fastify": "^2.13.1",
 		"graphql": "^15.0.0",
 		"graphql-request": "^1.8.2",
+		"handy-redis": "^1.8.0",
+		"node-redis": "^0.1.7",
 		"socket.io": "^2.3.0",
 		"typed-graphqlify": "^2.3.0"
+	},
+	"devDependencies": {
+		"@types/socket.io": "^2.1.4"
 	}
 }
