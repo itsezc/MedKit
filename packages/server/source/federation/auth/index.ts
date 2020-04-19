@@ -3,6 +3,8 @@ import { inject, injectable } from 'inversify'
 import { SERVICE_IDENTIFIER } from '../../includes/identifiers'
 import { IFederationManager } from '../../communication/graphql/federation/IFederationManager'
 
+import { resolvers } from './resolvers'
+
 @injectable()
 export default class Auth {
 	protected server: IFederationManager
@@ -12,9 +14,10 @@ export default class Auth {
 	) { this.server = server}
 
 	async start() {
-		// this.server.init(
-		// 	await import('../../graphql/app.graphql'),
-			
-		// )
+		this.server.init({
+			typeDefs: await import('../../graphql/app.graphql'),
+			resolvers,
+			port: 8086
+		})
 	}
 }
