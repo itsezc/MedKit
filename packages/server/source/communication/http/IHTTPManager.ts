@@ -1,6 +1,6 @@
 import * as Fastify from 'fastify'
 
 export interface IHTTPManager {
-	init(port: number): void
+	init(): Promise<void>
 	getApp(): Fastify.FastifyInstance
 }
