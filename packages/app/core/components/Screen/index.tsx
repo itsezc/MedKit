@@ -12,6 +12,7 @@ function Screen(props: {
 	animated?: boolean,
 	pattern?: boolean,
 	background?: string,
+	backgroundImage?: string,
 	statusBar?: string,
 	statusBarColor?: 'light-content' | 'dark-content',
 	children: React.ReactElement | React.ReactElement[]
@@ -38,6 +39,14 @@ function Screen(props: {
 								width: '100%', height: '100%',
 							}}
 							source={require('../../../assets/images/bg_abstract_blue.jpg')}
+						>
+							{props.children}
+						</ImageBackground>: props.backgroundImage ? 
+						<ImageBackground
+							style={{
+								width: '100%', height: '100%'
+							}}
+							source={{ uri: props.backgroundImage}}
 						>
 							{props.children}
 						</ImageBackground>: props.children
