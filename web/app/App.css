@@ -7,3 +7,24 @@
 @import './components/Header/style.css';
 
 /* Footer */
+
+/* Dashboard */
+/* @import './pages/Dashboard/style.css'; */
+
+/* Universal CSS */
+.content{
+      margin-top: 90px;
+      margin-left: 120px;
+}
+
+.page-container {
+      padding: 50px;
+}
+
+.content-container {
+      background: rgb(255, 255, 255);
+      padding: 10px;
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+}
