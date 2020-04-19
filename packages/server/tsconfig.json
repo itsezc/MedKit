@@ -1,3 +1,12 @@
 {
-	"extends": "../../tsconfig.json"
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"typeRoots": [
+			"./node_modules/@types",
+			"./typings"
+		],
+		"files": [
+			"typings/graphql.d.ts"
+		]
+	}
 }

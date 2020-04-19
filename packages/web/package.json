@@ -41,7 +41,7 @@
 		"@fortawesome/free-solid-svg-icons": "^5.13.0",
 		"@fortawesome/react-fontawesome": "^0.1.9",
 		"apollo-link-context": "^1.0.19",
-		"graphql": "^14.6.0",
+		"graphql": "^15.0.0",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-rainbow-components": "^1.14.1"
