@@ -3,8 +3,25 @@ import React from 'react'
 import { View, Text, ImageBackground } from 'react-native'
 import { Icon } from '../../components/Icon'
 
+import { useQuery, useMutation, gql } from '@apollo/client'
+
+const IS_FAVORITE = gql`
+	query isFavorite($id: ID) {
+		isFavorite(id: $id) {
+			favorite
+		}
+	}
+`
+
+const MAKE_FAVORITE = gql`
+	query makeFavorite($id: ID) {
+		
+	}
+`
+
 export function Card(
 	{
+		id,
 		name,
 		favorite,
 		featured,
@@ -12,6 +29,7 @@ export function Card(
 		tag
 	}: 
 	{
+		id: string,
 		name: string,
 		favorite?: boolean,
 		featured?: boolean,
@@ -19,6 +37,8 @@ export function Card(
 		tag?: string
 	}
 ): JSX.Element {
+	const { data, error, loading } = useQuery(IS_FAVORITE, { variables: { id }})
+	
 	return (
 		<View
 			style={{

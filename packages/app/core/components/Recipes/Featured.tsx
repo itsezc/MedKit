@@ -7,6 +7,7 @@ import { useQuery, gql } from '@apollo/client'
 const GET_FEATURED_RECIPES = gql`
 	{
 		getRecipes {
+			id
 			name
 			preview
 		}
