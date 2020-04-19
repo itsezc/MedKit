@@ -7,7 +7,7 @@ import { buildFederatedSchema } from '@apollo/federation'
 import { DocumentNode } from 'graphql'
 
 @injectable()
-export default class FederationManager implements IFederationManager {
+export class FederationManager implements IFederationManager {
 	protected server: ApolloServer
 	protected port: number
 
