@@ -21,6 +21,8 @@ export default () => {
 
       const deviceID = 'web';
 
+      const [email, setEmail] = React.useState('')
+      const [password, setPassword] = React.useState('')
       const [processLogin, { loading }] = useMutation(LOGIN_MUTATION, {
 		onCompleted: async (data) => {
 			console.log(data)
@@ -45,8 +47,7 @@ export default () => {
                                                       MedKit
                                                 </Title>
 
-                                                <Form 
-                                                      onFinish={processLogin}
+                                                <Form
                                                       onFinishFailed={onFinishFailed}
                                                       name='login'
                                                 >
@@ -94,6 +95,7 @@ export default () => {
                                                             <Button
                                                                   type='primary' 
                                                                   htmlType='submit'
+                                                                  onClick={() => processLogin({ variables: { email, password, deviceID } })}
                                                             >
                                                                   Login
                                                             </Button>
