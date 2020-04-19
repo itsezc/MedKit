@@ -6,6 +6,7 @@ const SERVICE_IDENTIFIER= {
 	ISocketManager: Symbol.for('SocketManager'),
 	IRedisManager: Symbol.for('RedisManager'),
 	IEventManager: Symbol.for('EventManager'),
+	IQueryManager: Symbol.for('QueryManager')
 }
 
 export { SERVICE_IDENTIFIER }
