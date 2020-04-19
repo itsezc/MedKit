@@ -6,7 +6,7 @@ import { ApolloGateway } from '@apollo/gateway'
 import { remoteContext } from './modules/remoteContext'
 
 @injectable()
-export default class GatewayManager implements IGatewayManager {
+export class GatewayManager implements IGatewayManager {
 	protected gateway: ApolloGateway
 	protected server: ApolloServer
 
