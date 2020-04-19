@@ -1,31 +1,3 @@
 {
-	"compilerOptions": {
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
-		"target": "esnext",
-		"module": "commonjs",
-		"moduleResolution": "node",
-		"allowJs": true,
-		"resolveJsonModule": true,
-		"strict": true,
-		"strictNullChecks": false,
-		"isolatedModules": false,
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"lib": [
-			"dom",
-			"es2018"
-		],
-		"typeRoots": [
-			"./node_modules/@types",
-			"./typings"
-		]
-	},
-	"files": [
-		"typings/graphql.d.ts"
-	],
-	"exclude": [
-		"node_modules",
-		"./babel.config.js"
-	]
+	"extends": "../../tsconfig.json"
 }
