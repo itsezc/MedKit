@@ -11,7 +11,8 @@ export class FederationManager implements IFederationManager {
 	protected server: ApolloServer
 	protected port: number
 
-	public async init(typeDefs: DocumentNode, resolvers: any) {
+	public async init({ typeDefs, resolvers, port }: { typeDefs: DocumentNode, resolvers: any, port: number }) {
+		this.port = port
 		this.server = new ApolloServer({
 			schema: buildFederatedSchema([ { typeDefs, resolvers }])
 		})
