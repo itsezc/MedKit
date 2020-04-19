@@ -69,16 +69,6 @@ export function FeaturedRecipes() {
 						featured
 					/>
 				))}
-				{/* <Card
-					favorite
-					featured
-				/>
-				<Card 
-					featured
-				/>
-				<Card 
-					featured
-				/> */}
 			</ScrollView>
 		</>
 	)
