@@ -8,7 +8,7 @@ import { ApolloServer } from 'apollo-server'
 import schema from '../../graphql/database.graphql'
 
 @injectable()
-export default class DatabaseManager implements IDatabaseManager {
+export class DatabaseManager implements IDatabaseManager {
 	protected server: ApolloServer
 	protected port: number
 	
