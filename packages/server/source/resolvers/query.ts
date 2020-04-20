@@ -2,7 +2,7 @@ import { fetchActivities } from '../lib/Activities'
 import { fetchSymptoms, fetchSymptom } from '../lib/Symptoms'
 import { searchMedicine, topMedicines } from '../lib/Medicines'
 
-import { fetchFavorites } from '../lib/Recipes'
+import { fetchFavorites, getRecipes, isFavoriteRecipe } from '../lib/Recipes'
 
 export const queryResolver = {
 
@@ -15,5 +15,7 @@ export const queryResolver = {
 	topMedicines: async (parent, args, context, info) => topMedicines({ limit: 10 }),
 
 	getFavoriteRecipes: async (parent, args, { user }, info) => fetchFavorites(user),
+	getRecipes: async (parent, args, context, info) => getRecipes(),
+	isFavoriteRecipe: async (parent, args, { user }, info) => isFavoriteRecipe({ account: user.id, recipe: args.recipe })
 	
 }
