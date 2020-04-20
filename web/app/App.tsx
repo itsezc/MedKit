@@ -12,7 +12,7 @@ const client = new ApolloClient({
   })
 });
 
-import Login from './components/Header/index';
+import Login from './pages/Dashboard/index';
 
 const App = () => {
 

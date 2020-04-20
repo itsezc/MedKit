@@ -9,16 +9,16 @@
 /* Footer */
 
 /* Dashboard */
-/* @import './pages/Dashboard/style.css'; */
+@import './pages/Dashboard/style.css';
 
 /* Universal CSS */
 .content{
-      margin-top: 90px;
+      margin-top: 85px;
       margin-left: 120px;
 }
 
 .page-container {
-      padding: 50px;
+      padding: 40px;
 }
 
 .content-container {
