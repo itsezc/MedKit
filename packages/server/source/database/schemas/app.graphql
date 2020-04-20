@@ -42,6 +42,7 @@ type Ingredient {
 }
 
 type Recipe {
+	id: ID
 	name: String
 	preview: String
 	ingredient: [Ingredient]
@@ -73,6 +74,7 @@ extend type Query {
 	getActivities: [Activities]
 	getRecipes: [Recipe]
 	getFavoriteRecipes: [Recipe]
+	isFavoriteRecipe(recipe: ID!): Boolean!
 	getSymptoms(current: [String]): [Symptom]
 	getSymptom(current: [String], name: String): [Symptom]
 	getTopMedicines: [Medicine]
