@@ -28,11 +28,13 @@
 		"@apollo/gateway": "^0.14.0",
 		"@types/graphql": "^14.5.0",
 		"apollo-server": "^2.12.0",
+		"bcryptjs": "^2.4.3",
 		"cruddl": "^1.1.0",
 		"fastify": "^2.13.1",
 		"graphql": "^15.0.0",
 		"graphql-request": "^1.8.2",
 		"handy-redis": "^1.8.0",
+		"jsonwebtoken": "^8.5.1",
 		"node-redis": "^0.1.7",
 		"socket.io": "^2.3.0",
 		"typed-graphqlify": "^2.3.0"
