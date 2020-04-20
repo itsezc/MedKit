@@ -1,3 +1,5 @@
+import { IQueryManager } from '../source/communication/graphql/query'
+
 declare module '*.graphql' {
 	import { DocumentNode } from 'graphql'
 	const Schema: DocumentNode
@@ -6,18 +8,14 @@ declare module '*.graphql' {
 }
 
 export interface Context {
-	// url: string;
-	// session: Session;
-	// req: Express.Request;
-	// res: express.Response;
-	// userLoader: ReturnType<typeof userLoader>;
-	// pubsub: PubSub;
+	user: object,
+	database: IQueryManager
 }
 
 export type Resolver = (
 	parent: any,
 	args: any,
-	// context: Context,
+	context: Context,
 	info: any
 ) => any;
 
