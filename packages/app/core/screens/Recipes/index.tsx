@@ -106,14 +106,17 @@ export default function({ navigation }): JSX.Element {
 				}}
 			>
 				<Card 
+					id='1'
 					name='Breakfast'
 					tag='Breakfast'
 				/>
 				<Card
+					id='2'
 					name='Lunch'
 					tag='Lunch'
 				/>
-				<Card 
+				<Card
+					id='3'
 					name='Dinner'
 					tag='Dinner'
 				/>
