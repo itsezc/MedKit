@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Text } from 'react-native'
 
-import { FilterContainer } from './Container'
+import { FilterContainer } from './container'
 
 function FilterItem({ name, selected, last }: { name: string, selected: boolean, last: boolean }): JSX.Element {
 

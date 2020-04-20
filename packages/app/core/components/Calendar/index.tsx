@@ -5,8 +5,8 @@ import Moment from 'moment'
 import { View, Text, Dimensions, ScrollView } from 'react-native'
 import { Icon } from '../Icon'
 
-import { Filter } from './Filter'
-import { CalendarCard } from './Card'
+import { Filter } from './filter'
+import { CalendarCard } from './card'
 import { Action } from '../Home'
 
 import { useQuery, gql } from '@apollo/client'
