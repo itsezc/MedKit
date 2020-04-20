@@ -9,8 +9,8 @@ export class QueryManager implements IQueryManager {
 		protected client = new GraphQLClient('http://localhost:8085')
 	) {}
 
-	public async query(query: string, variables) {
-		const { data } = await this.client.request(query, variables)
+	public async query(queryObj: string, variables?: object) {
+		const { data } = await this.client.request(queryObj, variables)
 		return data
 	}
 }

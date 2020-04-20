@@ -1,3 +1,3 @@
 export interface IQueryManager {
-	query(query: string, variables: object): Promise<JSON | Error>
+	query(queryObj: string, variables?: object): Promise<{ [key: string]: object | object[] | string | number }>
 }
