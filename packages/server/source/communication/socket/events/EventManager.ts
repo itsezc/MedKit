@@ -2,7 +2,7 @@ import { inject, injectable } from 'inversify'
 
 import { IEvent, IEventMap } from './IEvent'
 
-import { Auth, Disconnect, Init } from '../../../events'
+// import { Auth, Disconnect, Init } from '../../../events'
 
 import { SERVICE_IDENTIFIER } from '../../../includes/identifiers'
 import { IRedisManager } from '../../../storage/redis'
@@ -30,16 +30,17 @@ export class EventManager implements IEventManager {
 
 	private fetchEvents(): void {
 		const events = this.getEvents()
-		for (const entry of Object.entries(events)) {
-			this.events.set(entry[0], new entry[1](this.redisManager, this.socketManager))
-		}
+		// for (const entry of Object.entries(events)) {
+		// 	this.events.set(entry[0], new entry[1](this.redisManager, this.socketManager))
+		// }
 	}
 
 	public getEvents() {
 		return {
-			auth: Auth,
-			requestDisconnect: Disconnect,
-			init: Init
+
+			// auth: Auth,
+			// requestDisconnect: Disconnect,
+			// init: Init
 		}
 	}
 }
