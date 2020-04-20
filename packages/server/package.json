@@ -18,7 +18,7 @@
 		"url": "git+https://github.com/itsezc/MedKit.git"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"dev": "nodemon --exec ts-node ./source/index.ts"
 	},
 	"bugs": {
 		"url": "https://github.com/itsezc/MedKit/issues"
