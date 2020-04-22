@@ -1,0 +1,28 @@
+/**********************************************
+                  REFERENCES
+***********************************************
+
+<Sider collapsed={true} style={{ height: '100vh', position: 'fixed', overflow: 'auto', left: 0, zIndex: 1 }}>
+
+**********************************************/
+
+.logo {
+      height: 32px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 16px;
+}
+
+.side-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+}
+
+.message-btn{
+      margin-left: 50%;
+}
+
+.logout-btn {
+      background-color: tomato;
+      margin: 50%;
+}

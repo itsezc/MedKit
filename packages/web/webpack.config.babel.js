@@ -33,7 +33,7 @@ module.exports = (env, argv) => {
 					]
 				},
 				{
-					test: /\.(woff(2)?|ttf|eot)$/,
+					test: /\.(png|jpe?g|gif)$/i,
 					use: [
 						'file-loader'
 					]
@@ -41,7 +41,27 @@ module.exports = (env, argv) => {
 				{
 					test: /\.svg$/,
 					use:  ['svg-inline-loader']
-				  }
+				},
+				{
+					test: /\.css$/,
+					use: ['style-loader', 'css-loader']
+				},
+				{
+					test: /\.less$/,
+					use: [{
+							loader: 'style-loader'
+						},
+						{
+							loader: 'css-loader'
+						},
+						{
+							loader: 'less-loader',
+							options: {
+								javascriptEnabled: true
+							}
+						}
+					]
+				}
 			]
 		}
 	}

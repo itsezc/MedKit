@@ -1,0 +1,12 @@
+/**********************************************
+                  REFERENCES
+***********************************************
+
+<Header style={{ background: '#fff', position: 'fixed', width: '100%' }}>
+
+**********************************************/
+
+.header-right {
+      position: relative;
+      float: right;
+}

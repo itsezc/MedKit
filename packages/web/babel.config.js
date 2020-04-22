@@ -18,7 +18,7 @@ module.exports = (api) => {
 		'@babel/plugin-transform-runtime',
 		'@babel/plugin-syntax-function-bind',
 		'@babel/plugin-proposal-class-properties',
-		'@babel/plugin-proposal-throw-expressions',
+		'@babel/plugin-proposal-throw-expressions'
 	]
 
 	const ignore = []

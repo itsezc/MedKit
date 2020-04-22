@@ -1,0 +1,30 @@
+@import '~antd/dist/antd.css';
+
+/* Side navigation */
+@import './components/Sidenav/style.css';
+
+/* Header */
+@import './components/Header/style.css';
+
+/* Footer */
+
+/* Dashboard */
+@import './pages/Dashboard/style.css';
+
+/* Universal CSS */
+.content{
+      margin-top: 85px;
+      margin-left: 120px;
+}
+
+.page-container {
+      padding: 40px;
+}
+
+.content-container {
+      background: rgb(255, 255, 255);
+      padding: 10px;
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+}
