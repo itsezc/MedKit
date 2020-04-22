@@ -1,0 +1,82 @@
+scalar DateTime
+
+type Account @key(fields: "id") {
+	id: ID
+	email: String
+	phone: String
+	password: String
+	firstName: String
+	lastName: String
+	DateTimeOfBirth: DateTime
+	weight: Float
+}
+
+type LoginPayload {
+	token: String
+}
+
+type Activity {
+	name: String
+	tag: String
+	time: DateTime
+}
+
+type Activities {
+	date: DateTime
+	activities: [Activity]
+}
+
+type Symptom {
+	id: ID
+	name: String
+}
+
+type Medicine {
+	name: String
+	description: String
+}
+
+type Ingredient {
+	name: String 
+	image: String
+}
+
+type Recipe {
+	id: ID
+	name: String
+	preview: String
+	ingredient: [Ingredient]
+	createdAt: DateTime
+}
+
+extend type Mutation {
+	login(
+		email: String!, 
+		password: String!,
+		deviceID: String!
+	): LoginPayload
+
+	register(
+		email: String!, 
+		password: String!,
+		passwordConfirm: String!,
+		firstName: String!,
+		lastName: String!,
+		dateOfBirth: DateTime!,
+		deviceID: String!
+	): LoginPayload
+
+	makeFavorite(recipe: [ID]): ID
+}
+
+extend type Query {
+	getUser: Account
+	getActivities: [Activities]
+	getRecipes: [Recipe]
+	getFavoriteRecipes: [Recipe]
+	isFavoriteRecipe(recipe: ID!): Boolean!
+	getSymptoms(current: [String]): [Symptom]
+	getSymptom(current: [String], name: String): [Symptom]
+	getTopMedicines: [Medicine]
+	searchMedicine(term: String!): Medicine
+}

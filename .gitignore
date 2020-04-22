@@ -13,4 +13,5 @@ web-report/
 # macOS
 .DS_Store
 
-.vscode/**/*
+# Lerna
+lerna-debug.log

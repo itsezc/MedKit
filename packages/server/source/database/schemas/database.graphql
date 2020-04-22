@@ -1,0 +1,200 @@
+enum Gender {
+	MALE
+	FEMALE
+}
+
+enum Ethnicity {
+	WHITE,
+	BLACK,
+	ASIAN,
+	MIXED,
+	ARAB
+}
+
+enum QuestionsType {
+	TEXT,
+	IMAGE
+}
+
+enum QuestionsRepliesType {
+	CHECKBOX,
+	RADIO
+}
+
+type Account @rootEntity {
+    email: String! @unique
+    phone: String
+    phoneExt: String
+    password: String
+    firstName: String
+    lastName: String
+    dateOfBirth: DateTime
+    address: Address
+    gender: Gender
+    ethnicity: Ethnicity
+    height: Int
+    weight: Float
+    activities: [Activity] @relation
+    recipes: [Recipe] @relation
+}
+
+type Activity @rootEntity {
+	name: String
+	tag: String
+	time: DateTime
+	account: Account @relation(inverseOf: "activities")
+	workout: Exercise @relation
+	appointment: Appointment @relation
+	recipe: Recipe @relation
+}
+
+# Workouts
+
+type Exercise @rootEntity {
+	name: String!
+	description: String
+	image: String
+	equipment: ExerciseEquipment @relation
+}
+
+type ExerciseEquipment @rootEntity {
+	name: String! @unique
+	image: String
+	exercise: Exercise @relation(inverseOf: "equipment")
+}
+
+# Diseases
+# and related properties
+
+type Disease @rootEntity {
+	name: String @unique
+	symptoms: [Symptom] @relation
+	treatments: [Treatment] @relation
+	medication: [Medication] @relation
+}
+
+type Symptom @rootEntity {
+	name: String! @unique
+	description: String
+	languageCode: String
+	language: Language @reference(keyField: "languageCode") 
+	diseases: [Disease] @relation(inverseOf: "symptoms")
+	questions: [Question] @relation(inverseOf: "symptom")
+}
+
+type Treatment @rootEntity {
+	method: String
+	diseases: [Disease] @relation(inverseOf: "treatments")
+	minAge: Int
+}
+
+type Medication @rootEntity {
+	name: String!
+	description: String
+	minAge: Int
+	gender: Gender
+	diseases: [Disease] @relation(inverseOf: "medication")
+}
+
+type Chat @rootEntity {
+	possibilities: [Disease] @relation
+	user: [Account] @relation
+}
+
+type Question @rootEntity {
+	question: String
+	type: QuestionsType
+	display: QuestionsRepliesType
+	answers: [QuickReply]
+	symptom: Symptom @relation
+}
+
+type QuickReply @childEntity {
+	title: String!
+	value: String!
+}
+
+# Doctors & Appointments
+
+type Hospital @rootEntity {
+	name: String
+	address: Address
+	location: Location
+	doctors: [Doctor] @relation(inverseOf: "hospital")
+	appointments: [Appointment] @relation(inverseOf: "hospital")
+}
+
+type TestCenter @rootEntity {
+	name: String
+	address: Address
+	location: Location
+}
+
+type Doctor @rootEntity {
+	account: Account @relation
+	hospital: Hospital @relation
+	appointments: [Appointment] @relation
+}
+
+type Appointment @rootEntity {
+	hospital: Hospital @relation
+	doctor: Doctor! @relation(inverseOf: "appointments")
+	time: DateTime
+	account: Account! @relation
+}
+
+type Scan @rootEntity {
+	account: Account @relation
+	image: [String]
+	taken: DateTime
+	hospital: Hospital @relation
+}
+
+type Test @rootEntity {
+	account: Account @relation
+	collected: DateTime
+	received: DateTime
+	comment: String
+	hospital: Hospital @relation
+	testCenter: TestCenter @relation
+}
+
+# Healthy Recipes 
+
+type Recipe @rootEntity {
+	name: String!
+	preview: String
+	ingridents: [Ingredient] @relation
+}
+
+type Ingredient @rootEntity {
+	name: String! 
+	image: String
+}
+
+# Pharamacies
+
+type Pharamacy @rootEntity {
+	name: String
+	owner: Account @relation
+	location: Location
+}
+
+# Utilities
+
+type Location @entityExtension {
+	latitude: Float
+	longitude: Float
+}
+
+type Language @rootEntity {
+	isoCode: String @key
+}
+
+type Address @valueObject {
+	street: String
+	postcode: String
+	city: String
+	state: String
+	country: String
+}

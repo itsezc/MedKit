@@ -1,0 +1,18 @@
+#  https://github.com/redhat-developer/vscode-yaml/issues/243
+
+debug: true
+
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: test
+    image: node
+    commands:
+      - cd ./server
+      - npm install
+      - cd ../chat
+      - npm install
+      - cd ../app
+      - npm install

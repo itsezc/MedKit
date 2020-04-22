@@ -1,0 +1,21 @@
+{
+	"name": "@medkit/project",
+	"private": true,
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"chat:dev": "lerna run dev --parallel --scope @medkit/chat",
+		"server:dev": "lerna run dev --parallel --scope @medkit/server",
+		"server:seed": "lerna run seed --parallel --scope @medkit/server"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.8.4",
+		"@babel/core": "^7.9.0",
+		"@babel/node": "^7.8.7",
+		"@babel/preset-env": "^7.9.5",
+		"@babel/preset-typescript": "^7.9.0",
+		"lerna": "^3.20.2",
+		"typescript": "^3.8.3"
+	}
+}

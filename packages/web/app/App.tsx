@@ -15,7 +15,6 @@ const client = new ApolloClient({
 import Login from './pages/Dashboard/index';
 
 const App = () => {
-
 	return (
 		<ApolloProvider client={client}>
 			<Login />

@@ -1,0 +1,49 @@
+{
+	"name": "@medkit/server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "source/index.js",
+	"scripts": {
+		"start": "node ./build/index.js",
+		"dev": "nodemon --exec 'npm run clear:cache && babel-node ./source/index.ts --extensions \".ts\"'",
+		"build": "npx babel source --out-dir build",
+		"clear:cache": "rm -rf ./node_modules/.cache/@babel",
+		"seed": "npx babel-node ./source/util/Seeder/index.ts --extensions \".ts\",\".js\" && npx babel-node ./source/util/Seeder/relate.ts --extensions \".ts\",\".js\"",
+		"onlyseed": "npx babel-node ./source/util/Seeder/index.ts --extensions \".ts\",\".js\""
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/cli": "^7.7.7",
+		"@babel/core": "^7.7.7",
+		"@babel/node": "^7.7.7",
+		"@babel/plugin-proposal-class-properties": "^7.7.4",
+		"@babel/plugin-proposal-throw-expressions": "^7.8.3",
+		"@babel/plugin-syntax-function-bind": "^7.7.4",
+		"@babel/plugin-transform-runtime": "^7.7.6",
+		"@babel/preset-env": "^7.7.7",
+		"@babel/preset-typescript": "^7.8.3",
+		"@babel/runtime": "^7.7.7",
+		"@types/jsonwebtoken": "^8.3.8",
+		"@types/moment": "^2.13.0",
+		"babel-plugin-import-graphql": "^2.7.0",
+		"nodemon": "^2.0.2"
+	},
+	"dependencies": {
+		"@apollo/federation": "^0.12.1",
+		"@apollo/gateway": "^0.12.1",
+		"@types/bcryptjs": "^2.4.2",
+		"apollo-datasource-rest": "^0.6.11",
+		"apollo-server": "^2.10.1",
+		"axios": "^0.19.1",
+		"bcryptjs": "^2.4.3",
+		"cruddl": "^1.1.0-alpha.4",
+		"graphql": "^14.5.8",
+		"graphql-tag": "^2.10.3",
+		"js-joda": "^1.11.0",
+		"jsonwebtoken": "^8.5.1",
+		"moment": "^2.24.0",
+		"typed-graphqlify": "^2.3.0"
+	}
+}
