@@ -8,11 +8,11 @@ import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
-    uri: 'http://192.168.0.111:8088/graphql',
+    uri: 'http://localhost:8088/graphql',
   })
 });
 
-import Login from './pages/Dashboard/index';
+import Login from './pages/Login/index';
 
 const App = () => {
 	return (

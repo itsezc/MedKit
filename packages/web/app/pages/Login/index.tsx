@@ -7,29 +7,33 @@ import { Button, Card, Checkbox, Col, Form, Input, Row } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 const LOGIN_MUTATION = gql`
-	mutation Login($email: String!, $password: String!, $deviceID: String!) {
-		login(email: $email, password: $password, deviceID: $deviceID) {
-			token
-		}
-	}
-`;
+      mutation Login($email: String!, $password: String!, $deviceID: String!) {
+            login(email: $mail, password: $pass, deviceID: $deviceID) {
+                  token
+            }
+      } 
+`; 
 
 export default () => {
 
       const { Title } = Typography;
       const { Header, Content, Footer } = Layout;
 
-      const deviceID = 'web';
+      const onFinish = (values:any) => {
+            const mail = values.email
+            const pass = values.pass
+            const deviceID = 'web';
+            processLogin({ variables: { mail, pass, deviceID } })
+      }
 
-      const [email, setEmail] = React.useState('')
-      const [password, setPassword] = React.useState('')
       const [processLogin, { loading }] = useMutation(LOGIN_MUTATION, {
 		onCompleted: async (data) => {
 			console.log(data)
 		}
-	});
+      });
+      
 
-      const onFinishFailed = (errorInfo: any) => {
+      const onFinishFailed = (errorInfo:any) => {
             console.log('Failed', errorInfo);
       }
 
@@ -48,6 +52,7 @@ export default () => {
                                                 </Title>
 
                                                 <Form
+                                                      onFinish={onFinish}
                                                       onFinishFailed={onFinishFailed}
                                                       name='login'
                                                 >
@@ -95,7 +100,6 @@ export default () => {
                                                             <Button
                                                                   type='primary' 
                                                                   htmlType='submit'
-                                                                  onClick={() => processLogin({ variables: { email, password, deviceID } })}
                                                             >
                                                                   Login
                                                             </Button>

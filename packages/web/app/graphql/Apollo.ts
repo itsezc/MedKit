@@ -6,7 +6,7 @@ import { Auth } from './Auth'
 const cache = new InMemoryCache()
 
 const httpLink = new HttpLink({
-	uri: 'http://192.168.0.111:8088/graphql'
+	uri: 'http:/localhost:8088/graphql'
 })
 
 const middlewareLink = setContext(async (_, { headers }) => {
