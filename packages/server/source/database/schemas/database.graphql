@@ -50,6 +50,11 @@ type Activity @rootEntity {
 
 # Workouts
 
+type Workout @rootEntity {
+	name: String!
+	exercises: [Exercise] @relation 
+}
+
 type Exercise @rootEntity {
 	name: String!
 	description: String
@@ -60,7 +65,6 @@ type Exercise @rootEntity {
 type ExerciseEquipment @rootEntity {
 	name: String! @unique
 	image: String
-	exercise: Exercise @relation(inverseOf: "equipment")
 }
 
 # Diseases
